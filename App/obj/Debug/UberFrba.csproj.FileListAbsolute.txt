@@ -1,0 +1,2 @@
+E:\src\UberFrba\UberFrba\bin\Debug\UberFrba.exe.config
+C:\Users\Luis\DEV\TPS\GDD2017-uber\App\bin\Debug\UberFrba.exe.config
