@@ -19,11 +19,22 @@ namespace UberFrba
             InitializeComponent();
         }
 
+        private List<String> getRoles()
+        {
+            List<String> roles = new List<string>();
+            roles.Add("Administrador");
+            roles.Add("Cliente");
+            roles.Add("Chofer");
+            return roles;
+        }
+
         private void Inicio_Load(object sender, EventArgs e)
         {
-            cmb_roles.Items.Add("Administrador");
-            cmb_roles.Items.Add("Cliente");
-            cmb_roles.Items.Add("Chofer");
+            List<String> roles = getRoles();
+            foreach (String rol in roles)
+            {
+                cmb_roles.Items.Add(rol);
+            }
         }
 
         private void Loguear_Rol(object sender, EventArgs e)
