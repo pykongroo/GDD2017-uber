@@ -68,6 +68,12 @@
     <Compile Include="Abm Rol\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="CallDB.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CallDB.Designer.cs">
+      <DependentUpon>CallDB.cs</DependentUpon>
+    </Compile>
     <Compile Include="Helper.cs" />
     <Compile Include="Facturacion\Form1.cs">
       <SubType>Form</SubType>
@@ -107,6 +113,9 @@
     <Compile Include="Rendicion Viajes\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="CallDB.resx">
+      <DependentUpon>CallDB.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Inicio.resx">
       <DependentUpon>Inicio.cs</DependentUpon>
     </EmbeddedResource>
