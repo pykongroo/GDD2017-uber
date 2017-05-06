@@ -109,6 +109,10 @@ namespace UberFrba
 
         private void comboBoxRoles_Leave(object sender, EventArgs e)
         {
+            if (!comboBoxRoles.Items.Contains(comboBoxRoles.Text))
+            {
+                comboBoxRoles.Text = "";
+            }
             if (comboBoxRoles.Text == "")
             {
                 rolOk = false;
@@ -146,10 +150,6 @@ namespace UberFrba
             this.Hide();
             this.previo.Show();
         }
-
-        private void comboBoxRoles_KeyUp(object sender, KeyEventArgs e)
-        {
-            comboBoxRoles.Text = "";
-        }
+        
     }
 }

@@ -132,7 +132,6 @@
             this.comboBoxRoles.Name = "comboBoxRoles";
             this.comboBoxRoles.Size = new System.Drawing.Size(100, 21);
             this.comboBoxRoles.TabIndex = 10;
-            this.comboBoxRoles.KeyUp += new System.Windows.Forms.KeyEventHandler(this.comboBoxRoles_KeyUp);
             this.comboBoxRoles.Leave += new System.EventHandler(this.comboBoxRoles_Leave);
             // 
             // labelStatUser
