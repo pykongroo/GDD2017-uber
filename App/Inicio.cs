@@ -15,7 +15,7 @@ namespace UberFrba
         Login login_form;
         public Inicio()
         {
-            login_form = new Login(this);
+            //login_form = new Login(this);
             InitializeComponent();
         }
 
@@ -39,6 +39,7 @@ namespace UberFrba
 
         private void Loguear_Rol(object sender, EventArgs e)
         {
+            login_form = new Login(this);
             String rolSeleccionado = cmb_roles.Text;
             if (rolSeleccionado == "")
             {
@@ -46,7 +47,7 @@ namespace UberFrba
             } else
             {
                 login_form.setTipoRol(rolSeleccionado);
-                this.Hide();
+                //this.Hide();
                 login_form.Show();
                 //switch (rolSeleccionado)
                 //{

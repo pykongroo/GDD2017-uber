@@ -25,7 +25,14 @@ namespace UberFrba
 
         private void CustomForm_FormClosed(object sender, FormClosedEventArgs e)
         {
-            this.previo.Close();
+            if (previo.Visible)
+            {
+                MessageBox.Show("previo abierto");
+            } else
+            {
+                MessageBox.Show("previo cerrado");
+                this.previo.Close();
+            }
         }
     }
 }
