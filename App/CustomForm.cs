@@ -13,6 +13,7 @@ namespace UberFrba
     public partial class CustomForm : Form
     {
         protected Form previo;
+        private bool cbh;
         public CustomForm()
         {
             //Fake constructor
@@ -21,16 +22,18 @@ namespace UberFrba
         {
             InitializeComponent();
             this.previo = prev_form;
+            this.cbh = true;
+        }
+
+        public void cierreInvocador(bool flag)
+        {
+            this.cbh = flag;
         }
 
         private void CustomForm_FormClosed(object sender, FormClosedEventArgs e)
         {
-            if (previo.Visible)
+            if (cbh)
             {
-                MessageBox.Show("previo abierto");
-            } else
-            {
-                MessageBox.Show("previo cerrado");
                 this.previo.Close();
             }
         }

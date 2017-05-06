@@ -47,7 +47,7 @@ namespace UberFrba
             } else
             {
                 login_form.setTipoRol(rolSeleccionado);
-                //this.Hide();
+                this.Hide();
                 login_form.Show();
                 //switch (rolSeleccionado)
                 //{
