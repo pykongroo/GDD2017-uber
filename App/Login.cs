@@ -11,14 +11,12 @@ using Helper;
 
 namespace UberFrba
 {
-    public partial class Login : Form
+    public partial class Login : CustomForm
     {
-        Inicio previo;
         String tipoRol;
         List<Dictionary<String, Object>> usuarios;
-        public Login(Inicio prev_form)
+        public Login(Form prev_form) : base(prev_form)
         {
-            this.previo = prev_form;
             usuarios = getUsuarios();
             InitializeComponent();
         }
@@ -128,11 +126,6 @@ namespace UberFrba
             {
                 this.verificarLogueo();
             }
-        }
-
-        private void Login_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            this.previo.Close();
         }
     }
 }
