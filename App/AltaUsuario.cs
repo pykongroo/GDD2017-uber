@@ -146,5 +146,10 @@ namespace UberFrba
             this.Hide();
             this.previo.Show();
         }
+
+        private void comboBoxRoles_KeyUp(object sender, KeyEventArgs e)
+        {
+            comboBoxRoles.Text = "";
+        }
     }
 }

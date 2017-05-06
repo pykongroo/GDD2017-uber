@@ -50,6 +50,7 @@
             this.cmb_roles.Name = "cmb_roles";
             this.cmb_roles.Size = new System.Drawing.Size(143, 21);
             this.cmb_roles.TabIndex = 1;
+            this.cmb_roles.KeyUp += new System.Windows.Forms.KeyEventHandler(this.cmb_roles_KeyUp);
             // 
             // botonAceptarRol
             // 

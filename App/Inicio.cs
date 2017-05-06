@@ -71,5 +71,10 @@ namespace UberFrba
             this.Hide();
             altaUser.Show();
         }
+
+        private void cmb_roles_KeyUp(object sender, KeyEventArgs e)
+        {
+            cmb_roles.Text = "";
+        }
     }
 }
