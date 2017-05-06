@@ -64,5 +64,12 @@ namespace UberFrba
             }
             
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            AltaUsuario menu = new AltaUsuario(this);
+            this.Hide();
+            menu.Show();
+        }
     }
 }

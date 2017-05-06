@@ -31,6 +31,7 @@
             this.labelSeleccionRol = new System.Windows.Forms.Label();
             this.cmb_roles = new System.Windows.Forms.ComboBox();
             this.botonAceptarRol = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // labelSeleccionRol
@@ -60,11 +61,22 @@
             this.botonAceptarRol.UseVisualStyleBackColor = true;
             this.botonAceptarRol.Click += new System.EventHandler(this.Loguear_Rol);
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(75, 203);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(115, 23);
+            this.button1.TabIndex = 3;
+            this.button1.Text = "Modo Pruebas";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // Inicio
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(284, 261);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.botonAceptarRol);
             this.Controls.Add(this.cmb_roles);
             this.Controls.Add(this.labelSeleccionRol);
@@ -81,6 +93,7 @@
         private System.Windows.Forms.Label labelSeleccionRol;
         private System.Windows.Forms.ComboBox cmb_roles;
         private System.Windows.Forms.Button botonAceptarRol;
+        private System.Windows.Forms.Button button1;
     }
 }
 
