@@ -68,10 +68,10 @@
     <Compile Include="Abm Rol\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="CustomForm.cs">
+    <Compile Include="Utils\CustomForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="CustomForm.Designer.cs">
+    <Compile Include="Utils\CustomForm.Designer.cs">
       <DependentUpon>CustomForm.cs</DependentUpon>
     </Compile>
     <Compile Include="AltaUsuario.cs">
@@ -80,7 +80,20 @@
     <Compile Include="AltaUsuario.Designer.cs">
       <DependentUpon>AltaUsuario.cs</DependentUpon>
     </Compile>
-    <Compile Include="Helper.cs" />
+    <Compile Include="Utils\Conexion.cs" />
+    <Compile Include="Utils\CustomComboBox.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Utils\CustomComboBox.Designer.cs">
+      <DependentUpon>CustomComboBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Utils\CustomTextBox.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Utils\CustomTextBox.Designer.cs">
+      <DependentUpon>CustomTextBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Utils\Helper.cs" />
     <Compile Include="Facturacion\Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -125,10 +138,16 @@
     <Compile Include="Rendicion Viajes\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Utils\PasswordInput.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Utils\PasswordInput.Designer.cs">
+      <DependentUpon>PasswordInput.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="AltaUsuario.resx">
       <DependentUpon>AltaUsuario.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="CustomForm.resx">
+    <EmbeddedResource Include="Utils\CustomForm.resx">
       <DependentUpon>CustomForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Inicio.resx">
@@ -149,6 +168,15 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Utils\CustomComboBox.resx">
+      <DependentUpon>CustomComboBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Utils\CustomTextBox.resx">
+      <DependentUpon>CustomTextBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Utils\PasswordInput.resx">
+      <DependentUpon>PasswordInput.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -162,6 +190,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
