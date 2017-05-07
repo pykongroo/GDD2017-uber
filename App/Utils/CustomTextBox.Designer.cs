@@ -28,22 +28,37 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.description = new System.Windows.Forms.Label();
+            this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.textBox = new System.Windows.Forms.TextBox();
             this.labelStatus = new System.Windows.Forms.Label();
-            this.flowLayoutPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
+            this.splitContainer1.Panel1.SuspendLayout();
+            this.splitContainer1.Panel2.SuspendLayout();
+            this.splitContainer1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
+            this.splitContainer2.Panel1.SuspendLayout();
+            this.splitContainer2.Panel2.SuspendLayout();
+            this.splitContainer2.SuspendLayout();
             this.SuspendLayout();
             // 
-            // flowLayoutPanel1
+            // splitContainer1
             // 
-            this.flowLayoutPanel1.Controls.Add(this.description);
-            this.flowLayoutPanel1.Controls.Add(this.textBox);
-            this.flowLayoutPanel1.Controls.Add(this.labelStatus);
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 3);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(200, 30);
-            this.flowLayoutPanel1.TabIndex = 0;
+            this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer1.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer1.Name = "splitContainer1";
+            // 
+            // splitContainer1.Panel1
+            // 
+            this.splitContainer1.Panel1.Controls.Add(this.description);
+            // 
+            // splitContainer1.Panel2
+            // 
+            this.splitContainer1.Panel2.Controls.Add(this.splitContainer2);
+            this.splitContainer1.Size = new System.Drawing.Size(250, 30);
+            this.splitContainer1.SplitterDistance = 77;
+            this.splitContainer1.TabIndex = 0;
             // 
             // description
             // 
@@ -55,11 +70,28 @@
             this.description.TabIndex = 2;
             this.description.Text = "Description";
             // 
+            // splitContainer2
+            // 
+            this.splitContainer2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer2.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer2.Name = "splitContainer2";
+            // 
+            // splitContainer2.Panel1
+            // 
+            this.splitContainer2.Panel1.Controls.Add(this.textBox);
+            // 
+            // splitContainer2.Panel2
+            // 
+            this.splitContainer2.Panel2.Controls.Add(this.labelStatus);
+            this.splitContainer2.Size = new System.Drawing.Size(169, 30);
+            this.splitContainer2.SplitterDistance = 140;
+            this.splitContainer2.TabIndex = 0;
+            // 
             // textBox
             // 
-            this.textBox.Location = new System.Drawing.Point(69, 3);
+            this.textBox.Location = new System.Drawing.Point(3, 3);
             this.textBox.Name = "textBox";
-            this.textBox.Size = new System.Drawing.Size(100, 20);
+            this.textBox.Size = new System.Drawing.Size(133, 20);
             this.textBox.TabIndex = 0;
             this.textBox.Leave += new System.EventHandler(this.textBox_Leave);
             // 
@@ -68,7 +100,7 @@
             this.labelStatus.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.labelStatus.AutoSize = true;
             this.labelStatus.BackColor = System.Drawing.Color.Silver;
-            this.labelStatus.Location = new System.Drawing.Point(175, 6);
+            this.labelStatus.Location = new System.Drawing.Point(3, 6);
             this.labelStatus.Name = "labelStatus";
             this.labelStatus.Size = new System.Drawing.Size(16, 13);
             this.labelStatus.TabIndex = 1;
@@ -78,19 +110,29 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.flowLayoutPanel1);
+            this.Controls.Add(this.splitContainer1);
             this.Name = "CustomTextBox";
-            this.Size = new System.Drawing.Size(206, 36);
-            this.flowLayoutPanel1.ResumeLayout(false);
-            this.flowLayoutPanel1.PerformLayout();
+            this.Size = new System.Drawing.Size(250, 30);
+            this.splitContainer1.Panel1.ResumeLayout(false);
+            this.splitContainer1.Panel1.PerformLayout();
+            this.splitContainer1.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
+            this.splitContainer1.ResumeLayout(false);
+            this.splitContainer2.Panel1.ResumeLayout(false);
+            this.splitContainer2.Panel1.PerformLayout();
+            this.splitContainer2.Panel2.ResumeLayout(false);
+            this.splitContainer2.Panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
+            this.splitContainer2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.Label description;
+        private System.Windows.Forms.SplitContainer splitContainer2;
         private System.Windows.Forms.TextBox textBox;
         private System.Windows.Forms.Label labelStatus;
     }

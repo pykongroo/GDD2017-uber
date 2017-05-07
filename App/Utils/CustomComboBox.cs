@@ -17,7 +17,7 @@ namespace UberFrba.Utils
             InitializeComponent();
         }
 
-        private void comboBox1_Leave(object sender, EventArgs e)
+        private void comboBox_Leave(object sender, EventArgs e)
         {
             if (!this.comboBox.Items.Contains(this.comboBox.Text))
             {

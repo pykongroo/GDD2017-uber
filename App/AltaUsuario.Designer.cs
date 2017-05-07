@@ -59,7 +59,7 @@
             // 
             this.username.Location = new System.Drawing.Point(29, 23);
             this.username.Name = "username";
-            this.username.Size = new System.Drawing.Size(206, 36);
+            this.username.Size = new System.Drawing.Size(252, 36);
             this.username.TabIndex = 10;
             // 
             // passwordInput
@@ -73,7 +73,7 @@
             // 
             this.cmb_roles.Location = new System.Drawing.Point(29, 128);
             this.cmb_roles.Name = "cmb_roles";
-            this.cmb_roles.Size = new System.Drawing.Size(231, 34);
+            this.cmb_roles.Size = new System.Drawing.Size(252, 34);
             this.cmb_roles.TabIndex = 12;
             // 
             // AltaUsuario

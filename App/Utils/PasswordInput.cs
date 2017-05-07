@@ -76,7 +76,7 @@ namespace UberFrba.Utils
         
         public bool esValido()
         {
-            return textBox1.Text == textBox2.Text;
+            return (textBox1.Text!="")&&(textBox1.Text == textBox2.Text);
         }
 
         public String getPassSHA256()
