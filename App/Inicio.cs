@@ -13,6 +13,8 @@ namespace UberFrba
     public partial class Inicio : Form
     {
         Login login_form;
+        /*otra forma de hacerlo */
+        /*private String[] roles = { "Administrador", "Cliente", "Chofer" };*/
         public Inicio()
         {
             //login_form = new Login(this);
