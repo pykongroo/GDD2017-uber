@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using UberFrba.Abm_Cliente;
 
 namespace UberFrba
 {
@@ -69,9 +70,11 @@ namespace UberFrba
 
         private void button1_Click(object sender, EventArgs e)
         {
-            AltaUsuario altaUser = new AltaUsuario(this);
+            //AltaUsuario altaUser = new AltaUsuario(this);
+            BajaModificarCliente modif = new BajaModificarCliente(this);
             this.Hide();
-            altaUser.Show();
+            modif.Show();
+            //altaUser.Show();
         }
         
         private void cmb_roles_Leave(object sender, EventArgs e)

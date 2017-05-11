@@ -9,7 +9,7 @@ namespace UberFrba
 {
     class Conexion
     {
-        private Conexion instance;
+        private static Conexion instance;
         public SqlConnection con;
         private Conexion()
         {
@@ -21,13 +21,13 @@ namespace UberFrba
             this.con = new SqlConnection(str_cfg);
         }
 
-        public Conexion getInstance()
+        public static Conexion getInstance()
         {
             if (instance == null)
             {
-                this.instance = new Conexion();
+                instance = new Conexion();
             }
-            return this.instance;
+            return instance;
         }
 
     }
