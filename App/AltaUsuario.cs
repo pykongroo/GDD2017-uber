@@ -26,7 +26,9 @@ namespace UberFrba
             cmb_roles.Add("Admin");
             cmb_roles.Add("Cliente");
             cmb_roles.Add("Chofer");
-        }private void buttonAceptar_Click(object sender, EventArgs e)
+        }
+        
+        private void buttonAceptar_Click(object sender, EventArgs e)
         {
             if (username.esValido() && passwordInput.esValido() && cmb_roles.esValido())
             {

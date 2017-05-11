@@ -33,6 +33,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -68,6 +69,15 @@
     <Compile Include="Abm Rol\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="ConexionBD\BDHandler.cs" />
+    <Compile Include="ConexionBD\BDParametro.cs" />
+    <Compile Include="Login\Rol.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Login\Rol.Designer.cs">
+      <DependentUpon>Rol.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Modelo\Usuario.cs" />
     <Compile Include="Utils\CustomForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -100,22 +110,16 @@
     <Compile Include="Facturacion\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Inicio.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Inicio.Designer.cs">
-      <DependentUpon>Inicio.cs</DependentUpon>
-    </Compile>
     <Compile Include="Listado Estadistico\Form1.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Listado Estadistico\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Login.cs">
+    <Compile Include="Login\Login.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Login.Designer.cs">
+    <Compile Include="Login\Login.Designer.cs">
       <DependentUpon>Login.cs</DependentUpon>
     </Compile>
     <Compile Include="Menu.cs">
@@ -147,13 +151,13 @@
     <EmbeddedResource Include="AltaUsuario.resx">
       <DependentUpon>AltaUsuario.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Login\Rol.resx">
+      <DependentUpon>Rol.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Utils\CustomForm.resx">
       <DependentUpon>CustomForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Inicio.resx">
-      <DependentUpon>Inicio.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Login.resx">
+    <EmbeddedResource Include="Login\Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Menu.resx">

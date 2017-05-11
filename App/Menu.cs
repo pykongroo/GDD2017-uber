@@ -16,5 +16,15 @@ namespace UberFrba
         {
             InitializeComponent();
         }
+
+        private void Menu_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Menu_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }
