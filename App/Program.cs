@@ -10,11 +10,15 @@ namespace UberFrba
     static class Program
     {
         /// <summary>
+        /// Usuario actual del sistema.
+        /// </summary>
+
+        public static Usuario user = new Usuario();
+
+        /// <summary>
         /// Punto de entrada principal para la aplicación.
         /// </summary>
-        
-        public static Usuario user = new Usuario();
-        
+ 
         [STAThread]
         static void Main()
         {

@@ -19,12 +19,18 @@ namespace UberFrba
 
         private void Menu_Load(object sender, EventArgs e)
         {
-
+            this.Text += " - logueado como '" + Program.user.id + "' <" + Program.user.rol + ">";
         }
 
         private void Menu_FormClosing(object sender, FormClosingEventArgs e)
         {
             Application.Exit();
+        }
+
+        private void cerrarSesionToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            new Login().Show();
         }
     }
 }
