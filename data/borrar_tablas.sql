@@ -1,0 +1,36 @@
+USE [GD1C2017]
+GO
+
+
+DROP TABLE [LJDG].Factura
+GO
+
+DROP TABLE [LJDG].Funcionalidad_Rol
+GO
+
+DROP TABLE [LJDG].Funcionalidad
+GO
+
+DROP TABLE LJDG.Rendicion
+GO
+
+DROP TABLE [LJDG].Rol_Usuario
+GO
+
+DROP TABLE [LJDG].Rol
+GO
+
+DROP TABLE [LJDG].Viaje
+GO
+
+DROP TABLE [LJDG].Automovil
+GO
+
+DROP TABLE [LJDG].Turno
+GO
+
+DROP TABLE [LJDG].Usuario
+GO
+
+DROP TABLE [LJDG].Marca
+GO

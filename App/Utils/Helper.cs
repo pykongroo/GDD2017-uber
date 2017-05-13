@@ -12,7 +12,8 @@ namespace Helper
         {
             SHA256Managed crypt = new SHA256Managed();
             string hash = String.Empty;
-            byte[] crypto = crypt.ComputeHash(Encoding.UTF8.GetBytes(password), 0, Encoding.UTF8.GetByteCount(password));
+            Encoding enc = Encoding.GetEncoding(1252);
+            byte[] crypto = crypt.ComputeHash(enc.GetBytes(password), 0, enc.GetByteCount(password));
             foreach (byte bit in crypto)
             {
                 hash += bit.ToString("x2");

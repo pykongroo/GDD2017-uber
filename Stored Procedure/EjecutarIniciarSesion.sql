@@ -1,7 +1,0 @@
-USE [GD1C2017]
-GO
-
-DECLARE @Mensaje VARCHAR(50) = NULL
-DECLARE @PASS VARCHAR(50) = HASHBYTES('SHA2_256', 'w23e')
-EXEC LJDG.IniciarSesion 'admin', @PASS, @Mensaje
-GO
