@@ -33,6 +33,7 @@
             this.btnSalir = new System.Windows.Forms.Button();
             this.lblTitle = new System.Windows.Forms.Label();
             this.cmbRoles = new System.Windows.Forms.ComboBox();
+            this.btnVolver = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // labelUser
@@ -46,11 +47,12 @@
             // 
             // btnIngresar
             // 
+            this.btnIngresar.Enabled = false;
             this.btnIngresar.ForeColor = System.Drawing.Color.Black;
-            this.btnIngresar.Location = new System.Drawing.Point(206, 236);
+            this.btnIngresar.Location = new System.Drawing.Point(235, 236);
             this.btnIngresar.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnIngresar.Name = "btnIngresar";
-            this.btnIngresar.Size = new System.Drawing.Size(110, 30);
+            this.btnIngresar.Size = new System.Drawing.Size(100, 30);
             this.btnIngresar.TabIndex = 4;
             this.btnIngresar.Text = "Ingresar";
             this.btnIngresar.UseVisualStyleBackColor = true;
@@ -62,7 +64,7 @@
             this.btnSalir.Location = new System.Drawing.Point(35, 236);
             this.btnSalir.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnSalir.Name = "btnSalir";
-            this.btnSalir.Size = new System.Drawing.Size(110, 30);
+            this.btnSalir.Size = new System.Drawing.Size(94, 30);
             this.btnSalir.TabIndex = 5;
             this.btnSalir.Text = "Salir";
             this.btnSalir.UseVisualStyleBackColor = true;
@@ -87,12 +89,25 @@
             this.cmbRoles.Size = new System.Drawing.Size(150, 22);
             this.cmbRoles.TabIndex = 7;
             // 
+            // btnVolver
+            // 
+            this.btnVolver.ForeColor = System.Drawing.Color.Black;
+            this.btnVolver.Location = new System.Drawing.Point(135, 236);
+            this.btnVolver.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnVolver.Name = "btnVolver";
+            this.btnVolver.Size = new System.Drawing.Size(94, 30);
+            this.btnVolver.TabIndex = 8;
+            this.btnVolver.Text = "Volver";
+            this.btnVolver.UseVisualStyleBackColor = true;
+            this.btnVolver.Click += new System.EventHandler(this.btnVolver_Click);
+            // 
             // Rol
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
             this.ClientSize = new System.Drawing.Size(350, 300);
+            this.Controls.Add(this.btnVolver);
             this.Controls.Add(this.cmbRoles);
             this.Controls.Add(this.lblTitle);
             this.Controls.Add(this.labelUser);
@@ -105,10 +120,12 @@
             this.Name = "Rol";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Login";
+            this.Load += new System.EventHandler(this.Rol_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
+
 
         #endregion
 
@@ -117,5 +134,6 @@
         private System.Windows.Forms.Button btnSalir;
         private System.Windows.Forms.Label lblTitle;
         private System.Windows.Forms.ComboBox cmbRoles;
+        private System.Windows.Forms.Button btnVolver;
     }
 }
