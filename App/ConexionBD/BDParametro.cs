@@ -13,8 +13,8 @@ namespace UberFrba
         public String nombre { get; set; }
         public Object valor { get; set; }
         public SqlDbType tipoDato { get; set; }
-        public ParameterDirection direccion { get; set; }
         public int tamanio { get; set; }
+        public ParameterDirection direccion { get; set; }
 
         /* Constructor para parametros de entrada */
         public BDParametro(String _nombre, Object _valor) {
@@ -25,12 +25,13 @@ namespace UberFrba
 
         /* Constructor para parametros de salida */
         public BDParametro(String _nombre, Object _valor,
-                SqlDbType _tipoDato, ParameterDirection _direccion, int _tamanio) {
+                SqlDbType _tipoDato, int _tamanio, ParameterDirection _direccion)
+        {
             nombre = _nombre;
             valor = _valor;
             tipoDato = _tipoDato;
-            direccion = _direccion;
             tamanio = _tamanio;
+            direccion = _direccion;
         }
 
     }

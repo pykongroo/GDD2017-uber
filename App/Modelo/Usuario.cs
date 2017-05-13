@@ -22,7 +22,7 @@ namespace UberFrba.Modelo {
                 BDHandler handler = new BDHandler();
                 listParametros.Add(new BDParametro("@usuario", id));
                 listParametros.Add(new BDParametro("@pass", password));
-                listParametros.Add(new BDParametro("@mensaje", "", SqlDbType.VarChar, ParameterDirection.Output, 50));
+                listParametros.Add(new BDParametro("@mensaje", "", SqlDbType.VarChar, 50, ParameterDirection.Output));
                 handler.execStoredProcedure("LJDG.IniciarSesion", ref listParametros);
                 return listParametros[2].valor.ToString();
             }
@@ -38,7 +38,7 @@ namespace UberFrba.Modelo {
             try {
                 BDHandler handler = new BDHandler();
                 listParametros.Add(new BDParametro("@usuario", id));
-                roles = handler.Listado("LJDG.ObtenerRolesUsuario", listParametros)
+                roles = handler.execSelect("LJDG.ObtenerRolesUsuario", listParametros)
                         .AsEnumerable()
                         .Select(r => r[0].ToString()).ToList();
                 return roles;
