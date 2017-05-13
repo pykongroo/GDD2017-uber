@@ -1,6 +1,8 @@
 USE GD1C2017
 
-DELETE LJDG.Usuario
+DELETE LJDG.Rol_Usuario WHERE rxu_user = 'admin'
+GO
+DELETE FROM LJDG.Usuario WHERE user_id = 'admin'
 GO
 
 INSERT INTO [LJDG].[Usuario]
@@ -12,9 +14,6 @@ VALUES (
 CONVERT(CHAR(64),HASHBYTES('SHA2_256', 'w23e'),2),
 'Administrador General'
 )
-GO
-
-DELETE LJDG.Rol_Usuario WHERE rxu_user = 'admin'
 GO
 
 INSERT LJDG.Rol_Usuario

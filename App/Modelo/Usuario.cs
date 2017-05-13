@@ -22,8 +22,8 @@ namespace UberFrba.Modelo {
                 BDHandler handler = new BDHandler();
                 listParametros.Add(new BDParametro("@usuario", id));
                 listParametros.Add(new BDParametro("@pass", password));
-                listParametros.Add(new BDParametro("@mensaje", "", SqlDbType.VarChar, ParameterDirection.Output, 50));
-                handler.execStoredProcedure("LJDG.IniciarSesion", ref listParametros);
+                listParametros.Add(new BDParametro("@mensaje", "", SqlDbType.VarChar, ParameterDirection.Output, 200));
+                handler.execStoredProcedure("LJDG.iniciar_sesion", ref listParametros);
                 return listParametros[2].valor.ToString();
             }
             catch (Exception ex) {
@@ -38,7 +38,7 @@ namespace UberFrba.Modelo {
             try {
                 BDHandler handler = new BDHandler();
                 listParametros.Add(new BDParametro("@usuario", id));
-                roles = handler.Listado("LJDG.ObtenerRolesUsuario", listParametros)
+                roles = handler.Listado("LJDG.obtener_roles_usuario", listParametros)
                         .AsEnumerable()
                         .Select(r => r[0].ToString()).ToList();
                 return roles;
