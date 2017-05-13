@@ -2,8 +2,10 @@ USE [GD1C2017]
 GO
 
 DELETE FROM LJDG.Rol_Usuario
+WHERE rxu_user <> 'admin'
 GO
 DELETE FROM LJDG.Usuario
+WHERE user_id <> 'admin'
 GO
 
 INSERT INTO [LJDG].[Usuario]
