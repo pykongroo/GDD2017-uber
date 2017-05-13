@@ -34,7 +34,7 @@
             this.textPass = new System.Windows.Forms.TextBox();
             this.btnLogin = new System.Windows.Forms.Button();
             this.btnSalir = new System.Windows.Forms.Button();
-            this.lblTitle = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // labelUser
@@ -62,9 +62,11 @@
             this.textUser.Name = "textUser";
             this.textUser.Size = new System.Drawing.Size(130, 22);
             this.textUser.TabIndex = 2;
+            this.textUser.TextChanged += new System.EventHandler(this.textUser_TextChanged);
             // 
             // textPass
             // 
+            this.textPass.Enabled = false;
             this.textPass.Location = new System.Drawing.Point(158, 126);
             this.textPass.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.textPass.Name = "textPass";
@@ -75,7 +77,7 @@
             // btnLogin
             // 
             this.btnLogin.ForeColor = System.Drawing.Color.Black;
-            this.btnLogin.Location = new System.Drawing.Point(199, 194);
+            this.btnLogin.Location = new System.Drawing.Point(200, 190);
             this.btnLogin.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Size = new System.Drawing.Size(110, 30);
@@ -87,7 +89,7 @@
             // btnSalir
             // 
             this.btnSalir.ForeColor = System.Drawing.Color.Black;
-            this.btnSalir.Location = new System.Drawing.Point(38, 194);
+            this.btnSalir.Location = new System.Drawing.Point(40, 190);
             this.btnSalir.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnSalir.Name = "btnSalir";
             this.btnSalir.Size = new System.Drawing.Size(110, 30);
@@ -96,23 +98,23 @@
             this.btnSalir.UseVisualStyleBackColor = true;
             this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
             // 
-            // lblTitle
+            // label1
             // 
-            this.lblTitle.AutoSize = true;
-            this.lblTitle.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTitle.Location = new System.Drawing.Point(89, 26);
-            this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(153, 23);
-            this.lblTitle.TabIndex = 6;
-            this.lblTitle.Text = "UberFRBA v1.0";
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Tahoma", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(86, 30);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(178, 27);
+            this.label1.TabIndex = 7;
+            this.label1.Text = "UberFRBA v1.0";
             // 
             // Login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
-            this.ClientSize = new System.Drawing.Size(350, 260);
-            this.Controls.Add(this.lblTitle);
+            this.ClientSize = new System.Drawing.Size(350, 250);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.textPass);
             this.Controls.Add(this.textUser);
             this.Controls.Add(this.labelPass);
@@ -139,6 +141,6 @@
         private System.Windows.Forms.TextBox textPass;
         private System.Windows.Forms.Button btnLogin;
         private System.Windows.Forms.Button btnSalir;
-        private System.Windows.Forms.Label lblTitle;
+        public System.Windows.Forms.Label label1;
     }
 }

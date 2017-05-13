@@ -50,5 +50,15 @@ namespace UberFrba {
         {
             Application.Exit();
         }
+
+        private void textUser_TextChanged(object sender, EventArgs e)
+        {
+            if (textUser.Text != "")
+                textPass.Enabled = true;
+            else {
+                textPass.Enabled = false;
+                textUser.Clear();
+            }
+        }
     }
 }

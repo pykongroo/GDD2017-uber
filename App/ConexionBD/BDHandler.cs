@@ -27,12 +27,6 @@ namespace UberFrba
                 dataAdapter.SelectCommand.CommandType = CommandType.StoredProcedure;
                 foreach (BDParametro parametro in listParametros)
                     dataAdapter.SelectCommand.Parameters.AddWithValue(parametro.nombre, parametro.valor);
-                
-                /*
-                if (listParametros != null)
-                    for (int i = 0; i < listParametros.Count; i++)
-                        dataAdapter.SelectCommand.Parameters.AddWithValue(listParametros[i].nombre, listParametros[i].valor);
-                */
                 dataAdapter.Fill(dataTable);
             }
             catch (Exception ex) {
@@ -61,21 +55,6 @@ namespace UberFrba
                 for (int i = 0; i < listParametros.Count; i++)
                     if (comando.Parameters[i].Direction == ParameterDirection.Output)
                         listParametros[i].valor = comando.Parameters[i].Value;
-                /*
-                if (listParametros != null) {
-                    for (int i = 0; i < listParametros.Count; i++) {
-                        if (listParametros[i].direccion == ParameterDirection.Input)
-                            comando.Parameters.AddWithValue(listParametros[i].nombre, listParametros[i].valor);
-                        if (listParametros[i].direccion == ParameterDirection.Output)
-                            comando.Parameters
-                                .Add(listParametros[i].nombre, listParametros[i].tipoDato, listParametros[i].tamanio)
-                                .Direction = ParameterDirection.Output;
-                    }
-                    comando.ExecuteNonQuery();
-                    for (int i = 0; i < listParametros.Count; i++)
-                        if (comando.Parameters[i].Direction == ParameterDirection.Output)
-                            listParametros[i].valor = comando.Parameters[i].Value;
-                }*/
             }
             catch (Exception ex) {
                 MessageBox.Show(ex.ToString());
