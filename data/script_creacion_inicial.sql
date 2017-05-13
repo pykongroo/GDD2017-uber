@@ -1,7 +1,7 @@
 USE GD1C2017
 GO
 
---
+--ESQUEMA
 CREATE SCHEMA LJDG
 GO
 
@@ -38,14 +38,20 @@ GO
 ALTER TABLE LJDG.Usuario ADD  CONSTRAINT DF_Usuario_user_intentos  DEFAULT ((3)) FOR user_intentos
 GO
 
+ALTER TABLE LJDG.Usuario ADD UNIQUE NONCLUSTERED (user_dni)
+GO
+
+ALTER TABLE LJDG.Usuario ADD UNIQUE NONCLUSTERED (user_telefono)
+GO
+
 CREATE TABLE LJDG.Turno
 ( 
 	turn_id              int IDENTITY(1,1) NOT NULL ,
-	turn_hora_inicio     numeric(18,0)  NULL ,
-	turn_hora_fin        numeric(18,0)  NULL ,
+	turn_hora_inicio     numeric(18,0) NOT NULL ,
+	turn_hora_fin        numeric(18,0) NOT NULL ,
 	turn_descripcion     varchar(255)  NULL ,
-	turn_valor_km        numeric(18,2)  NULL ,
-	turn_precio_base     numeric(18,2)  NULL ,
+	turn_valor_km        numeric(18,2) NOT NULL ,
+	turn_precio_base     numeric(18,2) NOT NULL ,
 	turn_habilitado      bit  NOT NULL ,
 	PRIMARY KEY  NONCLUSTERED (turn_id ASC)
 )
