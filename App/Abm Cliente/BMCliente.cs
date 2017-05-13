@@ -14,13 +14,15 @@ namespace UberFrba.Abm_Cliente
     public partial class BajaModificarCliente : CustomForm
     {
         private DataTable tabla = new DataTable();
+        private String tipo;
         public BajaModificarCliente()
         {
             InitializeComponent();
         }
 
-        public BajaModificarCliente(Form prev_form) : base(prev_form)
+        public BajaModificarCliente(Form prev_form, String tipo) : base(prev_form)
         {
+            this.tipo = tipo;
             InitializeComponent();
         }
 
@@ -99,6 +101,20 @@ namespace UberFrba.Abm_Cliente
             dataGridCliente.AutoResizeRows(DataGridViewAutoSizeRowsMode.AllCells);
             dataGridCliente.DataSource = tabla;
             conn.con.Close();
+        }
+
+        private void dataGridCliente_RowHeaderMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (tipo == "B")
+            {
+                MessageBox.Show("Se da de baja");
+                //magia en DB
+            } else if (tipo == "M")
+            {
+                AltaModificarCliente amCliente = new AltaModificarCliente(this, "");
+                amCliente.Show();
+                this.Hide();
+            }
         }
     }
 }
