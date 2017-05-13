@@ -80,10 +80,11 @@
             // 
             // cmbRoles
             // 
+            this.cmbRoles.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbRoles.FormattingEnabled = true;
             this.cmbRoles.Location = new System.Drawing.Point(96, 119);
             this.cmbRoles.Name = "cmbRoles";
-            this.cmbRoles.Size = new System.Drawing.Size(143, 22);
+            this.cmbRoles.Size = new System.Drawing.Size(150, 22);
             this.cmbRoles.TabIndex = 7;
             // 
             // Rol

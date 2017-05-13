@@ -5,10 +5,10 @@ GO
 DELETE FROM LJDG.Usuario WHERE user_id = 'admin'
 GO
 
-INSERT INTO [LJDG].[Usuario]
-           ([user_id]
-           ,[user_password]
-           ,[user_nombre])
+INSERT INTO LJDG.Usuario
+           (user_id
+           ,user_password
+           ,user_nombre)
 VALUES (
 'admin',
 CONVERT(CHAR(64),HASHBYTES('SHA2_256', 'w23e'),2),

@@ -32,10 +32,10 @@ CREATE TABLE LJDG.Usuario
 )
 GO
 
-ALTER TABLE [LJDG].[Usuario] ADD  CONSTRAINT [DF_Usuario_user_habilitado]  DEFAULT ((1)) FOR [user_habilitado]
+ALTER TABLE LJDG.Usuario ADD  CONSTRAINT DF_Usuario_user_habilitado  DEFAULT ((1)) FOR user_habilitado
 GO
 
-ALTER TABLE [LJDG].[Usuario] ADD  CONSTRAINT [DF_Usuario_user_intentos]  DEFAULT ((3)) FOR [user_intentos]
+ALTER TABLE LJDG.Usuario ADD  CONSTRAINT DF_Usuario_user_intentos  DEFAULT ((3)) FOR user_intentos
 GO
 
 CREATE TABLE LJDG.Turno
@@ -51,13 +51,13 @@ CREATE TABLE LJDG.Turno
 )
 GO
 
-ALTER TABLE [LJDG].[Turno] ADD  CONSTRAINT [DF_Turno_turn_habilitado]  DEFAULT ((1)) FOR [turn_habilitado]
+ALTER TABLE LJDG.Turno ADD  CONSTRAINT DF_Turno_turn_habilitado  DEFAULT ((1)) FOR turn_habilitado
 GO
 
-/*ALTER TABLE [LJDG].[Turno]  WITH CHECK ADD  CONSTRAINT [CK_Turno] CHECK  (([turn_hora_inicio]>=(0) AND [turn_hora_inicio]<(24) AND [turn_hora_fin]>(0) AND [turn_hora_fin]<=(24)))
+/*ALTER TABLE LJDG.Turno  WITH CHECK ADD  CONSTRAINT CK_Turno CHECK  ((turn_hora_inicio>=(0) AND turn_hora_inicio<(24) AND turn_hora_fin>(0) AND turn_hora_fin<=(24)))
 GO
 
-ALTER TABLE [LJDG].[Turno] CHECK CONSTRAINT [CK_Turno]
+ALTER TABLE LJDG.Turno CHECK CONSTRAINT CK_Turno
 GO
 
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'Hora inicio y hora fin' , @level0type=N'SCHEMA',@level0name=N'LJDG', @level1type=N'TABLE',@level1name=N'Turno', @level2type=N'CONSTRAINT',@level2name=N'CK_Turno'
@@ -131,7 +131,7 @@ CREATE TABLE LJDG.Rol
 )
 GO
 
-ALTER TABLE [LJDG].[Rol] ADD  CONSTRAINT [DF_Rol_rol_habilitado]  DEFAULT ((1)) FOR [rol_habilitado]
+ALTER TABLE LJDG.Rol ADD  CONSTRAINT DF_Rol_rol_habilitado  DEFAULT ((1)) FOR rol_habilitado
 GO
 
 

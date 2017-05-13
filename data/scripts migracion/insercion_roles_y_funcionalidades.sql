@@ -1,4 +1,4 @@
-USE [GD1C2017]
+USE GD1C2017
 GO
 
 /*PARA BORRAR ASIGNACION DE FUNCIONALIDADES*/
@@ -15,15 +15,15 @@ GO
 DBCC CHECKIDENT ('LJDG.Funcionalidad', RESEED, 0)
 GO
 
-INSERT INTO [LJDG].[Rol]
-           ([rol_nombre])
+INSERT INTO LJDG.Rol
+           (rol_nombre)
 	VALUES ('Administrador'),
 			 ('Chofer'),
 			 ('Cliente')
 GO
 
-INSERT INTO [LJDG].[Funcionalidad]
-           ([func_descripcion])
+INSERT INTO LJDG.Funcionalidad
+           (func_descripcion)
 	VALUES	('ABM de Rol'),
 			 ('Registro de Usuario'),
 			 ('ABM de Cliente'),
@@ -38,9 +38,9 @@ GO
 
 
 /* TODAS LAS FUNCIONALIDADES AL ADMINISTRADOR, NADA AL RESTO */
-INSERT INTO [LJDG].[Funcionalidad_Rol]
-			([fxr_funcionalidad],
-			 [fxr_rol])
+INSERT INTO LJDG.Funcionalidad_Rol
+			(fxr_funcionalidad,
+			 fxr_rol)
 	SELECT func_id, 1
 	FROM LJDG.Funcionalidad
 GO
