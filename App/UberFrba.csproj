@@ -57,11 +57,17 @@
     <Compile Include="Abm Chofer\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Abm Cliente\BajaModificarCliente.cs">
+    <Compile Include="Abm Cliente\AltaModificarCliente.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Abm Cliente\BajaModificarCliente.Designer.cs">
-      <DependentUpon>BajaModificarCliente.cs</DependentUpon>
+    <Compile Include="Abm Cliente\AltaModificarCliente.Designer.cs">
+      <DependentUpon>AltaModificarCliente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Abm Cliente\BMCliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Abm Cliente\BMCliente.Designer.cs">
+      <DependentUpon>BMCliente.cs</DependentUpon>
     </Compile>
     <Compile Include="Abm Rol\AltaRol.cs">
       <SubType>Form</SubType>
@@ -92,6 +98,12 @@
     <Compile Include="Modelo\Funcionalidad.cs" />
     <Compile Include="Modelo\Rol.cs" />
     <Compile Include="Modelo\Usuario.cs" />
+    <Compile Include="Utils\CustomDatePick.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Utils\CustomDatePick.Designer.cs">
+      <DependentUpon>CustomDatePick.cs</DependentUpon>
+    </Compile>
     <Compile Include="Utils\CustomForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -162,8 +174,11 @@
     <Compile Include="Utils\PasswordInput.Designer.cs">
       <DependentUpon>PasswordInput.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Abm Cliente\BajaModificarCliente.resx">
-      <DependentUpon>BajaModificarCliente.cs</DependentUpon>
+    <EmbeddedResource Include="Abm Cliente\AltaModificarCliente.resx">
+      <DependentUpon>AltaModificarCliente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Abm Cliente\BMCliente.resx">
+      <DependentUpon>BMCliente.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Abm Rol\AltaRol.resx">
       <DependentUpon>AltaRol.cs</DependentUpon>
@@ -179,6 +194,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Login\Rol.resx">
       <DependentUpon>Rol.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Utils\CustomDatePick.resx">
+      <DependentUpon>CustomDatePick.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Utils\CustomForm.resx">
       <DependentUpon>CustomForm.cs</DependentUpon>

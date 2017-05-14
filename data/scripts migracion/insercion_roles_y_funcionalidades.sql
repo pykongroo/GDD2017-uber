@@ -2,7 +2,7 @@ USE GD1C2017
 GO
 
 /*PARA BORRAR ASIGNACION DE FUNCIONALIDADES*/
-DELETE FROM LJDG.Funcionalidad_Rol
+/*DELETE FROM LJDG.Funcionalidad_Rol
 GO
 DELETE FROM LJDG.Rol_Usuario
 GO
@@ -13,7 +13,7 @@ GO
 DELETE FROM LJDG.Funcionalidad
 GO
 DBCC CHECKIDENT ('LJDG.Funcionalidad', RESEED, 0)
-GO
+GO*/
 
 INSERT INTO LJDG.Rol
            (rol_nombre)

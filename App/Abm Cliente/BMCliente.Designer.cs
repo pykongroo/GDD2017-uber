@@ -61,6 +61,7 @@
             this.dataGridCliente.Name = "dataGridCliente";
             this.dataGridCliente.Size = new System.Drawing.Size(447, 150);
             this.dataGridCliente.TabIndex = 0;
+            this.dataGridCliente.RowHeaderMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridCliente_RowHeaderMouseDoubleClick);
             // 
             // filtrosBox
             // 

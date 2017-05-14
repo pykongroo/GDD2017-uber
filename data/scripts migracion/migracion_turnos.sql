@@ -1,10 +1,10 @@
 USE [GD1C2017]
 GO
 
-DELETE FROM LJDG.Turno
+/*DELETE FROM LJDG.Turno
 GO
 DBCC CHECKIDENT ('LJDG.Turno', RESEED, 0)
-GO
+GO*/
 
 INSERT INTO [LJDG].[Turno]
            ([turn_hora_inicio]

@@ -47,5 +47,22 @@ namespace UberFrba.Utils
         {
             description.Text = cadena;
         }
+
+        public void inhabilitar()
+        {
+            comboBox.BackColor = Color.LightGray;
+            comboBox.Enabled = false;
+        }
+
+        public void habilitar()
+        {
+            comboBox.BackColor = Color.White;
+            comboBox.Enabled = true;
+        }
+
+        public void setData(String data)
+        {
+            comboBox.Text = data;
+        }
     }
 }

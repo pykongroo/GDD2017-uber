@@ -1,9 +1,9 @@
 USE GD1C2017
 
-DELETE LJDG.Rol_Usuario WHERE rxu_user = 'admin'
+/*DELETE LJDG.Rol_Usuario WHERE rxu_user = 'admin'
 GO
 DELETE FROM LJDG.Usuario WHERE user_id = 'admin'
-GO
+GO*/
 
 INSERT INTO LJDG.Usuario
            (user_id

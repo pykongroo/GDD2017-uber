@@ -1,10 +1,10 @@
 USE [GD1C2017]
 GO
 
-DELETE FROM LJDG.Automovil
+/*DELETE FROM LJDG.Automovil
 GO
 DBCC CHECKIDENT ('LJDG.Automovil', RESEED, 0)
-GO
+GO*/
 
 INSERT INTO [LJDG].[Automovil]
            (
