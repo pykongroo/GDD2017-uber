@@ -111,21 +111,35 @@ namespace UberFrba.Abm_Rol
 
         private void btnAgregar_Click(object sender, EventArgs e)
         {
-
+            var misRoles = new Modelo.Rol().obtenerRoles();
             Modelo.Funcionalidad MFuncionalidad = new Funcionalidad();
             if (txtNombre.Text != "")
             {
-                var miNuevoID = new Modelo.Rol().insertarRol(txtNombre.Text);
-                //MessageBox.Show("Rol insertado");
-                if (dtFuncSeleccionadas.Rows.Count > 0)
+                if (!misRoles.Exists(x => x.Nombre == txtNombre.Text))
                 {
-                    foreach (DataRow row in dtFuncSeleccionadas.Rows)
+                    var miNuevoID = new Modelo.Rol().insertarRol(txtNombre.Text);
+                    //MessageBox.Show("Rol insertado");
+                    if (dtFuncSeleccionadas.Rows.Count > 0)
                     {
-                        MFuncionalidad.insertarFuncxRol(miNuevoID, Convert.ToInt32(row["func_id"]));
+                        foreach (DataRow row in dtFuncSeleccionadas.Rows)
+                        {
+                            MFuncionalidad.insertarFuncxRol(miNuevoID, Convert.ToInt32(row["func_id"]));
+                        }
                     }
+                    txtNombre.Text = "";
+                    dtFuncSeleccionadas.Clear();
+                    Menu menuPrincipal = new Menu();
+                    this.Hide();
+                    menuPrincipal.Show();
                 }
-                txtNombre.Text = "";
-                dtFuncSeleccionadas.Clear();
+                else
+                {
+                    MessageBox.Show("El nombre del rol ya esta siendo utilizado");
+                }
+            }
+            else
+            {
+                MessageBox.Show("El nombre no puede quedar vacio");
             }
             
         }
