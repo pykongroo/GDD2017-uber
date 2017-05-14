@@ -51,6 +51,7 @@ namespace UberFrba
         {
             this.Hide();
             new Abm_Rol.EditarRol().Show();
+        }
 
         private void bajaToolStripMenuItem2_Click(object sender, EventArgs e)
         {
@@ -75,3 +76,4 @@ namespace UberFrba
         }
     }
 }
+
