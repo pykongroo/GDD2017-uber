@@ -42,7 +42,7 @@
             this.labelUser.AutoSize = true;
             this.labelUser.Location = new System.Drawing.Point(58, 84);
             this.labelUser.Name = "labelUser";
-            this.labelUser.Size = new System.Drawing.Size(50, 14);
+            this.labelUser.Size = new System.Drawing.Size(51, 14);
             this.labelUser.TabIndex = 0;
             this.labelUser.Text = "Usuario:";
             // 
@@ -51,7 +51,7 @@
             this.labelPass.AutoSize = true;
             this.labelPass.Location = new System.Drawing.Point(56, 130);
             this.labelPass.Name = "labelPass";
-            this.labelPass.Size = new System.Drawing.Size(72, 14);
+            this.labelPass.Size = new System.Drawing.Size(70, 14);
             this.labelPass.TabIndex = 1;
             this.labelPass.Text = "Contraseña:";
             // 
@@ -73,6 +73,7 @@
             this.textPass.Size = new System.Drawing.Size(130, 22);
             this.textPass.TabIndex = 3;
             this.textPass.UseSystemPasswordChar = true;
+            this.textPass.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textPass_KeyPress);
             // 
             // btnLogin
             // 
