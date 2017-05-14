@@ -32,5 +32,23 @@ namespace UberFrba
             this.Hide();
             new Login().Show();
         }
+
+        private void altaToolStripMenuItem3_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            new Abm_Rol.AltaRol().Show();
+        }
+
+        private void bajaToolStripMenuItem3_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            new Abm_Rol.BajaRolForm().Show();
+        }
+
+        private void modificacionToolStripMenuItem3_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            new Abm_Rol.EditarRol().Show();
+        }
     }
 }

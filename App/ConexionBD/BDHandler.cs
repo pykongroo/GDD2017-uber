@@ -35,6 +35,25 @@ namespace UberFrba
             Desconectar();
             return dataTable;
         }
+        /*Sobrecarga sin parametros, por que el Tipo T no acepta nulos*/
+        public DataTable execSelect(String nameStoredProcedure)
+        {
+            DataTable dataTable = new DataTable();
+            SqlDataAdapter dataAdapter;
+            try
+            {
+                Conectar();
+                dataAdapter = new SqlDataAdapter(nameStoredProcedure, conexionBD);
+                dataAdapter.SelectCommand.CommandType = CommandType.StoredProcedure;
+                dataAdapter.Fill(dataTable);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            Desconectar();
+            return dataTable;
+        }
 
         /* Recibe el nombre del SP y la lista de Parametros */
         public void execStoredProcedure(String nameStoredProcedure, ref List<BDParametro> listParametros) {
