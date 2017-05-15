@@ -1,0 +1,8 @@
+CREATE PROCEDURE LJDG.SP_Baja_Usuario (@userId varchar(30))
+AS
+BEGIN
+BEGIN TRANSACTION
+UPDATE LJDG.Usuario SET user_habilitado=0 WHERE user_id=@userId
+COMMIT TRANSACTION
+END
+GO

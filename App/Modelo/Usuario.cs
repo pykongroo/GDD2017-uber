@@ -48,5 +48,21 @@ namespace UberFrba.Modelo {
                 throw ex;
             }
         }
+
+        public static void darDeBaja(String userId)
+        {
+            List<BDParametro> listParametros = new List<BDParametro>();
+            try
+            {
+                BDHandler handler = new BDHandler();
+                listParametros.Add(new BDParametro("@userId", userId));
+                handler.execSP("LJDG.SP_Baja_Usuario", ref listParametros);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+                throw ex;
+            }
+        }
     }
 }

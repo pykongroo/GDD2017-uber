@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using UberFrba.Modelo;
 
 namespace UberFrba.Abm_Cliente
 {
@@ -105,15 +106,14 @@ namespace UberFrba.Abm_Cliente
 
         private void dataGridCliente_RowHeaderMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-            //MessageBox.Show(e.RowIndex.ToString());
-            //MessageBox.Show(dataGridCliente.Rows[0].Cells[0].Value.ToString());
+            String clienteId = dataGridCliente.Rows[e.RowIndex].Cells[0].Value.ToString();
             if (tipo == "B")
             {
                 MessageBox.Show("Se da de baja");
-                //magia en DB
+                Usuario.darDeBaja(clienteId);
             } else if (tipo == "M")
             {
-                AltaModificarCliente amCliente = new AltaModificarCliente(this, dataGridCliente.Rows[e.RowIndex].Cells[0].Value.ToString());
+                AltaModificarCliente amCliente = new AltaModificarCliente(this, clienteId);
                 amCliente.Show();
                 this.Hide();
             }

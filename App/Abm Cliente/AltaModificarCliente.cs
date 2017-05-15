@@ -109,7 +109,13 @@ namespace UberFrba.Abm_Cliente
                 if (!telefonoExistente)
                 {
                     MessageBox.Show("Todo OK");
-                    //se agrega a DB
+                    if (tipo == "A")
+                    {
+                        //hacer insert
+                    } else
+                    {
+                        //hacer update
+                    }
                 } else
                 {
                     MessageBox.Show("El telefono ya existe");
