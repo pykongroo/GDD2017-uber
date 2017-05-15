@@ -1,5 +1,6 @@
 sqlcmd -S LOCALHOST\SQLSERVER2012 -U gd -P gd2017 -i data/script_creacion_inicial.sql
-sqlcmd -S LOCALHOST\SQLSERVER2012 -U gd -P gd2017 -i "data/scripts triggers/trigger_abm_automovil.sql"
+sqlcmd -S LOCALHOST\SQLSERVER2012 -U gd -P gd2017 -i data/limpiar_SP.sql
+sqlcmd -S LOCALHOST\SQLSERVER2012 -U gd -P gd2017 -i data/limpiar_funciones.sql
 sqlcmd -S LOCALHOST\SQLSERVER2012 -U gd -P gd2017 -i "data/scripts funciones/func_username.sql"
 sqlcmd -S LOCALHOST\SQLSERVER2012 -U gd -P gd2017 -i "data/scripts funciones/func_viaje_entra_en_factura.sql"
 sqlcmd -S LOCALHOST\SQLSERVER2012 -U gd -P gd2017 -i "data/scripts stored procedures/crear_funcxrol.sql"
@@ -12,6 +13,7 @@ sqlcmd -S LOCALHOST\SQLSERVER2012 -U gd -P gd2017 -i "data/scripts stored proced
 sqlcmd -S LOCALHOST\SQLSERVER2012 -U gd -P gd2017 -i "data/scripts stored procedures/obtener_roles_usuario.sql"
 sqlcmd -S LOCALHOST\SQLSERVER2012 -U gd -P gd2017 -i "data/scripts stored procedures/obtener_roles.sql"
 sqlcmd -S LOCALHOST\SQLSERVER2012 -U gd -P gd2017 -i "data/scripts stored procedures/ABM_Usuario.sql"
+sqlcmd -S LOCALHOST\SQLSERVER2012 -U gd -P gd2017 -i "data/scripts triggers/trigger_abm_automovil.sql"
 sqlcmd -S LOCALHOST\SQLSERVER2012 -U gd -P gd2017 -i "data/scripts migracion/insercion_roles_y_funcionalidades.sql"
 sqlcmd -S LOCALHOST\SQLSERVER2012 -U gd -P gd2017 -i "data/scripts migracion/creacion_admin.sql"
 sqlcmd -S LOCALHOST\SQLSERVER2012 -U gd -P gd2017 -i "data/scripts migracion/migracion_usuarios.sql"

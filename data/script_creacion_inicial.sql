@@ -1,13 +1,65 @@
 USE GD1C2017
+
+IF NOT EXISTS (
+	SELECT  schema_name
+	FROM    information_schema.SCHEMATA
+	WHERE   schema_name = 'LJDG' )
+BEGIN
+	EXEC sp_executesql N'CREATE SCHEMA LJDG '
+END
 GO
 
---ESQUEMA
---CREATE SCHEMA LJDG
---GO
+/*---BORRO LAS TABLAS SI EXISTEN---*/
+BEGIN TRANSACTION
+IF OBJECT_ID('LJDG.Factura') IS NOT NULL
+BEGIN
+    DROP TABLE LJDG.Factura;
+END;
+IF OBJECT_ID('LJDG.Funcionalidad_Rol') IS NOT NULL
+BEGIN
+    DROP TABLE LJDG.Funcionalidad_Rol;
+END;
+IF OBJECT_ID('LJDG.Funcionalidad') IS NOT NULL
+BEGIN
+    DROP TABLE LJDG.Funcionalidad;
+END;
+IF OBJECT_ID('LJDG.Rendicion') IS NOT NULL
+BEGIN
+    DROP TABLE LJDG.Rendicion;
+END;
+IF OBJECT_ID('LJDG.Rol_Usuario') IS NOT NULL
+BEGIN
+    DROP TABLE LJDG.Rol_Usuario;
+END;
+IF OBJECT_ID('LJDG.Rol') IS NOT NULL
+BEGIN
+    DROP TABLE LJDG.Rol;
+END;
+IF OBJECT_ID('LJDG.Viaje') IS NOT NULL
+BEGIN
+    DROP TABLE LJDG.Viaje;
+END;
+IF OBJECT_ID('LJDG.Automovil') IS NOT NULL
+BEGIN
+    DROP TABLE LJDG.Automovil;
+END;
+IF OBJECT_ID('LJDG.Turno') IS NOT NULL
+BEGIN
+    DROP TABLE LJDG.Turno;
+END;
+IF OBJECT_ID('LJDG.Usuario') IS NOT NULL
+BEGIN
+    DROP TABLE LJDG.Usuario;
+END;
+IF OBJECT_ID('LJDG.Marca') IS NOT NULL
+BEGIN
+    DROP TABLE LJDG.Marca;
+END;
+COMMIT;
 
--- TABLAS
+/*---DEFINICION DE TABLAS---*/
 CREATE TABLE LJDG.Marca
-( 
+(
 	marc_id             int IDENTITY(1,1) NOT NULL ,
 	marc_nombre         varchar(255)  NULL ,
 	PRIMARY KEY  NONCLUSTERED (marc_id ASC)
@@ -15,7 +67,7 @@ CREATE TABLE LJDG.Marca
 GO
 
 CREATE TABLE LJDG.Usuario
-( 
+(
 	user_id              char(30)  NOT NULL ,
 	user_password        char(64)  NOT NULL ,
 	user_nombre          varchar(255)  NULL ,
@@ -45,7 +97,7 @@ ALTER TABLE LJDG.Usuario ADD UNIQUE NONCLUSTERED (user_telefono)
 GO
 
 CREATE TABLE LJDG.Turno
-( 
+(
 	turn_id              int IDENTITY(1,1) NOT NULL ,
 	turn_hora_inicio     numeric(18,0) NOT NULL ,
 	turn_hora_fin        numeric(18,0) NOT NULL ,
@@ -68,11 +120,11 @@ GO
 
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'Hora inicio y hora fin' , @level0type=N'SCHEMA',@level0name=N'LJDG', @level1type=N'TABLE',@level1name=N'Turno', @level2type=N'CONSTRAINT',@level2name=N'CK_Turno'
 GO*/
---PARA LIMITAR HORA INICIO Y FIN A QUE SEA ENTRE LAS 0 Y LAS 24 
+--PARA LIMITAR HORA INICIO Y FIN A QUE SEA ENTRE LAS 0 Y LAS 24
 
 
 CREATE TABLE LJDG.Automovil
-( 
+(
 	auto_id				 int IDENTITY(1,1) NOT NULL,
 	auto_marca           int  NOT NULL ,
 	auto_patente         char(10)  NOT NULL ,
@@ -99,7 +151,7 @@ ALTER TABLE LJDG.Automovil ADD UNIQUE NONCLUSTERED (auto_patente)
 GO
 
 CREATE TABLE LJDG.Viaje
-( 
+(
 	viaj_id              numeric(18,0) IDENTITY(1,1) NOT NULL ,
 	viaj_cant_km         numeric(18,0)  NOT NULL ,
 	viaj_fecha_inicio    datetime NOT NULL ,
@@ -129,7 +181,7 @@ GO
 --se puede agregar un CONSTRAINT CHECK para que fecha inicio sea anterior a fecha fin o algo asi
 
 CREATE TABLE LJDG.Rol
-( 
+(
 	rol_id               int IDENTITY(1,1) NOT NULL ,
 	rol_nombre           varchar(255)  NULL ,
 	rol_habilitado       bit  NOT NULL ,
@@ -142,7 +194,7 @@ GO
 
 
 CREATE TABLE LJDG.Rol_Usuario
-( 
+(
 	rxu_rol              int  NOT NULL ,
 	rxu_user             char(30)  NOT NULL ,
 	PRIMARY KEY  CLUSTERED (rxu_rol ASC,rxu_user ASC),
@@ -156,7 +208,7 @@ CREATE TABLE LJDG.Rol_Usuario
 GO
 
 CREATE TABLE LJDG.Funcionalidad
-( 
+(
 	func_id              int IDENTITY(1,1) NOT NULL ,
 	func_descripcion     varchar(255)  NULL ,
 	PRIMARY KEY  NONCLUSTERED (func_id ASC)
@@ -164,7 +216,7 @@ CREATE TABLE LJDG.Funcionalidad
 GO
 
 CREATE TABLE LJDG.Funcionalidad_Rol
-( 
+(
 	fxr_funcionalidad    int  NOT NULL ,
 	fxr_rol              int  NOT NULL ,
 	PRIMARY KEY  CLUSTERED (fxr_funcionalidad ASC,fxr_rol ASC),
@@ -178,7 +230,7 @@ CREATE TABLE LJDG.Funcionalidad_Rol
 GO
 
 CREATE TABLE LJDG.Factura
-( 
+(
 	fact_nro             numeric(18,0)  NOT NULL ,
 	fact_fecha_inicio    datetime  NOT NULL ,
 	fact_fecha_fin       datetime  NOT NULL ,
@@ -193,7 +245,7 @@ CREATE TABLE LJDG.Factura
 GO
 
 CREATE TABLE LJDG.Rendicion
-( 
+(
 	rend_nro             numeric(18,0)  NOT NULL ,
 	rend_fecha           datetime  NULL ,
 	rend_turno           int  NOT NULL ,
