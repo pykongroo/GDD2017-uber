@@ -13,6 +13,8 @@ namespace UberFrba.Abm_Cliente
 {
     public partial class AltaModificarCliente : CustomForm
     {
+        private String tipo;
+        private String clienteID;
         public AltaModificarCliente()
         {
             InitializeComponent();
@@ -22,13 +24,16 @@ namespace UberFrba.Abm_Cliente
         {
             InitializeComponent();
             setDataComponents();
+            tipo = "A";
         }
 
         public AltaModificarCliente(Form prev_form, String clienteId) : base(prev_form)
         {
             InitializeComponent();
             setDataComponents();
+            clienteID = clienteId;
             setData(clienteId);
+            tipo = "M";
         }
 
         public void setDataComponents()
@@ -48,6 +53,7 @@ namespace UberFrba.Abm_Cliente
 
         private void setData(String clienteId)
         {
+            //setea los valores con los datos del cliente
             String query = "select user_nombre, user_apellido, user_dni, user_mail, user_telefono, user_direccion, user_cp, user_fecha_nac, user_habilitado from LJDG.Usuario where user_id = '"+clienteId+"'";
             Conexion conn = Conexion.getInstance();
             conn.con.Open();
@@ -64,6 +70,7 @@ namespace UberFrba.Abm_Cliente
                 String cp;
                 if (reader.IsDBNull(6))
                 {
+                    //si es NULL, muestra texto vacio
                     cp = "";
                 } else
                 {
@@ -74,7 +81,6 @@ namespace UberFrba.Abm_Cliente
                 checkBoxHabilitado.Checked = reader.GetBoolean(8);
             }
             conn.con.Close();
-            //setea los valores con los datos del cliente
             //muestro checkbox de habilitacion
             checkBoxHabilitado.Show();
         }
@@ -86,8 +92,21 @@ namespace UberFrba.Abm_Cliente
                 cusDireccion.esValido() && cusCodPostal.esValido() && cusFechaNac.esValido();
             if (estadoValidez)
             {
-                bool telefonoValido = true;//verifica unicidad de telefono en DB
-                if (telefonoValido)
+                String queryTelVal;
+                if (tipo == "A")
+                {
+                    queryTelVal = "select * from LJDG.Usuario where user_telefono='" + cusTelefono.Text() + "'";
+                } else
+                {
+                    queryTelVal = "select * from LJDG.Usuario where user_id<>'" + clienteID + "' AND user_telefono='" + cusTelefono.Text() + "'";
+                }
+                Conexion conn = Conexion.getInstance();
+                conn.con.Open();
+                SqlCommand command = new SqlCommand(queryTelVal, conn.con);
+                var reader = command.ExecuteReader();
+                Boolean telefonoExistente = reader.Read();//verifica unicidad de telefono en DB
+                conn.con.Close();
+                if (!telefonoExistente)
                 {
                     MessageBox.Show("Todo OK");
                     //se agrega a DB
