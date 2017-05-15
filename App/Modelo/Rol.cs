@@ -41,7 +41,7 @@ namespace UberFrba.Modelo
             {
                 BDHandler handler = new BDHandler();
 
-                miLista = handler.execSelect("LJDG.obtener_roles")
+                miLista = handler.execSelectSP("LJDG.obtener_roles", null)
                     .AsEnumerable()
                     .Select(m => new Rol()
                     {
@@ -68,7 +68,7 @@ namespace UberFrba.Modelo
                 BDHandler handler = new BDHandler();
                 listParametros.Add(new BDParametro("@nombre", nombreRol));
                 listParametros.Add(new BDParametro("@ID", "", SqlDbType.Int, 50, ParameterDirection.Output));
-                handler.execStoredProcedure("LJDG.crear_rol", ref listParametros);
+                handler.execSP("LJDG.crear_rol", ref listParametros);
 
                 return Convert.ToInt32(listParametros[1].valor);
             }
@@ -86,7 +86,7 @@ namespace UberFrba.Modelo
             {
                 BDHandler handler = new BDHandler();
                 listParametros.Add(new BDParametro("@rol_id", rolId));
-                handler.execStoredProcedure("LJDG.eliminar_rol", ref listParametros);
+                handler.execSP("LJDG.eliminar_rol", ref listParametros);
             }
             catch (Exception ex)
             {
@@ -104,7 +104,7 @@ namespace UberFrba.Modelo
                 listParametros.Add(new BDParametro("@rol_id", rolId));
                 listParametros.Add(new BDParametro("@rol_nombre", rolNombre));
                 listParametros.Add(new BDParametro("@rol_habilitado", rolHabilitado));
-                handler.execStoredProcedure("LJDG.editar_rol", ref listParametros);
+                handler.execSP("LJDG.editar_rol", ref listParametros);
             }
             catch (Exception ex)
             {

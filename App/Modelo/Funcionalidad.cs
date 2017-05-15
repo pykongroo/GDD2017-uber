@@ -32,7 +32,7 @@ namespace UberFrba.Modelo
             {
                 BDHandler handler = new BDHandler();
 
-                miLista = handler.execSelect("LJDG.obtener_funcionalidades")
+                miLista = handler.execSelectSP("LJDG.obtener_funcionalidades", null)
                     .AsEnumerable()
                     .Select(m => new Funcionalidad()
                     {
@@ -59,7 +59,7 @@ namespace UberFrba.Modelo
             {
                 BDHandler handler = new BDHandler();
                 listParametros.Add(new BDParametro("@rol_id", idRol));
-                miLista = handler.execSelect("LJDG.obtener_funcionalidadesxrol",listParametros)
+                miLista = handler.execSelectSP("LJDG.obtener_funcionalidadesxrol",listParametros)
                    .AsEnumerable()
                    .Select(m => new Funcionalidad()
                    {
@@ -85,7 +85,7 @@ namespace UberFrba.Modelo
                 BDHandler handler = new BDHandler();
                 listParametros.Add(new BDParametro("@rol_id", idRol));
                 listParametros.Add(new BDParametro("@func_id", idFuncionalidad));
-                handler.execStoredProcedure("LJDG.crear_funcxrol", ref listParametros);
+                handler.execSP("LJDG.crear_funcxrol", ref listParametros);
             }
             catch (Exception ex)
             {

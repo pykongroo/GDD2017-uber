@@ -1,10 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Configuration;
-using System.Windows.Forms;
 using System.Data;
 using System.Data.SqlClient;
 
@@ -17,7 +13,7 @@ namespace UberFrba
 
         /****** Ejecuta un SP y devuelve un Listado del tipo DataTable ******/
         /* Recibe el nombre del SP y la lista de Parametros */
-        public DataTable execSelect(String nameStoredProcedure, List<BDParametro> listParametros)
+        public DataTable execSelectSP(String nameStoredProcedure, List<BDParametro> listParametros)
         {
             DataTable dataTable = new DataTable();
             SqlDataAdapter dataAdapter;
@@ -25,30 +21,12 @@ namespace UberFrba
                 Conectar();
                 dataAdapter = new SqlDataAdapter(nameStoredProcedure, conexionBD);
                 dataAdapter.SelectCommand.CommandType = CommandType.StoredProcedure;
-                foreach (BDParametro parametro in listParametros)
-                    dataAdapter.SelectCommand.Parameters.AddWithValue(parametro.nombre, parametro.valor);
+                if ( listParametros != null )
+                    foreach (BDParametro parametro in listParametros)
+                        dataAdapter.SelectCommand.Parameters.AddWithValue(parametro.nombre, parametro.valor);
                 dataAdapter.Fill(dataTable);
             }
             catch (Exception ex) {
-                throw ex;
-            }
-            Desconectar();
-            return dataTable;
-        }
-        /*Sobrecarga sin parametros, por que el Tipo T no acepta nulos*/
-        public DataTable execSelect(String nameStoredProcedure)
-        {
-            DataTable dataTable = new DataTable();
-            SqlDataAdapter dataAdapter;
-            try
-            {
-                Conectar();
-                dataAdapter = new SqlDataAdapter(nameStoredProcedure, conexionBD);
-                dataAdapter.SelectCommand.CommandType = CommandType.StoredProcedure;
-                dataAdapter.Fill(dataTable);
-            }
-            catch (Exception ex)
-            {
                 throw ex;
             }
             Desconectar();
@@ -56,27 +34,28 @@ namespace UberFrba
         }
 
         /* Recibe el nombre del SP y la lista de Parametros */
-        public void execStoredProcedure(String nameStoredProcedure, ref List<BDParametro> listParametros) {
+        public void execSP(String nameStoredProcedure, ref List<BDParametro> listParametros) {
             try {
                 Conectar();
                 SqlCommand comando = new SqlCommand(nameStoredProcedure, conexionBD);
                 comando.CommandType = CommandType.StoredProcedure;
-                foreach (BDParametro parametro in listParametros)
-                {
-                    if (parametro.direccion == ParameterDirection.Input)
-                        comando.Parameters.AddWithValue(parametro.nombre, parametro.valor);
-                    if (parametro.direccion == ParameterDirection.Output)
-                        comando.Parameters
-                            .Add(parametro.nombre, parametro.tipoDato, parametro.tamanio)
-                            .Direction = ParameterDirection.Output;
-                }
+                if (listParametros != null)
+                    foreach (BDParametro parametro in listParametros)
+                    {
+                        if (parametro.direccion == ParameterDirection.Input)
+                            comando.Parameters.AddWithValue(parametro.nombre, parametro.valor);
+                        if (parametro.direccion == ParameterDirection.Output)
+                            comando.Parameters
+                                .Add(parametro.nombre, parametro.tipoDato, parametro.tamanio)
+                                .Direction = ParameterDirection.Output;
+                    }
                 comando.ExecuteNonQuery();
-                for (int i = 0; i < listParametros.Count; i++)
-                    if (comando.Parameters[i].Direction == ParameterDirection.Output)
-                        listParametros[i].valor = comando.Parameters[i].Value;
+                if (listParametros != null)
+                    for (int i = 0; i < listParametros.Count; i++)
+                        if (comando.Parameters[i].Direction == ParameterDirection.Output)
+                            listParametros[i].valor = comando.Parameters[i].Value;
             }
             catch (Exception ex) {
-                MessageBox.Show(ex.ToString());
                 throw ex;
             }
             Desconectar();
