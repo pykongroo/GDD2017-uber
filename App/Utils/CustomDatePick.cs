@@ -36,5 +36,15 @@ namespace UberFrba.Utils
         {
             return true;
         }
+
+        public DateTime getDate()
+        {
+            return dateTimePicker1.Value;
+        }
+
+        public void setDate(DateTime fecha)
+        {
+            dateTimePicker1.Value = fecha;
+        }
     }
 }

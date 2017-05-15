@@ -47,7 +47,7 @@ namespace UberFrba.Abm_Cliente
             {
                 cont++;
             }
-            String query = "select user_apellido, user_nombre, user_dni from LJDG.Usuario where user_id in (select rxu_user from LJDG.Rol_Usuario where rxu_rol=3) ";
+            String query = "select user_id, user_apellido, user_nombre, user_dni from LJDG.Usuario where user_id in (select rxu_user from LJDG.Rol_Usuario where rxu_rol=3) ";
             if (cont>0)
             {
                 query += "AND ";
@@ -82,7 +82,7 @@ namespace UberFrba.Abm_Cliente
             {
                 //query += "* ";
             }
-            query += "group by user_apellido, user_nombre, user_dni";
+            query += "group by user_id, user_apellido, user_nombre, user_dni";
             MessageBox.Show(query);
             return query;
         }
@@ -105,13 +105,15 @@ namespace UberFrba.Abm_Cliente
 
         private void dataGridCliente_RowHeaderMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {
+            //MessageBox.Show(e.RowIndex.ToString());
+            //MessageBox.Show(dataGridCliente.Rows[0].Cells[0].Value.ToString());
             if (tipo == "B")
             {
                 MessageBox.Show("Se da de baja");
                 //magia en DB
             } else if (tipo == "M")
             {
-                AltaModificarCliente amCliente = new AltaModificarCliente(this, "");
+                AltaModificarCliente amCliente = new AltaModificarCliente(this, dataGridCliente.Rows[e.RowIndex].Cells[0].Value.ToString());
                 amCliente.Show();
                 this.Hide();
             }
