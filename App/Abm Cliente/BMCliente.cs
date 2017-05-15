@@ -47,13 +47,13 @@ namespace UberFrba.Abm_Cliente
             {
                 cont++;
             }
-            String query = "SELECT Cliente_Apellido, Cliente_Nombre, Cliente_Dni FROM gd_esquema.Maestra ";
+            String query = "select user_apellido, user_nombre, user_dni from LJDG.Usuario where user_id in (select rxu_user from LJDG.Rol_Usuario where rxu_rol=3) ";
             if (cont>0)
             {
-                query += "WHERE ";
+                query += "AND ";
                 if (textFiltroApellido.Text != "")
                 {
-                    query += "Cliente_Apellido='" + textFiltroApellido.Text + "' ";
+                    query += "user_apellido='" + textFiltroApellido.Text + "' ";
                     if (cont > 1)
                     {
                         query += "AND ";
@@ -62,7 +62,7 @@ namespace UberFrba.Abm_Cliente
                 }
                 if (textFiltroNombre.Text != "")
                 {
-                    query += "Cliente_Nombre='" + textFiltroNombre.Text + "' ";
+                    query += "user_nombre='" + textFiltroNombre.Text + "' ";
                     if (cont > 1)
                     {
                         query += "AND ";
@@ -71,7 +71,7 @@ namespace UberFrba.Abm_Cliente
                 }
                 if (textFiltroDNI.Text != "")
                 {
-                    query += "Cliente_Dni='" + textFiltroDNI.Text + "' ";
+                    query += "user_dni='" + textFiltroDNI.Text + "' ";
                     if (cont > 1)
                     {
                         query += "AND ";
@@ -82,7 +82,7 @@ namespace UberFrba.Abm_Cliente
             {
                 //query += "* ";
             }
-            query += "group by Cliente_Apellido, Cliente_Nombre, Cliente_Dni";
+            query += "group by user_apellido, user_nombre, user_dni";
             MessageBox.Show(query);
             return query;
         }
