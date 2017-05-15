@@ -75,11 +75,11 @@
     <Compile Include="Abm Rol\AltaRol.Designer.cs">
       <DependentUpon>AltaRol.cs</DependentUpon>
     </Compile>
-    <Compile Include="Abm Rol\BajaRolForm.cs">
+    <Compile Include="Abm Rol\BajaRol.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Abm Rol\BajaRolForm.Designer.cs">
-      <DependentUpon>BajaRolForm.cs</DependentUpon>
+    <Compile Include="Abm Rol\BajaRol.Designer.cs">
+      <DependentUpon>BajaRol.cs</DependentUpon>
     </Compile>
     <Compile Include="Abm Rol\EditarRol.cs">
       <SubType>Form</SubType>
@@ -89,11 +89,11 @@
     </Compile>
     <Compile Include="ConexionBD\BDHandler.cs" />
     <Compile Include="ConexionBD\BDParametro.cs" />
-    <Compile Include="Login\Rol.cs">
+    <Compile Include="Logueo\SeleccionRol.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Login\Rol.Designer.cs">
-      <DependentUpon>Rol.cs</DependentUpon>
+    <Compile Include="Logueo\SeleccionRol.Designer.cs">
+      <DependentUpon>SeleccionRol.cs</DependentUpon>
     </Compile>
     <Compile Include="Modelo\Funcionalidad.cs" />
     <Compile Include="Modelo\Rol.cs" />
@@ -142,10 +142,10 @@
     <Compile Include="Listado Estadistico\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Login\Login.cs">
+    <Compile Include="Logueo\Login.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Login\Login.Designer.cs">
+    <Compile Include="Logueo\Login.Designer.cs">
       <DependentUpon>Login.cs</DependentUpon>
     </Compile>
     <Compile Include="Menu.cs">
@@ -183,8 +183,8 @@
     <EmbeddedResource Include="Abm Rol\AltaRol.resx">
       <DependentUpon>AltaRol.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Abm Rol\BajaRolForm.resx">
-      <DependentUpon>BajaRolForm.cs</DependentUpon>
+    <EmbeddedResource Include="Abm Rol\BajaRol.resx">
+      <DependentUpon>BajaRol.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Abm Rol\EditarRol.resx">
       <DependentUpon>EditarRol.cs</DependentUpon>
@@ -192,8 +192,8 @@
     <EmbeddedResource Include="AltaUsuario.resx">
       <DependentUpon>AltaUsuario.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Login\Rol.resx">
-      <DependentUpon>Rol.cs</DependentUpon>
+    <EmbeddedResource Include="Logueo\SeleccionRol.resx">
+      <DependentUpon>SeleccionRol.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Utils\CustomDatePick.resx">
       <DependentUpon>CustomDatePick.cs</DependentUpon>
@@ -201,7 +201,7 @@
     <EmbeddedResource Include="Utils\CustomForm.resx">
       <DependentUpon>CustomForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Login\Login.resx">
+    <EmbeddedResource Include="Logueo\Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Menu.resx">
@@ -215,6 +215,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="Utils\CustomComboBox.resx">
       <DependentUpon>CustomComboBox.cs</DependentUpon>

@@ -33,7 +33,7 @@ namespace UberFrba.Modelo
             set { _Habilitado = value; }
         }
 
-        public List<Rol> obtenerRoles()
+        public static List<Rol> obtenerRoles()
         {
             var miLista = new List<Rol>();
             List<BDParametro> listParametros = new List<BDParametro>();
@@ -41,7 +41,7 @@ namespace UberFrba.Modelo
             {
                 BDHandler handler = new BDHandler();
 
-                miLista = handler.execSelectSP("LJDG.obtener_roles", null)
+                miLista = handler.execSelectSP("LJDG.obtener_roles")
                     .AsEnumerable()
                     .Select(m => new Rol()
                     {
@@ -60,7 +60,7 @@ namespace UberFrba.Modelo
             }
         }
 
-        public int insertarRol(string nombreRol)
+        public static int insertarRol(string nombreRol)
         {
             List<BDParametro> listParametros = new List<BDParametro>();
             try
@@ -79,7 +79,7 @@ namespace UberFrba.Modelo
             }
         }
 
-        public void eliminarRol(int rolId)
+        public static void eliminarRol(int rolId)
         {
             List<BDParametro> listParametros = new List<BDParametro>();
             try
@@ -95,7 +95,7 @@ namespace UberFrba.Modelo
             }
         }
 
-        public void editarRol(int rolId, string rolNombre, int rolHabilitado)
+        public static void editarRol(int rolId, string rolNombre, int rolHabilitado)
         {
             List<BDParametro> listParametros = new List<BDParametro>();
             try

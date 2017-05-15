@@ -16,24 +16,19 @@ namespace UberFrba.Abm_Rol
         DataTable funcDelRol;
         List<Funcionalidad> misFuncionalidades;
         List<Modelo.Rol> misRoles;
-        Modelo.Rol selectedItemRol;
+        Rol selectedItemRol;
         public EditarRol()
         {
             InitializeComponent();
         }
 
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void EditarRol_Load(object sender, EventArgs e)
         {
-            misFuncionalidades = new Funcionalidad().obtenerFuncionalidades();
+            misFuncionalidades = Funcionalidad.obtenerFuncionalidades();
             cmbFuncionalidades.DataSource = misFuncionalidades;
             cmbFuncionalidades.DisplayMember = "Descripcion";
 
-            misRoles = new Modelo.Rol().obtenerRoles();
+            misRoles = Rol.obtenerRoles();
             cmbRoles.DataSource = misRoles;
             cmbRoles.DisplayMember = "Nombre";
 
@@ -61,11 +56,11 @@ namespace UberFrba.Abm_Rol
 
         private void cmbRoles_SelectionChangeCommitted(object sender, EventArgs e)
         {
-            if(gridLista.Columns.Count == 3)
+            if (gridLista.Columns.Count == 3)
                 gridLista.Columns.Remove(gridLista.Columns[2]);
             List<Funcionalidad> listaFuncDelRol;
             selectedItemRol = (Modelo.Rol)cmbRoles.SelectedItem;
-            listaFuncDelRol = new Funcionalidad().obtenerFuncxRol(selectedItemRol.ID_Rol);
+            listaFuncDelRol = Funcionalidad.obtenerFuncxRol(selectedItemRol.ID_Rol);
             txtNombreRol.Enabled = true;
             btnModificar.Enabled = true;
             cmbFuncionalidades.Enabled = true;
@@ -95,8 +90,8 @@ namespace UberFrba.Abm_Rol
             btn.UseColumnTextForButtonValue = true;
             gridLista.Update();
             gridLista.Refresh();
-            
-            
+
+
 
         }
 
@@ -133,49 +128,50 @@ namespace UberFrba.Abm_Rol
             gridLista.Update();
             gridLista.Refresh();
 
-            
-            
+
+
         }
 
         private void btnModificar_Click(object sender, EventArgs e)
         {
             int habilitar = 0;
-            Modelo.Funcionalidad MFuncionalidad = new Funcionalidad();
             if (txtNombreRol.Text != "")
             {
-                if (!misRoles.Exists(x => x.Nombre == txtNombreRol.Text))
+
+                if (radioHabilitar.Checked)
                 {
-                    if(radioHabilitar.Checked){
-                        habilitar = 1;
-                    }
-                    new Modelo.Rol().editarRol(selectedItemRol.ID_Rol, txtNombreRol.Text, habilitar);
-                    //MessageBox.Show("Rol insertado");
-                    if (funcDelRol.Rows.Count > 0)
+                    habilitar = 1;
+                }
+                Rol.editarRol(selectedItemRol.ID_Rol, txtNombreRol.Text, habilitar);
+                //MessageBox.Show("Rol insertado");
+                if (funcDelRol.Rows.Count > 0)
+                {
+                    foreach (DataRow row in funcDelRol.Rows)
                     {
-                        foreach (DataRow row in funcDelRol.Rows)
-                        {
-                            MFuncionalidad.insertarFuncxRol(selectedItemRol.ID_Rol, Convert.ToInt32(row["ID_Funcionalidad"]));
-                        }
+                        Funcionalidad.insertarFuncxRol(selectedItemRol.ID_Rol, Convert.ToInt32(row["ID_Funcionalidad"]));
                     }
-                    txtNombreRol.Text = "";
-                    funcDelRol.Clear();
-                    radioHabilitar.Visible = false;
-                    lblDeshabilitado.Visible = false;
-                    Menu menuPrincipal = new Menu();
-                    this.Hide();
-                    menuPrincipal.Show();
-                    
                 }
-                else
-                {
-                    MessageBox.Show("El nombre del rol ya esta siendo utilizado");
-                }
-                
+                txtNombreRol.Text = "";
+                funcDelRol.Clear();
+                radioHabilitar.Visible = false;
+                lblDeshabilitado.Visible = false;
+                this.Hide();
+                //Menu menuPrincipal = new Menu();
+                //menuPrincipal.Show();
+
+
+
             }
             else
             {
                 MessageBox.Show("El nombre no puede quedar vacio");
             }
+        }
+
+        private void EditarRol_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            this.Hide();
+            //new Menu().Show();
         }
 
 

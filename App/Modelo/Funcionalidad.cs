@@ -24,7 +24,7 @@ namespace UberFrba.Modelo
             set { _Descripcion = value; }
         }
 
-        public List<Funcionalidad> obtenerFuncionalidades()
+        public static List<Funcionalidad> obtenerFuncionalidades()
         {
             var miLista = new List<Funcionalidad>();
             List<BDParametro> listParametros = new List<BDParametro>();
@@ -32,7 +32,7 @@ namespace UberFrba.Modelo
             {
                 BDHandler handler = new BDHandler();
 
-                miLista = handler.execSelectSP("LJDG.obtener_funcionalidades", null)
+                miLista = handler.execSelectSP("LJDG.obtener_funcionalidades")
                     .AsEnumerable()
                     .Select(m => new Funcionalidad()
                     {
@@ -51,7 +51,7 @@ namespace UberFrba.Modelo
         }
 
 
-        public List<Funcionalidad> obtenerFuncxRol(int idRol)
+        public static List<Funcionalidad> obtenerFuncxRol(int idRol)
         {
             var miLista = new List<Funcionalidad>();
             List<BDParametro> listParametros = new List<BDParametro>();
@@ -77,7 +77,7 @@ namespace UberFrba.Modelo
             }
         }    
        
-        public void insertarFuncxRol(int idRol,int idFuncionalidad)
+        public static void insertarFuncxRol(int idRol,int idFuncionalidad)
         {
             List<BDParametro> listParametros = new List<BDParametro>();
             try

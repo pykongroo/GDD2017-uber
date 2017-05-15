@@ -12,19 +12,14 @@ using UberFrba.Modelo;
 
 namespace UberFrba.Abm_Rol
 {
-    public partial class BajaRolForm : Form
+    public partial class BajaRol : Form
     {
-        public BajaRolForm()
+        public BajaRol()
         {
             InitializeComponent();
         }
 
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button1_Click(object sender, EventArgs e)
+        private void btnEliminarRol_Click(object sender, EventArgs e)
         {
             var confirmResult = MessageBox.Show("¿Esta seguro que desea eliminar el rol seleccionado?",
                                      "Si, eliminar rol",
@@ -33,11 +28,11 @@ namespace UberFrba.Abm_Rol
             {
                 // BAJA LOGICA DEL ROL y BORRADO DE LA TABLA ROL USUARIO.
                 Modelo.Rol selectedItem = (Modelo.Rol)cmbRoles.SelectedItem;
-                new Modelo.Rol().eliminarRol(selectedItem.ID_Rol);
-                MessageBox.Show("El Rol " + selectedItem.Nombre + " ha sido eliminado");
-                Menu menuPrincipal = new Menu();
+                Rol.eliminarRol(selectedItem.ID_Rol);
+                MessageBox.Show("El Rol " + selectedItem.Nombre + " ha sido eliminado");  
                 this.Hide();
-                menuPrincipal.Show();
+                //Menu menuPrincipal = new Menu();
+                //menuPrincipal.Show();
             }
             else
             {
@@ -52,9 +47,15 @@ namespace UberFrba.Abm_Rol
 
         private void BajaRolForm_Load(object sender, EventArgs e)
         {
-            var misRoles = new Modelo.Rol().obtenerRoles();
+            var misRoles =  Rol.obtenerRoles().FindAll(r => r.Habilitado) ;
             cmbRoles.DataSource = misRoles;
             cmbRoles.DisplayMember = "Nombre";
+        }
+
+        private void BajaRol_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            this.Hide();
+            //new Menu().Show();
         }
     }
 }

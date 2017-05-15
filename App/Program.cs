@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 using UberFrba.Modelo;
+using UberFrba.Logueo;
 
 namespace UberFrba
 {

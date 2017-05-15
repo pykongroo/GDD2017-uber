@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using UberFrba.Abm_Cliente;
+using UberFrba.Logueo;
 
 namespace UberFrba
 {
@@ -37,19 +38,19 @@ namespace UberFrba
 
         private void altaToolStripMenuItem3_Click(object sender, EventArgs e)
         {
-            this.Hide();
+            //this.Hide();
             new Abm_Rol.AltaRol().Show();
         }
 
         private void bajaToolStripMenuItem3_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            new Abm_Rol.BajaRolForm().Show();
+            //this.Hide();
+            new Abm_Rol.BajaRol().Show();
         }
 
         private void modificacionToolStripMenuItem3_Click(object sender, EventArgs e)
         {
-            this.Hide();
+            //this.Hide();
             new Abm_Rol.EditarRol().Show();
         }
 
@@ -57,21 +58,21 @@ namespace UberFrba
         {
             BajaModificarCliente bmCliente = new BajaModificarCliente(this, "B");
             bmCliente.Show();
-            this.Hide();
+            //this.Hide();
         }
 
         private void modificacionToolStripMenuItem2_Click(object sender, EventArgs e)
         {
             BajaModificarCliente bmCliente = new BajaModificarCliente(this, "M");
             bmCliente.Show();
-            this.Hide();
+            //this.Hide();
         }
 
         private void altaToolStripMenuItem2_Click(object sender, EventArgs e)
         {
             AltaModificarCliente amCliente = new AltaModificarCliente(this);
             amCliente.Show();
-            this.Hide();
+            //this.Hide();
 
         }
     }

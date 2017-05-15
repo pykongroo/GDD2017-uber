@@ -45,7 +45,7 @@
             // btnFuncionalidad
             // 
             this.btnFuncionalidad.Enabled = false;
-            this.btnFuncionalidad.Location = new System.Drawing.Point(326, 87);
+            this.btnFuncionalidad.Location = new System.Drawing.Point(435, 87);
             this.btnFuncionalidad.Name = "btnFuncionalidad";
             this.btnFuncionalidad.Size = new System.Drawing.Size(75, 21);
             this.btnFuncionalidad.TabIndex = 13;
@@ -56,7 +56,7 @@
             // btnModificar
             // 
             this.btnModificar.Enabled = false;
-            this.btnModificar.Location = new System.Drawing.Point(157, 305);
+            this.btnModificar.Location = new System.Drawing.Point(250, 394);
             this.btnModificar.Name = "btnModificar";
             this.btnModificar.Size = new System.Drawing.Size(112, 32);
             this.btnModificar.TabIndex = 12;
@@ -68,25 +68,25 @@
             // 
             this.gridLista.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gridLista.Enabled = false;
-            this.gridLista.Location = new System.Drawing.Point(40, 156);
+            this.gridLista.Location = new System.Drawing.Point(12, 156);
             this.gridLista.Name = "gridLista";
-            this.gridLista.Size = new System.Drawing.Size(362, 143);
+            this.gridLista.Size = new System.Drawing.Size(567, 222);
             this.gridLista.TabIndex = 11;
             this.gridLista.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridLista_CellContentClick);
             // 
             // cmbRoles
             // 
             this.cmbRoles.FormattingEnabled = true;
-            this.cmbRoles.Location = new System.Drawing.Point(154, 25);
+            this.cmbRoles.Location = new System.Drawing.Point(181, 25);
             this.cmbRoles.Name = "cmbRoles";
-            this.cmbRoles.Size = new System.Drawing.Size(139, 21);
+            this.cmbRoles.Size = new System.Drawing.Size(221, 21);
             this.cmbRoles.TabIndex = 10;
             this.cmbRoles.SelectionChangeCommitted += new System.EventHandler(this.cmbRoles_SelectionChangeCommitted);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(37, 90);
+            this.label2.Location = new System.Drawing.Point(103, 90);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(73, 13);
             this.label2.TabIndex = 9;
@@ -95,12 +95,11 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(180, 9);
+            this.label1.Location = new System.Drawing.Point(257, 9);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(77, 13);
             this.label1.TabIndex = 7;
             this.label1.Text = "Seleccionar rol";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // cmbFuncionalidades
             // 
@@ -108,13 +107,13 @@
             this.cmbFuncionalidades.FormattingEnabled = true;
             this.cmbFuncionalidades.Location = new System.Drawing.Point(182, 87);
             this.cmbFuncionalidades.Name = "cmbFuncionalidades";
-            this.cmbFuncionalidades.Size = new System.Drawing.Size(138, 21);
+            this.cmbFuncionalidades.Size = new System.Drawing.Size(220, 21);
             this.cmbFuncionalidades.TabIndex = 14;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(37, 61);
+            this.label3.Location = new System.Drawing.Point(101, 64);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(75, 13);
             this.label3.TabIndex = 15;
@@ -131,7 +130,7 @@
             // lblDeshabilitado
             // 
             this.lblDeshabilitado.AutoSize = true;
-            this.lblDeshabilitado.Location = new System.Drawing.Point(37, 129);
+            this.lblDeshabilitado.Location = new System.Drawing.Point(67, 129);
             this.lblDeshabilitado.Name = "lblDeshabilitado";
             this.lblDeshabilitado.Size = new System.Drawing.Size(312, 13);
             this.lblDeshabilitado.TabIndex = 17;
@@ -141,7 +140,7 @@
             // radioHabilitar
             // 
             this.radioHabilitar.AutoSize = true;
-            this.radioHabilitar.Location = new System.Drawing.Point(387, 129);
+            this.radioHabilitar.Location = new System.Drawing.Point(388, 129);
             this.radioHabilitar.Name = "radioHabilitar";
             this.radioHabilitar.Size = new System.Drawing.Size(14, 13);
             this.radioHabilitar.TabIndex = 18;
@@ -153,7 +152,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(443, 349);
+            this.ClientSize = new System.Drawing.Size(591, 438);
             this.Controls.Add(this.radioHabilitar);
             this.Controls.Add(this.lblDeshabilitado);
             this.Controls.Add(this.txtNombreRol);
@@ -167,6 +166,7 @@
             this.Controls.Add(this.label1);
             this.Name = "EditarRol";
             this.Text = "EditarRol";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.EditarRol_FormClosing);
             this.Load += new System.EventHandler(this.EditarRol_Load);
             ((System.ComponentModel.ISupportInitialize)(this.gridLista)).EndInit();
             this.ResumeLayout(false);

@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Helper;
 
-namespace UberFrba {
+namespace UberFrba.Logueo {
     
     public partial class Login : Form {
               
@@ -26,7 +26,7 @@ namespace UberFrba {
                     Program.user.password = textPass.Text.Sha256();
                     mensaje = Program.user.iniciarSesion();
                     if (mensaje == "OK") {
-                        Rol menuRoles = new Rol();
+                        SeleccionRol menuRoles = new SeleccionRol();
                         this.Hide();
                         menuRoles.Show();
                         return;

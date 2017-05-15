@@ -41,7 +41,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 20);
+            this.label1.Location = new System.Drawing.Point(38, 23);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(80, 13);
             this.label1.TabIndex = 0;
@@ -49,42 +49,41 @@
             // 
             // txtNombre
             // 
-            this.txtNombre.Location = new System.Drawing.Point(143, 17);
+            this.txtNombre.Location = new System.Drawing.Point(193, 20);
             this.txtNombre.Name = "txtNombre";
-            this.txtNombre.Size = new System.Drawing.Size(208, 20);
+            this.txtNombre.Size = new System.Drawing.Size(211, 20);
             this.txtNombre.TabIndex = 1;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 59);
+            this.label2.Location = new System.Drawing.Point(38, 57);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(73, 13);
             this.label2.TabIndex = 2;
             this.label2.Text = "Funcionalidad";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // cmbFuncionalidades
             // 
             this.cmbFuncionalidades.FormattingEnabled = true;
-            this.cmbFuncionalidades.Location = new System.Drawing.Point(143, 56);
+            this.cmbFuncionalidades.Location = new System.Drawing.Point(193, 54);
             this.cmbFuncionalidades.Name = "cmbFuncionalidades";
-            this.cmbFuncionalidades.Size = new System.Drawing.Size(127, 21);
+            this.cmbFuncionalidades.Size = new System.Drawing.Size(211, 21);
             this.cmbFuncionalidades.TabIndex = 3;
             this.cmbFuncionalidades.SelectedIndexChanged += new System.EventHandler(this.cmbFuncionalidades_SelectedIndexChanged);
             // 
             // gridLista
             // 
             this.gridLista.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.gridLista.Location = new System.Drawing.Point(30, 98);
+            this.gridLista.Location = new System.Drawing.Point(12, 102);
             this.gridLista.Name = "gridLista";
-            this.gridLista.Size = new System.Drawing.Size(321, 150);
+            this.gridLista.Size = new System.Drawing.Size(566, 273);
             this.gridLista.TabIndex = 4;
             this.gridLista.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // btnAgregar
             // 
-            this.btnAgregar.Location = new System.Drawing.Point(143, 254);
+            this.btnAgregar.Location = new System.Drawing.Point(241, 398);
             this.btnAgregar.Name = "btnAgregar";
             this.btnAgregar.Size = new System.Drawing.Size(112, 32);
             this.btnAgregar.TabIndex = 5;
@@ -94,7 +93,7 @@
             // 
             // btnFuncionalidad
             // 
-            this.btnFuncionalidad.Location = new System.Drawing.Point(276, 56);
+            this.btnFuncionalidad.Location = new System.Drawing.Point(433, 54);
             this.btnFuncionalidad.Name = "btnFuncionalidad";
             this.btnFuncionalidad.Size = new System.Drawing.Size(75, 23);
             this.btnFuncionalidad.TabIndex = 6;
@@ -106,7 +105,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(391, 298);
+            this.ClientSize = new System.Drawing.Size(590, 442);
             this.Controls.Add(this.btnFuncionalidad);
             this.Controls.Add(this.btnAgregar);
             this.Controls.Add(this.gridLista);
@@ -115,7 +114,8 @@
             this.Controls.Add(this.txtNombre);
             this.Controls.Add(this.label1);
             this.Name = "AltaRol";
-            this.Text = "Form1";
+            this.Text = "AltaRol";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.AltaRol_FormClosing);
             this.Load += new System.EventHandler(this.AltaRol_Load);
             ((System.ComponentModel.ISupportInitialize)(this.gridLista)).EndInit();
             this.ResumeLayout(false);

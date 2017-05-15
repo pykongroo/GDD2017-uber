@@ -1,6 +1,6 @@
-﻿namespace UberFrba
+﻿namespace UberFrba.Logueo
 {
-    partial class Rol
+    partial class Login
     {
         /// <summary>
         /// Required designer variable.
@@ -29,67 +29,75 @@
         private void InitializeComponent()
         {
             this.labelUser = new System.Windows.Forms.Label();
-            this.btnIngresar = new System.Windows.Forms.Button();
+            this.labelPass = new System.Windows.Forms.Label();
+            this.textUser = new System.Windows.Forms.TextBox();
+            this.textPass = new System.Windows.Forms.TextBox();
+            this.btnLogin = new System.Windows.Forms.Button();
             this.btnSalir = new System.Windows.Forms.Button();
-            this.cmbRoles = new System.Windows.Forms.ComboBox();
-            this.btnVolver = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // labelUser
             // 
             this.labelUser.AutoSize = true;
-            this.labelUser.Location = new System.Drawing.Point(42, 90);
+            this.labelUser.Location = new System.Drawing.Point(58, 84);
             this.labelUser.Name = "labelUser";
-            this.labelUser.Size = new System.Drawing.Size(266, 14);
+            this.labelUser.Size = new System.Drawing.Size(51, 14);
             this.labelUser.TabIndex = 0;
-            this.labelUser.Text = "Seleccione el Rol con el cual ingresar al sistema:";
+            this.labelUser.Text = "Usuario:";
             // 
-            // btnIngresar
+            // labelPass
             // 
-            this.btnIngresar.Enabled = false;
-            this.btnIngresar.ForeColor = System.Drawing.Color.Black;
-            this.btnIngresar.Location = new System.Drawing.Point(225, 240);
-            this.btnIngresar.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.btnIngresar.Name = "btnIngresar";
-            this.btnIngresar.Size = new System.Drawing.Size(90, 30);
-            this.btnIngresar.TabIndex = 4;
-            this.btnIngresar.Text = "Ingresar";
-            this.btnIngresar.UseVisualStyleBackColor = true;
-            this.btnIngresar.Click += new System.EventHandler(this.btnIngresar_Click);
+            this.labelPass.AutoSize = true;
+            this.labelPass.Location = new System.Drawing.Point(56, 130);
+            this.labelPass.Name = "labelPass";
+            this.labelPass.Size = new System.Drawing.Size(70, 14);
+            this.labelPass.TabIndex = 1;
+            this.labelPass.Text = "Contraseña:";
+            // 
+            // textUser
+            // 
+            this.textUser.Location = new System.Drawing.Point(158, 80);
+            this.textUser.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.textUser.Name = "textUser";
+            this.textUser.Size = new System.Drawing.Size(130, 22);
+            this.textUser.TabIndex = 2;
+            this.textUser.TextChanged += new System.EventHandler(this.textUser_TextChanged);
+            // 
+            // textPass
+            // 
+            this.textPass.Enabled = false;
+            this.textPass.Location = new System.Drawing.Point(158, 126);
+            this.textPass.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.textPass.Name = "textPass";
+            this.textPass.Size = new System.Drawing.Size(130, 22);
+            this.textPass.TabIndex = 3;
+            this.textPass.UseSystemPasswordChar = true;
+            this.textPass.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textPass_KeyPress);
+            // 
+            // btnLogin
+            // 
+            this.btnLogin.ForeColor = System.Drawing.Color.Black;
+            this.btnLogin.Location = new System.Drawing.Point(200, 190);
+            this.btnLogin.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnLogin.Name = "btnLogin";
+            this.btnLogin.Size = new System.Drawing.Size(110, 30);
+            this.btnLogin.TabIndex = 4;
+            this.btnLogin.Text = "Loguear";
+            this.btnLogin.UseVisualStyleBackColor = true;
+            this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
             // 
             // btnSalir
             // 
             this.btnSalir.ForeColor = System.Drawing.Color.Black;
-            this.btnSalir.Location = new System.Drawing.Point(35, 240);
+            this.btnSalir.Location = new System.Drawing.Point(40, 190);
             this.btnSalir.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnSalir.Name = "btnSalir";
-            this.btnSalir.Size = new System.Drawing.Size(90, 30);
+            this.btnSalir.Size = new System.Drawing.Size(110, 30);
             this.btnSalir.TabIndex = 5;
             this.btnSalir.Text = "Salir";
             this.btnSalir.UseVisualStyleBackColor = true;
             this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
-            // 
-            // cmbRoles
-            // 
-            this.cmbRoles.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbRoles.FormattingEnabled = true;
-            this.cmbRoles.Location = new System.Drawing.Point(90, 120);
-            this.cmbRoles.Name = "cmbRoles";
-            this.cmbRoles.Size = new System.Drawing.Size(170, 22);
-            this.cmbRoles.TabIndex = 7;
-            // 
-            // btnVolver
-            // 
-            this.btnVolver.ForeColor = System.Drawing.Color.Black;
-            this.btnVolver.Location = new System.Drawing.Point(130, 240);
-            this.btnVolver.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.btnVolver.Name = "btnVolver";
-            this.btnVolver.Size = new System.Drawing.Size(90, 30);
-            this.btnVolver.TabIndex = 8;
-            this.btnVolver.Text = "Volver";
-            this.btnVolver.UseVisualStyleBackColor = true;
-            this.btnVolver.Click += new System.EventHandler(this.btnVolver_Click);
             // 
             // label1
             // 
@@ -98,42 +106,42 @@
             this.label1.Location = new System.Drawing.Point(86, 30);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(178, 27);
-            this.label1.TabIndex = 9;
+            this.label1.TabIndex = 7;
             this.label1.Text = "UberFRBA v1.0";
             // 
-            // Rol
+            // Login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
-            this.ClientSize = new System.Drawing.Size(350, 300);
+            this.ClientSize = new System.Drawing.Size(350, 250);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.btnVolver);
-            this.Controls.Add(this.cmbRoles);
+            this.Controls.Add(this.textPass);
+            this.Controls.Add(this.textUser);
+            this.Controls.Add(this.labelPass);
             this.Controls.Add(this.labelUser);
             this.Controls.Add(this.btnSalir);
-            this.Controls.Add(this.btnIngresar);
+            this.Controls.Add(this.btnLogin);
             this.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ForeColor = System.Drawing.Color.White;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.Name = "Rol";
+            this.Name = "Login";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Login";
-            this.Load += new System.EventHandler(this.Rol_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
-
         #endregion
 
         private System.Windows.Forms.Label labelUser;
-        private System.Windows.Forms.Button btnIngresar;
+        private System.Windows.Forms.Label labelPass;
+        private System.Windows.Forms.TextBox textUser;
+        private System.Windows.Forms.TextBox textPass;
+        private System.Windows.Forms.Button btnLogin;
         private System.Windows.Forms.Button btnSalir;
-        private System.Windows.Forms.ComboBox cmbRoles;
-        private System.Windows.Forms.Button btnVolver;
         public System.Windows.Forms.Label label1;
     }
 }

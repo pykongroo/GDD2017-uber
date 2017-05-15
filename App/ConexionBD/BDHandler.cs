@@ -13,7 +13,7 @@ namespace UberFrba
 
         /****** Ejecuta un SP y devuelve un Listado del tipo DataTable ******/
         /* Recibe el nombre del SP y la lista de Parametros */
-        public DataTable execSelectSP(String nameStoredProcedure, List<BDParametro> listParametros)
+        public DataTable execSelectSP(String nameStoredProcedure, List<BDParametro> listParametros = null)
         {
             DataTable dataTable = new DataTable();
             SqlDataAdapter dataAdapter;

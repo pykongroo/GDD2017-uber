@@ -8,13 +8,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace UberFrba
+namespace UberFrba.Logueo
 {
 
-    public partial class Rol : Form
+    public partial class SeleccionRol : Form
     {
 
-        public Rol()
+        public SeleccionRol()
         {
             InitializeComponent();
         }
