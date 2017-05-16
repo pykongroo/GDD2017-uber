@@ -4,12 +4,6 @@ IF EXISTS (SELECT name FROM sysobjects WHERE name='easy_username' AND type in ( 
 DROP FUNCTION LJDG.easy_username
 GO
 
-
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-
 CREATE FUNCTION [LJDG].[easy_username] 
 (
 	@nombre varchar(255) , @apellido varchar(255)

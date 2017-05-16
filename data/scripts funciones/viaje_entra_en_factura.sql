@@ -4,19 +4,13 @@ IF EXISTS (SELECT name FROM sysobjects WHERE name='viaje_entra_en_factura' AND t
 DROP FUNCTION LJDG.viaje_entra_en_factura
 GO
 
-
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-
 CREATE FUNCTION [LJDG].[viaje_entra_en_factura] 
 (
-	@viaje_fecha datetime , @factura_inicio datetime, @factura_fin datetime
+	@viaje_fecha_inicio datetime , @factura_inicio datetime, @factura_fin datetime
 )
 RETURNS BIT
 AS
 BEGIN
-	RETURN IIF((datediff(day,@factura_inicio,@viaje_fecha) >= 0 AND datediff(day,@viaje_fecha,@factura_fin) >= 0),1,0)
+	RETURN IIF((datediff(day,@factura_inicio,@viaje_fecha_inicio) >= 0 AND datediff(day,@viaje_fecha_inicio,@factura_fin) >= 0),1,0)
 END
 GO

@@ -1,7 +1,11 @@
-IF OBJECT_ID('LJDG.func_username') IS NOT NULL
-    DROP FUNCTION LJDG.func_username
+IF OBJECT_ID('LJDG.easy_username') IS NOT NULL
+    DROP FUNCTION LJDG.easy_username
 GO
 
-IF OBJECT_ID('LJDG.func_viaje_entra_en_factura') IS NOT NULL
-    DROP FUNCTION LJDG.func_viaje_entra_en_factura
+IF OBJECT_ID('LJDG.viaje_entra_en_factura') IS NOT NULL
+    DROP FUNCTION LJDG.viaje_entra_en_factura
+GO
+
+IF OBJECT_ID('LJDG.viaje_entra_en_rendicion') IS NOT NULL
+    DROP FUNCTION LJDG.viaje_entra_en_rendicion
 GO

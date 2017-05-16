@@ -1,17 +1,10 @@
+USE GD1C2017
+GO
+
 IF EXISTS (SELECT name FROM sysobjects WHERE name='trigger_abm_automovil')
 DROP TRIGGER LJDG.trigger_abm_automovil
 GO
 
-
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
--- =============================================
--- Author:		<Author,,Name>
--- Create date: <Create Date,,>
--- Description:	<Description,,>
--- =============================================
 CREATE TRIGGER LJDG.trigger_abm_automovil
    ON  LJDG.Automovil
    AFTER INSERT,UPDATE

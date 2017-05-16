@@ -1,3 +1,6 @@
+USE GD1C2017
+GO
+
 IF OBJECT_ID('LJDG.crear_funcxrol') IS NOT NULL
 BEGIN
     DROP PROCEDURE LJDG.crear_funcxrol
