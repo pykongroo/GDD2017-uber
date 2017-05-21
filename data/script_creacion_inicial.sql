@@ -85,13 +85,13 @@ GO
 
 ALTER TABLE LJDG.Usuario ADD  CONSTRAINT DF_Usuario_user_intentos  DEFAULT ((3)) FOR user_intentos
 GO
-
+/*-- SE MANEJAN MANUALMENTE
 ALTER TABLE LJDG.Usuario ADD UNIQUE NONCLUSTERED (user_dni) --dudoso
 GO
 
 ALTER TABLE LJDG.Usuario ADD UNIQUE NONCLUSTERED (user_telefono) --se puede no poner y controlar manualmente
 GO
-
+--*/
 CREATE TABLE LJDG.Turno
 (
 	turn_id              int IDENTITY(1,1) NOT NULL ,

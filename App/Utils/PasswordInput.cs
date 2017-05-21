@@ -83,6 +83,11 @@ namespace UberFrba.Utils
         {
             return textBox1.Text.Sha256();
         }
+
+        public String Text()
+        {
+            return textBox1.Text;
+        }
     }
     
 }

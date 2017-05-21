@@ -75,6 +75,13 @@ namespace UberFrba
             //this.Hide();
 
         }
+
+        private void altaUsuarioToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AltaUsuario altaUser = new AltaUsuario(this);
+            this.Hide();
+            altaUser.Show();
+        }
     }
 }
 

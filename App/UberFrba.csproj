@@ -89,6 +89,7 @@
     </Compile>
     <Compile Include="ConexionBD\BDHandler.cs" />
     <Compile Include="ConexionBD\BDParametro.cs" />
+    <Compile Include="HashSet.cs" />
     <Compile Include="Logueo\SeleccionRol.cs">
       <SubType>Form</SubType>
     </Compile>

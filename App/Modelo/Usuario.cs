@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 using System.Data;
+using System.Data.SqlClient;
 
 namespace UberFrba.Modelo {
 
@@ -57,6 +58,23 @@ namespace UberFrba.Modelo {
                 BDHandler handler = new BDHandler();
                 listParametros.Add(new BDParametro("@userId", userId));
                 handler.execSP("LJDG.SP_Baja_Usuario", ref listParametros);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+                throw ex;
+            }
+        }
+        public static void darDeAlta(String userId, String pass, int rol)
+        {
+            List<BDParametro> listParametros = new List<BDParametro>();
+            try
+            {
+                BDHandler handler = new BDHandler();
+                listParametros.Add(new BDParametro("@userId", userId));
+                listParametros.Add(new BDParametro("@pass", pass));
+                listParametros.Add(new BDParametro("@rol_id", rol));
+                handler.execSP("LJDG.SP_Alta_Usuario", ref listParametros);
             }
             catch (Exception ex)
             {
