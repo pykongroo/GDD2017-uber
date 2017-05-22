@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using UberFrba.Abm_Cliente;
+using UberFrba.Viaje;
 using UberFrba.Logueo;
 
 namespace UberFrba
@@ -81,6 +82,11 @@ namespace UberFrba
             AltaUsuario altaUser = new AltaUsuario(this);
             this.Hide();
             altaUser.Show();
+        }
+
+        private void registrarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            new RegistroViaje().Show();
         }
     }
 }
