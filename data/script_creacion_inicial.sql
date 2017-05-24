@@ -9,6 +9,17 @@ IF NOT EXISTS (
 GO
 
 /*---BORRO LAS TABLAS SI EXISTEN---*/
+
+--Vistas
+IF OBJECT_ID('LJDG.Viaje_Rendicion') IS NOT NULL
+	DROP VIEW [LJDG].[Viaje_Rendicion]
+GO
+
+IF OBJECT_ID('LJDG.Viaje_Factura') IS NOT NULL
+	DROP VIEW [LJDG].[Viaje_Factura]
+GO
+
+--Tablas
 IF OBJECT_ID('LJDG.Factura') IS NOT NULL
     DROP TABLE LJDG.Factura;
 GO
@@ -45,6 +56,14 @@ IF OBJECT_ID('LJDG.Turno') IS NOT NULL
     DROP TABLE LJDG.Turno;
 GO
 
+IF OBJECT_ID('LJDG.Cliente') IS NOT NULL
+    DROP TABLE LJDG.Cliente;
+GO
+
+IF OBJECT_ID('LJDG.Chofer') IS NOT NULL
+    DROP TABLE LJDG.Chofer;
+GO
+
 IF OBJECT_ID('LJDG.Usuario') IS NOT NULL
     DROP TABLE LJDG.Usuario;
 GO
@@ -66,14 +85,6 @@ CREATE TABLE LJDG.Usuario
 (
 	user_id              char(30)  NOT NULL ,
 	user_password        char(64)  NOT NULL ,
-	user_nombre          varchar(255)  NULL ,
-	user_apellido        varchar(255)  NULL ,
-	user_dni             numeric(18,0)  NULL ,
-	user_direccion       varchar(255)  NULL ,
-	user_cp              varchar(10)  NULL ,
-	user_telefono        numeric(18,0)  NULL ,
-	user_mail            varchar(50)  NULL ,
-	user_fecha_nac       datetime  NULL ,
 	user_habilitado      bit  NOT NULL ,
 	user_intentos		 int NOT NULL ,
 	PRIMARY KEY  NONCLUSTERED (user_id ASC)
@@ -85,13 +96,62 @@ GO
 
 ALTER TABLE LJDG.Usuario ADD  CONSTRAINT DF_Usuario_user_intentos  DEFAULT ((3)) FOR user_intentos
 GO
-/*-- SE MANEJAN MANUALMENTE
-ALTER TABLE LJDG.Usuario ADD UNIQUE NONCLUSTERED (user_dni) --dudoso
+
+
+CREATE TABLE LJDG.Cliente
+(
+	clie_id              int IDENTITY(1,1) NOT NULL ,
+	clie_nombre          varchar(255) NOT NULL ,
+	clie_apellido        varchar(255) NOT NULL ,
+	clie_dni             numeric(18,0) NOT NULL ,
+	clie_direccion       varchar(255) NOT NULL ,
+	clie_cp              varchar(10)  NULL ,
+	clie_telefono        numeric(18,0) NOT NULL ,
+	clie_mail            varchar(50)  NULL ,
+	clie_fecha_nac       datetime NOT NULL ,
+	clie_habilitado      bit  NOT NULL ,
+	clie_user			 char(30) NOT NULL ,
+	PRIMARY KEY  NONCLUSTERED (clie_id ASC) ,
+	FOREIGN KEY (clie_user) REFERENCES LJDG.Usuario(user_id)
+		ON DELETE NO ACTION
+		ON UPDATE NO ACTION
+)
 GO
 
-ALTER TABLE LJDG.Usuario ADD UNIQUE NONCLUSTERED (user_telefono) --se puede no poner y controlar manualmente
+ALTER TABLE LJDG.Cliente ADD  CONSTRAINT DF_Cliente_clie_habilitado  DEFAULT ((1)) FOR clie_habilitado
 GO
---*/
+
+ALTER TABLE LJDG.Cliente ADD UNIQUE NONCLUSTERED (clie_telefono)
+GO
+
+ALTER TABLE LJDG.Cliente ADD UNIQUE NONCLUSTERED (clie_user)
+GO
+
+CREATE TABLE LJDG.Chofer
+(
+	chof_id              int IDENTITY(1,1) NOT NULL ,
+	chof_nombre          varchar(255) NOT NULL ,
+	chof_apellido        varchar(255) NOT NULL ,
+	chof_dni             numeric(18,0) NOT NULL ,
+	chof_direccion       varchar(255) NOT NULL ,
+	chof_telefono        numeric(18,0) NOT NULL ,
+	chof_mail            varchar(50) NOT NULL ,
+	chof_fecha_nac       datetime NOT NULL ,
+	chof_habilitado      bit  NOT NULL ,
+	chof_user			 char(30) NOT NULL ,
+	PRIMARY KEY  NONCLUSTERED (chof_id ASC) ,
+	FOREIGN KEY (chof_user) REFERENCES LJDG.Usuario(user_id)
+		ON DELETE NO ACTION
+		ON UPDATE NO ACTION
+)
+GO
+
+ALTER TABLE LJDG.Chofer ADD  CONSTRAINT DF_Chofer_chof_habilitado  DEFAULT ((1)) FOR chof_habilitado
+GO
+
+ALTER TABLE LJDG.Chofer ADD UNIQUE NONCLUSTERED (chof_user)
+GO
+
 CREATE TABLE LJDG.Turno
 (
 	turn_id              int IDENTITY(1,1) NOT NULL ,
@@ -127,19 +187,19 @@ CREATE TABLE LJDG.Automovil
 	auto_modelo          varchar(255)  NULL ,
 	auto_licencia        varchar(26)  NULL ,
 	auto_rodado          varchar(10)  NULL ,
-	auto_chofer          char(30)  NOT NULL ,
+	auto_chofer          int  NOT NULL ,
 	auto_turno			 int NOT NULL,
 	auto_habilitado      bit  NOT NULL ,
 	PRIMARY KEY  NONCLUSTERED (auto_id ASC),
 	FOREIGN KEY (auto_marca) REFERENCES LJDG.Marca(marc_id)
 		ON DELETE NO ACTION
 		ON UPDATE NO ACTION,
-	FOREIGN KEY (auto_chofer) REFERENCES LJDG.Usuario(user_id)
+	FOREIGN KEY (auto_chofer) REFERENCES LJDG.Chofer(chof_id)
 		ON DELETE NO ACTION
 		ON UPDATE NO ACTION,
 	FOREIGN KEY (auto_turno) REFERENCES LJDG.Turno(turn_id)
 		ON DELETE NO ACTION
-		ON UPDATE NO ACTION,
+		ON UPDATE NO ACTION
 )
 GO
 
@@ -154,21 +214,21 @@ CREATE TABLE LJDG.Viaje
 	viaj_fecha_fin       datetime  NULL ,
 	viaj_turno           int  NOT NULL ,
 	viaj_auto            int  NOT NULL ,
-	viaj_chofer          char(30)  NOT NULL ,
-	viaj_cliente         char(30)  NOT NULL ,
+	viaj_chofer          int  NOT NULL ,
+	viaj_cliente         int  NOT NULL ,
 	viaj_precio          numeric(18,2) NULL ,
 	viaj_importe_rend	 numeric(18,2) NULL ,
 	PRIMARY KEY  NONCLUSTERED (viaj_id ASC),
 	FOREIGN KEY (viaj_auto) REFERENCES LJDG.Automovil(auto_id)
 		ON DELETE NO ACTION
 		ON UPDATE NO ACTION,
-	 FOREIGN KEY (viaj_chofer) REFERENCES LJDG.Usuario(user_id)
+	 FOREIGN KEY (viaj_chofer) REFERENCES LJDG.Chofer(chof_id)
 		ON DELETE NO ACTION
 		ON UPDATE NO ACTION,
 	 FOREIGN KEY (viaj_turno) REFERENCES LJDG.Turno(turn_id)
 		ON DELETE NO ACTION
 		ON UPDATE NO ACTION,
-	 FOREIGN KEY (viaj_cliente) REFERENCES LJDG.Usuario(user_id)
+	 FOREIGN KEY (viaj_cliente) REFERENCES LJDG.Cliente(clie_id)
 		ON DELETE NO ACTION
 		ON UPDATE NO ACTION
 )
@@ -231,10 +291,10 @@ CREATE TABLE LJDG.Factura
 	fact_fecha_inicio    datetime  NOT NULL ,
 	fact_fecha_fin       datetime  NOT NULL ,
 	fact_fecha           datetime  NOT NULL ,
-	fact_cliente         char(30)  NOT NULL ,
+	fact_cliente         int  NOT NULL ,
 	fact_importe_total   numeric(18,2) NOT NULL ,
 	PRIMARY KEY  NONCLUSTERED (fact_nro ASC),
-	 FOREIGN KEY (fact_cliente) REFERENCES LJDG.Usuario(user_id)
+	FOREIGN KEY (fact_cliente) REFERENCES LJDG.Cliente(clie_id)
 		ON DELETE NO ACTION
 		ON UPDATE NO ACTION
 )
@@ -245,14 +305,32 @@ CREATE TABLE LJDG.Rendicion
 	rend_nro             numeric(18,0)  NOT NULL ,
 	rend_fecha           datetime  NULL ,
 	rend_turno           int  NOT NULL ,
-	rend_chofer          char(30)  NOT NULL ,
+	rend_chofer          int  NOT NULL ,
 	rend_importe_total   numeric(18,2) NOT NULL ,
 	PRIMARY KEY  NONCLUSTERED (rend_nro ASC),
-	 FOREIGN KEY (rend_chofer) REFERENCES LJDG.Usuario(user_id)
+	 FOREIGN KEY (rend_chofer) REFERENCES LJDG.Chofer(chof_id)
 		ON DELETE NO ACTION
 		ON UPDATE NO ACTION,
 	 FOREIGN KEY (rend_turno) REFERENCES LJDG.Turno(turn_id)
 		ON DELETE NO ACTION
 		ON UPDATE NO ACTION
 )
+GO
+
+CREATE VIEW LJDG.Viaje_Factura
+AS
+SELECT	LJDG.Factura.fact_nro, LJDG.Factura.fact_fecha_inicio, LJDG.Factura.fact_fecha_fin, LJDG.Factura.fact_cliente, LJDG.Viaje.viaj_precio
+FROM	LJDG.Factura INNER JOIN
+		LJDG.Viaje ON LJDG.Factura.fact_cliente = LJDG.Viaje.viaj_cliente
+WHERE	(LJDG.viaje_entra_en_factura(LJDG.Viaje.viaj_fecha_inicio, LJDG.Factura.fact_fecha_inicio, LJDG.Factura.fact_fecha_fin) = 1)
+
+GO
+
+CREATE VIEW LJDG.Viaje_Rendicion
+AS
+SELECT	LJDG.Rendicion.rend_nro, LJDG.Rendicion.rend_fecha, LJDG.Rendicion.rend_chofer, LJDG.Rendicion.rend_turno, LJDG.Viaje.viaj_importe_rend
+FROM	LJDG.Rendicion INNER JOIN
+        LJDG.Viaje ON LJDG.Rendicion.rend_chofer = LJDG.Viaje.viaj_chofer and LJDG.Rendicion.rend_turno = LJDG.Viaje.viaj_turno
+WHERE	(LJDG.viaje_entra_en_rendicion(LJDG.Viaje.viaj_fecha_inicio,LJDG.Rendicion.rend_fecha) = 1)
+
 GO

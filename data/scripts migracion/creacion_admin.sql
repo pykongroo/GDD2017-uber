@@ -8,11 +8,10 @@ GO*/
 INSERT INTO LJDG.Usuario
            (user_id
            ,user_password
-           ,user_nombre)
+           )
 VALUES (
 'admin',
-CONVERT(CHAR(64),HASHBYTES('SHA2_256', 'w23e'),2),
-'Administrador General'
+CONVERT(CHAR(64),HASHBYTES('SHA2_256', 'w23e'),2)
 )
 GO
 

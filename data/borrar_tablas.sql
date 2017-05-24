@@ -1,6 +1,16 @@
 USE GD1C2017
 GO
 
+--Vistas
+IF OBJECT_ID('LJDG.Viaje_Rendicion') IS NOT NULL
+	DROP VIEW [LJDG].[Viaje_Rendicion]
+GO
+
+IF OBJECT_ID('LJDG.Viaje_Factura') IS NOT NULL
+	DROP VIEW [LJDG].[Viaje_Factura]
+GO
+
+--Tablas
 IF OBJECT_ID('LJDG.Factura') IS NOT NULL
     DROP TABLE LJDG.Factura;
 GO
@@ -37,6 +47,14 @@ IF OBJECT_ID('LJDG.Turno') IS NOT NULL
     DROP TABLE LJDG.Turno;
 GO
 
+IF OBJECT_ID('LJDG.Cliente') IS NOT NULL
+    DROP TABLE LJDG.Cliente;
+GO
+
+IF OBJECT_ID('LJDG.Chofer') IS NOT NULL
+    DROP TABLE LJDG.Chofer;
+GO
+
 IF OBJECT_ID('LJDG.Usuario') IS NOT NULL
     DROP TABLE LJDG.Usuario;
 GO
@@ -44,4 +62,3 @@ GO
 IF OBJECT_ID('LJDG.Marca') IS NOT NULL
     DROP TABLE LJDG.Marca;
 GO
-

@@ -18,7 +18,7 @@ BEGIN
 
 	DECLARE @id INT
 	DECLARE @hab BIT
-	DECLARE @chof varchar(255)
+	DECLARE @chof INT
 
 	DECLARE c1 CURSOR FOR SELECT inserted.auto_id, inserted.auto_habilitado,inserted.auto_chofer
 						FROM inserted
