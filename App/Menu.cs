@@ -20,7 +20,7 @@ namespace UberFrba
         {
             InitializeComponent();
             init_items();
-            mostrar_funcionalidades_rol(Program.user.rol);
+           // mostrar_funcionalidades_rol(Program.user.rol);
         }
 
         private void init_items()
@@ -128,6 +128,11 @@ namespace UberFrba
         private void modificacionToolStripMenuItem_Click(object sender, EventArgs e)
         {
             new Abm_Automovil.BuscarAuto().Show();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            new Abm_Turno.AltaTurno().Show();
         }
 
     }
