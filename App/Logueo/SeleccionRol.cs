@@ -38,16 +38,8 @@ namespace UberFrba.Logueo
 
         private void Rol_Load(object sender, EventArgs e)
         {
-            List<String> rolesUser = Program.user.obtenerRolesUsuario();
-            if (rolesUser.Count > 0)
-            {
-                cmbRoles.DataSource = rolesUser;
+                cmbRoles.DataSource = Program.user.roles;
                 btnIngresar.Enabled = true;
-            }
-            else
-            {
-                MessageBox.Show(Program.user.id + " no tiene roles disponibles");
-            }
         }
 
         private void btnVolver_Click(object sender, EventArgs e)

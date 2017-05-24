@@ -26,9 +26,19 @@ namespace UberFrba.Logueo {
                     Program.user.password = textPass.Text.Sha256();
                     mensaje = Program.user.iniciarSesion();
                     if (mensaje == "OK") {
-                        SeleccionRol menuRoles = new SeleccionRol();
-                        this.Hide();
-                        menuRoles.Show();
+                        Program.user.obtenerRolesUsuario();
+                        if (Program.user.roles.Count == 0)
+                        {
+                            MessageBox.Show(Program.user.id + " no tiene roles disponibles.");
+                            textPass.Clear();
+                            textUser.Clear();
+                            textUser.Focus();
+                        }
+                        else
+                        {
+                            new SeleccionRol().Show();
+                            this.Hide();
+                        }
                         return;
                     }
                     MessageBox.Show(mensaje);

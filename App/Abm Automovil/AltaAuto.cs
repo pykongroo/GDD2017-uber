@@ -8,11 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace UberFrba.Viaje
+namespace UberFrba.Abm_Automovil
 {
-    public partial class RegistroViaje : Form
+    public partial class AltaAuto : Form
     {
-        public RegistroViaje()
+        public AltaAuto()
         {
             InitializeComponent();
         }
@@ -21,6 +21,5 @@ namespace UberFrba.Viaje
         {
             this.Hide();
         }
-
     }
 }

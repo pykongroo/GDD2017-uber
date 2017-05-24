@@ -88,6 +88,23 @@ namespace UberFrba
         {
             new RegistroViaje().Show();
         }
+
+        private void altaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            new Abm_Automovil.AltaAuto().Show();
+
+        }
+
+        private void bajaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            new Abm_Automovil.BuscarAuto().Show();
+        }
+
+        private void modificacionToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            new Abm_Automovil.BuscarAuto().Show();
+        }
+
     }
 }
 

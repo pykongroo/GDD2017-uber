@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RegistroViaje));
             this.lblChofer = new System.Windows.Forms.Label();
             this.txtBoxUserChofer = new System.Windows.Forms.TextBox();
             this.lblUserChofer = new System.Windows.Forms.Label();
@@ -321,10 +322,10 @@
             this.Controls.Add(this.lblChofer);
             this.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "RegistroViaje";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Registrar Viaje";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.RegistroViaje_FormClosing);
             this.ResumeLayout(false);
             this.PerformLayout();
 
