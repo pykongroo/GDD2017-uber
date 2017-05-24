@@ -89,7 +89,7 @@
             // 
             this.cerrarSesionToolStripMenuItem.Name = "cerrarSesionToolStripMenuItem";
             this.cerrarSesionToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
-            this.cerrarSesionToolStripMenuItem.Text = "Cerrar Sesion";
+            this.cerrarSesionToolStripMenuItem.Text = "Cerrar Sesión";
             this.cerrarSesionToolStripMenuItem.Click += new System.EventHandler(this.cerrarSesionToolStripMenuItem_Click);
             // 
             // aBMToolStripMenuItem
@@ -160,7 +160,7 @@
             // 
             this.modificacionToolStripMenuItem1.Name = "modificacionToolStripMenuItem1";
             this.modificacionToolStripMenuItem1.Size = new System.Drawing.Size(158, 22);
-            this.modificacionToolStripMenuItem1.Text = "Modificacion";
+            this.modificacionToolStripMenuItem1.Text = "Modificación";
             // 
             // clienteToolStripMenuItem
             // 
@@ -190,7 +190,7 @@
             // 
             this.modificacionToolStripMenuItem2.Name = "modificacionToolStripMenuItem2";
             this.modificacionToolStripMenuItem2.Size = new System.Drawing.Size(158, 22);
-            this.modificacionToolStripMenuItem2.Text = "Modificacion";
+            this.modificacionToolStripMenuItem2.Text = "Modificación";
             this.modificacionToolStripMenuItem2.Click += new System.EventHandler(this.modificacionToolStripMenuItem2_Click);
             // 
             // rolToolStripMenuItem
@@ -221,7 +221,7 @@
             // 
             this.modificacionToolStripMenuItem3.Name = "modificacionToolStripMenuItem3";
             this.modificacionToolStripMenuItem3.Size = new System.Drawing.Size(158, 22);
-            this.modificacionToolStripMenuItem3.Text = "Modificacion";
+            this.modificacionToolStripMenuItem3.Text = "Modificación";
             this.modificacionToolStripMenuItem3.Click += new System.EventHandler(this.modificacionToolStripMenuItem3_Click);
             // 
             // viajeToolStripMenuItem
@@ -235,8 +235,8 @@
             // registrarToolStripMenuItem
             // 
             this.registrarToolStripMenuItem.Name = "registrarToolStripMenuItem";
-            this.registrarToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
-            this.registrarToolStripMenuItem.Text = "Registrar...";
+            this.registrarToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.registrarToolStripMenuItem.Text = "Registrar";
             this.registrarToolStripMenuItem.Click += new System.EventHandler(this.registrarToolStripMenuItem_Click);
             // 
             // pictureBox1
@@ -260,7 +260,7 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Menu";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "UberFrba v1.0";
+            this.Text = "UberFRBA v1.0";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Menu_FormClosing);
             this.Load += new System.EventHandler(this.Menu_Load);
             this.menuStrip1.ResumeLayout(false);

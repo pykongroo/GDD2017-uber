@@ -69,11 +69,11 @@
     <Compile Include="Abm Cliente\AltaModificarCliente.Designer.cs">
       <DependentUpon>AltaModificarCliente.cs</DependentUpon>
     </Compile>
-    <Compile Include="Abm Cliente\BMCliente.cs">
+    <Compile Include="Abm Cliente\BuscarIndividuo.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Abm Cliente\BMCliente.Designer.cs">
-      <DependentUpon>BMCliente.cs</DependentUpon>
+    <Compile Include="Abm Cliente\BuscarIndividuo.Designer.cs">
+      <DependentUpon>BuscarIndividuo.cs</DependentUpon>
     </Compile>
     <Compile Include="Abm Rol\AltaRol.cs">
       <SubType>Form</SubType>
@@ -190,8 +190,8 @@
     <EmbeddedResource Include="Abm Cliente\AltaModificarCliente.resx">
       <DependentUpon>AltaModificarCliente.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Abm Cliente\BMCliente.resx">
-      <DependentUpon>BMCliente.cs</DependentUpon>
+    <EmbeddedResource Include="Abm Cliente\BuscarIndividuo.resx">
+      <DependentUpon>BuscarIndividuo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Abm Rol\AltaRol.resx">
       <DependentUpon>AltaRol.cs</DependentUpon>

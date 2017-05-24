@@ -8,8 +8,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using UberFrba.Abm_Cliente;
-using UberFrba.Viaje;
-using UberFrba.Logueo;
 using System.Data.SqlClient;
 
 namespace UberFrba
@@ -73,66 +71,53 @@ namespace UberFrba
         private void cerrarSesionToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.Hide();
-            new Login().Show();
+            new Logueo.Login().Show();
         }
 
 
         private void altaToolStripMenuItem3_Click(object sender, EventArgs e)
         {
-            //this.Hide();
             new Abm_Rol.AltaRol().Show();
         }
 
         private void bajaToolStripMenuItem3_Click(object sender, EventArgs e)
         {
-            //this.Hide();
             new Abm_Rol.BajaRol().Show();
         }
 
         private void modificacionToolStripMenuItem3_Click(object sender, EventArgs e)
         {
-            //this.Hide();
             new Abm_Rol.EditarRol().Show();
         }
 
         private void bajaToolStripMenuItem2_Click(object sender, EventArgs e)
         {
-            BajaModificarCliente bmCliente = new BajaModificarCliente(this, "B");
-            bmCliente.Show();
-            //this.Hide();
+            new BuscarIndividuo(this, "B").Show();
         }
 
         private void modificacionToolStripMenuItem2_Click(object sender, EventArgs e)
         {
-            BajaModificarCliente bmCliente = new BajaModificarCliente(this, "M");
-            bmCliente.Show();
-            //this.Hide();
+            new BuscarIndividuo(this, "M").Show();
         }
 
         private void altaToolStripMenuItem2_Click(object sender, EventArgs e)
         {
-            AltaModificarCliente amCliente = new AltaModificarCliente(this);
-            amCliente.Show();
-            //this.Hide();
-
+            new AltaModificarCliente(this).Show();
         }
 
         private void altaUsuarioToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            AltaUsuario altaUser = new AltaUsuario(this);
-            this.Hide();
-            altaUser.Show();
+            new AltaUsuario(this).Show();
         }
 
         private void registrarToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            new RegistroViaje().Show();
+            new Viaje.RegistroViaje().Show();
         }
 
         private void altaToolStripMenuItem_Click(object sender, EventArgs e)
         {
             new Abm_Automovil.AltaAuto().Show();
-
         }
 
         private void bajaToolStripMenuItem_Click(object sender, EventArgs e)

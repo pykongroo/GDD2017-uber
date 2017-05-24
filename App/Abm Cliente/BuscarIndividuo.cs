@@ -12,25 +12,20 @@ using UberFrba.Modelo;
 
 namespace UberFrba.Abm_Cliente
 {
-    public partial class BajaModificarCliente : CustomForm
+    public partial class BuscarIndividuo : CustomForm
     {
         private DataTable tabla = new DataTable();
         private String tipo;
-        public BajaModificarCliente()
+
+        public BuscarIndividuo()
         {
             InitializeComponent();
         }
 
-        public BajaModificarCliente(Form prev_form, String tipo) : base(prev_form)
+        public BuscarIndividuo(Form prev_form, String tipo) : base(prev_form)
         {
             this.tipo = tipo;
             InitializeComponent();
-        }
-
-        private void buttonCancelar_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            this.previo.Show();
         }
 
         private String generarQuery()
@@ -117,6 +112,12 @@ namespace UberFrba.Abm_Cliente
                 amCliente.Show();
                 this.Hide();
             }
+        }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            this.previo.Show();
         }
     }
 }

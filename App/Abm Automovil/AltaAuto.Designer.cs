@@ -46,7 +46,7 @@
             this.lblNombreChoferValor = new System.Windows.Forms.Label();
             this.lblApellidoChoferValor = new System.Windows.Forms.Label();
             this.btnCancelar = new System.Windows.Forms.Button();
-            this.btnSeleccionar = new System.Windows.Forms.Button();
+            this.btnIngresar = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lblMarca
@@ -220,22 +220,22 @@
             this.btnCancelar.UseVisualStyleBackColor = true;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
-            // btnSeleccionar
+            // btnIngresar
             // 
-            this.btnSeleccionar.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSeleccionar.Location = new System.Drawing.Point(190, 310);
-            this.btnSeleccionar.Name = "btnSeleccionar";
-            this.btnSeleccionar.Size = new System.Drawing.Size(100, 30);
-            this.btnSeleccionar.TabIndex = 25;
-            this.btnSeleccionar.Text = "Seleccionar";
-            this.btnSeleccionar.UseVisualStyleBackColor = true;
+            this.btnIngresar.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnIngresar.Location = new System.Drawing.Point(190, 310);
+            this.btnIngresar.Name = "btnIngresar";
+            this.btnIngresar.Size = new System.Drawing.Size(100, 30);
+            this.btnIngresar.TabIndex = 25;
+            this.btnIngresar.Text = "Ingresar";
+            this.btnIngresar.UseVisualStyleBackColor = true;
             // 
             // AltaAuto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(344, 361);
-            this.Controls.Add(this.btnSeleccionar);
+            this.Controls.Add(this.btnIngresar);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.lblApellidoChoferValor);
             this.Controls.Add(this.lblNombreChoferValor);
@@ -284,6 +284,6 @@
         private System.Windows.Forms.Label lblApellidoChoferValor;
         private System.Windows.Forms.Button btnRegistrar;
         private System.Windows.Forms.Button btnCancelar;
-        private System.Windows.Forms.Button btnSeleccionar;
+        private System.Windows.Forms.Button btnIngresar;
     }
 }
