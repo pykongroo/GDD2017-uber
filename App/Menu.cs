@@ -26,11 +26,16 @@ namespace UberFrba
         private void init_items()
         {
             funcionalidades_menu.Add("ABM de Rol", rolToolStripMenuItem);
+            funcionalidades_menu.Add("Registro de Usuario", altaUsuarioToolStripMenuItem);
             funcionalidades_menu.Add("ABM de Cliente", clienteToolStripMenuItem);
             funcionalidades_menu.Add("ABM de Automóvil", automovilToolStripMenuItem);
             funcionalidades_menu.Add("ABM de Chofer", choferToolStripMenuItem);
-            funcionalidades_menu.Add("Registro de Usuario", altaUsuarioToolStripMenuItem);
-            foreach(ToolStripItem item in funcionalidades_menu.Values)
+            //funcionalidades_menu.add("ABM de Turno", chofertoolstripmenuitem);
+            funcionalidades_menu.Add("Registro de Viajes", registrarToolStripMenuItem);
+            //funcionalidades_menu.add("Rendición de cuenta de Chofer", chofertoolstripmenuitem);
+            //funcionalidades_menu.add("Facturación a Cliente", chofertoolstripmenuitem);
+            //funcionalidades_menu.add("Listado Estadístico", chofertoolstripmenuitem);
+            foreach (ToolStripItem item in funcionalidades_menu.Values)
             {
                 item.Visible = false;
             }
@@ -46,12 +51,12 @@ namespace UberFrba
             SqlDataReader reader = command.ExecuteReader();
             while (reader.Read())
             {
-                funcionalidades_user.Add(reader.GetString(0));
+                funcionalidades_user.Add(reader.GetString(0).ToLower());
             }
             conn.con.Close();
             foreach(var nombre_func in funcionalidades_menu.Keys)
             {
-                if (funcionalidades_user.Contains(nombre_func))
+                if (funcionalidades_user.Contains(nombre_func.ToLower()))
                 {
                     funcionalidades_menu[nombre_func].Visible = true;
                 }
