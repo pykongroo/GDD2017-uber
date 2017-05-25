@@ -1,9 +1,8 @@
 USE [GD1C2017]
 GO
-/****** Object:  StoredProcedure [LJDG].[eliminar_rol]    Script Date: 25-May-17 4:07:56 PM ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER OFF
+
+IF EXISTS (SELECT name FROM sysobjects WHERE name='eliminar_turno' AND type='p')
+DROP PROCEDURE LJDG.eliminar_turno
 GO
 
 CREATE PROCEDURE [LJDG].[eliminar_turno]

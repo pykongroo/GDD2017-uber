@@ -107,11 +107,11 @@
     <Compile Include="Abm Turno\BajaTurno.Designer.cs">
       <DependentUpon>BajaTurno.cs</DependentUpon>
     </Compile>
-    <Compile Include="Abm Turno\EditarTurno2.cs">
+    <Compile Include="Abm Turno\EditarTurno.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Abm Turno\EditarTurno2.Designer.cs">
-      <DependentUpon>EditarTurno2.cs</DependentUpon>
+    <Compile Include="Abm Turno\EditarTurno.Designer.cs">
+      <DependentUpon>EditarTurno.cs</DependentUpon>
     </Compile>
     <Compile Include="ConexionBD\BDHandler.cs" />
     <Compile Include="ConexionBD\BDParametro.cs" />
@@ -230,8 +230,8 @@
     <EmbeddedResource Include="Abm Turno\BajaTurno.resx">
       <DependentUpon>BajaTurno.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Abm Turno\EditarTurno2.resx">
-      <DependentUpon>EditarTurno2.cs</DependentUpon>
+    <EmbeddedResource Include="Abm Turno\EditarTurno.resx">
+      <DependentUpon>EditarTurno.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AltaUsuario.resx">
       <DependentUpon>AltaUsuario.cs</DependentUpon>

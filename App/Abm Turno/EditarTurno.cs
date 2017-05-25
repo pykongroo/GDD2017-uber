@@ -11,17 +11,14 @@ using UberFrba.Utils;
 
 namespace UberFrba.Abm_Turno
 {
-    public partial class EditarTurno2 : Form
+    public partial class EditarTurno : Form
     {
+        List<Turno> misTurnos;
         Turno selectedItemTurno;
-        public EditarTurno2()
+
+        public EditarTurno()
         {
             InitializeComponent();
-        }
-
-        private void EditarTurno2_Load(object sender, EventArgs e)
-        {
-
         }
 
         private void cmbTurnos_SelectionChangeCommitted(object sender, EventArgs e)
@@ -74,41 +71,37 @@ namespace UberFrba.Abm_Turno
                 MessageBox.Show("El valor del precio base no puede ser 0");
                 return false;
             }
+            foreach (Turno t in misTurnos)
+            {
+                if (t != selectedItemTurno)
+                {
+                    if (t.seSolapaCon(numHoraInicio.Value, numHoraFin.Value))
+                    {
+                        MessageBox.Show("La franja horaria del turno se solapa con turno: " + t.ID_Turno + ": " +
+                            t.Descripcion + " [" + t.Hora_Inicio + "-" + t.Hora_Finalizacion + "]");
+                        return false;
+                    }
+                }
+            }
             return true;
 
         }
 
 
-        private void btnModificarTurno_Click(object sender, EventArgs e)
-        {
-
-
-        }
-
-        private void cmbTurnos_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void EditarTurno2_FormClosing(object sender, FormClosingEventArgs e)
+        private void EditarTurno_FormClosing(object sender, FormClosingEventArgs e)
         {
             this.Hide();
             //new Menu().Show();
         }
 
-        private void cmbTurnos_SelectedIndexChanged_1(object sender, EventArgs e)
+        private void EditarTurno_Load(object sender, EventArgs e)
         {
-
-        }
-
-        private void EditarTurno2_Load_1(object sender, EventArgs e)
-        {
-            var misTurnos = Turno.obtenerTurnos();
+            misTurnos = Turno.obtenerTurnos();
             cmbTurnos.DataSource = misTurnos;
             cmbTurnos.DisplayMember = "Descripcion";
         }
 
-        private void btnModificarTurno_Click_1(object sender, EventArgs e)
+        private void btnModificarTurno_Click(object sender, EventArgs e)
         {
             int habilitar = 0;
             if (validacion())

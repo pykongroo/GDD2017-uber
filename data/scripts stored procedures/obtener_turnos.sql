@@ -1,9 +1,8 @@
 USE [GD1C2017]
 GO
-/****** Object:  StoredProcedure [LJDG].[obtener_funcionalidades]    Script Date: 25-May-17 4:10:44 PM ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER OFF
+
+IF EXISTS (SELECT name FROM sysobjects WHERE name='obtener_turnos' AND type='p')
+DROP PROCEDURE LJDG.obtener_turnos
 GO
 
 CREATE PROCEDURE [LJDG].[obtener_turnos]

@@ -13,6 +13,7 @@ using UberFrba.Abm_Rol;
 using UberFrba.Viaje;
 using UberFrba.Abm_Automovil;
 using UberFrba.Rendicion_Viajes;
+using UberFrba.Abm_Turno;
 
 namespace UberFrba
 {
@@ -138,22 +139,17 @@ namespace UberFrba
 
         private void button1_Click(object sender, EventArgs e)
         {
-            new Abm_Turno.AltaTurno().Show();
+            new AltaTurno().Show();
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            new Abm_Turno.BajaTurno().Show();
+            new BajaTurno().Show();
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-            
-        }
-
-        private void button3_Click_1(object sender, EventArgs e)
-        {
-            new Abm_Turno.EditarTurno2().Show();
+            new EditarTurno().Show();
         }
 
 
@@ -161,6 +157,21 @@ namespace UberFrba
         {
             RendicionChofer rend_chofer = new RendicionChofer();
             rend_chofer.Show(); 
+        }
+
+        private void altaToolStripMenuItem4_Click(object sender, EventArgs e)
+        {
+            new AltaTurno().Show();
+        }
+
+        private void bajaToolStripMenuItem4_Click(object sender, EventArgs e)
+        {
+            new BajaTurno().Show();
+        }
+
+        private void modificaciónToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            new EditarTurno().Show();
         }
 
     }

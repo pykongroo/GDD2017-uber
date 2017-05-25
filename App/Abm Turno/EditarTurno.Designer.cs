@@ -1,6 +1,6 @@
 ﻿namespace UberFrba.Abm_Turno
 {
-    partial class EditarTurno2
+    partial class EditarTurno
     {
         /// <summary>
         /// Required designer variable.
@@ -60,7 +60,7 @@
             this.btnModificarTurno.TabIndex = 22;
             this.btnModificarTurno.Text = "Modificar turno";
             this.btnModificarTurno.UseVisualStyleBackColor = true;
-            this.btnModificarTurno.Click += new System.EventHandler(this.btnModificarTurno_Click_1);
+            this.btnModificarTurno.Click += new System.EventHandler(this.btnModificarTurno_Click);
             // 
             // numPrecioBase
             // 
@@ -225,7 +225,6 @@
             this.cmbTurnos.Name = "cmbTurnos";
             this.cmbTurnos.Size = new System.Drawing.Size(213, 21);
             this.cmbTurnos.TabIndex = 27;
-            this.cmbTurnos.SelectedIndexChanged += new System.EventHandler(this.cmbTurnos_SelectedIndexChanged_1);
             this.cmbTurnos.SelectionChangeCommitted += new System.EventHandler(this.cmbTurnos_SelectionChangeCommitted);
             // 
             // label6
@@ -258,9 +257,9 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.shapeContainer1);
-            this.Name = "EditarTurno2";
-            this.Text = "EditarTurno2";
-            this.Load += new System.EventHandler(this.EditarTurno2_Load_1);
+            this.Name = "EditarTurno";
+            this.Text = "EditarTurno";
+            this.Load += new System.EventHandler(this.EditarTurno_Load);
             ((System.ComponentModel.ISupportInitialize)(this.numPrecioBase)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numValorKM)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numHoraFin)).EndInit();

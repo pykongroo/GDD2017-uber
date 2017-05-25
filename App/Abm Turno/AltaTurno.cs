@@ -14,23 +14,21 @@ namespace UberFrba.Abm_Turno
 {
     public partial class AltaTurno : Form
     {
+        List<Turno> misTurnos;
+
         public AltaTurno()
         {
             InitializeComponent();
         }
 
-        private void label5_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void AltaTurno_Load(object sender, EventArgs e)
         {
-            // MessageBox.Show(typeof(NumericUpDown).ToString);
+            misTurnos = Turno.obtenerTurnos();
         }
 
         private bool validacion()
         {
+            
             if (numHoraInicio.Value >= numHoraFin.Value)
             {
                 MessageBox.Show("El horario de finalización debe ser mayor al de inicio");
@@ -51,6 +49,15 @@ namespace UberFrba.Abm_Turno
                 MessageBox.Show("El valor del precio base no puede ser 0");
                 return false;
             }
+            foreach (Turno t in misTurnos)
+            {
+                if (t.seSolapaCon(numHoraInicio.Value, numHoraFin.Value))
+                {
+                    MessageBox.Show("La franja horaria del turno se solapa con turno: " + t.ID_Turno + ": " +
+                        t.Descripcion + " [" + t.Hora_Inicio + "-" + t.Hora_Finalizacion + "]");
+                    return false;
+                }
+            }
             return true;
 
         }
@@ -60,7 +67,6 @@ namespace UberFrba.Abm_Turno
             var camposOk = validacion();
             if (camposOk)
             {
-               
                 Turno.insertarTurno(txtDescripcion.Text, numHoraInicio.Value, numHoraFin.Value, numValorKM.Value, numPrecioBase.Value);
                 MessageBox.Show("El turno ha sido creado correctamente");
                 this.Hide();

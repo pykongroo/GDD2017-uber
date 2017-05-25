@@ -73,12 +73,18 @@ namespace UberFrba.Modelo
                     .Select(m => new Turno()
                     {
                         ID_Turno = m.Field<int>("ID_Turno")
-                        , Hora_Inicio = m.Field<decimal>("HoraInicio")
-                        , Hora_Finalizacion = m.Field<decimal>("HoraFinalizacion")
-                        , Descripcion = m.Field<string>("Descripcion")
-                        , Valor_Km = m.Field<decimal>("ValorKm")
-                        , Precio_Base = m.Field<decimal>("PrecioBase")
-                        , Habilitado = m.Field<bool>("Habilitado") 
+                        ,
+                        Hora_Inicio = m.Field<decimal>("HoraInicio")
+                        ,
+                        Hora_Finalizacion = m.Field<decimal>("HoraFinalizacion")
+                        ,
+                        Descripcion = m.Field<string>("Descripcion")
+                        ,
+                        Valor_Km = m.Field<decimal>("ValorKm")
+                        ,
+                        Precio_Base = m.Field<decimal>("PrecioBase")
+                        ,
+                        Habilitado = m.Field<bool>("Habilitado")
                     }).ToList();
                 //.AsEnumerable()
                 //.Select(r => r[0].ToString()).ToList();
@@ -150,6 +156,20 @@ namespace UberFrba.Modelo
                 MessageBox.Show(ex.ToString());
                 throw ex;
             }
+        }
+
+        public bool seSolapaCon(decimal nuevaHora_Inicio, decimal nuevaHora_Fin)
+        {
+            if (nuevaHora_Inicio >= Hora_Inicio && nuevaHora_Inicio < Hora_Finalizacion)
+                return true;
+                //si la hora de inicio esta entre las 2 horas del turno existente o es igual a la de comienzo
+                // ej. turno entre 8 y 16 y mi hora de inicio nueva esta entre 8 y 15, error, si es 16 o 7 OK
+            if (nuevaHora_Fin > Hora_Inicio && nuevaHora_Fin <= Hora_Finalizacion)
+                return true;
+                //si la hora de fin esta entre las 2 horas del turno existente o es igual a la de fin
+                // ej. turno entre 8 y 16 y mi hora de fin nueva esta entre 9 y 16, error, si es 17 u 8 OK
+            return false;
+            //si pasa ambas pruebas esta OK                                                     
         }
     }
 }
