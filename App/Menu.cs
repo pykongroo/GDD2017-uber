@@ -12,6 +12,7 @@ using System.Data.SqlClient;
 using UberFrba.Abm_Rol;
 using UberFrba.Viaje;
 using UberFrba.Abm_Automovil;
+using UberFrba.Rendicion_Viajes;
 
 namespace UberFrba
 {
@@ -33,15 +34,11 @@ namespace UberFrba
             funcionalidades_menu.Add("ABM de Cliente", clienteToolStripMenuItem);
             funcionalidades_menu.Add("ABM de Automóvil", automovilToolStripMenuItem);
             funcionalidades_menu.Add("ABM de Chofer", choferToolStripMenuItem);
-            //funcionalidades_menu.add("ABM de Turno", chofertoolstripmenuitem);
+            funcionalidades_menu.Add("ABM de Turno", rolToolStripMenuItem);
             funcionalidades_menu.Add("Registro de Viajes", registrarToolStripMenuItem);
-            //funcionalidades_menu.add("Rendición de cuenta de Chofer", chofertoolstripmenuitem);
-            //funcionalidades_menu.add("Facturación a Cliente", chofertoolstripmenuitem);
-            //funcionalidades_menu.add("Listado Estadístico", chofertoolstripmenuitem);
-            foreach (ToolStripItem item in funcionalidades_menu.Values)
-            {
-                item.Visible = false;
-            }
+            funcionalidades_menu.Add("Rendición de cuenta de Chofer", rendicionChoferToolStripMenuItem);
+            funcionalidades_menu.Add("Facturación a Cliente", facturacionToolStripMenuItem);
+            funcionalidades_menu.Add("Listado Estadístico", listadoEstadisticoToolStripMenuItem);
         }
 
         private void mostrar_funcionalidades_rol(String rol_nombre)
@@ -59,9 +56,9 @@ namespace UberFrba
             conn.con.Close();
             foreach(var nombre_func in funcionalidades_menu.Keys)
             {
-                if (funcionalidades_user.Contains(nombre_func.ToLower()))
+                if (!funcionalidades_user.Contains(nombre_func.ToLower()))
                 {
-                    funcionalidades_menu[nombre_func].Visible = true;
+                    funcionalidades_menu[nombre_func].Visible = false;
                 }
             }
         }
@@ -138,6 +135,7 @@ namespace UberFrba
             new BuscarAuto().Show();
         }
 
+
         private void button1_Click(object sender, EventArgs e)
         {
             new Abm_Turno.AltaTurno().Show();
@@ -156,6 +154,13 @@ namespace UberFrba
         private void button3_Click_1(object sender, EventArgs e)
         {
             new Abm_Turno.EditarTurno2().Show();
+        }
+
+
+        private void rendicionChoferToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            RendicionChofer rend_chofer = new RendicionChofer();
+            rend_chofer.Show(); 
         }
 
     }
