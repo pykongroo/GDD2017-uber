@@ -170,11 +170,11 @@
     <Compile Include="Viaje\RegistroViaje.Designer.cs">
       <DependentUpon>RegistroViaje.cs</DependentUpon>
     </Compile>
-    <Compile Include="Rendicion Viajes\Form1.cs">
+    <Compile Include="Rendicion Viajes\RendicionChofer.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Rendicion Viajes\Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="Rendicion Viajes\RendicionChofer.Designer.cs">
+      <DependentUpon>RendicionChofer.cs</DependentUpon>
     </Compile>
     <Compile Include="Utils\PasswordInput.cs">
       <SubType>UserControl</SubType>
@@ -208,6 +208,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Logueo\SeleccionRol.resx">
       <DependentUpon>SeleccionRol.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Rendicion Viajes\RendicionChofer.resx">
+      <DependentUpon>RendicionChofer.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Viaje\RegistroViaje.resx">
       <DependentUpon>RegistroViaje.cs</DependentUpon>

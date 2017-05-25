@@ -296,6 +296,7 @@
             this.rendicionChoferToolStripMenuItem.Name = "rendicionChoferToolStripMenuItem";
             this.rendicionChoferToolStripMenuItem.Size = new System.Drawing.Size(72, 20);
             this.rendicionChoferToolStripMenuItem.Text = "Rendicion";
+            this.rendicionChoferToolStripMenuItem.Click += new System.EventHandler(this.rendicionChoferToolStripMenuItem_Click);
             // 
             // facturacionToolStripMenuItem
             // 

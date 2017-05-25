@@ -12,6 +12,7 @@ using System.Data.SqlClient;
 using UberFrba.Abm_Rol;
 using UberFrba.Viaje;
 using UberFrba.Abm_Automovil;
+using UberFrba.Rendicion_Viajes;
 
 namespace UberFrba
 {
@@ -134,6 +135,11 @@ namespace UberFrba
             new BuscarAuto().Show();
         }
 
+        private void rendicionChoferToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            RendicionChofer rend_chofer = new RendicionChofer();
+            rend_chofer.Show(); 
+        }
     }
 }
 

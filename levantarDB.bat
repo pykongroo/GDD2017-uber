@@ -17,6 +17,7 @@ sqlcmd -S LOCALHOST\SQLSERVER2012 -U gd -P gd2017 -i "data/scripts stored proced
 sqlcmd -S LOCALHOST\SQLSERVER2012 -U gd -P gd2017 -i "data/scripts stored procedures/obtener_roles_usuario.sql"
 sqlcmd -S LOCALHOST\SQLSERVER2012 -U gd -P gd2017 -i "data/scripts stored procedures/obtener_roles.sql"
 sqlcmd -S LOCALHOST\SQLSERVER2012 -U gd -P gd2017 -i "data/scripts stored procedures/ABM_Usuario.sql"
+sqlcmd -S LOCALHOST\SQLSERVER2012 -U gd -P gd2017 -i "data/scripts stored procedures/SP_justificacion_rendiciones.sql"
 
 sqlcmd -S LOCALHOST\SQLSERVER2012 -U gd -P gd2017 -i "data/scripts migracion/insercion_roles_y_funcionalidades.sql"
 sqlcmd -S LOCALHOST\SQLSERVER2012 -U gd -P gd2017 -i "data/scripts migracion/creacion_admin.sql"
