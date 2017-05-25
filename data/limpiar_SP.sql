@@ -25,6 +25,25 @@ BEGIN
 END;
 GO
 
+IF OBJECT_ID('LJDG.crear_turno') IS NOT NULL
+BEGIN
+    DROP PROCEDURE LJDG.crear_turno
+END;
+GO
+
+IF OBJECT_ID('LJDG.editar_turno') IS NOT NULL
+BEGIN
+    DROP PROCEDURE LJDG.editar_turno
+END;
+GO
+
+IF OBJECT_ID('LJDG.eliminar_turno') IS NOT NULL
+BEGIN
+    DROP PROCEDURE LJDG.eliminar_turno
+END;
+GO
+
+
 IF OBJECT_ID('LJDG.iniciar_sesion') IS NOT NULL
 BEGIN
     DROP PROCEDURE LJDG.iniciar_sesion
@@ -46,6 +65,12 @@ GO
 IF OBJECT_ID('LJDG.obtener_roles') IS NOT NULL
 BEGIN
     DROP PROCEDURE LJDG.obtener_roles
+END;
+GO
+
+IF OBJECT_ID('LJDG.obtener_turnos') IS NOT NULL
+BEGIN
+    DROP PROCEDURE LJDG.obtener_turnos
 END;
 GO
 

@@ -11,19 +11,17 @@ using UberFrba.Utils;
 
 namespace UberFrba.Abm_Turno
 {
-    public partial class EditarTurno : Form
+    public partial class EditarTurno2 : Form
     {
         Turno selectedItemTurno;
-        public EditarTurno()
+        public EditarTurno2()
         {
             InitializeComponent();
         }
 
-        private void EditarTurno_Load(object sender, EventArgs e)
+        private void EditarTurno2_Load(object sender, EventArgs e)
         {
-            var misTurnos = Turno.obtenerTurnos();
-            cmbTurnos.DataSource = misTurnos;
-            cmbTurnos.DisplayMember = "Descripcion";
+
         }
 
         private void cmbTurnos_SelectionChangeCommitted(object sender, EventArgs e)
@@ -83,6 +81,35 @@ namespace UberFrba.Abm_Turno
 
         private void btnModificarTurno_Click(object sender, EventArgs e)
         {
+
+
+        }
+
+        private void cmbTurnos_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void EditarTurno2_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            this.Hide();
+            //new Menu().Show();
+        }
+
+        private void cmbTurnos_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void EditarTurno2_Load_1(object sender, EventArgs e)
+        {
+            var misTurnos = Turno.obtenerTurnos();
+            cmbTurnos.DataSource = misTurnos;
+            cmbTurnos.DisplayMember = "Descripcion";
+        }
+
+        private void btnModificarTurno_Click_1(object sender, EventArgs e)
+        {
             int habilitar = 0;
             if (validacion())
             {
@@ -98,18 +125,6 @@ namespace UberFrba.Abm_Turno
                 //Menu menuPrincipal = new Menu();
                 //menuPrincipal.Show();
             }
-            
-        }
-
-        private void cmbTurnos_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void EditarTurno_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            this.Hide();
-            //new Menu().Show();
         }
     }
 }

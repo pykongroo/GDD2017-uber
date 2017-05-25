@@ -150,7 +150,12 @@ namespace UberFrba
 
         private void button3_Click(object sender, EventArgs e)
         {
-            new Abm_Turno.EditarTurno().Show();
+            
+        }
+
+        private void button3_Click_1(object sender, EventArgs e)
+        {
+            new Abm_Turno.EditarTurno2().Show();
         }
 
     }
