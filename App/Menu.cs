@@ -9,6 +9,9 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using UberFrba.Abm_Cliente;
 using System.Data.SqlClient;
+using UberFrba.Abm_Rol;
+using UberFrba.Viaje;
+using UberFrba.Abm_Automovil;
 
 namespace UberFrba
 {
@@ -87,12 +90,12 @@ namespace UberFrba
 
         private void bajaToolStripMenuItem3_Click(object sender, EventArgs e)
         {
-            new Abm_Rol.BajaRol().Show();
+            new BajaRol().Show();
         }
 
         private void modificacionToolStripMenuItem3_Click(object sender, EventArgs e)
         {
-            new Abm_Rol.EditarRol().Show();
+            new EditarRol().Show();
         }
 
         private void bajaToolStripMenuItem2_Click(object sender, EventArgs e)
@@ -117,22 +120,22 @@ namespace UberFrba
 
         private void registrarToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            new Viaje.RegistroViaje().Show();
+            new RegistroViaje().Show();
         }
 
         private void altaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            new Abm_Automovil.AltaAuto().Show();
+            new AltaAuto().Show();
         }
 
         private void bajaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            new Abm_Automovil.BuscarAuto().Show();
+            new BuscarAuto().Show();
         }
 
         private void modificacionToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            new Abm_Automovil.BuscarAuto().Show();
+            new BuscarAuto().Show();
         }
 
     }

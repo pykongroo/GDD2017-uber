@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
@@ -8,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using UberFrba.Modelo;
+using UberFrba.Utils;
 
 namespace UberFrba.Abm_Rol
 {
@@ -15,8 +15,9 @@ namespace UberFrba.Abm_Rol
     {
         DataTable funcDelRol;
         List<Funcionalidad> misFuncionalidades;
-        List<Modelo.Rol> misRoles;
+        List<Rol> misRoles;
         Rol selectedItemRol;
+
         public EditarRol()
         {
             InitializeComponent();
@@ -36,30 +37,12 @@ namespace UberFrba.Abm_Rol
 
         }
 
-        public DataTable ConvertToDataTable<T>(IList<T> data)
-        {
-            PropertyDescriptorCollection properties =
-               TypeDescriptor.GetProperties(typeof(T));
-            DataTable table = new DataTable();
-            foreach (PropertyDescriptor prop in properties)
-                table.Columns.Add(prop.Name, Nullable.GetUnderlyingType(prop.PropertyType) ?? prop.PropertyType);
-            foreach (T item in data)
-            {
-                DataRow row = table.NewRow();
-                foreach (PropertyDescriptor prop in properties)
-                    row[prop.Name] = prop.GetValue(item) ?? DBNull.Value;
-                table.Rows.Add(row);
-            }
-            return table;
-
-        }
-
         private void cmbRoles_SelectionChangeCommitted(object sender, EventArgs e)
         {
             if (gridLista.Columns.Count == 3)
                 gridLista.Columns.Remove(gridLista.Columns[2]);
             List<Funcionalidad> listaFuncDelRol;
-            selectedItemRol = (Modelo.Rol)cmbRoles.SelectedItem;
+            selectedItemRol = (Rol)cmbRoles.SelectedItem;
             listaFuncDelRol = Funcionalidad.obtenerFuncxRol(selectedItemRol.ID_Rol);
             txtNombreRol.Enabled = true;
             btnModificar.Enabled = true;
@@ -71,15 +54,17 @@ namespace UberFrba.Abm_Rol
             {
                 lblDeshabilitado.Visible = true;
                 radioHabilitar.Visible = true;
+                radioHabilitar.Checked = false;
             }
             else
             {
                 lblDeshabilitado.Visible = false;
                 radioHabilitar.Visible = false;
+                radioHabilitar.Checked = true;
             }
             //DataTable dtFunciondalidades = new DataTable();
             //dtFunciondalidades.ConvertToDataTable(funcDelRol);
-            funcDelRol = ConvertToDataTable(listaFuncDelRol);
+            funcDelRol = listaFuncDelRol.ConvertToDataTable();
 
             gridLista.DataSource = funcDelRol;
             DataGridViewButtonColumn btn = new DataGridViewButtonColumn();
@@ -113,7 +98,7 @@ namespace UberFrba.Abm_Rol
         private void btnFuncionalidad_Click(object sender, EventArgs e)
         {
             Funcionalidad selectedItem = (Funcionalidad)cmbFuncionalidades.SelectedItem;
-            bool exists = funcDelRol.AsEnumerable().Where(c => c.Field<string>("descripcion").Equals(selectedItem.Descripcion)).Count() > 0;
+            bool exists = funcDelRol.AsEnumerable().Any(c => c.Field<int>("ID_Funcionalidad") == selectedItem.ID_Funcionalidad);
             if (!exists)
             {
                 DataRow _funcionalidad = funcDelRol.NewRow();
@@ -135,9 +120,22 @@ namespace UberFrba.Abm_Rol
         private void btnModificar_Click(object sender, EventArgs e)
         {
             int habilitar = 0;
+            bool valido = true;
             if (txtNombreRol.Text != "")
             {
-
+                foreach (DataRow row in funcDelRol.Rows)
+                {
+                    if (!misFuncionalidades.Any(f => f.ID_Funcionalidad == row.Field<int>("ID_Funcionalidad")))
+                    {
+                        valido = false;
+                        row.SetColumnError(0,"Funcionalidad inexistente");
+                    }
+                }
+                if (!valido)
+                {
+                    MessageBox.Show("La lista de funcionalidades seleccionadas contiene una o más funcionalidades inexistentes"); 
+                    return;
+                }
                 if (radioHabilitar.Checked)
                 {
                     habilitar = 1;

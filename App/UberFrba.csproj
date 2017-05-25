@@ -105,6 +105,7 @@
     <Compile Include="Modelo\Funcionalidad.cs" />
     <Compile Include="Modelo\Rol.cs" />
     <Compile Include="Modelo\Usuario.cs" />
+    <Compile Include="Utils\DataTableHandler.cs" />
     <Compile Include="Utils\CustomDatePick.cs">
       <SubType>UserControl</SubType>
     </Compile>

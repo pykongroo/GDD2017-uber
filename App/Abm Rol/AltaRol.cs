@@ -15,12 +15,15 @@ namespace UberFrba.Abm_Rol
     {
         // List<Funcionalidad> funcSeleccionadas;
         DataTable dtFuncSeleccionadas;
+        List<Funcionalidad> misFuncionalidades;
+        List<Rol> misRoles;
 
         public AltaRol()
         {
             InitializeComponent();
             //funcSeleccionadas = new List<Funcionalidad>();
             dtFuncSeleccionadas = new DataTable();
+
         }
 
 
@@ -41,8 +44,8 @@ namespace UberFrba.Abm_Rol
 
         private void AltaRol_Load(object sender, EventArgs e)
         {
-
-            var misFuncionalidades = Funcionalidad.obtenerFuncionalidades();
+            misRoles = Rol.obtenerRoles();
+            misFuncionalidades = Funcionalidad.obtenerFuncionalidades();
             cmbFuncionalidades.DataSource = misFuncionalidades;
             cmbFuncionalidades.DisplayMember = "Descripcion";
 
@@ -50,8 +53,8 @@ namespace UberFrba.Abm_Rol
 
 
             dtFuncSeleccionadas.Clear();
-            dtFuncSeleccionadas.Columns.Add("ID_Funcionalidad");
-            dtFuncSeleccionadas.Columns.Add("Descripcion");
+            dtFuncSeleccionadas.Columns.Add("ID_Funcionalidad", typeof(int));
+            dtFuncSeleccionadas.Columns.Add("Descripcion", typeof(string));
             gridLista.DataSource = dtFuncSeleccionadas;
 
             DataGridViewButtonColumn btn = new DataGridViewButtonColumn();
@@ -60,12 +63,6 @@ namespace UberFrba.Abm_Rol
             btn.Text = "Eliminar";
             btn.Name = "btnEliminarFunc";
             btn.UseColumnTextForButtonValue = true;
-
-        }
-
-
-        private void cmbFuncionalidades_SelectedIndexChanged(object sender, EventArgs e)
-        {
 
         }
 
@@ -81,7 +78,7 @@ namespace UberFrba.Abm_Rol
              }
              */
 
-            bool exists = dtFuncSeleccionadas.AsEnumerable().Where(c => c.Field<string>("Descripcion").Equals(selectedItem.Descripcion)).Count() > 0;
+            bool exists = dtFuncSeleccionadas.AsEnumerable().Any(c => c.Field<int>("ID_Funcionalidad") == selectedItem.ID_Funcionalidad);
             if (!exists)
             {
                 DataRow _funcionalidad = dtFuncSeleccionadas.NewRow();
@@ -95,25 +92,36 @@ namespace UberFrba.Abm_Rol
             }
             gridLista.Update();
             gridLista.Refresh();
-
-
-
         }
 
         private void btnAgregar_Click(object sender, EventArgs e)
         {
-            var misRoles = Rol.obtenerRoles();
+            bool valido = true;
             if (txtNombre.Text != "")
             {
                 if (!misRoles.Exists(x => x.Nombre == txtNombre.Text))
                 {
+                    foreach (DataRow row in dtFuncSeleccionadas.Rows)
+                    {
+                        if (!misFuncionalidades.Any(f => f.ID_Funcionalidad == row.Field<int>("ID_Funcionalidad")))
+                        {
+                            valido = false;
+                            row.SetColumnError(0, "Funcionalidad inexistente");
+                        }
+                    }
+                    if (!valido)
+                    {
+                        MessageBox.Show("La lista de funcionalidades seleccionadas contiene una o más funcionalidades inexistentes");
+                        return;
+                    }
+
                     var miNuevoID = Rol.insertarRol(txtNombre.Text);
                     //MessageBox.Show("Rol insertado");
                     if (dtFuncSeleccionadas.Rows.Count > 0)
                     {
                         foreach (DataRow row in dtFuncSeleccionadas.Rows)
                         {
-                            Funcionalidad.insertarFuncxRol(miNuevoID, Convert.ToInt32(row["ID_Funcionalidad"]));
+                            Funcionalidad.insertarFuncxRol(miNuevoID, row.Field<int>("ID_Funcionalidad"));
                         }
                     }
                     txtNombre.Text = "";
@@ -121,6 +129,7 @@ namespace UberFrba.Abm_Rol
                     this.Hide();
                     //Menu menuPrincipal = new Menu();
                     //menuPrincipal.Show();
+
                 }
                 else
                 {
@@ -139,5 +148,6 @@ namespace UberFrba.Abm_Rol
             this.Hide();
             //new Menu().Show();
         }
+
     }
 }
