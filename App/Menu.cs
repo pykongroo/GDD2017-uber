@@ -23,7 +23,7 @@ namespace UberFrba
         {
             InitializeComponent();
             init_items();
-           // mostrar_funcionalidades_rol(Program.user.rol);
+            mostrar_funcionalidades_rol(Program.user.rol);
         }
 
         private void init_items()
@@ -146,6 +146,11 @@ namespace UberFrba
         private void button2_Click(object sender, EventArgs e)
         {
             new Abm_Turno.BajaTurno().Show();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            new Abm_Turno.EditarTurno().Show();
         }
 
     }

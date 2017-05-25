@@ -130,19 +130,19 @@ namespace UberFrba.Modelo
             }
         }
 
-        public static void editarTurno(int turnoId, string descripcion, int horaInicio, int horaFin, decimal valorKm, decimal precioBase, bool turnoHabilitado)
+        public static void editarTurno(int turnoId, string descripcion, decimal horaInicio, decimal horaFin, decimal valorKm, decimal precioBase, int turnoHabilitado)
         {
             List<BDParametro> listParametros = new List<BDParametro>();
             try
             {
                 BDHandler handler = new BDHandler();
-                listParametros.Add(new BDParametro("@turnoId", turnoId));
                 listParametros.Add(new BDParametro("@descripcion", descripcion));
                 listParametros.Add(new BDParametro("@horaInicio", horaInicio));
                 listParametros.Add(new BDParametro("@horaFin", horaFin));
                 listParametros.Add(new BDParametro("@valorKm", valorKm));
                 listParametros.Add(new BDParametro("@precioBase", precioBase));
-                listParametros.Add(new BDParametro("@turnoHabilitado", turnoHabilitado));
+                listParametros.Add(new BDParametro("@habilitado", turnoHabilitado));
+                listParametros.Add(new BDParametro("@turno_id", turnoId));
                 handler.execSP("LJDG.editar_turno", ref listParametros);
             }
             catch (Exception ex)
