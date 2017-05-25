@@ -21,15 +21,15 @@ namespace UberFrba.Abm_Rol
 
         private void btnEliminarRol_Click(object sender, EventArgs e)
         {
-            var confirmResult = MessageBox.Show("¿Esta seguro que desea eliminar el rol seleccionado?",
-                                     "Si, eliminar rol",
+            Rol selectedItem = (Rol)cmbRoles.SelectedItem;
+            var confirmResult = MessageBox.Show("¿Esta seguro que desea inhabilitar el rol seleccionado?",
+                                     "Dar de baja <" + selectedItem.Nombre + ">?",
                                      MessageBoxButtons.YesNo);
             if (confirmResult == DialogResult.Yes)
             {
                 // BAJA LOGICA DEL ROL y BORRADO DE LA TABLA ROL USUARIO.
-                Modelo.Rol selectedItem = (Modelo.Rol)cmbRoles.SelectedItem;
                 Rol.eliminarRol(selectedItem.ID_Rol);
-                MessageBox.Show("El Rol " + selectedItem.Nombre + " ha sido eliminado");  
+                MessageBox.Show("El Rol " + selectedItem.Nombre + " ha sido dado de baja");  
                 this.Hide();
                 //Menu menuPrincipal = new Menu();
                 //menuPrincipal.Show();
@@ -38,11 +38,6 @@ namespace UberFrba.Abm_Rol
             {
                 //NADA
             }
-        }
-
-        private void cmbRoles_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
         }
 
         private void BajaRolForm_Load(object sender, EventArgs e)

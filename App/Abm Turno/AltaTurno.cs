@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using UberFrba.Modelo;
+
 
 namespace UberFrba.Abm_Turno
 {
@@ -39,12 +41,12 @@ namespace UberFrba.Abm_Turno
                 MessageBox.Show("Por favor complete la descripción");
                 return false;
             }
-            if ((double)numValorKM.Value == 0.00)
+            if (numValorKM.Value == Convert.ToDecimal(0))
             {
                 MessageBox.Show("El valor del Km no puede ser 0");
                 return false;
             }
-            if ((double)numPrecioBase.Value == 0.00)
+            if (numPrecioBase.Value == Convert.ToDecimal(0))
             {
                 MessageBox.Show("El valor del precio base no puede ser 0");
                 return false;
@@ -58,10 +60,10 @@ namespace UberFrba.Abm_Turno
             var camposOk = validacion();
             if (camposOk)
             {
-                // Funcionalidad.insertarFuncxRol(miNuevoID, Convert.ToInt32(row["ID_Funcionalidad"]));
+               
+                Turno.insertarTurno(txtDescripcion.Text, numHoraInicio.Value, numHoraFin.Value, numValorKM.Value, numPrecioBase.Value);
+                MessageBox.Show("El turno ha sido creado correctamente");
                 this.Hide();
-                Menu menuPrincipal = new Menu();
-                menuPrincipal.Show();
             }
 
         }

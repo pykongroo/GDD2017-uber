@@ -9,6 +9,9 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using UberFrba.Abm_Cliente;
 using System.Data.SqlClient;
+using UberFrba.Abm_Rol;
+using UberFrba.Viaje;
+using UberFrba.Abm_Automovil;
 
 namespace UberFrba
 {
@@ -26,11 +29,16 @@ namespace UberFrba
         private void init_items()
         {
             funcionalidades_menu.Add("ABM de Rol", rolToolStripMenuItem);
+            funcionalidades_menu.Add("Registro de Usuario", altaUsuarioToolStripMenuItem);
             funcionalidades_menu.Add("ABM de Cliente", clienteToolStripMenuItem);
             funcionalidades_menu.Add("ABM de Automóvil", automovilToolStripMenuItem);
             funcionalidades_menu.Add("ABM de Chofer", choferToolStripMenuItem);
-            funcionalidades_menu.Add("Registro de Usuario", altaUsuarioToolStripMenuItem);
-            foreach(ToolStripItem item in funcionalidades_menu.Values)
+            //funcionalidades_menu.add("ABM de Turno", chofertoolstripmenuitem);
+            funcionalidades_menu.Add("Registro de Viajes", registrarToolStripMenuItem);
+            //funcionalidades_menu.add("Rendición de cuenta de Chofer", chofertoolstripmenuitem);
+            //funcionalidades_menu.add("Facturación a Cliente", chofertoolstripmenuitem);
+            //funcionalidades_menu.add("Listado Estadístico", chofertoolstripmenuitem);
+            foreach (ToolStripItem item in funcionalidades_menu.Values)
             {
                 item.Visible = false;
             }
@@ -46,12 +54,12 @@ namespace UberFrba
             SqlDataReader reader = command.ExecuteReader();
             while (reader.Read())
             {
-                funcionalidades_user.Add(reader.GetString(0));
+                funcionalidades_user.Add(reader.GetString(0).ToLower());
             }
             conn.con.Close();
             foreach(var nombre_func in funcionalidades_menu.Keys)
             {
-                if (funcionalidades_user.Contains(nombre_func))
+                if (funcionalidades_user.Contains(nombre_func.ToLower()))
                 {
                     funcionalidades_menu[nombre_func].Visible = true;
                 }
@@ -82,12 +90,12 @@ namespace UberFrba
 
         private void bajaToolStripMenuItem3_Click(object sender, EventArgs e)
         {
-            new Abm_Rol.BajaRol().Show();
+            new BajaRol().Show();
         }
 
         private void modificacionToolStripMenuItem3_Click(object sender, EventArgs e)
         {
-            new Abm_Rol.EditarRol().Show();
+            new EditarRol().Show();
         }
 
         private void bajaToolStripMenuItem2_Click(object sender, EventArgs e)
@@ -112,27 +120,32 @@ namespace UberFrba
 
         private void registrarToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            new Viaje.RegistroViaje().Show();
+            new RegistroViaje().Show();
         }
 
         private void altaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            new Abm_Automovil.AltaAuto().Show();
+            new AltaAuto().Show();
         }
 
         private void bajaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            new Abm_Automovil.BuscarAuto().Show();
+            new BuscarAuto().Show();
         }
 
         private void modificacionToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            new Abm_Automovil.BuscarAuto().Show();
+            new BuscarAuto().Show();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             new Abm_Turno.AltaTurno().Show();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            new Abm_Turno.BajaTurno().Show();
         }
 
     }

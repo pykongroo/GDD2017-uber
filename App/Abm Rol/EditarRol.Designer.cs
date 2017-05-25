@@ -44,6 +44,7 @@
             // 
             // btnFuncionalidad
             // 
+            this.btnFuncionalidad.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnFuncionalidad.Enabled = false;
             this.btnFuncionalidad.Location = new System.Drawing.Point(435, 87);
             this.btnFuncionalidad.Name = "btnFuncionalidad";
@@ -55,6 +56,7 @@
             // 
             // btnModificar
             // 
+            this.btnModificar.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.btnModificar.Enabled = false;
             this.btnModificar.Location = new System.Drawing.Point(250, 394);
             this.btnModificar.Name = "btnModificar";
@@ -66,6 +68,10 @@
             // 
             // gridLista
             // 
+            this.gridLista.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.gridLista.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.gridLista.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gridLista.Enabled = false;
             this.gridLista.Location = new System.Drawing.Point(12, 156);
@@ -76,6 +82,8 @@
             // 
             // cmbRoles
             // 
+            this.cmbRoles.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.cmbRoles.FormattingEnabled = true;
             this.cmbRoles.Location = new System.Drawing.Point(181, 25);
             this.cmbRoles.Name = "cmbRoles";
@@ -85,6 +93,8 @@
             // 
             // label2
             // 
+            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(103, 90);
             this.label2.Name = "label2";
@@ -94,6 +104,7 @@
             // 
             // label1
             // 
+            this.label1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(257, 9);
             this.label1.Name = "label1";
@@ -103,6 +114,8 @@
             // 
             // cmbFuncionalidades
             // 
+            this.cmbFuncionalidades.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.cmbFuncionalidades.Enabled = false;
             this.cmbFuncionalidades.FormattingEnabled = true;
             this.cmbFuncionalidades.Location = new System.Drawing.Point(182, 87);
@@ -112,6 +125,8 @@
             // 
             // label3
             // 
+            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(101, 64);
             this.label3.Name = "label3";
@@ -121,6 +136,8 @@
             // 
             // txtNombreRol
             // 
+            this.txtNombreRol.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtNombreRol.Enabled = false;
             this.txtNombreRol.Location = new System.Drawing.Point(182, 61);
             this.txtNombreRol.Name = "txtNombreRol";
@@ -129,6 +146,8 @@
             // 
             // lblDeshabilitado
             // 
+            this.lblDeshabilitado.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.lblDeshabilitado.AutoSize = true;
             this.lblDeshabilitado.Location = new System.Drawing.Point(67, 129);
             this.lblDeshabilitado.Name = "lblDeshabilitado";
@@ -139,6 +158,8 @@
             // 
             // radioHabilitar
             // 
+            this.radioHabilitar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.radioHabilitar.AutoSize = true;
             this.radioHabilitar.Location = new System.Drawing.Point(388, 129);
             this.radioHabilitar.Name = "radioHabilitar";
@@ -165,6 +186,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "EditarRol";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "EditarRol";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.EditarRol_FormClosing);
             this.Load += new System.EventHandler(this.EditarRol_Load);

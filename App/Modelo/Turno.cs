@@ -13,10 +13,10 @@ namespace UberFrba.Modelo
     {
         private int _ID_Turno;
         private string _Descripcion;
-        private int _Hora_Inicio;
-        private int _Hora_Finalizacion;
-        private double _Valor_Km;
-        private double _Precio_Base;
+        private decimal _Hora_Inicio;
+        private decimal _Hora_Finalizacion;
+        private decimal _Valor_Km;
+        private decimal _Precio_Base;
         private bool _Habilitado;
 
 
@@ -25,24 +25,24 @@ namespace UberFrba.Modelo
             get { return _ID_Turno; }
             set { _ID_Turno = value; }
         }
-        public int Hora_Inicio
+        public decimal Hora_Inicio
         {
             get { return _Hora_Inicio; }
             set { _Hora_Inicio = value; }
         }
-        public int Hora_Finalizacion
+        public decimal Hora_Finalizacion
         {
             get { return _Hora_Finalizacion; }
             set { _Hora_Finalizacion = value; }
         }
 
-        public double Valor_Km
+        public decimal Valor_Km
         {
             get { return _Valor_Km; }
             set { _Valor_Km = value; }
         }
 
-        public double Precio_Base
+        public decimal Precio_Base
         {
             get { return _Precio_Base; }
             set { _Precio_Base = value; }
@@ -72,13 +72,13 @@ namespace UberFrba.Modelo
                     .AsEnumerable()
                     .Select(m => new Turno()
                     {
-                        ID_Turno = m.Field<int>("ID_Turno"),
-                        Descripcion = m.Field<string>("Descripcion"),
-                        Hora_Inicio = m.Field<int>("HoraInicio"),
-                        Hora_Finalizacion = m.Field<int>("HoraFinalizacion"),
-                        Valor_Km = m.Field<double>("ValorKm"),
-                        Precio_Base = m.Field<double>("PrecioBase"),
-                        Habilitado = m.Field<bool>("Habilitado"),
+                        ID_Turno = m.Field<int>("ID_Turno")
+                        , Hora_Inicio = m.Field<decimal>("HoraInicio")
+                        , Hora_Finalizacion = m.Field<decimal>("HoraFinalizacion")
+                        , Descripcion = m.Field<string>("Descripcion")
+                        , Valor_Km = m.Field<decimal>("ValorKm")
+                        , Precio_Base = m.Field<decimal>("PrecioBase")
+                        , Habilitado = m.Field<bool>("Habilitado") 
                     }).ToList();
                 //.AsEnumerable()
                 //.Select(r => r[0].ToString()).ToList();
@@ -91,15 +91,15 @@ namespace UberFrba.Modelo
             }
         }
 
-        public static int insertarTurno(string descripcion, int horaInicio, int horaFin, double valorKm, double precioBase)
+        public static int insertarTurno(string descripcion, decimal horaInicio, decimal horaFin, decimal valorKm, decimal precioBase)
         {
             List<BDParametro> listParametros = new List<BDParametro>();
             try
             {
                 BDHandler handler = new BDHandler();
                 listParametros.Add(new BDParametro("@descripcion", descripcion));
-                listParametros.Add(new BDParametro("@horaInicio", horaInicio));
-                listParametros.Add(new BDParametro("@horaFin", horaFin));
+                listParametros.Add(new BDParametro("@horaInicio", (int)horaInicio));
+                listParametros.Add(new BDParametro("@horaFin", (int)horaFin));
                 listParametros.Add(new BDParametro("@valorKm", valorKm));
                 listParametros.Add(new BDParametro("@precioBase", precioBase));
                 listParametros.Add(new BDParametro("@ID", "", SqlDbType.Int, 50, ParameterDirection.Output));
@@ -130,7 +130,7 @@ namespace UberFrba.Modelo
             }
         }
 
-        public static void editarTurno(int turnoId, string descripcion, int horaInicio, int horaFin, double valorKm, double precioBase, bool turnoHabilitado)
+        public static void editarTurno(int turnoId, string descripcion, int horaInicio, int horaFin, decimal valorKm, decimal precioBase, bool turnoHabilitado)
         {
             List<BDParametro> listParametros = new List<BDParametro>();
             try

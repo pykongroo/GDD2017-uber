@@ -36,7 +36,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(106, 43);
+            this.label1.Location = new System.Drawing.Point(98, 57);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(132, 13);
             this.label1.TabIndex = 0;
@@ -45,11 +45,10 @@
             // cmbRoles
             // 
             this.cmbRoles.FormattingEnabled = true;
-            this.cmbRoles.Location = new System.Drawing.Point(60, 80);
+            this.cmbRoles.Location = new System.Drawing.Point(60, 73);
             this.cmbRoles.Name = "cmbRoles";
             this.cmbRoles.Size = new System.Drawing.Size(213, 21);
             this.cmbRoles.TabIndex = 1;
-            this.cmbRoles.SelectedIndexChanged += new System.EventHandler(this.cmbRoles_SelectedIndexChanged);
             // 
             // btnEliminarRol
             // 
@@ -57,7 +56,7 @@
             this.btnEliminarRol.Name = "btnEliminarRol";
             this.btnEliminarRol.Size = new System.Drawing.Size(75, 23);
             this.btnEliminarRol.TabIndex = 2;
-            this.btnEliminarRol.Text = "Eliminar!";
+            this.btnEliminarRol.Text = "Eliminar";
             this.btnEliminarRol.UseVisualStyleBackColor = true;
             this.btnEliminarRol.Click += new System.EventHandler(this.btnEliminarRol_Click);
             // 
@@ -65,11 +64,14 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(315, 174);
+            this.ClientSize = new System.Drawing.Size(331, 190);
             this.Controls.Add(this.btnEliminarRol);
             this.Controls.Add(this.cmbRoles);
             this.Controls.Add(this.label1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.MaximizeBox = false;
             this.Name = "BajaRol";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "BajaRol";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.BajaRol_FormClosing);
             this.Load += new System.EventHandler(this.BajaRolForm_Load);
