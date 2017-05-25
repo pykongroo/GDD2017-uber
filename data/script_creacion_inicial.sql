@@ -106,11 +106,11 @@ CREATE TABLE LJDG.Cliente
 	clie_dni             numeric(18,0) NOT NULL ,
 	clie_direccion       varchar(255) NOT NULL ,
 	clie_cp              varchar(10)  NULL ,
-	clie_telefono        numeric(18,0) NOT NULL ,
+	clie_telefono        numeric(18,0) UNIQUE NOT NULL ,
 	clie_mail            varchar(50)  NULL ,
 	clie_fecha_nac       datetime NOT NULL ,
 	clie_habilitado      bit  NOT NULL ,
-	clie_user			 char(30) NOT NULL ,
+	clie_user			 char(30) UNIQUE NOT NULL ,
 	PRIMARY KEY  NONCLUSTERED (clie_id ASC) ,
 	FOREIGN KEY (clie_user) REFERENCES LJDG.Usuario(user_id)
 		ON DELETE NO ACTION
@@ -119,12 +119,6 @@ CREATE TABLE LJDG.Cliente
 GO
 
 ALTER TABLE LJDG.Cliente ADD  CONSTRAINT DF_Cliente_clie_habilitado  DEFAULT ((1)) FOR clie_habilitado
-GO
-
-ALTER TABLE LJDG.Cliente ADD UNIQUE NONCLUSTERED (clie_telefono)
-GO
-
-ALTER TABLE LJDG.Cliente ADD UNIQUE NONCLUSTERED (clie_user)
 GO
 
 CREATE TABLE LJDG.Chofer
@@ -138,7 +132,7 @@ CREATE TABLE LJDG.Chofer
 	chof_mail            varchar(50) NOT NULL ,
 	chof_fecha_nac       datetime NOT NULL ,
 	chof_habilitado      bit  NOT NULL ,
-	chof_user			 char(30) NOT NULL ,
+	chof_user			 char(30) UNIQUE NOT NULL ,
 	PRIMARY KEY  NONCLUSTERED (chof_id ASC) ,
 	FOREIGN KEY (chof_user) REFERENCES LJDG.Usuario(user_id)
 		ON DELETE NO ACTION
@@ -147,9 +141,6 @@ CREATE TABLE LJDG.Chofer
 GO
 
 ALTER TABLE LJDG.Chofer ADD  CONSTRAINT DF_Chofer_chof_habilitado  DEFAULT ((1)) FOR chof_habilitado
-GO
-
-ALTER TABLE LJDG.Chofer ADD UNIQUE NONCLUSTERED (chof_user)
 GO
 
 CREATE TABLE LJDG.Turno
@@ -183,7 +174,7 @@ CREATE TABLE LJDG.Automovil
 (
 	auto_id				 int IDENTITY(1,1) NOT NULL,
 	auto_marca           int  NOT NULL ,
-	auto_patente         char(10)  NOT NULL ,
+	auto_patente         char(10) UNIQUE NOT NULL ,
 	auto_modelo          varchar(255)  NULL ,
 	auto_licencia        varchar(26)  NULL ,
 	auto_rodado          varchar(10)  NULL ,
@@ -201,9 +192,6 @@ CREATE TABLE LJDG.Automovil
 		ON DELETE NO ACTION
 		ON UPDATE NO ACTION
 )
-GO
-
-ALTER TABLE LJDG.Automovil ADD UNIQUE NONCLUSTERED (auto_patente)
 GO
 
 CREATE TABLE LJDG.Viaje
@@ -287,12 +275,12 @@ GO
 
 CREATE TABLE LJDG.Factura
 (
-	fact_nro             numeric(18,0)  NOT NULL ,
+	fact_nro             numeric(18,0) IDENTITY(1,1) NOT NULL ,
 	fact_fecha_inicio    datetime  NOT NULL ,
 	fact_fecha_fin       datetime  NOT NULL ,
 	fact_fecha           datetime  NOT NULL ,
 	fact_cliente         int  NOT NULL ,
-	fact_importe_total   numeric(18,2) NOT NULL ,
+	fact_importe_total   numeric(18,2) NULL ,
 	PRIMARY KEY  NONCLUSTERED (fact_nro ASC),
 	FOREIGN KEY (fact_cliente) REFERENCES LJDG.Cliente(clie_id)
 		ON DELETE NO ACTION
@@ -302,11 +290,11 @@ GO
 
 CREATE TABLE LJDG.Rendicion
 (
-	rend_nro             numeric(18,0)  NOT NULL ,
+	rend_nro             numeric(18,0) IDENTITY(1,1) NOT NULL ,
 	rend_fecha           datetime  NULL ,
 	rend_turno           int  NOT NULL ,
 	rend_chofer          int  NOT NULL ,
-	rend_importe_total   numeric(18,2) NOT NULL ,
+	rend_importe_total   numeric(18,2) NULL ,
 	PRIMARY KEY  NONCLUSTERED (rend_nro ASC),
 	 FOREIGN KEY (rend_chofer) REFERENCES LJDG.Chofer(chof_id)
 		ON DELETE NO ACTION
@@ -319,7 +307,7 @@ GO
 
 CREATE VIEW LJDG.Viaje_Factura
 AS
-SELECT	LJDG.Factura.fact_nro, LJDG.Factura.fact_fecha_inicio, LJDG.Factura.fact_fecha_fin, LJDG.Factura.fact_cliente, LJDG.Viaje.viaj_precio
+SELECT	LJDG.Factura.fact_nro, LJDG.Factura.fact_fecha_inicio, LJDG.Factura.fact_fecha_fin, LJDG.Factura.fact_cliente, LJDG.Viaje.viaj_id, LJDG.Viaje.viaj_precio
 FROM	LJDG.Factura INNER JOIN
 		LJDG.Viaje ON LJDG.Factura.fact_cliente = LJDG.Viaje.viaj_cliente
 WHERE	(LJDG.viaje_entra_en_factura(LJDG.Viaje.viaj_fecha_inicio, LJDG.Factura.fact_fecha_inicio, LJDG.Factura.fact_fecha_fin) = 1)
@@ -328,7 +316,7 @@ GO
 
 CREATE VIEW LJDG.Viaje_Rendicion
 AS
-SELECT	LJDG.Rendicion.rend_nro, LJDG.Rendicion.rend_fecha, LJDG.Rendicion.rend_chofer, LJDG.Rendicion.rend_turno, LJDG.Viaje.viaj_importe_rend
+SELECT	LJDG.Rendicion.rend_nro, LJDG.Rendicion.rend_fecha, LJDG.Rendicion.rend_chofer, LJDG.Rendicion.rend_turno, LJDG.Viaje.viaj_id, LJDG.Viaje.viaj_importe_rend
 FROM	LJDG.Rendicion INNER JOIN
         LJDG.Viaje ON LJDG.Rendicion.rend_chofer = LJDG.Viaje.viaj_chofer and LJDG.Rendicion.rend_turno = LJDG.Viaje.viaj_turno
 WHERE	(LJDG.viaje_entra_en_rendicion(LJDG.Viaje.viaj_fecha_inicio,LJDG.Rendicion.rend_fecha) = 1)

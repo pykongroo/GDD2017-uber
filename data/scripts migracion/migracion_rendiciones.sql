@@ -4,6 +4,9 @@ GO
 /*DELETE FROM LJDG.Rendicion
 GO*/
 
+SET IDENTITY_INSERT LJDG.Rendicion ON
+GO
+
 INSERT INTO [LJDG].[Rendicion]
            ([rend_nro]
            ,[rend_fecha]
@@ -24,5 +27,9 @@ WHERE Rendicion_Nro is not null
 GROUP BY m.Rendicion_Nro,m.Rendicion_Fecha,m.Turno_Descripcion,m.Chofer_Dni
 ORDER BY m.Rendicion_Nro
 GO
+
+SET IDENTITY_INSERT LJDG.Rendicion OFF
+GO
+
 
 
