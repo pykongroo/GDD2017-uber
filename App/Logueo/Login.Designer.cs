@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Login));
             this.labelUser = new System.Windows.Forms.Label();
             this.labelPass = new System.Windows.Forms.Label();
             this.textUser = new System.Windows.Forms.TextBox();
@@ -42,7 +43,7 @@
             this.labelUser.AutoSize = true;
             this.labelUser.Location = new System.Drawing.Point(58, 84);
             this.labelUser.Name = "labelUser";
-            this.labelUser.Size = new System.Drawing.Size(51, 14);
+            this.labelUser.Size = new System.Drawing.Size(50, 14);
             this.labelUser.TabIndex = 0;
             this.labelUser.Text = "Usuario:";
             // 
@@ -51,7 +52,7 @@
             this.labelPass.AutoSize = true;
             this.labelPass.Location = new System.Drawing.Point(56, 130);
             this.labelPass.Name = "labelPass";
-            this.labelPass.Size = new System.Drawing.Size(70, 14);
+            this.labelPass.Size = new System.Drawing.Size(72, 14);
             this.labelPass.TabIndex = 1;
             this.labelPass.Text = "Contraseña:";
             // 
@@ -125,6 +126,7 @@
             this.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ForeColor = System.Drawing.Color.White;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "Login";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

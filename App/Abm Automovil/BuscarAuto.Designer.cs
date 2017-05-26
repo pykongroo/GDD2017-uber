@@ -61,6 +61,7 @@
             this.cmbMarca.Name = "cmbMarca";
             this.cmbMarca.Size = new System.Drawing.Size(150, 22);
             this.cmbMarca.TabIndex = 2;
+            this.cmbMarca.SelectedIndexChanged += new System.EventHandler(this.cmbMarca_SelectedIndexChanged);
             // 
             // lblModelo
             // 
@@ -78,6 +79,7 @@
             this.txtBoxModelo.Name = "txtBoxModelo";
             this.txtBoxModelo.Size = new System.Drawing.Size(150, 22);
             this.txtBoxModelo.TabIndex = 4;
+            this.txtBoxModelo.TextChanged += new System.EventHandler(this.txtBoxModelo_TextChanged);
             // 
             // lblPatente
             // 
@@ -95,6 +97,7 @@
             this.txtBoxPatente.Name = "txtBoxPatente";
             this.txtBoxPatente.Size = new System.Drawing.Size(150, 22);
             this.txtBoxPatente.TabIndex = 6;
+            this.txtBoxPatente.TextChanged += new System.EventHandler(this.txtBoxPatente_TextChanged);
             // 
             // lblChofer
             // 
@@ -115,9 +118,11 @@
             this.lnkChofer.TabIndex = 10;
             this.lnkChofer.TabStop = true;
             this.lnkChofer.Text = "Buscar chofer...";
+            this.lnkChofer.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lnkChofer_LinkClicked);
             // 
             // btnSeleccionar
             // 
+            this.btnSeleccionar.Enabled = false;
             this.btnSeleccionar.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSeleccionar.Location = new System.Drawing.Point(550, 310);
             this.btnSeleccionar.Name = "btnSeleccionar";
@@ -139,11 +144,21 @@
             // 
             // dgAuto
             // 
-            this.dgAuto.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgAuto.Location = new System.Drawing.Point(34, 114);
+            this.dgAuto.AllowUserToAddRows = false;
+            this.dgAuto.AllowUserToDeleteRows = false;
+            this.dgAuto.AllowUserToResizeColumns = false;
+            this.dgAuto.AllowUserToResizeRows = false;
+            this.dgAuto.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.dgAuto.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.dgAuto.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            this.dgAuto.Location = new System.Drawing.Point(34, 112);
+            this.dgAuto.MultiSelect = false;
             this.dgAuto.Name = "dgAuto";
-            this.dgAuto.Size = new System.Drawing.Size(600, 160);
-            this.dgAuto.TabIndex = 25;
+            this.dgAuto.ReadOnly = true;
+            this.dgAuto.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToDisplayedHeaders;
+            this.dgAuto.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgAuto.Size = new System.Drawing.Size(600, 170);
+            this.dgAuto.TabIndex = 26;
             // 
             // BuscarAuto
             // 
@@ -183,8 +198,8 @@
         private System.Windows.Forms.TextBox txtBoxPatente;
         private System.Windows.Forms.Label lblChofer;
         private System.Windows.Forms.LinkLabel lnkChofer;
-        private System.Windows.Forms.Button btnSeleccionar;
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.DataGridView dgAuto;
+        private System.Windows.Forms.Button btnSeleccionar;
     }
 }

@@ -109,18 +109,46 @@ namespace UberFrba.Abm_Cliente
         {
             int id;
             int.TryParse(dgIndividuo.Rows[dgIndividuo.CurrentCell.RowIndex].Cells["ID"].Value.ToString(), out id);            
-            switch (modo) {
-                /* Buscar Chofer desde AltaAuto */
-                case 'S':
-                    ((Abm_Automovil.AltaAuto)prev_form).lblIDChoferValor.Text = id.ToString();
-                    ((Abm_Automovil.AltaAuto)prev_form).lblNombreChoferValor.Text = dgIndividuo.Rows[dgIndividuo.CurrentCell.RowIndex].Cells["Nombre"].Value.ToString();
-                    ((Abm_Automovil.AltaAuto)prev_form).lblApellidoChoferValor.Text = dgIndividuo.Rows[dgIndividuo.CurrentCell.RowIndex].Cells["Apellido"].Value.ToString();
-                    ((Abm_Automovil.AltaAuto)prev_form).btnGuardar.Enabled = true;
-                    this.Hide();
-                    break;
+            if (tipoIndividuo == "Chofer")
+            {
+                switch (modo)
+                {
+                    /* Buscar Chofer desde AltaAuto */
+                    case 'S':
+                        ((Abm_Automovil.AltaAuto)prev_form).lblIDChoferValor.Text = id.ToString();
+                        ((Abm_Automovil.AltaAuto)prev_form).lblNombreChoferValor.Text = dgIndividuo.Rows[dgIndividuo.CurrentCell.RowIndex].Cells["Nombre"].Value.ToString();
+                        ((Abm_Automovil.AltaAuto)prev_form).lblApellidoChoferValor.Text = dgIndividuo.Rows[dgIndividuo.CurrentCell.RowIndex].Cells["Apellido"].Value.ToString();
+                        ((Abm_Automovil.AltaAuto)prev_form).btnGuardar.Enabled = true;
+                        this.Hide();
+                        break;
+                    /* Buscar Chofer desde BuscarAuto */
+                    case 'V':
+                        ((Abm_Automovil.BuscarAuto)prev_form).idChofer = id;
+                        ((Abm_Automovil.BuscarAuto)prev_form).buscar();
+                        this.Hide();
+                        break;
+                }
             }
+            else if (tipoIndividuo == "Cliente")
+            {
+                switch (modo)
+                {
+                    /* Buscar Chofer desde Baja Cliente */
+                    case 'B':
+                        List<BDParametro> listParametros = new List<BDParametro>();
+                        listParametros.Add(new BDParametro("@id", id));
+                        new BDHandler().execSP("LJDG.baja_cliente", ref listParametros);
+                        this.Hide();
+                        break;
+                    /* Buscar Chofer desde Modificación Cliente */
+                    case 'M':
+                        ((Abm_Automovil.BuscarAuto)prev_form).idChofer = id;
+                        ((Abm_Automovil.BuscarAuto)prev_form).buscar();
+                        this.Hide();
+                        break;
+                }
 
-            System.Console.WriteLine(id);
+            }
         }
 
     }

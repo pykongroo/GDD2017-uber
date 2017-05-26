@@ -39,7 +39,8 @@ namespace UberFrba
         }
 
         /* Recibe el nombre del SP y la lista de Parametros */
-        public void execSP(String nameStoredProcedure, ref List<BDParametro> listParametros) {
+        public void execSP(String nameStoredProcedure, ref List<BDParametro> listParametros)
+        {
             try {
                 Conectar();
                 SqlCommand comando = new SqlCommand(nameStoredProcedure, conexionBD);
