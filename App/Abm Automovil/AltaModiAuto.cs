@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using UberFrba.Buscador;
 
 namespace UberFrba.Abm_Automovil
 {
@@ -18,12 +19,12 @@ namespace UberFrba.Abm_Automovil
         public AltaModiAuto(char _modo, int _idAuto)
         {
             InitializeComponent();
-            this.modo = _modo;            
+            this.modo = _modo;
             if (modo == 'A')
                 this.Text = "Alta Automóvil";
             else if (modo == 'M')
             {
-                this.Text = "Modidicar Automóvil";
+                this.Text = "Modificar Automóvil";
                 this.idAuto = _idAuto;
                 cargarAuto();
             }
@@ -39,23 +40,23 @@ namespace UberFrba.Abm_Automovil
 
         private void lnkChofer_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            new Abm_Cliente.BuscarIndividuo(this, "Chofer", 'S').Show();
+            new BuscarIndividuo(this, "Chofer", 'S').Show();
         }
 
         private void nuevoAuto()
         {
-            
+
         }
 
         private String guardarAuto()
         {
             BDHandler handler = new BDHandler();
             List<BDParametro> listParametros = new List<BDParametro>();
-            listParametros.Add(new BDParametro("@marca",      cmbMarca.SelectedIndex + 1));
-            listParametros.Add(new BDParametro("@patente",    txtBoxPatente.Text));
-            listParametros.Add(new BDParametro("@modelo",     txtBoxModelo.Text));
-            listParametros.Add(new BDParametro("@chofer",     int.Parse(lblIDChoferValor.Text.ToString())));
-            listParametros.Add(new BDParametro("@turno",      cmbTurno.SelectedIndex + 1));
+            listParametros.Add(new BDParametro("@marca", cmbMarca.SelectedIndex + 1));
+            listParametros.Add(new BDParametro("@patente", txtBoxPatente.Text));
+            listParametros.Add(new BDParametro("@modelo", txtBoxModelo.Text));
+            listParametros.Add(new BDParametro("@chofer", int.Parse(lblIDChoferValor.Text.ToString())));
+            listParametros.Add(new BDParametro("@turno", cmbTurno.SelectedIndex + 1));
             listParametros.Add(new BDParametro("@habilitado", checkBoxHabilitado.Checked ? 1 : 0));
             listParametros.Add(new BDParametro("@mensaje", "", SqlDbType.VarChar, 50, ParameterDirection.Output));
             if (modo == 'A')
@@ -85,7 +86,7 @@ namespace UberFrba.Abm_Automovil
             txtBoxModelo.Text = listParametros[3].valor.ToString();
             lblIDChoferValor.Text = listParametros[4].valor.ToString();
             cmbTurno.SelectedIndex = Convert.ToInt32(listParametros[5].valor);
-            checkBoxHabilitado.Checked = Convert.ToInt32(listParametros[6].valor) == 1 ;
+            checkBoxHabilitado.Checked = Convert.ToInt32(listParametros[6].valor) == 1;
         }
 
         private void btnGuardar_Click(object sender, EventArgs e)

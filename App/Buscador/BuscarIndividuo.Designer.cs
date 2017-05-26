@@ -1,4 +1,4 @@
-﻿namespace UberFrba.Abm_Cliente
+﻿namespace UberFrba.Buscador
 {
     partial class BuscarIndividuo
     {

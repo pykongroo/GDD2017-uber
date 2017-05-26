@@ -25,10 +25,11 @@ namespace UberFrba
 
         private void setearRoles()
         {
-            Conexion conn = Conexion.getInstance();
-            conn.con.Open();
+            BDHandler bdh = new BDHandler();
+            bdh.Conectar();
+            SqlConnection conn = bdh.conexionBD;
             String query = "select * from LJDG.Rol";
-            SqlCommand command = new SqlCommand(query, conn.con);
+            SqlCommand command = new SqlCommand(query, conn);
             var reader = command.ExecuteReader();
             roles = new Dictionary<string, int>();
             while (reader.Read())
@@ -36,17 +37,18 @@ namespace UberFrba
                 roles.Add(reader.GetString(1), (int) reader.GetValue(0));
                 cmb_roles.Add(reader.GetString(1));
             }
-            conn.con.Close();
+            bdh.Desconectar();
         }
 
         public bool yaExiste(String username)
         {
-            Conexion conn = Conexion.getInstance();
+            BDHandler bdh = new BDHandler();
+            bdh.Conectar();
+            SqlConnection conn = bdh.conexionBD;
             String query = "select * from LJDG.Usuario where user_id='" + username + "'";
-            conn.con.Open();
-            var reader = (new SqlCommand(query, conn.con)).ExecuteReader();
+            var reader = (new SqlCommand(query, conn)).ExecuteReader();
             bool existe = reader.Read();
-            conn.con.Close();
+            bdh.Desconectar();
             return existe;
         }
 

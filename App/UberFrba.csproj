@@ -71,10 +71,10 @@
     <Compile Include="Abm Cliente\AltaModificarCliente.Designer.cs">
       <DependentUpon>AltaModificarCliente.cs</DependentUpon>
     </Compile>
-    <Compile Include="Abm Cliente\BuscarIndividuo.cs">
+    <Compile Include="Buscador\BuscarIndividuo.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Abm Cliente\BuscarIndividuo.Designer.cs">
+    <Compile Include="Buscador\BuscarIndividuo.Designer.cs">
       <DependentUpon>BuscarIndividuo.cs</DependentUpon>
     </Compile>
     <Compile Include="Abm Rol\AltaRol.cs">
@@ -145,7 +145,6 @@
     <Compile Include="AltaUsuario.Designer.cs">
       <DependentUpon>AltaUsuario.cs</DependentUpon>
     </Compile>
-    <Compile Include="Utils\Conexion.cs" />
     <Compile Include="Utils\CustomComboBox.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -212,7 +211,7 @@
     <EmbeddedResource Include="Abm Cliente\AltaModificarCliente.resx">
       <DependentUpon>AltaModificarCliente.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Abm Cliente\BuscarIndividuo.resx">
+    <EmbeddedResource Include="Buscador\BuscarIndividuo.resx">
       <DependentUpon>BuscarIndividuo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Abm Rol\AltaRol.resx">

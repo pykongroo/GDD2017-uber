@@ -34,32 +34,34 @@ namespace UberFrba.Rendicion_Viajes
 
         private void setChoferes()
         {
-            Conexion conn = Conexion.getInstance();
-            conn.con.Open();
+            BDHandler bdh = new BDHandler();
+            bdh.Conectar();
+            SqlConnection conn = bdh.conexionBD;
             String query = "select chof_user, chof_id from LJDG.Chofer where chof_habilitado=1";
-            SqlCommand com = new SqlCommand(query, conn.con);
+            SqlCommand com = new SqlCommand(query, conn);
             var reader = com.ExecuteReader();
             while (reader.Read())
             {
                 choferes.Add(reader.GetString(0), reader.GetValue(1).ToString());
                 cmb_chofer_rendicion.Add(reader.GetString(0));
             }
-            conn.con.Close();
+            bdh.Desconectar();
         }
 
         private void setTurnos()
         {
-            Conexion conn = Conexion.getInstance();
-            conn.con.Open();
+            BDHandler bdh = new BDHandler();
+            bdh.Conectar();
+            SqlConnection conn = bdh.conexionBD;
             String query = "select turn_descripcion, turn_id from LJDG.Turno where turn_habilitado=1";
-            SqlCommand com = new SqlCommand(query, conn.con);
+            SqlCommand com = new SqlCommand(query, conn);
             var reader = com.ExecuteReader();
             while (reader.Read())
             {
                 turnos.Add(reader.GetString(0), reader.GetValue(1).ToString());
                 cmb_turno_rendicion.Add(reader.GetString(0));
             }
-            conn.con.Close();
+            bdh.Desconectar();
         }
 
         private void button1_Click(object sender, EventArgs e)

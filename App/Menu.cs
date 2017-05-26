@@ -14,6 +14,7 @@ using UberFrba.Viaje;
 using UberFrba.Abm_Automovil;
 using UberFrba.Rendicion_Viajes;
 using UberFrba.Abm_Turno;
+using UberFrba.Buscador;
 
 namespace UberFrba
 {
@@ -46,16 +47,17 @@ namespace UberFrba
         {
             List<String> funcionalidades_user = new List<string>();
             String query = "select func_descripcion, rol_nombre from LJDG.Funcionalidad, LJDG.Rol, LJDG.Funcionalidad_Rol where fxr_funcionalidad=func_id AND fxr_rol=rol_id AND rol_nombre='" + rol_nombre + "' group by func_descripcion, rol_nombre";
-            Conexion conn = Conexion.getInstance();
-            conn.con.Open();
-            SqlCommand command = new SqlCommand(query, conn.con);
+            BDHandler bdh = new BDHandler();
+            bdh.Conectar();
+            SqlConnection conn = bdh.conexionBD;
+            SqlCommand command = new SqlCommand(query, conn);
             SqlDataReader reader = command.ExecuteReader();
             while (reader.Read())
             {
                 funcionalidades_user.Add(reader.GetString(0).ToLower());
             }
-            conn.con.Close();
-            foreach(var nombre_func in funcionalidades_menu.Keys)
+            bdh.Desconectar();
+            foreach (var nombre_func in funcionalidades_menu.Keys)
             {
                 if (!funcionalidades_user.Contains(nombre_func.ToLower()))
                 {
@@ -146,27 +148,10 @@ namespace UberFrba
             new BuscarAuto().Show();
         }
 
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            new AltaTurno().Show();
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            new BajaTurno().Show();
-        }
-
-        private void button3_Click(object sender, EventArgs e)
-        {
-            new EditarTurno().Show();
-        }
-
-
         private void rendicionChoferToolStripMenuItem_Click(object sender, EventArgs e)
         {
             RendicionChofer rend_chofer = new RendicionChofer();
-            rend_chofer.Show(); 
+            rend_chofer.Show();
         }
 
         private void altaToolStripMenuItem4_Click(object sender, EventArgs e)
