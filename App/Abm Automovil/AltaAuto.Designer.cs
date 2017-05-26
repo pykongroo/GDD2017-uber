@@ -41,12 +41,13 @@
             this.lnkChofer = new System.Windows.Forms.LinkLabel();
             this.lblApellidoChofer = new System.Windows.Forms.Label();
             this.lblNombreChofer = new System.Windows.Forms.Label();
-            this.lblUserChofer = new System.Windows.Forms.Label();
-            this.lblUserChoferValor = new System.Windows.Forms.Label();
+            this.lblIDChofer = new System.Windows.Forms.Label();
+            this.lblIDChoferValor = new System.Windows.Forms.Label();
             this.lblNombreChoferValor = new System.Windows.Forms.Label();
             this.lblApellidoChoferValor = new System.Windows.Forms.Label();
             this.btnCancelar = new System.Windows.Forms.Button();
-            this.btnIngresar = new System.Windows.Forms.Button();
+            this.btnGuardar = new System.Windows.Forms.Button();
+            this.checkBoxHabilitado = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // lblMarca
@@ -140,6 +141,7 @@
             this.lnkChofer.TabIndex = 10;
             this.lnkChofer.TabStop = true;
             this.lnkChofer.Text = "Buscar chofer...";
+            this.lnkChofer.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lnkChofer_LinkClicked);
             // 
             // lblApellidoChofer
             // 
@@ -163,27 +165,28 @@
             this.lblNombreChofer.Text = "Nombre";
             this.lblNombreChofer.UseMnemonic = false;
             // 
-            // lblUserChofer
+            // lblIDChofer
             // 
-            this.lblUserChofer.AutoSize = true;
-            this.lblUserChofer.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblUserChofer.Location = new System.Drawing.Point(40, 215);
-            this.lblUserChofer.Name = "lblUserChofer";
-            this.lblUserChofer.Size = new System.Drawing.Size(111, 14);
-            this.lblUserChofer.TabIndex = 12;
-            this.lblUserChofer.Text = "Nombre de Usuario";
+            this.lblIDChofer.AutoSize = true;
+            this.lblIDChofer.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblIDChofer.Location = new System.Drawing.Point(40, 215);
+            this.lblIDChofer.Name = "lblIDChofer";
+            this.lblIDChofer.Size = new System.Drawing.Size(19, 14);
+            this.lblIDChofer.TabIndex = 12;
+            this.lblIDChofer.Text = "ID";
             // 
-            // lblUserChoferValor
+            // lblIDChoferValor
             // 
-            this.lblUserChoferValor.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblUserChoferValor.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblUserChoferValor.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.lblUserChoferValor.Location = new System.Drawing.Point(150, 215);
-            this.lblUserChoferValor.Name = "lblUserChoferValor";
-            this.lblUserChoferValor.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.lblUserChoferValor.Size = new System.Drawing.Size(150, 14);
-            this.lblUserChoferValor.TabIndex = 15;
-            this.lblUserChoferValor.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.lblIDChoferValor.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblIDChoferValor.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblIDChoferValor.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.lblIDChoferValor.Location = new System.Drawing.Point(150, 215);
+            this.lblIDChoferValor.Name = "lblIDChoferValor";
+            this.lblIDChoferValor.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.lblIDChoferValor.Size = new System.Drawing.Size(150, 14);
+            this.lblIDChoferValor.TabIndex = 15;
+            this.lblIDChoferValor.Text = "Busque un chofer";
+            this.lblIDChoferValor.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // lblNombreChoferValor
             // 
@@ -212,7 +215,7 @@
             // btnCancelar
             // 
             this.btnCancelar.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancelar.Location = new System.Drawing.Point(60, 310);
+            this.btnCancelar.Location = new System.Drawing.Point(60, 360);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(100, 30);
             this.btnCancelar.TabIndex = 24;
@@ -220,29 +223,44 @@
             this.btnCancelar.UseVisualStyleBackColor = true;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
-            // btnIngresar
+            // btnGuardar
             // 
-            this.btnIngresar.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnIngresar.Location = new System.Drawing.Point(190, 310);
-            this.btnIngresar.Name = "btnIngresar";
-            this.btnIngresar.Size = new System.Drawing.Size(100, 30);
-            this.btnIngresar.TabIndex = 25;
-            this.btnIngresar.Text = "Ingresar";
-            this.btnIngresar.UseVisualStyleBackColor = true;
+            this.btnGuardar.Enabled = false;
+            this.btnGuardar.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGuardar.Location = new System.Drawing.Point(190, 360);
+            this.btnGuardar.Name = "btnGuardar";
+            this.btnGuardar.Size = new System.Drawing.Size(100, 30);
+            this.btnGuardar.TabIndex = 25;
+            this.btnGuardar.Text = "Guardar";
+            this.btnGuardar.UseVisualStyleBackColor = true;
+            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
+            // 
+            // checkBoxHabilitado
+            // 
+            this.checkBoxHabilitado.AutoSize = true;
+            this.checkBoxHabilitado.Checked = true;
+            this.checkBoxHabilitado.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBoxHabilitado.Location = new System.Drawing.Point(50, 300);
+            this.checkBoxHabilitado.Name = "checkBoxHabilitado";
+            this.checkBoxHabilitado.Size = new System.Drawing.Size(78, 18);
+            this.checkBoxHabilitado.TabIndex = 26;
+            this.checkBoxHabilitado.Text = "Habilitado";
+            this.checkBoxHabilitado.UseVisualStyleBackColor = true;
             // 
             // AltaAuto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(344, 361);
-            this.Controls.Add(this.btnIngresar);
+            this.ClientSize = new System.Drawing.Size(344, 411);
+            this.Controls.Add(this.checkBoxHabilitado);
+            this.Controls.Add(this.btnGuardar);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.lblApellidoChoferValor);
             this.Controls.Add(this.lblNombreChoferValor);
-            this.Controls.Add(this.lblUserChoferValor);
+            this.Controls.Add(this.lblIDChoferValor);
             this.Controls.Add(this.lblApellidoChofer);
             this.Controls.Add(this.lblNombreChofer);
-            this.Controls.Add(this.lblUserChofer);
+            this.Controls.Add(this.lblIDChofer);
             this.Controls.Add(this.lnkChofer);
             this.Controls.Add(this.lblChofer);
             this.Controls.Add(this.cmbTurno);
@@ -278,12 +296,13 @@
         private System.Windows.Forms.LinkLabel lnkChofer;
         private System.Windows.Forms.Label lblApellidoChofer;
         private System.Windows.Forms.Label lblNombreChofer;
-        private System.Windows.Forms.Label lblUserChofer;
-        private System.Windows.Forms.Label lblUserChoferValor;
-        private System.Windows.Forms.Label lblNombreChoferValor;
-        private System.Windows.Forms.Label lblApellidoChoferValor;
+        private System.Windows.Forms.Label lblIDChofer;
         private System.Windows.Forms.Button btnRegistrar;
         private System.Windows.Forms.Button btnCancelar;
-        private System.Windows.Forms.Button btnIngresar;
+        private System.Windows.Forms.CheckBox checkBoxHabilitado;
+        public System.Windows.Forms.Label lblIDChoferValor;
+        public System.Windows.Forms.Label lblNombreChoferValor;
+        public System.Windows.Forms.Label lblApellidoChoferValor;
+        public System.Windows.Forms.Button btnGuardar;
     }
 }

@@ -95,14 +95,24 @@ namespace UberFrba
             new EditarRol().Show();
         }
 
+        private void bajaToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            new BuscarIndividuo(this, "Chofer", 'B').Show();
+        }
+
+        private void modificacionToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            new BuscarIndividuo(this, "Chofer", 'M').Show();
+        }
+
         private void bajaToolStripMenuItem2_Click(object sender, EventArgs e)
         {
-            new BuscarIndividuo(this, "B").Show();
+            new BuscarIndividuo(this, "Cliente", 'B').Show();
         }
 
         private void modificacionToolStripMenuItem2_Click(object sender, EventArgs e)
         {
-            new BuscarIndividuo(this, "M").Show();
+            new BuscarIndividuo(this, "Cliente", 'M').Show();
         }
 
         private void altaToolStripMenuItem2_Click(object sender, EventArgs e)
@@ -140,6 +150,8 @@ namespace UberFrba
             RendicionChofer rend_chofer = new RendicionChofer();
             rend_chofer.Show(); 
         }
+
+
     }
 }
 

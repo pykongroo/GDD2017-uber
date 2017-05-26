@@ -1,8 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Configuration;
+using System.Text;
 using System.Data;
+using System.Drawing;
+using System.Linq;
 using System.Data.SqlClient;
+using System.Threading.Tasks;
 
 namespace UberFrba
 {
@@ -60,7 +65,22 @@ namespace UberFrba
             }
             Desconectar();
         }
-        
+
+        public List<String> execListSP(String nameStoredProcedure)
+        {
+            try
+            {
+                return execSelectSP(nameStoredProcedure)
+                    .AsEnumerable()
+                    .Select(r => r[0].ToString()).ToList();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+
         public void Conectar()
         {
             if (conexionBD.State == ConnectionState.Closed)

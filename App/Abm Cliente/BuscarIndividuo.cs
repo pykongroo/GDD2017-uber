@@ -14,99 +14,63 @@ namespace UberFrba.Abm_Cliente
 {
     public partial class BuscarIndividuo : CustomForm
     {
-        private DataTable tabla = new DataTable();
-        private String tipo;
+        Form prev_form;
+        private String tipoIndividuo;
+        private char modo;
 
-        public BuscarIndividuo()
+        /* Recibe el Formulario anterior
+         * Tipo de Individuo = "Chofer" / "Cliente"
+         * Modo de uso = 'B' Baja / 'M' Modificación / 'S' Busqueda de Chofer */
+        public BuscarIndividuo(Form prev_form, String _tipoIndividuo, char _modo) : base(prev_form)
         {
             InitializeComponent();
+            this.prev_form = prev_form;
+            this.tipoIndividuo = _tipoIndividuo;
+            this.modo = _modo;
+            this.Text += " " + _tipoIndividuo;
+            buscar();
         }
 
-        public BuscarIndividuo(Form prev_form, String tipo) : base(prev_form)
-        {
-            this.tipo = tipo;
-            InitializeComponent();
+        private void buscar() {
+            List<BDParametro> listParametros = new List<BDParametro>();
+            try
+            {
+                long dni;
+                long.TryParse(txtDNI.Text, out dni);
+                BDHandler handler = new BDHandler();
+                listParametros.Add(new BDParametro("@nombre", txtNombre.Text.Trim()));
+                listParametros.Add(new BDParametro("@apellido", txtApellido.Text.Trim()));
+                listParametros.Add(new BDParametro("@dni", dni));
+                if (tipoIndividuo == "Chofer")
+                    if (modo == 'M')
+                        dgIndividuo.DataSource = handler.execSelectSP("LJDG.buscar_chofer", listParametros);
+                    else
+                        dgIndividuo.DataSource = handler.execSelectSP("LJDG.buscar_chofer_habilitado", listParametros);
+                else if (tipoIndividuo == "Cliente")
+                    if (modo == 'M')
+                        dgIndividuo.DataSource = handler.execSelectSP("LJDG.buscar_cliente", listParametros);
+                    else
+                        dgIndividuo.DataSource = handler.execSelectSP("LJDG.buscar_cliente_habilitado", listParametros);
+                if (dgIndividuo.RowCount == 0)
+                    btnSeleccionar.Enabled = false;
+                else
+                    btnSeleccionar.Enabled = true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error en la base de datos.");
+                throw ex;
+            }
         }
-
-        private String generarQuery()
-        {
-            int cont = 0;
-            if (textFiltroApellido.Text != "")
-            {
-                cont++;
-            }
-            if (textFiltroNombre.Text != "")
-            {
-                cont++;
-            }
-            if (textFiltroDNI.Text != "")
-            {
-                cont++;
-            }
-            String query = "select user_id, user_apellido, user_nombre, user_dni from LJDG.Usuario where user_id in (select rxu_user from LJDG.Rol_Usuario where rxu_rol=3) ";
-            if (cont>0)
-            {
-                query += "AND ";
-                if (textFiltroApellido.Text != "")
-                {
-                    query += "user_apellido='" + textFiltroApellido.Text + "' ";
-                    if (cont > 1)
-                    {
-                        query += "AND ";
-                    }
-                    cont--;
-                }
-                if (textFiltroNombre.Text != "")
-                {
-                    query += "user_nombre='" + textFiltroNombre.Text + "' ";
-                    if (cont > 1)
-                    {
-                        query += "AND ";
-                    }
-                    cont--;
-                }
-                if (textFiltroDNI.Text != "")
-                {
-                    query += "user_dni='" + textFiltroDNI.Text + "' ";
-                    if (cont > 1)
-                    {
-                        query += "AND ";
-                    }
-                    cont--;
-                }
-            } else
-            {
-                //query += "* ";
-            }
-            query += "group by user_id, user_apellido, user_nombre, user_dni";
-            MessageBox.Show(query);
-            return query;
-        }
-
-        private void buttonBuscar_Click(object sender, EventArgs e)
-        {
-            tabla.Rows.Clear();
-            tabla.Columns.Clear();
-            //String queryS = "select Cliente_Apellido, Cliente_Nombre, Cliente_Dni from gd_esquema.Maestra group by Cliente_Apellido, Cliente_Nombre, Cliente_Dni order by Cliente_Dni;";
-            String queryS = generarQuery();
-            Conexion conn = Conexion.getInstance();
-            conn.con.Open();
-            SqlDataAdapter dataAdapter = new SqlDataAdapter(queryS, conn.con);
-            dataAdapter.Fill(tabla);
-            dataGridCliente.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
-            dataGridCliente.AutoResizeRows(DataGridViewAutoSizeRowsMode.AllCells);
-            dataGridCliente.DataSource = tabla;
-            conn.con.Close();
-        }
-
+        
         private void dataGridCliente_RowHeaderMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-            String clienteId = dataGridCliente.Rows[e.RowIndex].Cells[0].Value.ToString();
-            if (tipo == "B")
+            String clienteId = dgIndividuo.Rows[e.RowIndex].Cells[0].Value.ToString();
+            if (modo == 'B')
             {
                 MessageBox.Show("Se da de baja");
                 Usuario.darDeBaja(clienteId);
-            } else if (tipo == "M")
+            } else if (modo == 'M')
             {
                 AltaModificarCliente amCliente = new AltaModificarCliente(this, clienteId);
                 amCliente.Show();
@@ -114,10 +78,50 @@ namespace UberFrba.Abm_Cliente
             }
         }
 
+        private void txtNombre_TextChanged(object sender, EventArgs e)
+        {
+            buscar();
+        }
+
+        private void txtApellido_TextChanged(object sender, EventArgs e)
+        {
+            buscar();
+        }
+
+        private void txtDNI_TextChanged(object sender, EventArgs e)
+        {
+            buscar();
+        }
+
+        /* Solo deja ingresar digitos, backspace o delete */
+        private void txtDNI_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = !char.IsDigit(e.KeyChar) && e.KeyChar != 8 && e.KeyChar != 46;
+        }
+
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             this.Hide();
-            this.previo.Show();
+            this.prev_form.Show();
         }
+
+        private void btnSeleccionar_Click(object sender, EventArgs e)
+        {
+            int id;
+            int.TryParse(dgIndividuo.Rows[dgIndividuo.CurrentCell.RowIndex].Cells["ID"].Value.ToString(), out id);            
+            switch (modo) {
+                /* Buscar Chofer desde AltaAuto */
+                case 'S':
+                    ((Abm_Automovil.AltaAuto)prev_form).lblIDChoferValor.Text = id.ToString();
+                    ((Abm_Automovil.AltaAuto)prev_form).lblNombreChoferValor.Text = dgIndividuo.Rows[dgIndividuo.CurrentCell.RowIndex].Cells["Nombre"].Value.ToString();
+                    ((Abm_Automovil.AltaAuto)prev_form).lblApellidoChoferValor.Text = dgIndividuo.Rows[dgIndividuo.CurrentCell.RowIndex].Cells["Apellido"].Value.ToString();
+                    ((Abm_Automovil.AltaAuto)prev_form).btnGuardar.Enabled = true;
+                    this.Hide();
+                    break;
+            }
+
+            System.Console.WriteLine(id);
+        }
+
     }
 }
