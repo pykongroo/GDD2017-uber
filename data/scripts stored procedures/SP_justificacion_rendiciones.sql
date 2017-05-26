@@ -1,3 +1,6 @@
+USE [GD1C2017]
+GO
+
 IF EXISTS (SELECT name FROM sysobjects WHERE name='rendiciones_justif' AND type='p')
 DROP PROCEDURE LJDG.rendiciones_justif
 GO

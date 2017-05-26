@@ -32,6 +32,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="Microsoft.VisualBasic.PowerPacks.Vs, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
@@ -93,6 +95,24 @@
     <Compile Include="Abm Rol\EditarRol.Designer.cs">
       <DependentUpon>EditarRol.cs</DependentUpon>
     </Compile>
+    <Compile Include="Abm Turno\AltaTurno.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Abm Turno\AltaTurno.Designer.cs">
+      <DependentUpon>AltaTurno.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Abm Turno\BajaTurno.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Abm Turno\BajaTurno.Designer.cs">
+      <DependentUpon>BajaTurno.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Abm Turno\EditarTurno.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Abm Turno\EditarTurno.Designer.cs">
+      <DependentUpon>EditarTurno.cs</DependentUpon>
+    </Compile>
     <Compile Include="ConexionBD\BDHandler.cs" />
     <Compile Include="ConexionBD\BDParametro.cs" />
     <Compile Include="HashSet.cs" />
@@ -104,6 +124,7 @@
     </Compile>
     <Compile Include="Modelo\Funcionalidad.cs" />
     <Compile Include="Modelo\Rol.cs" />
+    <Compile Include="Modelo\Turno.cs" />
     <Compile Include="Modelo\Usuario.cs" />
     <Compile Include="Utils\DataTableHandler.cs" />
     <Compile Include="Utils\CustomDatePick.cs">
@@ -203,6 +224,15 @@
     <EmbeddedResource Include="Abm Rol\EditarRol.resx">
       <DependentUpon>EditarRol.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Abm Turno\AltaTurno.resx">
+      <DependentUpon>AltaTurno.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Abm Turno\BajaTurno.resx">
+      <DependentUpon>BajaTurno.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Abm Turno\EditarTurno.resx">
+      <DependentUpon>EditarTurno.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AltaUsuario.resx">
       <DependentUpon>AltaUsuario.cs</DependentUpon>
     </EmbeddedResource>
@@ -257,7 +287,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -25,6 +25,25 @@ BEGIN
 END;
 GO
 
+IF OBJECT_ID('LJDG.crear_turno') IS NOT NULL
+BEGIN
+    DROP PROCEDURE LJDG.crear_turno
+END;
+GO
+
+IF OBJECT_ID('LJDG.editar_turno') IS NOT NULL
+BEGIN
+    DROP PROCEDURE LJDG.editar_turno
+END;
+GO
+
+IF OBJECT_ID('LJDG.eliminar_turno') IS NOT NULL
+BEGIN
+    DROP PROCEDURE LJDG.eliminar_turno
+END;
+GO
+
+
 IF OBJECT_ID('LJDG.iniciar_sesion') IS NOT NULL
 BEGIN
     DROP PROCEDURE LJDG.iniciar_sesion
@@ -49,14 +68,57 @@ BEGIN
 END;
 GO
 
+IF OBJECT_ID('LJDG.obtener_turnos') IS NOT NULL
+BEGIN
+    DROP PROCEDURE LJDG.obtener_turnos
+END;
+GO
+
 IF OBJECT_ID('LJDG.obtener_roles_usuario') IS NOT NULL
 BEGIN
     DROP PROCEDURE LJDG.obtener_roles_usuario
 END;
 GO
 
+IF OBJECT_ID('LJDG.SP_Alta_Usuario') IS NOT NULL
+BEGIN
+    DROP PROCEDURE LJDG.SP_Alta_Usuario
+END;
+GO
+
 IF OBJECT_ID('LJDG.SP_Baja_Usuario') IS NOT NULL
 BEGIN
     DROP PROCEDURE LJDG.SP_Baja_Usuario
+END;
+GO
+
+IF OBJECT_ID('LJDG.obtener_turnos') IS NOT NULL
+BEGIN
+    DROP PROCEDURE LJDG.obtener_turnos
+END;
+GO
+
+
+IF OBJECT_ID('LJDG.eliminar_turno') IS NOT NULL
+BEGIN
+    DROP PROCEDURE LJDG.eliminar_turno
+END;
+GO
+
+IF OBJECT_ID('LJDG.editar_turno') IS NOT NULL
+BEGIN
+    DROP PROCEDURE LJDG.editar_turno
+END;
+GO
+
+IF OBJECT_ID('LJDG.crear_turno') IS NOT NULL
+BEGIN
+    DROP PROCEDURE LJDG.crear_turno
+END;
+GO
+
+IF OBJECT_ID('LJDG.rendiciones_justif') IS NOT NULL
+BEGIN
+    DROP PROCEDURE LJDG.rendiciones_justif
 END;
 GO
