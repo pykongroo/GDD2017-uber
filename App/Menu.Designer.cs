@@ -60,12 +60,9 @@
             this.facturacionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.listadoEstadisticoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-<<<<<<< HEAD
-=======
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
->>>>>>> 2748a6028e39186c8e6fc8943ff42a15bf377349
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -133,33 +130,24 @@
             // altaToolStripMenuItem
             // 
             this.altaToolStripMenuItem.Name = "altaToolStripMenuItem";
-<<<<<<< HEAD
             this.altaToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
-=======
             this.altaToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
->>>>>>> 2748a6028e39186c8e6fc8943ff42a15bf377349
             this.altaToolStripMenuItem.Text = "Alta";
             this.altaToolStripMenuItem.Click += new System.EventHandler(this.altaToolStripMenuItem_Click);
             // 
             // bajaToolStripMenuItem
             // 
             this.bajaToolStripMenuItem.Name = "bajaToolStripMenuItem";
-<<<<<<< HEAD
             this.bajaToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
-=======
             this.bajaToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
->>>>>>> 2748a6028e39186c8e6fc8943ff42a15bf377349
             this.bajaToolStripMenuItem.Text = "Baja";
             this.bajaToolStripMenuItem.Click += new System.EventHandler(this.bajaToolStripMenuItem_Click);
             // 
             // modificacionToolStripMenuItem
             // 
             this.modificacionToolStripMenuItem.Name = "modificacionToolStripMenuItem";
-<<<<<<< HEAD
             this.modificacionToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
-=======
             this.modificacionToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
->>>>>>> 2748a6028e39186c8e6fc8943ff42a15bf377349
             this.modificacionToolStripMenuItem.Text = "Modificación";
             this.modificacionToolStripMenuItem.Click += new System.EventHandler(this.modificacionToolStripMenuItem_Click);
             // 
@@ -176,32 +164,23 @@
             // altaToolStripMenuItem1
             // 
             this.altaToolStripMenuItem1.Name = "altaToolStripMenuItem1";
-<<<<<<< HEAD
             this.altaToolStripMenuItem1.Size = new System.Drawing.Size(158, 22);
-=======
             this.altaToolStripMenuItem1.Size = new System.Drawing.Size(144, 22);
->>>>>>> 2748a6028e39186c8e6fc8943ff42a15bf377349
             this.altaToolStripMenuItem1.Text = "Alta";
             // 
             // bajaToolStripMenuItem1
             // 
             this.bajaToolStripMenuItem1.Name = "bajaToolStripMenuItem1";
-<<<<<<< HEAD
             this.bajaToolStripMenuItem1.Size = new System.Drawing.Size(158, 22);
-=======
             this.bajaToolStripMenuItem1.Size = new System.Drawing.Size(144, 22);
->>>>>>> 2748a6028e39186c8e6fc8943ff42a15bf377349
             this.bajaToolStripMenuItem1.Text = "Baja";
             this.bajaToolStripMenuItem1.Click += new System.EventHandler(this.bajaToolStripMenuItem1_Click);
             // 
             // modificacionToolStripMenuItem1
             // 
             this.modificacionToolStripMenuItem1.Name = "modificacionToolStripMenuItem1";
-<<<<<<< HEAD
             this.modificacionToolStripMenuItem1.Size = new System.Drawing.Size(158, 22);
-=======
             this.modificacionToolStripMenuItem1.Size = new System.Drawing.Size(144, 22);
->>>>>>> 2748a6028e39186c8e6fc8943ff42a15bf377349
             this.modificacionToolStripMenuItem1.Text = "Modificación";
             this.modificacionToolStripMenuItem1.Click += new System.EventHandler(this.modificacionToolStripMenuItem1_Click);
             // 
@@ -218,33 +197,24 @@
             // altaToolStripMenuItem2
             // 
             this.altaToolStripMenuItem2.Name = "altaToolStripMenuItem2";
-<<<<<<< HEAD
             this.altaToolStripMenuItem2.Size = new System.Drawing.Size(158, 22);
-=======
             this.altaToolStripMenuItem2.Size = new System.Drawing.Size(144, 22);
->>>>>>> 2748a6028e39186c8e6fc8943ff42a15bf377349
             this.altaToolStripMenuItem2.Text = "Alta";
             this.altaToolStripMenuItem2.Click += new System.EventHandler(this.altaToolStripMenuItem2_Click);
             // 
             // bajaToolStripMenuItem2
             // 
             this.bajaToolStripMenuItem2.Name = "bajaToolStripMenuItem2";
-<<<<<<< HEAD
             this.bajaToolStripMenuItem2.Size = new System.Drawing.Size(158, 22);
-=======
             this.bajaToolStripMenuItem2.Size = new System.Drawing.Size(144, 22);
->>>>>>> 2748a6028e39186c8e6fc8943ff42a15bf377349
             this.bajaToolStripMenuItem2.Text = "Baja";
             this.bajaToolStripMenuItem2.Click += new System.EventHandler(this.bajaToolStripMenuItem2_Click);
             // 
             // modificacionToolStripMenuItem2
             // 
             this.modificacionToolStripMenuItem2.Name = "modificacionToolStripMenuItem2";
-<<<<<<< HEAD
             this.modificacionToolStripMenuItem2.Size = new System.Drawing.Size(158, 22);
-=======
             this.modificacionToolStripMenuItem2.Size = new System.Drawing.Size(144, 22);
->>>>>>> 2748a6028e39186c8e6fc8943ff42a15bf377349
             this.modificacionToolStripMenuItem2.Text = "Modificación";
             this.modificacionToolStripMenuItem2.Click += new System.EventHandler(this.modificacionToolStripMenuItem2_Click);
             // 
@@ -261,33 +231,24 @@
             // altaToolStripMenuItem3
             // 
             this.altaToolStripMenuItem3.Name = "altaToolStripMenuItem3";
-<<<<<<< HEAD
             this.altaToolStripMenuItem3.Size = new System.Drawing.Size(158, 22);
-=======
             this.altaToolStripMenuItem3.Size = new System.Drawing.Size(144, 22);
->>>>>>> 2748a6028e39186c8e6fc8943ff42a15bf377349
             this.altaToolStripMenuItem3.Text = "Alta";
             this.altaToolStripMenuItem3.Click += new System.EventHandler(this.altaToolStripMenuItem3_Click);
             // 
             // bajaToolStripMenuItem3
             // 
             this.bajaToolStripMenuItem3.Name = "bajaToolStripMenuItem3";
-<<<<<<< HEAD
             this.bajaToolStripMenuItem3.Size = new System.Drawing.Size(158, 22);
-=======
             this.bajaToolStripMenuItem3.Size = new System.Drawing.Size(144, 22);
->>>>>>> 2748a6028e39186c8e6fc8943ff42a15bf377349
             this.bajaToolStripMenuItem3.Text = "Baja";
             this.bajaToolStripMenuItem3.Click += new System.EventHandler(this.bajaToolStripMenuItem3_Click);
             // 
             // modificacionToolStripMenuItem3
             // 
             this.modificacionToolStripMenuItem3.Name = "modificacionToolStripMenuItem3";
-<<<<<<< HEAD
             this.modificacionToolStripMenuItem3.Size = new System.Drawing.Size(158, 22);
-=======
             this.modificacionToolStripMenuItem3.Size = new System.Drawing.Size(144, 22);
->>>>>>> 2748a6028e39186c8e6fc8943ff42a15bf377349
             this.modificacionToolStripMenuItem3.Text = "Modificación";
             this.modificacionToolStripMenuItem3.Click += new System.EventHandler(this.modificacionToolStripMenuItem3_Click);
             // 
@@ -384,8 +345,6 @@
             this.pictureBox1.TabIndex = 1;
             this.pictureBox1.TabStop = false;
             // 
-<<<<<<< HEAD
-=======
             // button1
             // 
             this.button1.Location = new System.Drawing.Point(334, 27);
@@ -416,7 +375,6 @@
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
->>>>>>> 2748a6028e39186c8e6fc8943ff42a15bf377349
             // Menu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);

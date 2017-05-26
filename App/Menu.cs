@@ -169,8 +169,6 @@ namespace UberFrba
             rend_chofer.Show(); 
         }
 
-<<<<<<< HEAD
-=======
         private void altaToolStripMenuItem4_Click(object sender, EventArgs e)
         {
             new AltaTurno().Show();
@@ -185,8 +183,6 @@ namespace UberFrba
         {
             new EditarTurno().Show();
         }
->>>>>>> 2748a6028e39186c8e6fc8943ff42a15bf377349
-
     }
 }
 
