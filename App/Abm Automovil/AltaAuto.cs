@@ -19,7 +19,7 @@ namespace UberFrba.Abm_Automovil
             InitializeComponent();
             BDHandler handler = new BDHandler();
             cmbMarca.DataSource = handler.execListSP("LJDG.obtener_marcas");
-            cmbTurno.DataSource = handler.execListSP("LJDG.obtener_turnos");
+            cmbTurno.DataSource = handler.execListSP("LJDG.obtener_descripcion_turnos");
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
