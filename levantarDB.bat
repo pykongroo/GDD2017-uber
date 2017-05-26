@@ -28,7 +28,7 @@ sqlcmd -S localhost\SQLSERVER2012 -U gd -P gd2017 -i "data/scripts stored proced
 sqlcmd -S localhost\SQLSERVER2012 -U gd -P gd2017 -i "data/scripts stored procedures/busqueda/buscar_chofer_habilitado.sql"
 sqlcmd -S localhost\SQLSERVER2012 -U gd -P gd2017 -i "data/scripts stored procedures/busqueda/buscar_chofer.sql"
 sqlcmd -S localhost\SQLSERVER2012 -U gd -P gd2017 -i "data/scripts stored procedures/usuario/ABM_Usuario.sql"
-sqlcmd -S LOCALHOST\SQLSERVER2012 -U gd -P gd2017 -i "data/scripts stored procedures/rendicion/SP_justificacion_rendiciones.sql"
+sqlcmd -S localhost\SQLSERVER2012 -U gd -P gd2017 -i "data/scripts stored procedures/rendicion/SP_justificacion_rendiciones.sql"
 
 
 sqlcmd -S localhost\SQLSERVER2012 -U gd -P gd2017 -i "data/scripts migracion/insercion_roles_y_funcionalidades.sql"

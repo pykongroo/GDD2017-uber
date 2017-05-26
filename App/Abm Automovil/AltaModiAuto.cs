@@ -85,7 +85,7 @@ namespace UberFrba.Abm_Automovil
             txtBoxModelo.Text = listParametros[3].valor.ToString();
             lblIDChoferValor.Text = listParametros[4].valor.ToString();
             cmbTurno.SelectedIndex = Convert.ToInt32(listParametros[5].valor);
-            checkBoxHabilitado.Checked = listParametros[6].valor == 1 ? true : false;
+            checkBoxHabilitado.Checked = Convert.ToInt32(listParametros[6].valor) == 1 ;
         }
 
         private void btnGuardar_Click(object sender, EventArgs e)
