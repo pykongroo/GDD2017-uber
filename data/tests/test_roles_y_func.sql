@@ -1,0 +1,18 @@
+USE GD1C2017
+
+/*DAR DE ALTA Y MODIFICAR ROLES ARRIBA DEL 4 DESDE LA APP, LUEGO EJECUTAR ESTE SCRIPT PARA VOLVER AL ESTADO POR DEFECTO*/
+
+SELECT *
+FROM LJDG.Rol left join LJDG.Funcionalidad_Rol ON rol_id = fxr_rol left join LJDG.Funcionalidad ON func_id = fxr_funcionalidad
+GO
+
+DELETE FROM LJDG.Funcionalidad_Rol
+WHERE fxr_rol > 3
+GO 
+
+DELETE FROM LJDG.Rol
+WHERE rol_id > 3
+GO
+
+DBCC CHECKIDENT ('LJDG.Rol', RESEED, 3);
+GO

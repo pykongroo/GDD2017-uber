@@ -12,8 +12,8 @@ AS
 BEGIN
 	SELECT clie_id 'ID', clie_nombre 'Nombre', clie_apellido 'Apellido', clie_dni 'DNI'
 	FROM LJDG.Cliente
-	WHERE clie_nombre LIKE @nombre + '%'
-		AND clie_apellido LIKE @apellido + '%'
+	WHERE clie_nombre LIKE '%' + @nombre + '%'
+		AND clie_apellido LIKE '%' + @apellido + '%'
 		AND ( @dni = 0 OR clie_dni = @dni)
 END
 GO

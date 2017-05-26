@@ -43,7 +43,6 @@ BEGIN
 END;
 GO
 
-
 IF OBJECT_ID('LJDG.iniciar_sesion') IS NOT NULL
 BEGIN
     DROP PROCEDURE LJDG.iniciar_sesion
@@ -92,33 +91,44 @@ BEGIN
 END;
 GO
 
-IF OBJECT_ID('LJDG.obtener_turnos') IS NOT NULL
+IF OBJECT_ID('LJDG.obtener_marcas') IS NOT NULL
 BEGIN
-    DROP PROCEDURE LJDG.obtener_turnos
+    DROP PROCEDURE LJDG.obtener_marcas
 END;
 GO
 
-
-IF OBJECT_ID('LJDG.eliminar_turno') IS NOT NULL
+IF OBJECT_ID('LJDG.alta_auto') IS NOT NULL
 BEGIN
-    DROP PROCEDURE LJDG.eliminar_turno
-END;
-GO
-
-IF OBJECT_ID('LJDG.editar_turno') IS NOT NULL
-BEGIN
-    DROP PROCEDURE LJDG.editar_turno
-END;
-GO
-
-IF OBJECT_ID('LJDG.crear_turno') IS NOT NULL
-BEGIN
-    DROP PROCEDURE LJDG.crear_turno
+    DROP PROCEDURE LJDG.alta_auto
 END;
 GO
 
 IF OBJECT_ID('LJDG.rendiciones_justif') IS NOT NULL
 BEGIN
     DROP PROCEDURE LJDG.rendiciones_justif
+END;
+GO
+
+IF OBJECT_ID('LJDG.buscar_cliente_habilitado') IS NOT NULL
+BEGIN
+    DROP PROCEDURE LJDG.buscar_cliente_habilitado
+END;
+GO
+
+IF OBJECT_ID('LJDG.buscar_cliente') IS NOT NULL
+BEGIN
+    DROP PROCEDURE LJDG.buscar_cliente
+END;
+GO
+
+IF OBJECT_ID('LJDG.buscar_chofer_habilitado') IS NOT NULL
+BEGIN
+    DROP PROCEDURE LJDG.buscar_chofer_habilitado
+END;
+GO
+
+IF OBJECT_ID('LJDG.buscar_chofer') IS NOT NULL
+BEGIN
+    DROP PROCEDURE LJDG.buscar_chofer
 END;
 GO

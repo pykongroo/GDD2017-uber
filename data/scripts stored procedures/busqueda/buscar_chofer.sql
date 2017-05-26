@@ -12,8 +12,8 @@ AS
 BEGIN
 	SELECT chof_id 'ID', chof_nombre 'Nombre', chof_apellido 'Apellido', chof_dni 'DNI'
 	FROM LJDG.Chofer
-	WHERE chof_nombre LIKE @nombre + '%'
-		AND chof_apellido LIKE @apellido + '%'
+	WHERE chof_nombre LIKE '%' + @nombre + '%'
+		AND chof_apellido LIKE '%' + @apellido + '%'
 		AND ( @dni = 0 OR chof_dni = @dni)
 END
 GO
