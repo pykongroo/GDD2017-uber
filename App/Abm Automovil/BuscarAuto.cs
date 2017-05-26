@@ -17,8 +17,10 @@ namespace UberFrba.Abm_Automovil
         public BuscarAuto()
         {
             InitializeComponent();
-            BDHandler handler = new BDHandler();
-            cmbMarca.DataSource = handler.execListSP("LJDG.obtener_marcas");
+            List<String> marcas = new List<String>();
+            marcas.Add("Todas");
+            marcas.AddRange(new BDHandler().execListSP("LJDG.obtener_marcas"));
+            cmbMarca.DataSource = marcas;
             buscar();
         }
 
@@ -33,7 +35,7 @@ namespace UberFrba.Abm_Automovil
             try
             {
                 BDHandler handler = new BDHandler();
-                listParametros.Add(new BDParametro("@marca", cmbMarca.SelectedIndex + 1));
+                listParametros.Add(new BDParametro("@marca", cmbMarca.SelectedIndex));
                 listParametros.Add(new BDParametro("@modelo", txtBoxModelo.Text.Trim()));
                 listParametros.Add(new BDParametro("@patente", txtBoxPatente.Text.Trim()));
                 listParametros.Add(new BDParametro("@chofer", idChofer));
@@ -67,6 +69,15 @@ namespace UberFrba.Abm_Automovil
 
         private void cmbMarca_SelectedIndexChanged(object sender, EventArgs e)
         {
+            buscar();
+        }
+
+        private void btnLimpiar_Click(object sender, EventArgs e)
+        {
+            idChofer = 0;
+            lblIDChoferValor.Text = "";
+            lblNombreChoferValor.Text = "";
+            lblApellidoChoferValor.Text = "";
             buscar();
         }
 

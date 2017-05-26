@@ -1,6 +1,6 @@
 ﻿namespace UberFrba.Abm_Automovil
 {
-    partial class AltaAuto
+    partial class AltaModiAuto
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AltaAuto));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AltaModiAuto));
             this.lblMarca = new System.Windows.Forms.Label();
             this.cmbMarca = new System.Windows.Forms.ComboBox();
             this.lblModelo = new System.Windows.Forms.Label();
@@ -297,7 +297,6 @@
         private System.Windows.Forms.Label lblApellidoChofer;
         private System.Windows.Forms.Label lblNombreChofer;
         private System.Windows.Forms.Label lblIDChofer;
-        private System.Windows.Forms.Button btnRegistrar;
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.CheckBox checkBoxHabilitado;
         public System.Windows.Forms.Label lblIDChoferValor;

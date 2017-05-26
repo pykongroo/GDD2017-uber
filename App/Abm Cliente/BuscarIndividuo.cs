@@ -14,17 +14,17 @@ namespace UberFrba.Abm_Cliente
 {
     public partial class BuscarIndividuo : CustomForm
     {
-        Form prev_form;
+        Form formPadre;
         private String tipoIndividuo;
         private char modo;
 
         /* Recibe el Formulario anterior
          * Tipo de Individuo = "Chofer" / "Cliente"
          * Modo de uso = 'B' Baja / 'M' Modificación / 'S' Busqueda de Chofer */
-        public BuscarIndividuo(Form prev_form, String _tipoIndividuo, char _modo) : base(prev_form)
+        public BuscarIndividuo(Form _formPadre, String _tipoIndividuo, char _modo)// : base(prev_form)
         {
             InitializeComponent();
-            this.prev_form = prev_form;
+            this.formPadre = _formPadre;
             this.tipoIndividuo = _tipoIndividuo;
             this.modo = _modo;
             this.Text += " " + _tipoIndividuo;
@@ -62,21 +62,6 @@ namespace UberFrba.Abm_Cliente
                 throw ex;
             }
         }
-        
-        private void dataGridCliente_RowHeaderMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
-        {
-            String clienteId = dgIndividuo.Rows[e.RowIndex].Cells[0].Value.ToString();
-            if (modo == 'B')
-            {
-                MessageBox.Show("Se da de baja");
-                Usuario.darDeBaja(clienteId);
-            } else if (modo == 'M')
-            {
-                AltaModificarCliente amCliente = new AltaModificarCliente(this, clienteId);
-                amCliente.Show();
-                this.Hide();
-            }
-        }
 
         private void txtNombre_TextChanged(object sender, EventArgs e)
         {
@@ -102,7 +87,7 @@ namespace UberFrba.Abm_Cliente
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             this.Hide();
-            this.prev_form.Show();
+            this.formPadre.Show();
         }
 
         private void btnSeleccionar_Click(object sender, EventArgs e)
@@ -115,16 +100,20 @@ namespace UberFrba.Abm_Cliente
                 {
                     /* Buscar Chofer desde AltaAuto */
                     case 'S':
-                        ((Abm_Automovil.AltaAuto)prev_form).lblIDChoferValor.Text = id.ToString();
-                        ((Abm_Automovil.AltaAuto)prev_form).lblNombreChoferValor.Text = dgIndividuo.Rows[dgIndividuo.CurrentCell.RowIndex].Cells["Nombre"].Value.ToString();
-                        ((Abm_Automovil.AltaAuto)prev_form).lblApellidoChoferValor.Text = dgIndividuo.Rows[dgIndividuo.CurrentCell.RowIndex].Cells["Apellido"].Value.ToString();
-                        ((Abm_Automovil.AltaAuto)prev_form).btnGuardar.Enabled = true;
+                        ((Abm_Automovil.AltaModiAuto)formPadre).lblIDChoferValor.Text = id.ToString();
+                        ((Abm_Automovil.AltaModiAuto)formPadre).lblNombreChoferValor.Text = dgIndividuo.Rows[dgIndividuo.CurrentCell.RowIndex].Cells["Nombre"].Value.ToString();
+                        ((Abm_Automovil.AltaModiAuto)formPadre).lblApellidoChoferValor.Text = dgIndividuo.Rows[dgIndividuo.CurrentCell.RowIndex].Cells["Apellido"].Value.ToString();
+                        ((Abm_Automovil.AltaModiAuto)formPadre).btnGuardar.Enabled = true;
                         this.Hide();
                         break;
                     /* Buscar Chofer desde BuscarAuto */
                     case 'V':
-                        ((Abm_Automovil.BuscarAuto)prev_form).idChofer = id;
-                        ((Abm_Automovil.BuscarAuto)prev_form).buscar();
+                        ((Abm_Automovil.BuscarAuto)formPadre).idChofer = id;
+                        ((Abm_Automovil.BuscarAuto)formPadre).lblIDChoferValor.Text = id.ToString();
+                        ((Abm_Automovil.BuscarAuto)formPadre).lblNombreChoferValor.Text = dgIndividuo.Rows[dgIndividuo.CurrentCell.RowIndex].Cells["Nombre"].Value.ToString();
+                        ((Abm_Automovil.BuscarAuto)formPadre).lblApellidoChoferValor.Text = dgIndividuo.Rows[dgIndividuo.CurrentCell.RowIndex].Cells["Apellido"].Value.ToString();
+                        ((Abm_Automovil.BuscarAuto)formPadre).btnLimpiar.Enabled = true;
+                        ((Abm_Automovil.BuscarAuto)formPadre).buscar();
                         this.Hide();
                         break;
                 }
@@ -133,17 +122,17 @@ namespace UberFrba.Abm_Cliente
             {
                 switch (modo)
                 {
-                    /* Buscar Chofer desde Baja Cliente */
+                    /* Buscar Cliente desde Baja Cliente */
                     case 'B':
                         List<BDParametro> listParametros = new List<BDParametro>();
                         listParametros.Add(new BDParametro("@id", id));
                         new BDHandler().execSP("LJDG.baja_cliente", ref listParametros);
                         this.Hide();
                         break;
-                    /* Buscar Chofer desde Modificación Cliente */
+                    /* Buscar Cliente desde Modificación Cliente */
                     case 'M':
-                        ((Abm_Automovil.BuscarAuto)prev_form).idChofer = id;
-                        ((Abm_Automovil.BuscarAuto)prev_form).buscar();
+                        ((Abm_Automovil.BuscarAuto)formPadre).idChofer = id;
+                        ((Abm_Automovil.BuscarAuto)formPadre).buscar();
                         this.Hide();
                         break;
                 }

@@ -24,6 +24,6 @@ BEGIN
 	WHERE auto_modelo LIKE @modelo + '%'
 		AND auto_patente LIKE @patente + '%'
 		AND ( @marca = 0 OR auto_marca = @marca)
-		OR ( @chofer = 0 OR auto_chofer = @chofer)
+		AND ( @chofer = 0 OR auto_chofer = @chofer)
 END
 GO

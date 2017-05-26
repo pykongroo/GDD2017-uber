@@ -67,6 +67,7 @@ namespace UberFrba
             Desconectar();
         }
 
+        /* Devuelve un Lista con la primera columna del Select */
         public List<String> execListSP(String nameStoredProcedure)
         {
             try

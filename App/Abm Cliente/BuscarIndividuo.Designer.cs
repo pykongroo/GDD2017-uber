@@ -72,7 +72,6 @@
             this.dgIndividuo.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgIndividuo.Size = new System.Drawing.Size(410, 250);
             this.dgIndividuo.TabIndex = 0;
-            this.dgIndividuo.RowHeaderMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridCliente_RowHeaderMouseDoubleClick);
             // 
             // filtrosBox
             // 

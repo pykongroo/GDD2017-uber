@@ -133,7 +133,7 @@ namespace UberFrba
 
         private void altaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            new AltaAuto().Show();
+            new AltaModiAuto('A', 0).Show();
         }
 
         private void bajaToolStripMenuItem_Click(object sender, EventArgs e)

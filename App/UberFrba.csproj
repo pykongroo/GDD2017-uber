@@ -47,11 +47,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Abm Automovil\AltaAuto.cs">
+    <Compile Include="Abm Automovil\AltaModiAuto.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Abm Automovil\AltaAuto.Designer.cs">
-      <DependentUpon>AltaAuto.cs</DependentUpon>
+    <Compile Include="Abm Automovil\AltaModiAuto.Designer.cs">
+      <DependentUpon>AltaModiAuto.cs</DependentUpon>
     </Compile>
     <Compile Include="Abm Automovil\BuscarAuto.cs">
       <SubType>Form</SubType>
@@ -203,8 +203,8 @@
     <Compile Include="Utils\PasswordInput.Designer.cs">
       <DependentUpon>PasswordInput.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Abm Automovil\AltaAuto.resx">
-      <DependentUpon>AltaAuto.cs</DependentUpon>
+    <EmbeddedResource Include="Abm Automovil\AltaModiAuto.resx">
+      <DependentUpon>AltaModiAuto.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Abm Automovil\BuscarAuto.resx">
       <DependentUpon>BuscarAuto.cs</DependentUpon>
