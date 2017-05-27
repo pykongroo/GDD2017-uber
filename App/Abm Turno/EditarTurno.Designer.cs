@@ -236,7 +236,7 @@
             this.label6.TabIndex = 26;
             this.label6.Text = "Seleccione el turno a modificar";
             // 
-            // EditarTurno2
+            // EditarTurno
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -257,7 +257,9 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.shapeContainer1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "EditarTurno";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "EditarTurno";
             this.Load += new System.EventHandler(this.EditarTurno_Load);
             ((System.ComponentModel.ISupportInitialize)(this.numPrecioBase)).EndInit();

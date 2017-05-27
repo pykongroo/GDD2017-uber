@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using UberFrba.Buscador;
 
 namespace UberFrba.Abm_Automovil
 {
@@ -54,7 +55,7 @@ namespace UberFrba.Abm_Automovil
 
         private void lnkChofer_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            new Abm_Cliente.BuscarIndividuo(this, "Chofer", 'V').Show();
+            new BuscarIndividuo(this, "Chofer", 'V').Show();
         }
 
         private void txtBoxPatente_TextChanged(object sender, EventArgs e)

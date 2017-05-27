@@ -10,9 +10,9 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using UberFrba.Modelo;
 
-namespace UberFrba.Abm_Cliente
+namespace UberFrba.Buscador
 {
-    public partial class BuscarIndividuo : CustomForm
+    public partial class BuscarIndividuo : Form
     {
         Form formPadre;
         private String tipoIndividuo;
@@ -21,7 +21,7 @@ namespace UberFrba.Abm_Cliente
         /* Recibe el Formulario anterior
          * Tipo de Individuo = "Chofer" / "Cliente"
          * Modo de uso = 'B' Baja / 'M' Modificación / 'S' Busqueda de Chofer */
-        public BuscarIndividuo(Form _formPadre, String _tipoIndividuo, char _modo)// : base(prev_form)
+        public BuscarIndividuo(Form _formPadre, String _tipoIndividuo, char _modo)
         {
             InitializeComponent();
             this.formPadre = _formPadre;

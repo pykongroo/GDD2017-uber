@@ -68,7 +68,9 @@
             this.Controls.Add(this.btnEliminarTurno);
             this.Controls.Add(this.cmbTurnos);
             this.Controls.Add(this.label1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "BajaTurno";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "BajaTurno";
             this.Load += new System.EventHandler(this.BajaTurno_Load);
             this.ResumeLayout(false);

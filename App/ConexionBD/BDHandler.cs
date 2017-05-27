@@ -22,16 +22,18 @@ namespace UberFrba
         {
             DataTable dataTable = new DataTable();
             SqlDataAdapter dataAdapter;
-            try {
+            try
+            {
                 Conectar();
                 dataAdapter = new SqlDataAdapter(nameStoredProcedure, conexionBD);
                 dataAdapter.SelectCommand.CommandType = CommandType.StoredProcedure;
-                if ( listParametros != null )
+                if (listParametros != null)
                     foreach (BDParametro parametro in listParametros)
                         dataAdapter.SelectCommand.Parameters.AddWithValue(parametro.nombre, parametro.valor);
                 dataAdapter.Fill(dataTable);
             }
-            catch (Exception ex) {
+            catch (Exception ex)
+            {
                 throw ex;
             }
             Desconectar();
@@ -41,7 +43,8 @@ namespace UberFrba
         /* Recibe el nombre del SP y la lista de Parametros */
         public void execSP(String nameStoredProcedure, ref List<BDParametro> listParametros)
         {
-            try {
+            try
+            {
                 Conectar();
                 SqlCommand comando = new SqlCommand(nameStoredProcedure, conexionBD);
                 comando.CommandType = CommandType.StoredProcedure;
@@ -61,7 +64,8 @@ namespace UberFrba
                         if (comando.Parameters[i].Direction == ParameterDirection.Output)
                             listParametros[i].valor = comando.Parameters[i].Value;
             }
-            catch (Exception ex) {
+            catch (Exception ex)
+            {
                 throw ex;
             }
             Desconectar();

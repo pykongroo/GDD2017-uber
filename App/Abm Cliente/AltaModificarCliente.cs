@@ -55,9 +55,10 @@ namespace UberFrba.Abm_Cliente
         {
             //setea los valores con los datos del cliente
             String query = "select user_nombre, user_apellido, user_dni, user_mail, user_telefono, user_direccion, user_cp, user_fecha_nac, user_habilitado from LJDG.Usuario where user_id = '"+clienteId+"'";
-            Conexion conn = Conexion.getInstance();
-            conn.con.Open();
-            SqlCommand command = new SqlCommand(query, conn.con);
+            BDHandler bdh = new BDHandler();
+            bdh.Conectar();
+            SqlConnection conn = bdh.conexionBD;
+            SqlCommand command = new SqlCommand(query, conn);
             var reader = command.ExecuteReader();
             while (reader.Read())
             {
@@ -80,7 +81,7 @@ namespace UberFrba.Abm_Cliente
                 cusFechaNac.setDate(reader.GetDateTime(7));
                 checkBoxHabilitado.Checked = reader.GetBoolean(8);
             }
-            conn.con.Close();
+            bdh.Desconectar();
             //muestro checkbox de habilitacion
             checkBoxHabilitado.Show();
         }
@@ -100,12 +101,13 @@ namespace UberFrba.Abm_Cliente
                 {
                     queryTelVal = "select * from LJDG.Usuario where user_id<>'" + clienteID + "' AND user_telefono='" + cusTelefono.Text() + "'";
                 }
-                Conexion conn = Conexion.getInstance();
-                conn.con.Open();
-                SqlCommand command = new SqlCommand(queryTelVal, conn.con);
+                BDHandler bdh = new BDHandler();
+                bdh.Conectar();
+                SqlConnection conn = bdh.conexionBD;
+                SqlCommand command = new SqlCommand(queryTelVal, conn);
                 var reader = command.ExecuteReader();
                 Boolean telefonoExistente = reader.Read();//verifica unicidad de telefono en DB
-                conn.con.Close();
+                bdh.Desconectar();
                 if (!telefonoExistente)
                 {
                     MessageBox.Show("Todo OK");

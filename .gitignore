@@ -244,3 +244,5 @@ paket-files/
 .idea/
 *.sln.iml
 
+# Config app (temporal)
+App/App.config
