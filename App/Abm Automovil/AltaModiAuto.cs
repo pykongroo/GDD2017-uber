@@ -80,12 +80,12 @@ namespace UberFrba.Abm_Automovil
             listParametros.Add(new BDParametro("@habilitado", 0, SqlDbType.Bit, 0, ParameterDirection.Output));
             listParametros.Add(new BDParametro("@mensaje", "", SqlDbType.VarChar, 50, ParameterDirection.Output));
             new BDHandler().execSP("LJDG.obtener_auto", ref listParametros);
-            cmbMarca.SelectedIndex = Convert.ToInt32(listParametros[1].valor);
+            //cmbMarca.SelectedIndex = int.Parse(listParametros[1].valor.ToString());
             txtBoxPatente.Text = listParametros[2].valor.ToString();
             txtBoxModelo.Text = listParametros[3].valor.ToString();
             lblIDChoferValor.Text = listParametros[4].valor.ToString();
             cmbTurno.SelectedIndex = Convert.ToInt32(listParametros[5].valor);
-            checkBoxHabilitado.Checked = listParametros[6].valor == 1 ? true : false;
+            checkBoxHabilitado.Checked = (int.Parse(listParametros[6].valor.ToString()) == 1) ? true : false;
         }
 
         private void btnGuardar_Click(object sender, EventArgs e)

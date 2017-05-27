@@ -81,5 +81,10 @@ namespace UberFrba.Abm_Automovil
             buscar();
         }
 
+        private void btnSeleccionar_Click(object sender, EventArgs e)
+        {
+            new AltaModiAuto('M', int.Parse(dgAuto.Rows[dgAuto.CurrentCell.RowIndex].Cells["ID"].Value.ToString())).Show();
+        }
+
     }
 }
