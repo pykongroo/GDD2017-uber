@@ -41,8 +41,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.radioHabilitar = new System.Windows.Forms.RadioButton();
             this.lblDeshabilitado = new System.Windows.Forms.Label();
-            this.shapeContainer1 = new Microsoft.VisualBasic.PowerPacks.ShapeContainer();
-            this.lineShape1 = new Microsoft.VisualBasic.PowerPacks.LineShape();
             this.cmbTurnos = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.numPrecioBase)).BeginInit();
@@ -199,25 +197,6 @@
             this.lblDeshabilitado.Text = "El rol se encuentra deshabilitado, para habilitarlo clickee el botón";
             this.lblDeshabilitado.Visible = false;
             // 
-            // shapeContainer1
-            // 
-            this.shapeContainer1.Location = new System.Drawing.Point(0, 0);
-            this.shapeContainer1.Margin = new System.Windows.Forms.Padding(0);
-            this.shapeContainer1.Name = "shapeContainer1";
-            this.shapeContainer1.Shapes.AddRange(new Microsoft.VisualBasic.PowerPacks.Shape[] {
-            this.lineShape1});
-            this.shapeContainer1.Size = new System.Drawing.Size(424, 295);
-            this.shapeContainer1.TabIndex = 25;
-            this.shapeContainer1.TabStop = false;
-            // 
-            // lineShape1
-            // 
-            this.lineShape1.Name = "lineShape1";
-            this.lineShape1.X1 = 50;
-            this.lineShape1.X2 = 360;
-            this.lineShape1.Y1 = 58;
-            this.lineShape1.Y2 = 58;
-            // 
             // cmbTurnos
             // 
             this.cmbTurnos.FormattingEnabled = true;
@@ -256,7 +235,6 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.shapeContainer1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "EditarTurno";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -286,8 +264,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.RadioButton radioHabilitar;
         private System.Windows.Forms.Label lblDeshabilitado;
-        private Microsoft.VisualBasic.PowerPacks.ShapeContainer shapeContainer1;
-        private Microsoft.VisualBasic.PowerPacks.LineShape lineShape1;
         private System.Windows.Forms.ComboBox cmbTurnos;
         private System.Windows.Forms.Label label6;
     }
