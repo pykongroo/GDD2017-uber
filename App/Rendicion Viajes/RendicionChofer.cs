@@ -66,23 +66,29 @@ namespace UberFrba.Rendicion_Viajes
 
         private void button1_Click(object sender, EventArgs e)
         {
-            List<BDParametro> listParametros = new List<BDParametro>();
-            try
+            if (cmb_chofer_rendicion.esValido()&&cmb_turno_rendicion.esValido()) { 
+                List<BDParametro> listParametros = new List<BDParametro>();
+                try
+                {
+                    BDHandler handler = new BDHandler();
+                    listParametros.Add(new BDParametro("@fecha", fechaRendicion_dpicker.getDate()));
+                    listParametros.Add(new BDParametro("@turno", turnos[cmb_turno_rendicion.Text()]));
+                    listParametros.Add(new BDParametro("@chofer", choferes[cmb_chofer_rendicion.Text()]));
+                    listParametros.Add(new BDParametro("@i_total", 0, SqlDbType.Float, 18, ParameterDirection.Output));
+                    listParametros.Add(new BDParametro("@mensaje", "", SqlDbType.VarChar, 50, ParameterDirection.Output));
+                    handler.execSP("LJDG.rendiciones_justif", ref listParametros);
+                    importeTotalText.setData(listParametros[3].valor.ToString());
+                    dgRChofer.DataSource = handler.execSelectSP("LJDG.rendiciones_justif", listParametros);
+                    MessageBox.Show(listParametros[4].valor.ToString());
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.ToString());
+                    throw ex;
+                }
+            } else
             {
-                BDHandler handler = new BDHandler();
-                listParametros.Add(new BDParametro("@fecha", fechaRendicion_dpicker.getDate()));
-                listParametros.Add(new BDParametro("@turno", turnos[cmb_turno_rendicion.Text()]));
-                listParametros.Add(new BDParametro("@chofer", choferes[cmb_chofer_rendicion.Text()]));
-                listParametros.Add(new BDParametro("@i_total", 0, SqlDbType.Float, 18, ParameterDirection.Output));
-                listParametros.Add(new BDParametro("@mensaje", "", SqlDbType.VarChar, 50, ParameterDirection.Output));
-                handler.execSP("LJDG.rendiciones_justif", ref listParametros);
-                importeTotalText.setData(listParametros[3].valor.ToString());
-                MessageBox.Show(listParametros[4].valor.ToString());
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.ToString());
-                throw ex;
+                MessageBox.Show("Complete los campos");
             }
         }
     }
