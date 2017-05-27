@@ -66,7 +66,7 @@ namespace UberFrba.Abm_Automovil
                 listParametros.Insert(0, new BDParametro("@id", idAuto));
                 handler.execSP("LJDG.modi_auto", ref listParametros);
             }
-            return listParametros[6].valor.ToString();
+            return listParametros[listParametros.Count - 1].valor.ToString();
         }
 
         private void cargarAuto()
@@ -81,16 +81,13 @@ namespace UberFrba.Abm_Automovil
             listParametros.Add(new BDParametro("@habilitado", 0, SqlDbType.Bit, 0, ParameterDirection.Output));
             listParametros.Add(new BDParametro("@mensaje", "", SqlDbType.VarChar, 50, ParameterDirection.Output));
             new BDHandler().execSP("LJDG.obtener_auto", ref listParametros);
-            //cmbMarca.SelectedIndex = int.Parse(listParametros[1].valor.ToString());
+            cmbMarca.SelectedValue = Convert.ToInt32(listParametros[1].valor.ToString());
             txtBoxPatente.Text = listParametros[2].valor.ToString();
             txtBoxModelo.Text = listParametros[3].valor.ToString();
             lblIDChoferValor.Text = listParametros[4].valor.ToString();
-            cmbTurno.SelectedIndex = Convert.ToInt32(listParametros[5].valor);
-<<<<<<< HEAD
-            checkBoxHabilitado.Checked = (int.Parse(listParametros[6].valor.ToString()) == 1) ? true : false;
-=======
+            cmbTurno.SelectedValue = Convert.ToInt32(listParametros[5].valor);
             checkBoxHabilitado.Checked = Convert.ToInt32(listParametros[6].valor) == 1;
->>>>>>> 12af4a2330a9f1ffc1f43b5acf9818e8e8c9c233
+            btnGuardar.Enabled = true;
         }
 
         private void btnGuardar_Click(object sender, EventArgs e)

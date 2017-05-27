@@ -34,6 +34,7 @@ BEGIN
 			auto_turno = @turno,
 			auto_habilitado = @habilitado
 		WHERE auto_id = @id
+		SET @mensaje = 'Automóvil Modificado Exitosamente'
 	END
 END
 GO
