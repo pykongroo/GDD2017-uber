@@ -174,7 +174,7 @@
             this.dateTimePickerFechaNac.Name = "dateTimePickerFechaNac";
             this.dateTimePickerFechaNac.Size = new System.Drawing.Size(246, 20);
             this.dateTimePickerFechaNac.TabIndex = 13;
-            this.dateTimePickerFechaNac.Value = new System.DateTime(2017, 5, 27, 18, 30, 20, 0);
+            this.dateTimePickerFechaNac.Value = new System.DateTime(2017, 5, 28, 0, 0, 0, 0);
             // 
             // txtBoxMail
             // 
@@ -328,6 +328,7 @@
             this.Name = "AltaChofer";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "AltaChofer";
+            this.Load += new System.EventHandler(this.AltaChofer_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);

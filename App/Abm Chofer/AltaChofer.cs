@@ -18,12 +18,6 @@ namespace UberFrba.Abm_Chofer
             InitializeComponent();
         }
 
-        public bool validarCampo(string text, bool esNumerico, bool esObligatorio)
-        {
-            return (!esObligatorio && text == "")
-                 || (esObligatorio && text != "" && (esNumerico && text.All(char.IsDigit) || !esNumerico));
-        }
-
         private void radioNuevoUser_CheckedChanged(object sender, EventArgs e)
         {
             if (radioNuevoUser.Checked)
@@ -64,6 +58,12 @@ namespace UberFrba.Abm_Chofer
             btnNuevo.Enabled = true;
         }
 
+        public bool validarCampo(string text, bool esNumerico, bool esObligatorio)
+        {
+            return (!esObligatorio && text == "")
+                 || (esObligatorio && text != "" && (esNumerico && text.All(char.IsDigit) || !esNumerico));
+        }
+
         private bool validacion()
         {
             bool valido = true;
@@ -88,11 +88,25 @@ namespace UberFrba.Abm_Chofer
         {
             if (validacion())
             {
-                MessageBox.Show(guardarChofer());
+                if (altaChofer())
+                    limpiar();
             }
         }
 
-        private string guardarChofer()
+        private void limpiar()
+        {
+            txtBoxUsername.Clear();
+            txtBoxPassword.Clear();
+            txtBoxNombre.Clear();
+            txtBoxApellido.Clear();
+            txtBoxDNI.Clear();
+            txtBoxDireccion.Clear();
+            txtBoxTelefono.Clear();
+            txtBoxMail.Clear();
+            dateTimePickerFechaNac.Value = DateTime.Today;
+        }
+
+        private bool altaChofer()
         {
             BDHandler handler = new BDHandler();
             List<BDParametro> listParametros = new List<BDParametro>();
@@ -112,21 +126,22 @@ namespace UberFrba.Abm_Chofer
             }
             else if (radioUserExistente.Checked)
                 handler.execSP("LJDG.alta_chofer_usuario_existente", ref listParametros);
-            else return "Error";
+            else return false;
 
-            return listParametros[listParametros.Count - 1].valor.ToString();
+            string mensaje = listParametros[listParametros.Count - 1].valor.ToString();
+            MessageBox.Show(mensaje);
+            if (mensaje == "Alta Exitosa")
+                return true;
+            else return false;
         }
 
         private void btnLimpiar_Click(object sender, EventArgs e)
         {
-            txtBoxUsername.Clear();
-            txtBoxPassword.Clear();
-            txtBoxNombre.Clear();
-            txtBoxApellido.Clear();
-            txtBoxDNI.Clear();
-            txtBoxDireccion.Clear();
-            txtBoxTelefono.Clear();
-            txtBoxMail.Clear();
+            limpiar();
+        }
+
+        private void AltaChofer_Load(object sender, EventArgs e)
+        {
             dateTimePickerFechaNac.Value = DateTime.Today;
         }
 
