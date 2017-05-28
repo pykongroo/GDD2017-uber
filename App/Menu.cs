@@ -15,6 +15,7 @@ using UberFrba.Abm_Automovil;
 using UberFrba.Rendicion_Viajes;
 using UberFrba.Abm_Turno;
 using UberFrba.Buscador;
+using UberFrba.Abm_Chofer;
 
 namespace UberFrba
 {
@@ -36,7 +37,7 @@ namespace UberFrba
             funcionalidades_menu.Add("ABM de Cliente", clienteToolStripMenuItem);
             funcionalidades_menu.Add("ABM de Automóvil", automovilToolStripMenuItem);
             funcionalidades_menu.Add("ABM de Chofer", choferToolStripMenuItem);
-            funcionalidades_menu.Add("ABM de Turno", rolToolStripMenuItem);
+            funcionalidades_menu.Add("ABM de Turno", turnoToolStripMenuItem);
             funcionalidades_menu.Add("Registro de Viajes", registrarToolStripMenuItem);
             funcionalidades_menu.Add("Rendición de cuenta de Chofer", rendicionChoferToolStripMenuItem);
             funcionalidades_menu.Add("Facturación a Cliente", facturacionToolStripMenuItem);
@@ -85,7 +86,7 @@ namespace UberFrba
 
         private void altaToolStripMenuItem3_Click(object sender, EventArgs e)
         {
-            new Abm_Rol.AltaRol().Show();
+            new AltaRol().Show();
         }
 
         private void bajaToolStripMenuItem3_Click(object sender, EventArgs e)
@@ -167,6 +168,11 @@ namespace UberFrba
         private void modificaciónToolStripMenuItem_Click(object sender, EventArgs e)
         {
             new EditarTurno().Show();
+        }
+
+        private void altaToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            new AltaChofer().Show();
         }
     }
 }
