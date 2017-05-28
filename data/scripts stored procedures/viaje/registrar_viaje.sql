@@ -20,11 +20,11 @@ BEGIN
 	--Validación Cliente sin viajes en esa fecha y horario
 	IF @idCliente IN ( SELECT viaj_cliente
 						FROM LJDG.Viaje
-						WHERE viaj_cliente = @idCliente -- AND viaj_fecha_fin !> NULL
+						WHERE viaj_cliente = @idCliente
 							AND 
-								(( @fechaHoraInicio >= viaj_fecha_inicio AND @fechaHoraInicio < viaj_fecha_fin )	
+								(( @fechaHoraInicio >= viaj_fecha_inicio AND @fechaHoraInicio <= viaj_fecha_fin )	
 								OR
-								( @fechaHoraFin >= viaj_fecha_inicio AND @fechaHoraFin < viaj_fecha_fin )))
+								( @fechaHoraFin >= viaj_fecha_inicio AND @fechaHoraFin <= viaj_fecha_fin )))
 		SET @mensaje = 'El cliente ya tiene viajes en esa fecha y horarios.'
 	ELSE
 	BEGIN

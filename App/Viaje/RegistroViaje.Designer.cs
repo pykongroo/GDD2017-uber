@@ -172,7 +172,6 @@
             this.datetimeHoraInicio.Name = "datetimeHoraInicio";
             this.datetimeHoraInicio.Size = new System.Drawing.Size(60, 22);
             this.datetimeHoraInicio.TabIndex = 12;
-            this.datetimeHoraInicio.ValueChanged += new System.EventHandler(this.datetimeFHInicio_ValueChanged);
             // 
             // lblHoraInicio
             // 
@@ -202,7 +201,6 @@
             this.datetimeHoraFin.Name = "datetimeHoraFin";
             this.datetimeHoraFin.Size = new System.Drawing.Size(60, 22);
             this.datetimeHoraFin.TabIndex = 15;
-            this.datetimeHoraFin.ValueChanged += new System.EventHandler(this.datetimeFHFin_ValueChanged);
             // 
             // lblKm
             // 
@@ -231,9 +229,8 @@
             this.lblTurnoValor.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.lblTurnoValor.Location = new System.Drawing.Point(270, 370);
             this.lblTurnoValor.Name = "lblTurnoValor";
-            this.lblTurnoValor.Size = new System.Drawing.Size(140, 14);
+            this.lblTurnoValor.Size = new System.Drawing.Size(0, 14);
             this.lblTurnoValor.TabIndex = 18;
-            this.lblTurnoValor.Text = "Seleccione Fecha y Hora";
             this.lblTurnoValor.UseMnemonic = false;
             // 
             // txtBoxKm
@@ -260,11 +257,10 @@
             this.lblPrecioValor.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPrecioValor.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.lblPrecioValor.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.lblPrecioValor.Location = new System.Drawing.Point(350, 370);
+            this.lblPrecioValor.Location = new System.Drawing.Point(380, 370);
             this.lblPrecioValor.Name = "lblPrecioValor";
-            this.lblPrecioValor.Size = new System.Drawing.Size(100, 14);
+            this.lblPrecioValor.Size = new System.Drawing.Size(70, 14);
             this.lblPrecioValor.TabIndex = 21;
-            this.lblPrecioValor.Text = "Precio...";
             this.lblPrecioValor.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.lblPrecioValor.UseMnemonic = false;
             // 

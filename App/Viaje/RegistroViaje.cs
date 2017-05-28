@@ -19,7 +19,7 @@ namespace UberFrba.Viaje
         int idCliente;
         int cantKMs;
         int turno;
-        int precio;
+        double precio;
         String fechaHoraInicio;
         String fechaHoraFin;
 
@@ -81,7 +81,6 @@ namespace UberFrba.Viaje
                 lblIDTurnoAutoValor.Text = listParametros[4].valor.ToString();
             }
         }
-
 
         private void lnkCliente_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
@@ -149,8 +148,21 @@ namespace UberFrba.Viaje
             Console.WriteLine(fechaHoraInicio);
             Console.WriteLine(fechaHoraFin);
 
+            obtenerPrecio();
+
             return true;
             //return int.Parse(listParametros[2].valor.ToString()) != 0;
+        }
+
+        private void obtenerPrecio()
+        {
+            List<BDParametro> lstParam = new List<BDParametro>();
+            lstParam.Add(new BDParametro("@turno", turno));
+            lstParam.Add(new BDParametro("@cantKMs", cantKMs));
+            lstParam.Add(new BDParametro("@precio", 0, SqlDbType.Decimal, 0, ParameterDirection.Output));
+            bdHandler.execSP("LJDG.obtener_precio_viaje", ref lstParam);
+            precio = double.Parse(lstParam[2].valor.ToString());
+            lblPrecioValor.Text = "$ " + precio.ToString();
         }
 
         private void registrar()
@@ -166,7 +178,7 @@ namespace UberFrba.Viaje
             lstParam.Add(new BDParametro("@precio", precio));
             lstParam.Add(new BDParametro("@importeRendicion", precio * Program.pcjRend));
             lstParam.Add(new BDParametro("@mensaje", "", SqlDbType.VarChar, 50, ParameterDirection.Output));
-            bdHandler.execSP("LJDG.registrar_viaje", ref lstParam);            
+            bdHandler.execSP("LJDG.registrar_viaje", ref lstParam);
             MessageBox.Show(lstParam[9].valor.ToString());
         }
 
@@ -174,16 +186,6 @@ namespace UberFrba.Viaje
         {
             if(validar())
                 registrar();
-        }
-
-        private void datetimeFHInicio_ValueChanged(object sender, EventArgs e)
-        {
-            validar();
-        }
-
-        private void datetimeFHFin_ValueChanged(object sender, EventArgs e)
-        {
-            validar();
         }
     }
 }
