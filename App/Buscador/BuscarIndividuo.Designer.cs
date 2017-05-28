@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BuscarIndividuo));
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.groupBoxResultados = new System.Windows.Forms.GroupBox();
             this.dgIndividuo = new System.Windows.Forms.DataGridView();
-            this.filtrosBox = new System.Windows.Forms.GroupBox();
+            this.groupBoxFiltros = new System.Windows.Forms.GroupBox();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnSeleccionar = new System.Windows.Forms.Button();
             this.txtDNI = new System.Windows.Forms.TextBox();
@@ -40,20 +40,20 @@
             this.labelFiltroDNI = new System.Windows.Forms.Label();
             this.labelFiltroApellido = new System.Windows.Forms.Label();
             this.labelFiltroNombre = new System.Windows.Forms.Label();
-            this.groupBox1.SuspendLayout();
+            this.groupBoxResultados.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgIndividuo)).BeginInit();
-            this.filtrosBox.SuspendLayout();
+            this.groupBoxFiltros.SuspendLayout();
             this.SuspendLayout();
             // 
-            // groupBox1
+            // groupBoxResultados
             // 
-            this.groupBox1.Controls.Add(this.dgIndividuo);
-            this.groupBox1.Location = new System.Drawing.Point(20, 160);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(440, 285);
-            this.groupBox1.TabIndex = 6;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Resultados";
+            this.groupBoxResultados.Controls.Add(this.dgIndividuo);
+            this.groupBoxResultados.Location = new System.Drawing.Point(20, 160);
+            this.groupBoxResultados.Name = "groupBoxResultados";
+            this.groupBoxResultados.Size = new System.Drawing.Size(440, 285);
+            this.groupBoxResultados.TabIndex = 6;
+            this.groupBoxResultados.TabStop = false;
+            this.groupBoxResultados.Text = "Resultados";
             // 
             // dgIndividuo
             // 
@@ -73,22 +73,22 @@
             this.dgIndividuo.Size = new System.Drawing.Size(410, 250);
             this.dgIndividuo.TabIndex = 0;
             // 
-            // filtrosBox
+            // groupBoxFiltros
             // 
-            this.filtrosBox.Controls.Add(this.btnCancelar);
-            this.filtrosBox.Controls.Add(this.btnSeleccionar);
-            this.filtrosBox.Controls.Add(this.txtDNI);
-            this.filtrosBox.Controls.Add(this.txtApellido);
-            this.filtrosBox.Controls.Add(this.txtNombre);
-            this.filtrosBox.Controls.Add(this.labelFiltroDNI);
-            this.filtrosBox.Controls.Add(this.labelFiltroApellido);
-            this.filtrosBox.Controls.Add(this.labelFiltroNombre);
-            this.filtrosBox.Location = new System.Drawing.Point(20, 20);
-            this.filtrosBox.Name = "filtrosBox";
-            this.filtrosBox.Size = new System.Drawing.Size(440, 125);
-            this.filtrosBox.TabIndex = 5;
-            this.filtrosBox.TabStop = false;
-            this.filtrosBox.Text = "Filtros";
+            this.groupBoxFiltros.Controls.Add(this.btnCancelar);
+            this.groupBoxFiltros.Controls.Add(this.btnSeleccionar);
+            this.groupBoxFiltros.Controls.Add(this.txtDNI);
+            this.groupBoxFiltros.Controls.Add(this.txtApellido);
+            this.groupBoxFiltros.Controls.Add(this.txtNombre);
+            this.groupBoxFiltros.Controls.Add(this.labelFiltroDNI);
+            this.groupBoxFiltros.Controls.Add(this.labelFiltroApellido);
+            this.groupBoxFiltros.Controls.Add(this.labelFiltroNombre);
+            this.groupBoxFiltros.Location = new System.Drawing.Point(20, 20);
+            this.groupBoxFiltros.Name = "groupBoxFiltros";
+            this.groupBoxFiltros.Size = new System.Drawing.Size(440, 125);
+            this.groupBoxFiltros.TabIndex = 5;
+            this.groupBoxFiltros.TabStop = false;
+            this.groupBoxFiltros.Text = "Filtros";
             // 
             // btnCancelar
             // 
@@ -172,8 +172,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(484, 461);
             this.ControlBox = false;
-            this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.filtrosBox);
+            this.Controls.Add(this.groupBoxResultados);
+            this.Controls.Add(this.groupBoxFiltros);
             this.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -182,19 +182,19 @@
             this.Name = "BuscarIndividuo";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Buscar";
-            this.groupBox1.ResumeLayout(false);
+            this.groupBoxResultados.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgIndividuo)).EndInit();
-            this.filtrosBox.ResumeLayout(false);
-            this.filtrosBox.PerformLayout();
+            this.groupBoxFiltros.ResumeLayout(false);
+            this.groupBoxFiltros.PerformLayout();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox groupBoxResultados;
         private System.Windows.Forms.DataGridView dgIndividuo;
-        private System.Windows.Forms.GroupBox filtrosBox;
+        private System.Windows.Forms.GroupBox groupBoxFiltros;
         private System.Windows.Forms.Button btnSeleccionar;
         private System.Windows.Forms.TextBox txtDNI;
         private System.Windows.Forms.TextBox txtApellido;

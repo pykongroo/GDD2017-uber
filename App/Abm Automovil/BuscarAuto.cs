@@ -13,11 +13,18 @@ namespace UberFrba.Abm_Automovil
 {
     public partial class BuscarAuto : Form
     {
+        private int idAuto;
         public int idChofer { get; set; }
+        private char modo;
 
-        public BuscarAuto()
+        public BuscarAuto(char _modo)
         {
             InitializeComponent();
+            this.modo = _modo;
+            if (modo == 'M')
+                this.Text = "Buscar Automóvil a Modificar";
+            else if (modo == 'B')
+                this.Text = "Buscar Automóvil a dar de Baja";
             List<String> marcas = new List<String>();
             marcas.Add("Todas");
             marcas.AddRange(new BDHandler().execListSP("LJDG.obtener_marcas"));
@@ -33,24 +40,19 @@ namespace UberFrba.Abm_Automovil
         public void buscar()
         {
             List<BDParametro> listParametros = new List<BDParametro>();
-            try
-            {
-                BDHandler handler = new BDHandler();
-                listParametros.Add(new BDParametro("@marca", cmbMarca.SelectedIndex));
-                listParametros.Add(new BDParametro("@modelo", txtBoxModelo.Text.Trim()));
-                listParametros.Add(new BDParametro("@patente", txtBoxPatente.Text.Trim()));
-                listParametros.Add(new BDParametro("@chofer", idChofer));
+            BDHandler handler = new BDHandler();
+            listParametros.Add(new BDParametro("@marca", cmbMarca.SelectedIndex));
+            listParametros.Add(new BDParametro("@modelo", txtBoxModelo.Text.Trim()));
+            listParametros.Add(new BDParametro("@patente", txtBoxPatente.Text.Trim()));
+            listParametros.Add(new BDParametro("@chofer", idChofer));
+            if (modo == 'M')
                 dgAuto.DataSource = handler.execSelectSP("LJDG.buscar_auto", listParametros);
-                if (dgAuto.RowCount == 0)
-                    btnSeleccionar.Enabled = false;
-                else
-                    btnSeleccionar.Enabled = true;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error en la base de datos.");
-                throw ex;
-            }
+            else
+                dgAuto.DataSource = handler.execSelectSP("LJDG.buscar_auto_habilitado", listParametros);
+            if (dgAuto.RowCount == 0)
+                btnSeleccionar.Enabled = false;
+            else
+                btnSeleccionar.Enabled = true;
         }
 
         private void lnkChofer_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -84,7 +86,25 @@ namespace UberFrba.Abm_Automovil
 
         private void btnSeleccionar_Click(object sender, EventArgs e)
         {
-            new AltaModiAuto('M', int.Parse(dgAuto.Rows[dgAuto.CurrentCell.RowIndex].Cells["ID"].Value.ToString())).Show();
+            idAuto = int.Parse(dgAuto.Rows[dgAuto.CurrentCell.RowIndex].Cells["ID"].Value.ToString());
+            switch (modo)
+            {
+                /* Buscar Auto desde Menú Principal ABM Automóvil Modificación */
+                case 'M':
+                    AltaModiAuto altaModiAuto = new AltaModiAuto('M', idAuto);
+                    altaModiAuto.Show();
+                    altaModiAuto.lblNombreChoferValor.Text = dgAuto.Rows[dgAuto.CurrentCell.RowIndex].Cells["Nombre"].Value.ToString();
+                    altaModiAuto.lblApellidoChoferValor.Text = dgAuto.Rows[dgAuto.CurrentCell.RowIndex].Cells["Apellido"].Value.ToString();
+                    break;
+                /* Buscar Auto desde Menú Principal ABM Automóvil Baja */
+                case 'B':
+                    List<BDParametro> listParametros = new List<BDParametro>();
+                    listParametros.Add(new BDParametro("@id", idAuto));
+                    new BDHandler().execSP("LJDG.baja_auto", ref listParametros);
+                    MessageBox.Show("Se ha inhabilitado el Automóvil");
+                    this.Hide();
+                    break;
+            }
         }
 
     }

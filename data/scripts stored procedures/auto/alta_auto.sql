@@ -20,16 +20,13 @@ BEGIN
 		SET @mensaje = 'La Patente Ingresada ya existe'
 	ELSE IF @modelo = ''
 		SET @mensaje = 'Ingrese el Modelo'
-	ELSE IF @chofer IN ( SELECT auto_chofer FROM LJDG.Automovil
-						WHERE auto_chofer = @chofer AND auto_habilitado = 1 ) AND @habilitado = 1
-		SET @mensaje = 'El Chofer ya posee un Automóvil Habilitado'
 	ELSE
 	BEGIN
 		INSERT INTO LJDG.Automovil
 		( auto_marca, auto_patente, auto_modelo, auto_chofer, auto_turno, auto_habilitado )
 		VALUES
 		( @marca, @patente, @modelo, @chofer, @turno, @habilitado )
-		SET @mensaje = 'Carga Exitosa'
+		SET @mensaje = 'Automóvil Guardado Exitosamente'
 	END
 END
 GO

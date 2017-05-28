@@ -98,7 +98,7 @@ namespace UberFrba.Buscador
             {
                 switch (modo)
                 {
-                    /* Buscar Chofer desde AltaAuto */
+                    /* Buscar Chofer desde AltaModiAuto*/
                     case 'S':
                         ((Abm_Automovil.AltaModiAuto)formPadre).lblIDChoferValor.Text = id.ToString();
                         ((Abm_Automovil.AltaModiAuto)formPadre).lblNombreChoferValor.Text = dgIndividuo.Rows[dgIndividuo.CurrentCell.RowIndex].Cells["Nombre"].Value.ToString();

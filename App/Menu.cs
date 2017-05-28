@@ -35,12 +35,12 @@ namespace UberFrba
             funcionalidades_menu.Add("ABM de Rol", rolToolStripMenuItem);
             funcionalidades_menu.Add("Registro de Usuario", altaUsuarioToolStripMenuItem);
             funcionalidades_menu.Add("ABM de Cliente", clienteToolStripMenuItem);
-            funcionalidades_menu.Add("ABM de Automóvil", automovilToolStripMenuItem);
+            funcionalidades_menu.Add("ABM de Automóvil", menuABMAuto);
             funcionalidades_menu.Add("ABM de Chofer", choferToolStripMenuItem);
             funcionalidades_menu.Add("ABM de Turno", turnoToolStripMenuItem);
             funcionalidades_menu.Add("Registro de Viajes", registrarToolStripMenuItem);
-            funcionalidades_menu.Add("Rendición de cuenta de Chofer", rendicionChoferToolStripMenuItem);
-            funcionalidades_menu.Add("Facturación a Cliente", facturacionToolStripMenuItem);
+            funcionalidades_menu.Add("Rendición de cuenta de Chofer", menuRendicion);
+            funcionalidades_menu.Add("Facturación a Cliente", menuFacturacion);
             funcionalidades_menu.Add("Listado Estadístico", listadoEstadisticoToolStripMenuItem);
         }
 
@@ -134,19 +134,19 @@ namespace UberFrba
             new RegistroViaje().Show();
         }
 
-        private void altaToolStripMenuItem_Click(object sender, EventArgs e)
+        private void menuABMAltaAuto_Click(object sender, EventArgs e)
         {
             new AltaModiAuto('A', 0).Show();
         }
 
-        private void bajaToolStripMenuItem_Click(object sender, EventArgs e)
+        private void menuABMBajaAuto_Click(object sender, EventArgs e)
         {
-            new BuscarAuto().Show();
+            new BuscarAuto('B').Show();
         }
 
-        private void modificacionToolStripMenuItem_Click(object sender, EventArgs e)
+        private void menuABMModiAuto_Click(object sender, EventArgs e)
         {
-            new BuscarAuto().Show();
+            new BuscarAuto('M').Show();
         }
 
         private void rendicionChoferToolStripMenuItem_Click(object sender, EventArgs e)

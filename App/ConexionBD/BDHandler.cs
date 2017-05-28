@@ -8,6 +8,7 @@ using System.Drawing;
 using System.Linq;
 using System.Data.SqlClient;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace UberFrba
 {
@@ -32,9 +33,10 @@ namespace UberFrba
                         dataAdapter.SelectCommand.Parameters.AddWithValue(parametro.nombre, parametro.valor);
                 dataAdapter.Fill(dataTable);
             }
-            catch (Exception ex)
+            catch (Exception e)
             {
-                throw ex;
+                MessageBox.Show(e.ToString());
+                throw e;
             }
             Desconectar();
             return dataTable;
@@ -64,9 +66,10 @@ namespace UberFrba
                         if (comando.Parameters[i].Direction == ParameterDirection.Output)
                             listParametros[i].valor = comando.Parameters[i].Value;
             }
-            catch (Exception ex)
+            catch (Exception e)
             {
-                throw ex;
+                MessageBox.Show(e.ToString());
+                throw e;
             }
             Desconectar();
         }
@@ -74,16 +77,9 @@ namespace UberFrba
         /* Devuelve un Lista con la primera columna del Select */
         public List<String> execListSP(String nameStoredProcedure)
         {
-            try
-            {
-                return execSelectSP(nameStoredProcedure)
-                    .AsEnumerable()
-                    .Select(r => r[0].ToString()).ToList();
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
+            return execSelectSP(nameStoredProcedure)
+                .AsEnumerable()
+                .Select(r => r[0].ToString()).ToList();
         }
 
 

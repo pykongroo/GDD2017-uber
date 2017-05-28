@@ -43,11 +43,6 @@ namespace UberFrba.Abm_Automovil
             new BuscarIndividuo(this, "Chofer", 'S').Show();
         }
 
-        private void nuevoAuto()
-        {
-
-        }
-
         private String guardarAuto()
         {
             BDHandler handler = new BDHandler();
@@ -93,6 +88,7 @@ namespace UberFrba.Abm_Automovil
         private void btnGuardar_Click(object sender, EventArgs e)
         {
             MessageBox.Show(guardarAuto());
+            this.Hide();
         }
     }
 }

@@ -21,9 +21,6 @@ BEGIN
 		SET @mensaje = 'La Patente Ingresada ya existe'
 	ELSE IF @modelo = ''
 		SET @mensaje = 'Ingrese el Modelo'
-	ELSE IF @chofer IN ( SELECT auto_chofer FROM LJDG.Automovil
-						WHERE auto_chofer = @chofer AND auto_id != @id AND auto_habilitado = 1 ) AND @habilitado = 1
-		SET @mensaje = 'El Chofer ya posee un Automóvil Habilitado'
 	ELSE
 	BEGIN
 		UPDATE LJDG.Automovil
