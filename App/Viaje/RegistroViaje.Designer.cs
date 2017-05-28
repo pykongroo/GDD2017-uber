@@ -38,10 +38,10 @@
             this.lblApellidoCliente = new System.Windows.Forms.Label();
             this.lblNombreCliente = new System.Windows.Forms.Label();
             this.lblIDCliente = new System.Windows.Forms.Label();
-            this.dtFHInicio = new System.Windows.Forms.DateTimePicker();
-            this.lblFHInicio = new System.Windows.Forms.Label();
-            this.lblFHFin = new System.Windows.Forms.Label();
-            this.dtFHFin = new System.Windows.Forms.DateTimePicker();
+            this.datetimeHoraInicio = new System.Windows.Forms.DateTimePicker();
+            this.lblHoraInicio = new System.Windows.Forms.Label();
+            this.lblHoraFin = new System.Windows.Forms.Label();
+            this.datetimeHoraFin = new System.Windows.Forms.DateTimePicker();
             this.lblKm = new System.Windows.Forms.Label();
             this.lblTurno = new System.Windows.Forms.Label();
             this.lblTurnoValor = new System.Windows.Forms.Label();
@@ -64,6 +64,10 @@
             this.lblModeloAuto = new System.Windows.Forms.Label();
             this.lblMarcaAuto = new System.Windows.Forms.Label();
             this.lblIDAuto = new System.Windows.Forms.Label();
+            this.lblFecha = new System.Windows.Forms.Label();
+            this.datetimeFecha = new System.Windows.Forms.DateTimePicker();
+            this.lblIDTurnoAuto = new System.Windows.Forms.Label();
+            this.lblIDTurnoAutoValor = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // lblChofer
@@ -90,7 +94,7 @@
             // 
             this.lblNombreChofer.AutoSize = true;
             this.lblNombreChofer.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNombreChofer.Location = new System.Drawing.Point(230, 45);
+            this.lblNombreChofer.Location = new System.Drawing.Point(110, 45);
             this.lblNombreChofer.Name = "lblNombreChofer";
             this.lblNombreChofer.Size = new System.Drawing.Size(50, 14);
             this.lblNombreChofer.TabIndex = 3;
@@ -101,7 +105,7 @@
             // 
             this.lblApellidoChofer.AutoSize = true;
             this.lblApellidoChofer.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblApellidoChofer.Location = new System.Drawing.Point(400, 45);
+            this.lblApellidoChofer.Location = new System.Drawing.Point(230, 45);
             this.lblApellidoChofer.Name = "lblApellidoChofer";
             this.lblApellidoChofer.Size = new System.Drawing.Size(49, 14);
             this.lblApellidoChofer.TabIndex = 4;
@@ -132,7 +136,7 @@
             // 
             this.lblApellidoCliente.AutoSize = true;
             this.lblApellidoCliente.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblApellidoCliente.Location = new System.Drawing.Point(400, 205);
+            this.lblApellidoCliente.Location = new System.Drawing.Point(304, 205);
             this.lblApellidoCliente.Name = "lblApellidoCliente";
             this.lblApellidoCliente.Size = new System.Drawing.Size(49, 14);
             this.lblApellidoCliente.TabIndex = 11;
@@ -143,7 +147,7 @@
             // 
             this.lblNombreCliente.AutoSize = true;
             this.lblNombreCliente.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNombreCliente.Location = new System.Drawing.Point(230, 205);
+            this.lblNombreCliente.Location = new System.Drawing.Point(134, 205);
             this.lblNombreCliente.Name = "lblNombreCliente";
             this.lblNombreCliente.Size = new System.Drawing.Size(50, 14);
             this.lblNombreCliente.TabIndex = 10;
@@ -160,43 +164,45 @@
             this.lblIDCliente.TabIndex = 9;
             this.lblIDCliente.Text = "ID";
             // 
-            // dtFHInicio
+            // datetimeHoraInicio
             // 
-            this.dtFHInicio.CustomFormat = "dd/MM/yyyy - HH:MM";
-            this.dtFHInicio.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtFHInicio.Location = new System.Drawing.Point(43, 295);
-            this.dtFHInicio.Name = "dtFHInicio";
-            this.dtFHInicio.Size = new System.Drawing.Size(240, 22);
-            this.dtFHInicio.TabIndex = 12;
+            this.datetimeHoraInicio.CustomFormat = "HH:mm";
+            this.datetimeHoraInicio.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.datetimeHoraInicio.Location = new System.Drawing.Point(210, 295);
+            this.datetimeHoraInicio.Name = "datetimeHoraInicio";
+            this.datetimeHoraInicio.Size = new System.Drawing.Size(60, 22);
+            this.datetimeHoraInicio.TabIndex = 12;
+            this.datetimeHoraInicio.ValueChanged += new System.EventHandler(this.datetimeFHInicio_ValueChanged);
             // 
-            // lblFHInicio
+            // lblHoraInicio
             // 
-            this.lblFHInicio.AutoSize = true;
-            this.lblFHInicio.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFHInicio.Location = new System.Drawing.Point(30, 270);
-            this.lblFHInicio.Name = "lblFHInicio";
-            this.lblFHInicio.Size = new System.Drawing.Size(189, 19);
-            this.lblFHInicio.TabIndex = 13;
-            this.lblFHInicio.Text = "Fecha y Hora de Inicio";
+            this.lblHoraInicio.AutoSize = true;
+            this.lblHoraInicio.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblHoraInicio.Location = new System.Drawing.Point(200, 270);
+            this.lblHoraInicio.Name = "lblHoraInicio";
+            this.lblHoraInicio.Size = new System.Drawing.Size(123, 19);
+            this.lblHoraInicio.TabIndex = 13;
+            this.lblHoraInicio.Text = "Hora de Inicio";
             // 
-            // lblFHFin
+            // lblHoraFin
             // 
-            this.lblFHFin.AutoSize = true;
-            this.lblFHFin.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFHFin.Location = new System.Drawing.Point(320, 270);
-            this.lblFHFin.Name = "lblFHFin";
-            this.lblFHFin.Size = new System.Drawing.Size(168, 19);
-            this.lblFHFin.TabIndex = 14;
-            this.lblFHFin.Text = "Fecha y Hora de Fin";
+            this.lblHoraFin.AutoSize = true;
+            this.lblHoraFin.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblHoraFin.Location = new System.Drawing.Point(350, 270);
+            this.lblHoraFin.Name = "lblHoraFin";
+            this.lblHoraFin.Size = new System.Drawing.Size(102, 19);
+            this.lblHoraFin.TabIndex = 14;
+            this.lblHoraFin.Text = "Hora de Fin";
             // 
-            // dtFHFin
+            // datetimeHoraFin
             // 
-            this.dtFHFin.CustomFormat = "dd/MM/yyyy - HH:MM";
-            this.dtFHFin.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtFHFin.Location = new System.Drawing.Point(330, 295);
-            this.dtFHFin.Name = "dtFHFin";
-            this.dtFHFin.Size = new System.Drawing.Size(240, 22);
-            this.dtFHFin.TabIndex = 15;
+            this.datetimeHoraFin.CustomFormat = "HH:mm";
+            this.datetimeHoraFin.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.datetimeHoraFin.Location = new System.Drawing.Point(360, 295);
+            this.datetimeHoraFin.Name = "datetimeHoraFin";
+            this.datetimeHoraFin.Size = new System.Drawing.Size(60, 22);
+            this.datetimeHoraFin.TabIndex = 15;
+            this.datetimeHoraFin.ValueChanged += new System.EventHandler(this.datetimeFHFin_ValueChanged);
             // 
             // lblKm
             // 
@@ -212,7 +218,7 @@
             // 
             this.lblTurno.AutoSize = true;
             this.lblTurno.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTurno.Location = new System.Drawing.Point(320, 345);
+            this.lblTurno.Location = new System.Drawing.Point(260, 345);
             this.lblTurno.Name = "lblTurno";
             this.lblTurno.Size = new System.Drawing.Size(57, 19);
             this.lblTurno.TabIndex = 17;
@@ -222,25 +228,28 @@
             // 
             this.lblTurnoValor.AutoSize = true;
             this.lblTurnoValor.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTurnoValor.Location = new System.Drawing.Point(330, 370);
+            this.lblTurnoValor.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.lblTurnoValor.Location = new System.Drawing.Point(270, 370);
             this.lblTurnoValor.Name = "lblTurnoValor";
-            this.lblTurnoValor.Size = new System.Drawing.Size(52, 14);
+            this.lblTurnoValor.Size = new System.Drawing.Size(140, 14);
             this.lblTurnoValor.TabIndex = 18;
-            this.lblTurnoValor.Text = "Turno...";
+            this.lblTurnoValor.Text = "Seleccione Fecha y Hora";
             this.lblTurnoValor.UseMnemonic = false;
             // 
             // txtBoxKm
             // 
             this.txtBoxKm.Location = new System.Drawing.Point(40, 370);
+            this.txtBoxKm.MaxLength = 10;
             this.txtBoxKm.Name = "txtBoxKm";
-            this.txtBoxKm.Size = new System.Drawing.Size(50, 22);
+            this.txtBoxKm.Size = new System.Drawing.Size(100, 22);
             this.txtBoxKm.TabIndex = 19;
+            this.txtBoxKm.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBoxKm_KeyPress);
             // 
             // lblPrecio
             // 
             this.lblPrecio.AutoSize = true;
             this.lblPrecio.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPrecio.Location = new System.Drawing.Point(470, 345);
+            this.lblPrecio.Location = new System.Drawing.Point(390, 345);
             this.lblPrecio.Name = "lblPrecio";
             this.lblPrecio.Size = new System.Drawing.Size(60, 19);
             this.lblPrecio.TabIndex = 20;
@@ -248,29 +257,32 @@
             // 
             // lblPrecioValor
             // 
-            this.lblPrecioValor.AutoSize = true;
             this.lblPrecioValor.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPrecioValor.Location = new System.Drawing.Point(480, 370);
+            this.lblPrecioValor.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.lblPrecioValor.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.lblPrecioValor.Location = new System.Drawing.Point(350, 370);
             this.lblPrecioValor.Name = "lblPrecioValor";
-            this.lblPrecioValor.Size = new System.Drawing.Size(52, 14);
+            this.lblPrecioValor.Size = new System.Drawing.Size(100, 14);
             this.lblPrecioValor.TabIndex = 21;
             this.lblPrecioValor.Text = "Precio...";
+            this.lblPrecioValor.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.lblPrecioValor.UseMnemonic = false;
             // 
             // btnRegistrar
             // 
             this.btnRegistrar.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRegistrar.Location = new System.Drawing.Point(480, 410);
+            this.btnRegistrar.Location = new System.Drawing.Point(350, 410);
             this.btnRegistrar.Name = "btnRegistrar";
             this.btnRegistrar.Size = new System.Drawing.Size(100, 30);
             this.btnRegistrar.TabIndex = 22;
             this.btnRegistrar.Text = "Registrar";
             this.btnRegistrar.UseVisualStyleBackColor = true;
+            this.btnRegistrar.Click += new System.EventHandler(this.btnRegistrar_Click);
             // 
             // btnCancelar
             // 
             this.btnCancelar.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancelar.Location = new System.Drawing.Point(370, 410);
+            this.btnCancelar.Location = new System.Drawing.Point(240, 410);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(100, 30);
             this.btnCancelar.TabIndex = 23;
@@ -294,7 +306,7 @@
             this.lblApellidoChoferValor.AutoSize = true;
             this.lblApellidoChoferValor.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblApellidoChoferValor.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.lblApellidoChoferValor.Location = new System.Drawing.Point(400, 70);
+            this.lblApellidoChoferValor.Location = new System.Drawing.Point(230, 70);
             this.lblApellidoChoferValor.Name = "lblApellidoChoferValor";
             this.lblApellidoChoferValor.Size = new System.Drawing.Size(0, 14);
             this.lblApellidoChoferValor.TabIndex = 27;
@@ -304,7 +316,7 @@
             this.lblNombreChoferValor.AutoSize = true;
             this.lblNombreChoferValor.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblNombreChoferValor.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.lblNombreChoferValor.Location = new System.Drawing.Point(230, 70);
+            this.lblNombreChoferValor.Location = new System.Drawing.Point(110, 70);
             this.lblNombreChoferValor.Name = "lblNombreChoferValor";
             this.lblNombreChoferValor.Size = new System.Drawing.Size(0, 14);
             this.lblNombreChoferValor.TabIndex = 26;
@@ -337,7 +349,7 @@
             this.lblApellidoClienteValor.AutoSize = true;
             this.lblApellidoClienteValor.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblApellidoClienteValor.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.lblApellidoClienteValor.Location = new System.Drawing.Point(400, 230);
+            this.lblApellidoClienteValor.Location = new System.Drawing.Point(304, 230);
             this.lblApellidoClienteValor.Name = "lblApellidoClienteValor";
             this.lblApellidoClienteValor.Size = new System.Drawing.Size(0, 14);
             this.lblApellidoClienteValor.TabIndex = 31;
@@ -347,7 +359,7 @@
             this.lblNombreClienteValor.AutoSize = true;
             this.lblNombreClienteValor.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblNombreClienteValor.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.lblNombreClienteValor.Location = new System.Drawing.Point(230, 230);
+            this.lblNombreClienteValor.Location = new System.Drawing.Point(134, 230);
             this.lblNombreClienteValor.Name = "lblNombreClienteValor";
             this.lblNombreClienteValor.Size = new System.Drawing.Size(0, 14);
             this.lblNombreClienteValor.TabIndex = 30;
@@ -369,7 +381,7 @@
             this.lblModeloAutoValor.AutoSize = true;
             this.lblModeloAutoValor.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblModeloAutoValor.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.lblModeloAutoValor.Location = new System.Drawing.Point(400, 150);
+            this.lblModeloAutoValor.Location = new System.Drawing.Point(230, 150);
             this.lblModeloAutoValor.Name = "lblModeloAutoValor";
             this.lblModeloAutoValor.Size = new System.Drawing.Size(0, 14);
             this.lblModeloAutoValor.TabIndex = 37;
@@ -379,7 +391,7 @@
             this.lblMarcaAutoValor.AutoSize = true;
             this.lblMarcaAutoValor.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblMarcaAutoValor.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.lblMarcaAutoValor.Location = new System.Drawing.Point(230, 150);
+            this.lblMarcaAutoValor.Location = new System.Drawing.Point(110, 150);
             this.lblMarcaAutoValor.Name = "lblMarcaAutoValor";
             this.lblMarcaAutoValor.Size = new System.Drawing.Size(0, 14);
             this.lblMarcaAutoValor.TabIndex = 36;
@@ -392,15 +404,14 @@
             this.lblIDAutoValor.Location = new System.Drawing.Point(40, 150);
             this.lblIDAutoValor.Name = "lblIDAutoValor";
             this.lblIDAutoValor.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.lblIDAutoValor.Size = new System.Drawing.Size(301, 14);
+            this.lblIDAutoValor.Size = new System.Drawing.Size(0, 14);
             this.lblIDAutoValor.TabIndex = 35;
-            this.lblIDAutoValor.Text = "Busque un chofer para obtener el Automóvil asignado";
             // 
             // lblModeloAuto
             // 
             this.lblModeloAuto.AutoSize = true;
             this.lblModeloAuto.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblModeloAuto.Location = new System.Drawing.Point(400, 125);
+            this.lblModeloAuto.Location = new System.Drawing.Point(230, 125);
             this.lblModeloAuto.Name = "lblModeloAuto";
             this.lblModeloAuto.Size = new System.Drawing.Size(46, 14);
             this.lblModeloAuto.TabIndex = 34;
@@ -411,7 +422,7 @@
             // 
             this.lblMarcaAuto.AutoSize = true;
             this.lblMarcaAuto.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMarcaAuto.Location = new System.Drawing.Point(230, 125);
+            this.lblMarcaAuto.Location = new System.Drawing.Point(110, 125);
             this.lblMarcaAuto.Name = "lblMarcaAuto";
             this.lblMarcaAuto.Size = new System.Drawing.Size(38, 14);
             this.lblMarcaAuto.TabIndex = 33;
@@ -428,11 +439,56 @@
             this.lblIDAuto.TabIndex = 32;
             this.lblIDAuto.Text = "ID";
             // 
+            // lblFecha
+            // 
+            this.lblFecha.AutoSize = true;
+            this.lblFecha.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFecha.Location = new System.Drawing.Point(30, 270);
+            this.lblFecha.Name = "lblFecha";
+            this.lblFecha.Size = new System.Drawing.Size(56, 19);
+            this.lblFecha.TabIndex = 39;
+            this.lblFecha.Text = "Fecha";
+            // 
+            // datetimeFecha
+            // 
+            this.datetimeFecha.CustomFormat = "dd/MM/yyyy";
+            this.datetimeFecha.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.datetimeFecha.Location = new System.Drawing.Point(40, 295);
+            this.datetimeFecha.Name = "datetimeFecha";
+            this.datetimeFecha.Size = new System.Drawing.Size(120, 22);
+            this.datetimeFecha.TabIndex = 38;
+            // 
+            // lblIDTurnoAuto
+            // 
+            this.lblIDTurnoAuto.AutoSize = true;
+            this.lblIDTurnoAuto.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblIDTurnoAuto.Location = new System.Drawing.Point(350, 125);
+            this.lblIDTurnoAuto.Name = "lblIDTurnoAuto";
+            this.lblIDTurnoAuto.Size = new System.Drawing.Size(56, 14);
+            this.lblIDTurnoAuto.TabIndex = 40;
+            this.lblIDTurnoAuto.Text = "ID Turno";
+            this.lblIDTurnoAuto.UseMnemonic = false;
+            // 
+            // lblIDTurnoAutoValor
+            // 
+            this.lblIDTurnoAutoValor.AutoSize = true;
+            this.lblIDTurnoAutoValor.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblIDTurnoAutoValor.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.lblIDTurnoAutoValor.Location = new System.Drawing.Point(350, 150);
+            this.lblIDTurnoAutoValor.Name = "lblIDTurnoAutoValor";
+            this.lblIDTurnoAutoValor.Size = new System.Drawing.Size(0, 14);
+            this.lblIDTurnoAutoValor.TabIndex = 41;
+            // 
             // RegistroViaje
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(614, 461);
+            this.ClientSize = new System.Drawing.Size(484, 461);
+            this.ControlBox = false;
+            this.Controls.Add(this.lblIDTurnoAutoValor);
+            this.Controls.Add(this.lblIDTurnoAuto);
+            this.Controls.Add(this.lblFecha);
+            this.Controls.Add(this.datetimeFecha);
             this.Controls.Add(this.lblModeloAutoValor);
             this.Controls.Add(this.lblMarcaAutoValor);
             this.Controls.Add(this.lblIDAutoValor);
@@ -455,10 +511,10 @@
             this.Controls.Add(this.lblTurnoValor);
             this.Controls.Add(this.lblTurno);
             this.Controls.Add(this.lblKm);
-            this.Controls.Add(this.dtFHFin);
-            this.Controls.Add(this.lblFHFin);
-            this.Controls.Add(this.lblFHInicio);
-            this.Controls.Add(this.dtFHInicio);
+            this.Controls.Add(this.datetimeHoraFin);
+            this.Controls.Add(this.lblHoraFin);
+            this.Controls.Add(this.lblHoraInicio);
+            this.Controls.Add(this.datetimeHoraInicio);
             this.Controls.Add(this.lblApellidoCliente);
             this.Controls.Add(this.lblNombreCliente);
             this.Controls.Add(this.lblIDCliente);
@@ -471,6 +527,8 @@
             this.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "RegistroViaje";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Registrar Viaje";
@@ -490,10 +548,10 @@
         private System.Windows.Forms.Label lblApellidoCliente;
         private System.Windows.Forms.Label lblNombreCliente;
         private System.Windows.Forms.Label lblIDCliente;
-        private System.Windows.Forms.DateTimePicker dtFHInicio;
-        private System.Windows.Forms.Label lblFHInicio;
-        private System.Windows.Forms.Label lblFHFin;
-        private System.Windows.Forms.DateTimePicker dtFHFin;
+        private System.Windows.Forms.DateTimePicker datetimeHoraInicio;
+        private System.Windows.Forms.Label lblHoraInicio;
+        private System.Windows.Forms.Label lblHoraFin;
+        private System.Windows.Forms.DateTimePicker datetimeHoraFin;
         private System.Windows.Forms.Label lblKm;
         private System.Windows.Forms.Label lblTurno;
         private System.Windows.Forms.Label lblTurnoValor;
@@ -516,5 +574,9 @@
         private System.Windows.Forms.Label lblModeloAuto;
         private System.Windows.Forms.Label lblMarcaAuto;
         private System.Windows.Forms.Label lblIDAuto;
+        private System.Windows.Forms.Label lblFecha;
+        private System.Windows.Forms.DateTimePicker datetimeFecha;
+        private System.Windows.Forms.Label lblIDTurnoAuto;
+        public System.Windows.Forms.Label lblIDTurnoAutoValor;
     }
 }

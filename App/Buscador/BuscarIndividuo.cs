@@ -113,7 +113,6 @@ namespace UberFrba.Buscador
                         ((Abm_Automovil.BuscarAuto)formPadre).setChofer(id, nombre, apellido);
                         break;
                 }
-                this.Hide();
             }
             else if (tipoIndividuo == "Cliente")
             {
@@ -130,8 +129,8 @@ namespace UberFrba.Buscador
                         ((Viaje.RegistroViaje)formPadre).setCliente(id, nombre, apellido);
                         break;
                 }
-                this.Hide();
             }
+            this.Hide();
         }
 
     }

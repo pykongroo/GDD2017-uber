@@ -36,7 +36,7 @@ namespace UberFrba
             catch (Exception e)
             {
                 MessageBox.Show(e.ToString());
-                throw e;
+                //throw e;
             }
             Desconectar();
             return dataTable;
@@ -69,7 +69,7 @@ namespace UberFrba
             catch (Exception e)
             {
                 MessageBox.Show(e.ToString());
-                throw e;
+                //throw e;
             }
             Desconectar();
         }
