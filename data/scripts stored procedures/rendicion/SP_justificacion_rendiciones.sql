@@ -30,6 +30,6 @@ BEGIN
 			--INSERT EN TABLA DE RENDICIONES--
 		END
 	 END
-
+	 select viaj_importe_rend from LJDG.Viaje where viaj_chofer = @chofer AND CAST(viaj_fecha_inicio AS DATE)=CAST(@fecha AS DATE) AND viaj_turno=@turno
 END
 GO
