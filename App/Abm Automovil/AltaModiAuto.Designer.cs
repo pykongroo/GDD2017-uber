@@ -247,7 +247,7 @@
             this.checkBoxHabilitado.Text = "Habilitado";
             this.checkBoxHabilitado.UseVisualStyleBackColor = true;
             // 
-            // AltaAuto
+            // AltaModiAuto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -274,7 +274,7 @@
             this.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "AltaAuto";
+            this.Name = "AltaModiAuto";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Alta Automóvil";
             this.ResumeLayout(false);

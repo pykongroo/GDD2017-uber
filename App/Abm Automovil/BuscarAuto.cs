@@ -60,6 +60,16 @@ namespace UberFrba.Abm_Automovil
             new BuscarIndividuo(this, "Chofer", 'V').Show();
         }
 
+        public void setChofer(int id, string nombre, string apellido)
+        {
+            idChofer = id;
+            lblIDChoferValor.Text = id.ToString();
+            lblNombreChoferValor.Text = nombre;
+            lblApellidoChoferValor.Text = apellido;
+            btnLimpiar.Enabled = true;
+            buscar();
+        }
+
         private void txtBoxPatente_TextChanged(object sender, EventArgs e)
         {
             buscar();

@@ -43,6 +43,14 @@ namespace UberFrba.Abm_Automovil
             new BuscarIndividuo(this, "Chofer", 'S').Show();
         }
 
+        public void setChofer(int id, string nombre, string apellido)
+        {
+            lblIDChoferValor.Text = id.ToString();
+            lblNombreChoferValor.Text = nombre;
+            lblApellidoChoferValor.Text = apellido;
+            btnGuardar.Enabled = true;
+        }
+
         private String guardarAuto()
         {
             BDHandler handler = new BDHandler();

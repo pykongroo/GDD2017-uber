@@ -92,31 +92,28 @@ namespace UberFrba.Buscador
 
         private void btnSeleccionar_Click(object sender, EventArgs e)
         {
-            int id;
-            int.TryParse(dgIndividuo.Rows[dgIndividuo.CurrentCell.RowIndex].Cells["ID"].Value.ToString(), out id);            
+            int id = int.Parse(dgIndividuo.Rows[dgIndividuo.CurrentCell.RowIndex].Cells["ID"].Value.ToString());
+            string nombre = dgIndividuo.Rows[dgIndividuo.CurrentCell.RowIndex].Cells["Nombre"].Value.ToString();
+            string apellido = dgIndividuo.Rows[dgIndividuo.CurrentCell.RowIndex].Cells["Apellido"].Value.ToString();
+            
             if (tipoIndividuo == "Chofer")
             {
                 switch (modo)
                 {
                     /* Buscar Chofer desde AltaModiAuto*/
                     case 'S':
-                        ((Abm_Automovil.AltaModiAuto)formPadre).lblIDChoferValor.Text = id.ToString();
-                        ((Abm_Automovil.AltaModiAuto)formPadre).lblNombreChoferValor.Text = dgIndividuo.Rows[dgIndividuo.CurrentCell.RowIndex].Cells["Nombre"].Value.ToString();
-                        ((Abm_Automovil.AltaModiAuto)formPadre).lblApellidoChoferValor.Text = dgIndividuo.Rows[dgIndividuo.CurrentCell.RowIndex].Cells["Apellido"].Value.ToString();
-                        ((Abm_Automovil.AltaModiAuto)formPadre).btnGuardar.Enabled = true;
-                        this.Hide();
+                        ((Abm_Automovil.AltaModiAuto)formPadre).setChofer(id, nombre, apellido);
+                        break;
+                    /* Buscar Chofer desde RegistroViaje*/
+                    case 'R':
+                        ((Viaje.RegistroViaje)formPadre).setChofer(id, nombre, apellido);
                         break;
                     /* Buscar Chofer desde BuscarAuto */
                     case 'V':
-                        ((Abm_Automovil.BuscarAuto)formPadre).idChofer = id;
-                        ((Abm_Automovil.BuscarAuto)formPadre).lblIDChoferValor.Text = id.ToString();
-                        ((Abm_Automovil.BuscarAuto)formPadre).lblNombreChoferValor.Text = dgIndividuo.Rows[dgIndividuo.CurrentCell.RowIndex].Cells["Nombre"].Value.ToString();
-                        ((Abm_Automovil.BuscarAuto)formPadre).lblApellidoChoferValor.Text = dgIndividuo.Rows[dgIndividuo.CurrentCell.RowIndex].Cells["Apellido"].Value.ToString();
-                        ((Abm_Automovil.BuscarAuto)formPadre).btnLimpiar.Enabled = true;
-                        ((Abm_Automovil.BuscarAuto)formPadre).buscar();
-                        this.Hide();
+                        ((Abm_Automovil.BuscarAuto)formPadre).setChofer(id, nombre, apellido);
                         break;
                 }
+                this.Hide();
             }
             else if (tipoIndividuo == "Cliente")
             {
@@ -127,16 +124,13 @@ namespace UberFrba.Buscador
                         List<BDParametro> listParametros = new List<BDParametro>();
                         listParametros.Add(new BDParametro("@id", id));
                         new BDHandler().execSP("LJDG.baja_cliente", ref listParametros);
-                        this.Hide();
                         break;
-                    /* Buscar Cliente desde Modificación Cliente */
-                    case 'M':
-                        ((Abm_Automovil.BuscarAuto)formPadre).idChofer = id;
-                        ((Abm_Automovil.BuscarAuto)formPadre).buscar();
-                        this.Hide();
+                    /* Buscar Cliente desde RegistroViaje*/
+                    case 'R':
+                        ((Viaje.RegistroViaje)formPadre).setCliente(id, nombre, apellido);
                         break;
                 }
-
+                this.Hide();
             }
         }
 
