@@ -29,18 +29,24 @@ sqlcmd -S localhost\SQLSERVER2012 -U gd -P gd2017 -i "data/scripts stored proced
 sqlcmd -S localhost\SQLSERVER2012 -U gd -P gd2017 -i "data/scripts stored procedures/auto/baja_auto.sql"
 sqlcmd -S localhost\SQLSERVER2012 -U gd -P gd2017 -i "data/scripts stored procedures/auto/modi_auto.sql"
 sqlcmd -S localhost\SQLSERVER2012 -U gd -P gd2017 -i "data/scripts stored procedures/auto/obtener_auto.sql"
+sqlcmd -S localhost\SQLSERVER2012 -U gd -P gd2017 -i "data/scripts stored procedures/auto/buscar_auto.sql"
+sqlcmd -S localhost\SQLSERVER2012 -U gd -P gd2017 -i "data/scripts stored procedures/auto/buscar_auto_habilitado.sql"
+
+sqlcmd -S localhost\SQLSERVER2012 -U gd -P gd2017 -i "data/scripts stored procedures/viaje/obtener_auto_habilitado_chofer.sql"
+sqlcmd -S localhost\SQLSERVER2012 -U gd -P gd2017 -i "data/scripts stored procedures/viaje/validar_horarios_turno.sql"
+sqlcmd -S localhost\SQLSERVER2012 -U gd -P gd2017 -i "data/scripts stored procedures/viaje/obtener_precio_viaje.sql"
+sqlcmd -S localhost\SQLSERVER2012 -U gd -P gd2017 -i "data/scripts stored procedures/viaje/registrar_viaje.sql"
 
 sqlcmd -S localhost\SQLSERVER2012 -U gd -P gd2017 -i "data/scripts stored procedures/busqueda/buscar_cliente_habilitado.sql"
 sqlcmd -S localhost\SQLSERVER2012 -U gd -P gd2017 -i "data/scripts stored procedures/busqueda/buscar_cliente.sql"
 sqlcmd -S localhost\SQLSERVER2012 -U gd -P gd2017 -i "data/scripts stored procedures/busqueda/buscar_chofer_habilitado.sql"
 sqlcmd -S localhost\SQLSERVER2012 -U gd -P gd2017 -i "data/scripts stored procedures/busqueda/buscar_chofer.sql"
-sqlcmd -S localhost\SQLSERVER2012 -U gd -P gd2017 -i "data/scripts stored procedures/busqueda/buscar_auto.sql"
-
-sqlcmd -S localhost\SQLSERVER2012 -U gd -P gd2017 -i "data/scripts stored procedures/chofer/alta_chofer_usuario_existente.sql"
-sqlcmd -S localhost\SQLSERVER2012 -U gd -P gd2017 -i "data/scripts stored procedures/chofer/alta_chofer_usuario_nuevo.sql"
 
 sqlcmd -S localhost\SQLSERVER2012 -U gd -P gd2017 -i "data/scripts stored procedures/usuario/ABM_Usuario.sql"
+sqlcmd -S localhost\SQLSERVER2012 -U gd -P gd2017 -i "data/scripts stored procedures/chofer/alta_chofer_usuario_existente.sql"
+sqlcmd -S localhost\SQLSERVER2012 -U gd -P gd2017 -i "data/scripts stored procedures/chofer/alta_chofer_usuario_nuevo.sql"
 sqlcmd -S localhost\SQLSERVER2012 -U gd -P gd2017 -i "data/scripts stored procedures/cliente/baja_cliente.sql"
+
 sqlcmd -S localhost\SQLSERVER2012 -U gd -P gd2017 -i "data/scripts stored procedures/rendicion/SP_justificacion_rendiciones.sql"
 
 sqlcmd -S localhost\SQLSERVER2012 -U gd -P gd2017 -i "data/scripts migracion/insercion_roles_y_funcionalidades.sql"

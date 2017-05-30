@@ -102,6 +102,7 @@ namespace UberFrba.Abm_Automovil
                 /* Buscar Auto desde Menú Principal ABM Automóvil Modificación */
                 case 'M':
                     AltaModiAuto altaModiAuto = new AltaModiAuto('M', idAuto);
+                    this.Hide();
                     altaModiAuto.Show();
                     altaModiAuto.lblNombreChoferValor.Text = dgAuto.Rows[dgAuto.CurrentCell.RowIndex].Cells["Nombre"].Value.ToString();
                     altaModiAuto.lblApellidoChoferValor.Text = dgAuto.Rows[dgAuto.CurrentCell.RowIndex].Cells["Apellido"].Value.ToString();

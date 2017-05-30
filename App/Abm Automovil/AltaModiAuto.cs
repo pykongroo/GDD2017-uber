@@ -19,6 +19,9 @@ namespace UberFrba.Abm_Automovil
         public AltaModiAuto(char _modo, int _idAuto)
         {
             InitializeComponent();
+            BDHandler handler = new BDHandler();
+            cmbMarca.DataSource = handler.execListSP("LJDG.obtener_marcas");
+            cmbTurno.DataSource = handler.execListSP("LJDG.obtener_descripcion_turnos");
             this.modo = _modo;
             if (modo == 'A')
                 this.Text = "Alta Automóvil";
@@ -28,9 +31,6 @@ namespace UberFrba.Abm_Automovil
                 this.idAuto = _idAuto;
                 cargarAuto();
             }
-            BDHandler handler = new BDHandler();
-            cmbMarca.DataSource = handler.execListSP("LJDG.obtener_marcas");
-            cmbTurno.DataSource = handler.execListSP("LJDG.obtener_descripcion_turnos");
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
@@ -51,7 +51,7 @@ namespace UberFrba.Abm_Automovil
             btnGuardar.Enabled = true;
         }
 
-        private String guardarAuto()
+        private bool guardarAuto()
         {
             BDHandler handler = new BDHandler();
             List<BDParametro> listParametros = new List<BDParametro>();
@@ -69,7 +69,12 @@ namespace UberFrba.Abm_Automovil
                 listParametros.Insert(0, new BDParametro("@id", idAuto));
                 handler.execSP("LJDG.modi_auto", ref listParametros);
             }
-            return listParametros[listParametros.Count - 1].valor.ToString();
+            string mensaje = listParametros[listParametros.Count - 1].valor.ToString();
+            MessageBox.Show(mensaje);
+            if (mensaje.Contains("Exitosamente"))
+                return true;
+            else
+                return false;
         }
 
         private void cargarAuto()
@@ -84,19 +89,22 @@ namespace UberFrba.Abm_Automovil
             listParametros.Add(new BDParametro("@habilitado", 0, SqlDbType.Bit, 0, ParameterDirection.Output));
             listParametros.Add(new BDParametro("@mensaje", "", SqlDbType.VarChar, 50, ParameterDirection.Output));
             new BDHandler().execSP("LJDG.obtener_auto", ref listParametros);
-            cmbMarca.SelectedValue = Convert.ToInt32(listParametros[1].valor.ToString());
+            cmbMarca.SelectedIndex = Convert.ToInt32(listParametros[1].valor.ToString()) - 1;
             txtBoxPatente.Text = listParametros[2].valor.ToString();
             txtBoxModelo.Text = listParametros[3].valor.ToString();
             lblIDChoferValor.Text = listParametros[4].valor.ToString();
-            cmbTurno.SelectedValue = Convert.ToInt32(listParametros[5].valor);
+            cmbTurno.SelectedIndex = Convert.ToInt32(listParametros[5].valor) - 1;
             checkBoxHabilitado.Checked = Convert.ToInt32(listParametros[6].valor) == 1;
+            if (checkBoxHabilitado.Checked)
+                checkBoxHabilitado.Visible = false; //no se puede deshabilitar desde la modificacion
             btnGuardar.Enabled = true;
         }
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            MessageBox.Show(guardarAuto());
-            this.Hide();
+
+            if (guardarAuto())
+                this.Hide(); //se oculta si el guardado es exitoso, si no, se deja intentar de nuevo
         }
     }
 }
