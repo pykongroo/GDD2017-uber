@@ -26,8 +26,8 @@ BEGIN
 			SET @mensaje = 'No existen viajes realizados con los datos ingresados'
 		ELSE
 		BEGIN
+			INSERT INTO LJDG.Rendicion (rend_fecha, rend_turno, rend_chofer, rend_importe_total) VALUES (@fecha, @turno, @chofer, @i_total)
 			SET @mensaje = 'Nueva rendicion agregada'
-			--INSERT EN TABLA DE RENDICIONES--
 		END
 	 END
 	 select viaj_importe_rend from LJDG.Viaje where viaj_chofer = @chofer AND CAST(viaj_fecha_inicio AS DATE)=CAST(@fecha AS DATE) AND viaj_turno=@turno
