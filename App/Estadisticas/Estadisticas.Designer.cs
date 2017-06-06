@@ -53,7 +53,7 @@
             this.groupBoxFiltros.Controls.Add(this.labelFiltroAnio);
             this.groupBoxFiltros.Location = new System.Drawing.Point(25, 20);
             this.groupBoxFiltros.Name = "groupBoxFiltros";
-            this.groupBoxFiltros.Size = new System.Drawing.Size(530, 125);
+            this.groupBoxFiltros.Size = new System.Drawing.Size(630, 125);
             this.groupBoxFiltros.TabIndex = 6;
             this.groupBoxFiltros.TabStop = false;
             this.groupBoxFiltros.Text = "Filtros";
@@ -61,7 +61,7 @@
             // btnCerrar
             // 
             this.btnCerrar.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCerrar.Location = new System.Drawing.Point(408, 26);
+            this.btnCerrar.Location = new System.Drawing.Point(510, 26);
             this.btnCerrar.Name = "btnCerrar";
             this.btnCerrar.Size = new System.Drawing.Size(100, 30);
             this.btnCerrar.TabIndex = 25;
@@ -77,6 +77,7 @@
             this.txtAnio.Size = new System.Drawing.Size(50, 22);
             this.txtAnio.TabIndex = 3;
             this.txtAnio.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtAnio_KeyPress);
+            this.txtAnio.Leave += new System.EventHandler(this.txtAnio_Leave);
             // 
             // labelFiltroEstadistica
             // 
@@ -111,8 +112,9 @@
             this.cmbEstadistica.FormattingEnabled = true;
             this.cmbEstadistica.Location = new System.Drawing.Point(80, 86);
             this.cmbEstadistica.Name = "cmbEstadistica";
-            this.cmbEstadistica.Size = new System.Drawing.Size(300, 22);
+            this.cmbEstadistica.Size = new System.Drawing.Size(400, 22);
             this.cmbEstadistica.TabIndex = 6;
+            this.cmbEstadistica.SelectedIndexChanged += new System.EventHandler(this.cmbEstadistica_SelectedIndexChanged);
             // 
             // cmbTrimestre
             // 
@@ -120,8 +122,9 @@
             this.cmbTrimestre.FormattingEnabled = true;
             this.cmbTrimestre.Location = new System.Drawing.Point(80, 56);
             this.cmbTrimestre.Name = "cmbTrimestre";
-            this.cmbTrimestre.Size = new System.Drawing.Size(250, 22);
+            this.cmbTrimestre.Size = new System.Drawing.Size(80, 22);
             this.cmbTrimestre.TabIndex = 7;
+            this.cmbTrimestre.SelectedIndexChanged += new System.EventHandler(this.cmbTrimestre_SelectedIndexChanged);
             // 
             // dgEstadistica
             // 
@@ -138,14 +141,14 @@
             this.dgEstadistica.ReadOnly = true;
             this.dgEstadistica.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToDisplayedHeaders;
             this.dgEstadistica.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgEstadistica.Size = new System.Drawing.Size(530, 150);
+            this.dgEstadistica.Size = new System.Drawing.Size(630, 150);
             this.dgEstadistica.TabIndex = 27;
             // 
             // Estadisticas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(584, 361);
+            this.ClientSize = new System.Drawing.Size(684, 361);
             this.Controls.Add(this.dgEstadistica);
             this.Controls.Add(this.groupBoxFiltros);
             this.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));

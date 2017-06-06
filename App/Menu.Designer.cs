@@ -121,27 +121,27 @@
             this.menuABMBajaAuto,
             this.menuABMModiAuto});
             this.menuABMAuto.Name = "menuABMAuto";
-            this.menuABMAuto.Size = new System.Drawing.Size(152, 22);
+            this.menuABMAuto.Size = new System.Drawing.Size(128, 22);
             this.menuABMAuto.Text = "Automóvil";
             // 
             // menuABMAltaAuto
             // 
             this.menuABMAltaAuto.Name = "menuABMAltaAuto";
-            this.menuABMAltaAuto.Size = new System.Drawing.Size(152, 22);
+            this.menuABMAltaAuto.Size = new System.Drawing.Size(139, 22);
             this.menuABMAltaAuto.Text = "Alta";
             this.menuABMAltaAuto.Click += new System.EventHandler(this.menuABMAltaAuto_Click);
             // 
             // menuABMBajaAuto
             // 
             this.menuABMBajaAuto.Name = "menuABMBajaAuto";
-            this.menuABMBajaAuto.Size = new System.Drawing.Size(152, 22);
+            this.menuABMBajaAuto.Size = new System.Drawing.Size(139, 22);
             this.menuABMBajaAuto.Text = "Baja";
             this.menuABMBajaAuto.Click += new System.EventHandler(this.menuABMBajaAuto_Click);
             // 
             // menuABMModiAuto
             // 
             this.menuABMModiAuto.Name = "menuABMModiAuto";
-            this.menuABMModiAuto.Size = new System.Drawing.Size(152, 22);
+            this.menuABMModiAuto.Size = new System.Drawing.Size(139, 22);
             this.menuABMModiAuto.Text = "Modificación";
             this.menuABMModiAuto.Click += new System.EventHandler(this.menuABMModiAuto_Click);
             // 
@@ -152,7 +152,7 @@
             this.bajaToolStripMenuItem1,
             this.modificacionToolStripMenuItem1});
             this.choferToolStripMenuItem.Name = "choferToolStripMenuItem";
-            this.choferToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.choferToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
             this.choferToolStripMenuItem.Text = "Chofer";
             // 
             // altaToolStripMenuItem1
@@ -183,7 +183,7 @@
             this.bajaToolStripMenuItem2,
             this.modificacionToolStripMenuItem2});
             this.clienteToolStripMenuItem.Name = "clienteToolStripMenuItem";
-            this.clienteToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.clienteToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
             this.clienteToolStripMenuItem.Text = "Cliente";
             // 
             // altaToolStripMenuItem2
@@ -214,7 +214,7 @@
             this.bajaToolStripMenuItem3,
             this.modificacionToolStripMenuItem3});
             this.rolToolStripMenuItem.Name = "rolToolStripMenuItem";
-            this.rolToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.rolToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
             this.rolToolStripMenuItem.Text = "Rol";
             // 
             // altaToolStripMenuItem3
@@ -245,7 +245,7 @@
             this.bajaToolStripMenuItem4,
             this.modificaciónToolStripMenuItem});
             this.turnoToolStripMenuItem.Name = "turnoToolStripMenuItem";
-            this.turnoToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.turnoToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
             this.turnoToolStripMenuItem.Text = "Turno";
             // 
             // altaToolStripMenuItem4
@@ -301,7 +301,7 @@
             // 
             this.menuEstadisticas.Name = "menuEstadisticas";
             this.menuEstadisticas.Size = new System.Drawing.Size(80, 20);
-            this.menuEstadisticas.Text = "Estadisticas";
+            this.menuEstadisticas.Text = "Estadísticas";
             this.menuEstadisticas.Click += new System.EventHandler(this.menuEstadisticas_Click);
             // 
             // pictureBox1
