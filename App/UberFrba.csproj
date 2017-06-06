@@ -164,11 +164,11 @@
     <Compile Include="Facturacion\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Listado Estadistico\Form1.cs">
+    <Compile Include="Estadisticas\Estadisticas.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Listado Estadistico\Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="Estadisticas\Estadisticas.Designer.cs">
+      <DependentUpon>Estadisticas.cs</DependentUpon>
     </Compile>
     <Compile Include="Logueo\Login.cs">
       <SubType>Form</SubType>
@@ -237,6 +237,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AltaUsuario.resx">
       <DependentUpon>AltaUsuario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Estadisticas\Estadisticas.resx">
+      <DependentUpon>Estadisticas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Logueo\SeleccionRol.resx">
       <DependentUpon>SeleccionRol.cs</DependentUpon>

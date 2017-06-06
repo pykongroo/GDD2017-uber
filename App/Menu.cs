@@ -41,7 +41,7 @@ namespace UberFrba
             funcionalidades_menu.Add("Registro de Viajes", registrarToolStripMenuItem);
             funcionalidades_menu.Add("Rendición de cuenta de Chofer", menuRendicion);
             funcionalidades_menu.Add("Facturación a Cliente", menuFacturacion);
-            funcionalidades_menu.Add("Listado Estadístico", listadoEstadisticoToolStripMenuItem);
+            funcionalidades_menu.Add("Listado Estadístico", menuEstadisticas);
         }
 
         private void mostrar_funcionalidades_rol(String rol_nombre)
@@ -173,6 +173,11 @@ namespace UberFrba
         private void altaToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             new AltaChofer().Show();
+        }
+
+        private void menuEstadisticas_Click(object sender, EventArgs e)
+        {
+            new Estadisticas.Estadisticas().Show();
         }
     }
 }
