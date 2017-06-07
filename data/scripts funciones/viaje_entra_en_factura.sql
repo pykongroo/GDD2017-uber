@@ -11,6 +11,7 @@ CREATE FUNCTION [LJDG].[viaje_entra_en_factura]
 RETURNS BIT
 AS
 BEGIN
-	RETURN IIF((datediff(day,@factura_inicio,@viaje_fecha_inicio) >= 0 AND datediff(day,@viaje_fecha_inicio,@factura_fin) >= 0),1,0)
+	--RETURN IIF((datediff(day,@factura_inicio,@viaje_fecha_inicio) >= 0 AND datediff(day,@viaje_fecha_inicio,@factura_fin) >= 0),1,0) --otra forma
+	RETURN IIF(convert(date,@factura_inicio) <= convert(date,@viaje_fecha_inicio) AND convert(date,@viaje_fecha_inicio) <= convert(date,@factura_fin) ,1,0)
 END
 GO

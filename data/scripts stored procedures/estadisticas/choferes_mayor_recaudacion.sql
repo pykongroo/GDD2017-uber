@@ -19,6 +19,6 @@ BEGIN
 	WHERE YEAR(rend_fecha) = @anio
 		AND DATEPART(QUARTER, rend_fecha) = @trimestre
 	GROUP BY chof_id, chof_dni, chof_nombre, chof_apellido, chof_direccion
-	ORDER BY SUM(rend_importe_total) DESC
+	ORDER BY SUM(rend_importe_total) DESC, chof_id ASC
 END
 GO

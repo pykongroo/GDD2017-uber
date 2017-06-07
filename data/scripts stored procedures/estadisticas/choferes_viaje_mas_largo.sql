@@ -19,6 +19,6 @@ BEGIN
 	WHERE YEAR(viaj_fecha_inicio) = @anio
 		AND DATEPART(QUARTER, viaj_fecha_inicio) = @trimestre
 	GROUP BY chof_id, chof_dni, chof_nombre, chof_apellido, chof_direccion
-	ORDER BY MAX(viaj_cant_km) DESC
+	ORDER BY MAX(viaj_cant_km) DESC, chof_id ASC
 END
 GO

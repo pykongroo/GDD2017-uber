@@ -19,6 +19,6 @@ BEGIN
 	WHERE YEAR(viaj_fecha_inicio) = @anio
 		AND DATEPART(QUARTER, viaj_fecha_inicio) = @trimestre
 	GROUP BY clie_id, clie_dni, clie_nombre, clie_apellido, clie_direccion
-	ORDER BY SUM(viaj_precio) DESC
+	ORDER BY SUM(viaj_precio) DESC, clie_id ASC
 END
 GO

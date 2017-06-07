@@ -21,7 +21,7 @@ namespace UberFrba.Estadisticas
             trimestres.Add("Primero");
             trimestres.Add("Segundo");
             trimestres.Add("Tercero");
-            trimestres.Add("Quarto");
+            trimestres.Add("Cuarto");
             cmbTrimestre.DataSource = trimestres;
             List<String> estadisticas = new List<String>();
             estadisticas.Add("Chóferes con mayor recaudación");

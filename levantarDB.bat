@@ -1,6 +1,3 @@
-sqlcmd -S localhost\SQLSERVER2012 -U gd -P gd2017 -i data/limpiar_SP.sql
-sqlcmd -S localhost\SQLSERVER2012 -U gd -P gd2017 -i data/limpiar_funciones.sql
-
 sqlcmd -S localhost\SQLSERVER2012 -U gd -P gd2017 -i data/script_creacion_inicial.sql
 
 sqlcmd -S localhost\SQLSERVER2012 -U gd -P gd2017 -i "data/scripts funciones/easy_username.sql"
@@ -48,6 +45,11 @@ sqlcmd -S localhost\SQLSERVER2012 -U gd -P gd2017 -i "data/scripts stored proced
 sqlcmd -S localhost\SQLSERVER2012 -U gd -P gd2017 -i "data/scripts stored procedures/cliente/baja_cliente.sql"
 
 sqlcmd -S localhost\SQLSERVER2012 -U gd -P gd2017 -i "data/scripts stored procedures/rendicion/SP_justificacion_rendiciones.sql"
+
+sqlcmd -S localhost\SQLSERVER2012 -U gd -P gd2017 -i "data/scripts stored procedures/estadisticas/choferes_mayor_recaudacion.sql"
+sqlcmd -S localhost\SQLSERVER2012 -U gd -P gd2017 -i "data/scripts stored procedures/estadisticas/choferes_viaje_mas_largo.sql"
+sqlcmd -S localhost\SQLSERVER2012 -U gd -P gd2017 -i "data/scripts stored procedures/estadisticas/cliente_auto.sql"
+sqlcmd -S localhost\SQLSERVER2012 -U gd -P gd2017 -i "data/scripts stored procedures/estadisticas/clientes_mayor_consumo.sql"
 
 sqlcmd -S localhost\SQLSERVER2012 -U gd -P gd2017 -i "data/scripts migracion/insercion_roles_y_funcionalidades.sql"
 sqlcmd -S localhost\SQLSERVER2012 -U gd -P gd2017 -i "data/scripts migracion/creacion_admin.sql"

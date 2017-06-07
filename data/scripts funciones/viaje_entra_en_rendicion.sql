@@ -12,7 +12,8 @@ CREATE FUNCTION LJDG.viaje_entra_en_rendicion
 RETURNS BIT
 AS
 BEGIN
-	RETURN IIF( datediff(day,@viaje_fecha_inicio,@rendicion_fecha) = 0 , 1, 0)
+	--RETURN IIF( datediff(day,@viaje_fecha_inicio,@rendicion_fecha) = 0 , 1, 0) -- otra forma
+	RETURN IIF( convert(date,@viaje_fecha_inicio) = convert(date,@rendicion_fecha) , 1 , 0)
 END
 GO
 
