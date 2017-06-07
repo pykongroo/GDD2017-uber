@@ -59,11 +59,11 @@
     <Compile Include="Abm Automovil\BuscarAuto.Designer.cs">
       <DependentUpon>BuscarAuto.cs</DependentUpon>
     </Compile>
-    <Compile Include="Abm Chofer\AltaChofer.cs">
+    <Compile Include="Abm Chofer\AltaModiChofer.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Abm Chofer\AltaChofer.Designer.cs">
-      <DependentUpon>AltaChofer.cs</DependentUpon>
+    <Compile Include="Abm Chofer\AltaModiChofer.Designer.cs">
+      <DependentUpon>AltaModiChofer.cs</DependentUpon>
     </Compile>
     <Compile Include="Abm Cliente\AltaModificarCliente.cs">
       <SubType>Form</SubType>
@@ -208,8 +208,8 @@
     <EmbeddedResource Include="Abm Automovil\BuscarAuto.resx">
       <DependentUpon>BuscarAuto.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Abm Chofer\AltaChofer.resx">
-      <DependentUpon>AltaChofer.cs</DependentUpon>
+    <EmbeddedResource Include="Abm Chofer\AltaModiChofer.resx">
+      <DependentUpon>AltaModiChofer.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Abm Cliente\AltaModificarCliente.resx">
       <DependentUpon>AltaModificarCliente.cs</DependentUpon>

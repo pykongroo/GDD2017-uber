@@ -11,8 +11,7 @@ CREATE PROCEDURE LJDG.obtener_auto
 	@modelo VARCHAR(255) OUT,
 	@chofer INT OUT,
 	@turno INT OUT,
-	@habilitado BIT OUT,
-	@mensaje VARCHAR(200) OUT
+	@habilitado BIT OUT
 AS
 BEGIN
 	SELECT  @marca      = auto_marca,

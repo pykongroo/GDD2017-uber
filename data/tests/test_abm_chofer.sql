@@ -30,4 +30,4 @@ SELECT *
 FROM LJDG.Usuario join LJDG.Rol_Usuario on user_id = rxu_user
 GO 
 
---89 usuarios, 1 rol admin 41 rol chofer, 47 rol cliente = 89 filas
+--DATOS ORIGINALES 89 usuarios, 1 rol admin 41 rol chofer, 47 rol cliente = 89 filas

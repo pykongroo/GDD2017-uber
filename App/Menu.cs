@@ -32,13 +32,13 @@ namespace UberFrba
 
         private void init_items()
         {
-            funcionalidades_menu.Add("ABM de Rol", rolToolStripMenuItem);
-            funcionalidades_menu.Add("Registro de Usuario", altaUsuarioToolStripMenuItem);
-            funcionalidades_menu.Add("ABM de Cliente", clienteToolStripMenuItem);
+            funcionalidades_menu.Add("ABM de Rol", menuABMRol);
+            funcionalidades_menu.Add("Registro de Usuario", menuAltaUsuario);
+            funcionalidades_menu.Add("ABM de Cliente", menuABMCliente);
             funcionalidades_menu.Add("ABM de Automóvil", menuABMAuto);
-            funcionalidades_menu.Add("ABM de Chofer", choferToolStripMenuItem);
-            funcionalidades_menu.Add("ABM de Turno", turnoToolStripMenuItem);
-            funcionalidades_menu.Add("Registro de Viajes", registrarToolStripMenuItem);
+            funcionalidades_menu.Add("ABM de Chofer", menuABMChofer);
+            funcionalidades_menu.Add("ABM de Turno", menuABMTurno);
+            funcionalidades_menu.Add("Registro de Viajes", menuRegistrarViaje);
             funcionalidades_menu.Add("Rendición de cuenta de Chofer", menuRendicion);
             funcionalidades_menu.Add("Facturación a Cliente", menuFacturacion);
             funcionalidades_menu.Add("Listado Estadístico", menuEstadisticas);
@@ -84,42 +84,32 @@ namespace UberFrba
         }
 
 
-        private void altaToolStripMenuItem3_Click(object sender, EventArgs e)
+        private void menuABMAltaRol_Click(object sender, EventArgs e)
         {
             new AltaRol().Show();
         }
 
-        private void bajaToolStripMenuItem3_Click(object sender, EventArgs e)
+        private void menuABMBajaRol_Click(object sender, EventArgs e)
         {
             new BajaRol().Show();
         }
 
-        private void modificacionToolStripMenuItem3_Click(object sender, EventArgs e)
+        private void menuABMModiRol_Click(object sender, EventArgs e)
         {
             new EditarRol().Show();
         }
 
-        private void bajaToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-            new BuscarIndividuo(this, "Chofer", 'B').Show();
-        }
-
-        private void modificacionToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-            new BuscarIndividuo(this, "Chofer", 'M').Show();
-        }
-
-        private void bajaToolStripMenuItem2_Click(object sender, EventArgs e)
+        private void menuABMBajaCliente_Click(object sender, EventArgs e)
         {
             new BuscarIndividuo(this, "Cliente", 'B').Show();
         }
 
-        private void modificacionToolStripMenuItem2_Click(object sender, EventArgs e)
+        private void menuABMModiCliente_Click(object sender, EventArgs e)
         {
             new BuscarIndividuo(this, "Cliente", 'M').Show();
         }
 
-        private void altaToolStripMenuItem2_Click(object sender, EventArgs e)
+        private void menuABMAltaCliente_Click(object sender, EventArgs e)
         {
             new AltaModificarCliente(this).Show();
         }
@@ -129,14 +119,14 @@ namespace UberFrba
             new AltaUsuario(this).Show();
         }
 
-        private void registrarToolStripMenuItem_Click(object sender, EventArgs e)
+        private void menuRegistrarViaje_Click(object sender, EventArgs e)
         {
             new RegistroViaje().Show();
         }
 
         private void menuABMAltaAuto_Click(object sender, EventArgs e)
         {
-            new AltaModiAuto('A', 0).Show();
+            new AltaModiAuto('A').Show();
         }
 
         private void menuABMBajaAuto_Click(object sender, EventArgs e)
@@ -155,24 +145,34 @@ namespace UberFrba
             rend_chofer.Show();
         }
 
-        private void altaToolStripMenuItem4_Click(object sender, EventArgs e)
+        private void menuABMTAltaTurno_Click(object sender, EventArgs e)
         {
             new AltaTurno().Show();
         }
 
-        private void bajaToolStripMenuItem4_Click(object sender, EventArgs e)
+        private void menuABMBajaTurno_Click(object sender, EventArgs e)
         {
             new BajaTurno().Show();
         }
 
-        private void modificaciónToolStripMenuItem_Click(object sender, EventArgs e)
+        private void menuABMModiTurno_Click(object sender, EventArgs e)
         {
             new EditarTurno().Show();
         }
 
-        private void altaToolStripMenuItem1_Click(object sender, EventArgs e)
+        private void menuABMAltaChofer_Click(object sender, EventArgs e)
         {
-            new AltaChofer().Show();
+            new AltaModiChofer('A').Show();
+        }
+
+        private void menuABMBajaChofer_Click(object sender, EventArgs e)
+        {
+            new BuscarIndividuo(this, "Chofer", 'B').Show();
+        }
+
+        private void menuABMModiChofer_Click(object sender, EventArgs e)
+        {
+            new BuscarIndividuo(this, "Chofer", 'M').Show();
         }
 
         private void menuEstadisticas_Click(object sender, EventArgs e)

@@ -35,7 +35,7 @@ BEGIN
 		END TRY
 		BEGIN CATCH
 		END CATCH
-		SET @mensaje = 'Alta Exitosa'
+		SET @mensaje = 'Chofer Guardado Exitosamente'
 	 END
 END
 GO

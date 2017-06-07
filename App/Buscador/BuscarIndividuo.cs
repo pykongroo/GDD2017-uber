@@ -112,6 +112,18 @@ namespace UberFrba.Buscador
                     case 'V':
                         ((Abm_Automovil.BuscarAuto)formPadre).setChofer(id, nombre, apellido);
                         break;
+                    /* Buscar Chofer desde Menu Principal ABM Chofer Modificacion */
+                    case 'M':
+                        new Abm_Chofer.AltaModiChofer('M',id).Show();
+                        break;
+                    /* Buscar Chofer desde Menú Principal ABM Chofer Baja */
+                    case 'B':
+                        List<BDParametro> listParametros = new List<BDParametro>();
+                        listParametros.Add(new BDParametro("@id", id));
+                        new BDHandler().execSP("LJDG.baja_chofer", ref listParametros);
+                        MessageBox.Show("Se ha inhabilitado el Chofer");
+                        this.Hide();
+                        break;
                 }
             }
             else if (tipoIndividuo == "Cliente")

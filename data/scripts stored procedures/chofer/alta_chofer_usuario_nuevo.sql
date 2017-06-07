@@ -34,7 +34,7 @@ BEGIN
 		( chof_nombre, chof_apellido, chof_dni, chof_direccion, chof_telefono, chof_fecha_nac, chof_mail, chof_user )
 		VALUES
 		( @nombre, @apellido, @dni, @direccion, @telefono, @fecha_nac, @mail, @username )
-		SET @mensaje = 'Alta Exitosa'
+		SET @mensaje = 'Chofer Guardado Exitosamente'
 	 END
 END
 GO

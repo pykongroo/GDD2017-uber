@@ -16,7 +16,7 @@ namespace UberFrba.Abm_Automovil
         private char modo;
         public int idAuto { get; set; }
 
-        public AltaModiAuto(char _modo, int _idAuto)
+        public AltaModiAuto(char _modo, int _idAuto = 0)
         {
             InitializeComponent();
             BDHandler handler = new BDHandler();
@@ -87,14 +87,13 @@ namespace UberFrba.Abm_Automovil
             listParametros.Add(new BDParametro("@chofer", 0, SqlDbType.Int, 0, ParameterDirection.Output));
             listParametros.Add(new BDParametro("@turno", 0, SqlDbType.Int, 0, ParameterDirection.Output));
             listParametros.Add(new BDParametro("@habilitado", 0, SqlDbType.Bit, 0, ParameterDirection.Output));
-            listParametros.Add(new BDParametro("@mensaje", "", SqlDbType.VarChar, 50, ParameterDirection.Output));
             new BDHandler().execSP("LJDG.obtener_auto", ref listParametros);
             cmbMarca.SelectedIndex = Convert.ToInt32(listParametros[1].valor.ToString()) - 1;
             txtBoxPatente.Text = listParametros[2].valor.ToString();
             txtBoxModelo.Text = listParametros[3].valor.ToString();
             lblIDChoferValor.Text = listParametros[4].valor.ToString();
             cmbTurno.SelectedIndex = Convert.ToInt32(listParametros[5].valor) - 1;
-            checkBoxHabilitado.Checked = Convert.ToInt32(listParametros[6].valor) == 1;
+            checkBoxHabilitado.Checked = Convert.ToBoolean(listParametros[6].valor);
             if (checkBoxHabilitado.Checked)
                 checkBoxHabilitado.Visible = false; //no se puede deshabilitar desde la modificacion
             btnGuardar.Enabled = true;
@@ -102,7 +101,6 @@ namespace UberFrba.Abm_Automovil
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-
             if (guardarAuto())
                 this.Hide(); //se oculta si el guardado es exitoso, si no, se deja intentar de nuevo
         }

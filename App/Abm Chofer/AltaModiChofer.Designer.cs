@@ -1,6 +1,6 @@
 ﻿namespace UberFrba.Abm_Chofer
 {
-    partial class AltaChofer
+    partial class AltaModiChofer
     {
         /// <summary>
         /// Required designer variable.
@@ -51,8 +51,10 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.btnNuevo = new System.Windows.Forms.Button();
+            this.btnGuardar = new System.Windows.Forms.Button();
             this.btnLimpiar = new System.Windows.Forms.Button();
+            this.radioHabilitar = new System.Windows.Forms.RadioButton();
+            this.labelHabilitar = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -123,6 +125,7 @@
             // radioUserExistente
             // 
             this.radioUserExistente.AutoSize = true;
+            this.radioUserExistente.Enabled = false;
             this.radioUserExistente.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.radioUserExistente.Location = new System.Drawing.Point(238, 44);
             this.radioUserExistente.Name = "radioUserExistente";
@@ -135,6 +138,7 @@
             // radioNuevoUser
             // 
             this.radioNuevoUser.AutoSize = true;
+            this.radioNuevoUser.Enabled = false;
             this.radioNuevoUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.radioNuevoUser.Location = new System.Drawing.Point(95, 44);
             this.radioNuevoUser.Name = "radioNuevoUser";
@@ -174,7 +178,7 @@
             this.dateTimePickerFechaNac.Name = "dateTimePickerFechaNac";
             this.dateTimePickerFechaNac.Size = new System.Drawing.Size(246, 20);
             this.dateTimePickerFechaNac.TabIndex = 13;
-            this.dateTimePickerFechaNac.Value = new System.DateTime(2017, 5, 28, 0, 0, 0, 0);
+            this.dateTimePickerFechaNac.Value = new System.DateTime(2017, 6, 12, 0, 0, 0, 0);
             // 
             // txtBoxMail
             // 
@@ -191,6 +195,7 @@
             this.txtBoxTelefono.Name = "txtBoxTelefono";
             this.txtBoxTelefono.Size = new System.Drawing.Size(250, 20);
             this.txtBoxTelefono.TabIndex = 11;
+            this.txtBoxTelefono.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBoxTelefono_KeyPress);
             // 
             // txtBoxDireccion
             // 
@@ -207,6 +212,7 @@
             this.txtBoxDNI.Name = "txtBoxDNI";
             this.txtBoxDNI.Size = new System.Drawing.Size(250, 20);
             this.txtBoxDNI.TabIndex = 9;
+            this.txtBoxDNI.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBoxDNI_KeyPress);
             // 
             // txtBoxApellido
             // 
@@ -294,20 +300,20 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Nombre:";
             // 
-            // btnNuevo
+            // btnGuardar
             // 
-            this.btnNuevo.Enabled = false;
-            this.btnNuevo.Location = new System.Drawing.Point(269, 509);
-            this.btnNuevo.Name = "btnNuevo";
-            this.btnNuevo.Size = new System.Drawing.Size(154, 32);
-            this.btnNuevo.TabIndex = 2;
-            this.btnNuevo.Text = "Nuevo Chofer";
-            this.btnNuevo.UseVisualStyleBackColor = true;
-            this.btnNuevo.Click += new System.EventHandler(this.btnNuevo_Click);
+            this.btnGuardar.Enabled = false;
+            this.btnGuardar.Location = new System.Drawing.Point(289, 579);
+            this.btnGuardar.Name = "btnGuardar";
+            this.btnGuardar.Size = new System.Drawing.Size(154, 32);
+            this.btnGuardar.TabIndex = 2;
+            this.btnGuardar.Text = "Guardar";
+            this.btnGuardar.UseVisualStyleBackColor = true;
+            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
             // btnLimpiar
             // 
-            this.btnLimpiar.Location = new System.Drawing.Point(66, 509);
+            this.btnLimpiar.Location = new System.Drawing.Point(41, 579);
             this.btnLimpiar.Name = "btnLimpiar";
             this.btnLimpiar.Size = new System.Drawing.Size(154, 32);
             this.btnLimpiar.TabIndex = 3;
@@ -315,25 +321,51 @@
             this.btnLimpiar.UseVisualStyleBackColor = true;
             this.btnLimpiar.Click += new System.EventHandler(this.btnLimpiar_Click);
             // 
-            // AltaChofer
+            // radioHabilitar
+            // 
+            this.radioHabilitar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.radioHabilitar.AutoSize = true;
+            this.radioHabilitar.Location = new System.Drawing.Point(349, 538);
+            this.radioHabilitar.Name = "radioHabilitar";
+            this.radioHabilitar.Size = new System.Drawing.Size(14, 13);
+            this.radioHabilitar.TabIndex = 19;
+            this.radioHabilitar.TabStop = true;
+            this.radioHabilitar.UseVisualStyleBackColor = true;
+            this.radioHabilitar.Visible = false;
+            // 
+            // labelHabilitar
+            // 
+            this.labelHabilitar.AutoSize = true;
+            this.labelHabilitar.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelHabilitar.Location = new System.Drawing.Point(24, 534);
+            this.labelHabilitar.Name = "labelHabilitar";
+            this.labelHabilitar.Size = new System.Drawing.Size(319, 18);
+            this.labelHabilitar.TabIndex = 20;
+            this.labelHabilitar.Text = "Chofer deshabilitado, click aqui para habilitarlo: ";
+            this.labelHabilitar.Visible = false;
+            // 
+            // AltaModiChofer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(460, 553);
+            this.ClientSize = new System.Drawing.Size(465, 623);
+            this.Controls.Add(this.labelHabilitar);
+            this.Controls.Add(this.radioHabilitar);
             this.Controls.Add(this.btnLimpiar);
-            this.Controls.Add(this.btnNuevo);
+            this.Controls.Add(this.btnGuardar);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.Name = "AltaChofer";
+            this.Name = "AltaModiChofer";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "AltaChofer";
-            this.Load += new System.EventHandler(this.AltaChofer_Load);
+            this.Text = "AltaModiChofer";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -342,7 +374,7 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button btnNuevo;
+        private System.Windows.Forms.Button btnGuardar;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
@@ -364,5 +396,7 @@
         private System.Windows.Forms.RadioButton radioUserExistente;
         private System.Windows.Forms.RadioButton radioNuevoUser;
         private System.Windows.Forms.Button btnLimpiar;
+        private System.Windows.Forms.RadioButton radioHabilitar;
+        private System.Windows.Forms.Label labelHabilitar;
     }
 }
