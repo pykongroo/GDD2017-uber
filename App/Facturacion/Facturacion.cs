@@ -14,8 +14,6 @@ namespace UberFrba.Facturacion
     {
 
         int idCliente;
-        String fechaInicio;
-        String fechaFin;
         double montoTotal;
 
         public Facturacion()
@@ -44,11 +42,9 @@ namespace UberFrba.Facturacion
 
         public void buscar()
         {
-            fechaInicio = datetimeFechaInicio.Value.ToString("yyyy-MM-dd 00:00:00");
-            fechaFin = datetimeFechaFin.Value.ToString("yyyy-MM-dd 23:59:59");
             List<BDParametro> listParametros = new List<BDParametro>();
-            listParametros.Add(new BDParametro("@fechaInicio", fechaInicio));
-            listParametros.Add(new BDParametro("@fechaFin", fechaFin));
+            listParametros.Add(new BDParametro("@fechaInicio", datetimeFechaInicio.Value));
+            listParametros.Add(new BDParametro("@fechaFin", datetimeFechaFin.Value));
             listParametros.Add(new BDParametro("@idCliente", idCliente));
             dgViajes.DataSource = new BDHandler().execSelectSP("LJDG.viajes_cliente", listParametros);
             montoTotal = 0;
