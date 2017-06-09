@@ -140,6 +140,9 @@ namespace UberFrba.Buscador
                     case 'R':
                         ((Viaje.RegistroViaje)formPadre).setCliente(id, nombre, apellido);
                         break;
+                    case 'F':
+                        ((Facturacion.Facturacion)formPadre).setCliente(id, nombre, apellido);
+                        break;
                 }
             }
             this.Hide();

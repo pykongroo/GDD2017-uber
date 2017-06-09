@@ -179,6 +179,11 @@ namespace UberFrba
         {
             new Estadisticas.Estadisticas().Show();
         }
+
+        private void menuFacturacion_Click(object sender, EventArgs e)
+        {
+            new Facturacion.Facturacion().Show();
+        }
     }
 }
 

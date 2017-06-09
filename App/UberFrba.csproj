@@ -158,11 +158,11 @@
       <DependentUpon>CustomTextBox.cs</DependentUpon>
     </Compile>
     <Compile Include="Utils\Helper.cs" />
-    <Compile Include="Facturacion\Form1.cs">
+    <Compile Include="Facturacion\Facturacion.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Facturacion\Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="Facturacion\Facturacion.Designer.cs">
+      <DependentUpon>Facturacion.cs</DependentUpon>
     </Compile>
     <Compile Include="Estadisticas\Estadisticas.cs">
       <SubType>Form</SubType>
@@ -240,6 +240,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Estadisticas\Estadisticas.resx">
       <DependentUpon>Estadisticas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Facturacion\Facturacion.resx">
+      <DependentUpon>Facturacion.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Logueo\SeleccionRol.resx">
       <DependentUpon>SeleccionRol.cs</DependentUpon>

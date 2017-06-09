@@ -114,9 +114,9 @@ namespace UberFrba.Viaje
                 return false;
             }
 
-            if (datetimeHoraFin.Value.Hour < datetimeHoraInicio.Value.Hour)
+            if (datetimeHoraInicio.Value.Hour > datetimeHoraFin.Value.Hour)
             {
-                MessageBox.Show("La hora de inicio debe ser mayor a la hora de fin.");
+                MessageBox.Show("La hora de inicio debe ser menor a la hora de fin.");
                 return false;
             }
 
@@ -145,8 +145,6 @@ namespace UberFrba.Viaje
             /* Transformo la Fecha y Horas a SQL DateTime */
             fechaHoraInicio = datetimeFecha.Value.ToString("yyyy-MM-dd ") + datetimeHoraInicio.Value.ToString("HH:mm:ss");
             fechaHoraFin = datetimeFecha.Value.ToString("yyyy-MM-dd ") + datetimeHoraFin.Value.ToString("HH:mm:ss");
-            Console.WriteLine(fechaHoraInicio);
-            Console.WriteLine(fechaHoraFin);
 
             obtenerPrecio();
 
