@@ -28,6 +28,12 @@ namespace UberFrba.Viaje
         public RegistroViaje()
         {
             InitializeComponent();
+            datetimeHoraInicio.Format=DateTimePickerFormat.Custom;
+            datetimeHoraInicio.CustomFormat = "HH:mm";
+            datetimeHoraInicio.ShowUpDown= true;
+            datetimeHoraFin.Format = DateTimePickerFormat.Custom;
+            datetimeHoraFin.CustomFormat = "HH:mm";
+            datetimeHoraFin.ShowUpDown = true;
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)

@@ -96,7 +96,7 @@
             this.lblNombreChofer.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblNombreChofer.Location = new System.Drawing.Point(110, 45);
             this.lblNombreChofer.Name = "lblNombreChofer";
-            this.lblNombreChofer.Size = new System.Drawing.Size(50, 14);
+            this.lblNombreChofer.Size = new System.Drawing.Size(49, 14);
             this.lblNombreChofer.TabIndex = 3;
             this.lblNombreChofer.Text = "Nombre";
             this.lblNombreChofer.UseMnemonic = false;
@@ -107,7 +107,7 @@
             this.lblApellidoChofer.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblApellidoChofer.Location = new System.Drawing.Point(230, 45);
             this.lblApellidoChofer.Name = "lblApellidoChofer";
-            this.lblApellidoChofer.Size = new System.Drawing.Size(49, 14);
+            this.lblApellidoChofer.Size = new System.Drawing.Size(51, 14);
             this.lblApellidoChofer.TabIndex = 4;
             this.lblApellidoChofer.Text = "Apellido";
             this.lblApellidoChofer.UseMnemonic = false;
@@ -118,7 +118,7 @@
             this.lblAutomovil.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblAutomovil.Location = new System.Drawing.Point(30, 100);
             this.lblAutomovil.Name = "lblAutomovil";
-            this.lblAutomovil.Size = new System.Drawing.Size(92, 19);
+            this.lblAutomovil.Size = new System.Drawing.Size(91, 19);
             this.lblAutomovil.TabIndex = 5;
             this.lblAutomovil.Text = "Automovil";
             // 
@@ -138,7 +138,7 @@
             this.lblApellidoCliente.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblApellidoCliente.Location = new System.Drawing.Point(304, 205);
             this.lblApellidoCliente.Name = "lblApellidoCliente";
-            this.lblApellidoCliente.Size = new System.Drawing.Size(49, 14);
+            this.lblApellidoCliente.Size = new System.Drawing.Size(51, 14);
             this.lblApellidoCliente.TabIndex = 11;
             this.lblApellidoCliente.Text = "Apellido";
             this.lblApellidoCliente.UseMnemonic = false;
@@ -149,7 +149,7 @@
             this.lblNombreCliente.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblNombreCliente.Location = new System.Drawing.Point(134, 205);
             this.lblNombreCliente.Name = "lblNombreCliente";
-            this.lblNombreCliente.Size = new System.Drawing.Size(50, 14);
+            this.lblNombreCliente.Size = new System.Drawing.Size(49, 14);
             this.lblNombreCliente.TabIndex = 10;
             this.lblNombreCliente.Text = "Nombre";
             this.lblNombreCliente.UseMnemonic = false;
@@ -179,7 +179,7 @@
             this.lblHoraInicio.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblHoraInicio.Location = new System.Drawing.Point(200, 270);
             this.lblHoraInicio.Name = "lblHoraInicio";
-            this.lblHoraInicio.Size = new System.Drawing.Size(123, 19);
+            this.lblHoraInicio.Size = new System.Drawing.Size(124, 19);
             this.lblHoraInicio.TabIndex = 13;
             this.lblHoraInicio.Text = "Hora de Inicio";
             // 
@@ -291,7 +291,7 @@
             this.lnkChofer.AutoSize = true;
             this.lnkChofer.Location = new System.Drawing.Point(110, 23);
             this.lnkChofer.Name = "lnkChofer";
-            this.lnkChofer.Size = new System.Drawing.Size(93, 14);
+            this.lnkChofer.Size = new System.Drawing.Size(92, 14);
             this.lnkChofer.TabIndex = 24;
             this.lnkChofer.TabStop = true;
             this.lnkChofer.Text = "Buscar chofer...";
@@ -325,7 +325,7 @@
             this.lblIDChoferValor.Location = new System.Drawing.Point(40, 70);
             this.lblIDChoferValor.Name = "lblIDChoferValor";
             this.lblIDChoferValor.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.lblIDChoferValor.Size = new System.Drawing.Size(104, 14);
+            this.lblIDChoferValor.Size = new System.Drawing.Size(102, 14);
             this.lblIDChoferValor.TabIndex = 25;
             this.lblIDChoferValor.Text = "Busque un chofer";
             // 
@@ -334,7 +334,7 @@
             this.lnkCliente.AutoSize = true;
             this.lnkCliente.Location = new System.Drawing.Point(110, 183);
             this.lnkCliente.Name = "lnkCliente";
-            this.lnkCliente.Size = new System.Drawing.Size(94, 14);
+            this.lnkCliente.Size = new System.Drawing.Size(93, 14);
             this.lnkCliente.TabIndex = 28;
             this.lnkCliente.TabStop = true;
             this.lnkCliente.Text = "Buscar cliente...";
@@ -368,7 +368,7 @@
             this.lblIDClienteValor.Location = new System.Drawing.Point(40, 230);
             this.lblIDClienteValor.Name = "lblIDClienteValor";
             this.lblIDClienteValor.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.lblIDClienteValor.Size = new System.Drawing.Size(105, 14);
+            this.lblIDClienteValor.Size = new System.Drawing.Size(103, 14);
             this.lblIDClienteValor.TabIndex = 29;
             this.lblIDClienteValor.Text = "Busque un cliente";
             // 
@@ -460,7 +460,7 @@
             this.lblIDTurnoAuto.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblIDTurnoAuto.Location = new System.Drawing.Point(350, 125);
             this.lblIDTurnoAuto.Name = "lblIDTurnoAuto";
-            this.lblIDTurnoAuto.Size = new System.Drawing.Size(56, 14);
+            this.lblIDTurnoAuto.Size = new System.Drawing.Size(55, 14);
             this.lblIDTurnoAuto.TabIndex = 40;
             this.lblIDTurnoAuto.Text = "ID Turno";
             this.lblIDTurnoAuto.UseMnemonic = false;
