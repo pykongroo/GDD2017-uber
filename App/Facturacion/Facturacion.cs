@@ -16,12 +16,12 @@ namespace UberFrba.Facturacion
 
         int idCliente;
         decimal montoTotal;
-        
+
         public Facturacion()
         {
             InitializeComponent();
         }
-        
+
         public void setCliente(int id, string nombre, string apellido)
         {
             idCliente = id;
@@ -50,7 +50,7 @@ namespace UberFrba.Facturacion
             dgViajes.DataSource = new BDHandler().execSelectSP("LJDG.viajes_cliente", listParametros);
             montoTotal = 0;
             foreach (DataGridViewRow r in dgViajes.Rows)
-                montoTotal += Convert.ToDecimal(r.Cells[6].Value);            
+                montoTotal += Convert.ToDecimal(r.Cells[6].Value);
             lblMontoTotalValor.Text = "$ " + montoTotal.ToString();
         }
 
@@ -68,7 +68,7 @@ namespace UberFrba.Facturacion
                 MessageBox.Show("La fecha de inicio debe ser menor a la fecha de fin.");
                 return false;
             }
-            
+
             return true;
 
         }
@@ -76,10 +76,12 @@ namespace UberFrba.Facturacion
         private void btnRegistrar_Click(object sender, EventArgs e)
         {
             DateTime hoy = DateTime.Today;
-            validar();
-            Factura.insertarFactura(idCliente, montoTotal, hoy, datetimeFechaInicio.Value, datetimeFechaFin.Value);
-            MessageBox.Show("¡Se ha registrado la factura exitosamente!");
-            this.Hide();
+            if (validar())
+            {
+                Factura.insertarFactura(idCliente, montoTotal, hoy, datetimeFechaInicio.Value, datetimeFechaFin.Value);
+                MessageBox.Show("¡Se ha registrado la factura exitosamente!");
+                this.Hide();
+            }
         }
 
         private void datetimeFechaInicio_ValueChanged(object sender, EventArgs e)

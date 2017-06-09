@@ -52,25 +52,19 @@ namespace UberFrba.Modelo
             get { return _fact_fecha_fin; }
             set { _fact_fecha_fin = value; }
         }
-        
+
         public static void insertarFactura(int fact_cliente, decimal fact_total, DateTime fact_fecha, DateTime fact_fecha_inicio, DateTime fact_fecha_fin)
         {
             List<BDParametro> listParametros = new List<BDParametro>();
-            try
-            {
-                BDHandler handler = new BDHandler();
-                listParametros.Add(new BDParametro("@fact_cliente", fact_cliente));
-                listParametros.Add(new BDParametro("@fact_total", fact_total));
-                listParametros.Add(new BDParametro("@fact_fecha", fact_fecha));
-                listParametros.Add(new BDParametro("@fact_fecha_inicio", fact_fecha_inicio));
-                listParametros.Add(new BDParametro("@fact_fecha_fin", fact_fecha_fin));
-                handler.execSP("LJDG.crear_factura", ref listParametros);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.ToString());
-                throw ex;
-            }
+
+            BDHandler handler = new BDHandler();
+            listParametros.Add(new BDParametro("@fact_cliente", fact_cliente));
+            listParametros.Add(new BDParametro("@fact_total", fact_total));
+            listParametros.Add(new BDParametro("@fact_fecha", fact_fecha));
+            listParametros.Add(new BDParametro("@fact_fecha_inicio", fact_fecha_inicio));
+            listParametros.Add(new BDParametro("@fact_fecha_fin", fact_fecha_fin));
+            handler.execSP("LJDG.crear_factura", ref listParametros);
+
         }
     }
 

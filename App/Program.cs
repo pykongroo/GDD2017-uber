@@ -14,7 +14,7 @@ namespace UberFrba
         public static Usuario user = new Usuario();
 
         // Porcentaje de Rendición para los choferes.
-        public static double pcjRend = 0.3;
+        public static decimal pcjRend = 0.3M;
 
         /// <summary>
         /// Punto de entrada principal para la aplicación.

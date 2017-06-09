@@ -172,6 +172,7 @@
             this.datetimeHoraInicio.Name = "datetimeHoraInicio";
             this.datetimeHoraInicio.Size = new System.Drawing.Size(60, 22);
             this.datetimeHoraInicio.TabIndex = 12;
+            this.datetimeHoraInicio.Value = new System.DateTime(2017, 6, 9, 0, 0, 0, 0);
             // 
             // lblHoraInicio
             // 
@@ -201,6 +202,7 @@
             this.datetimeHoraFin.Name = "datetimeHoraFin";
             this.datetimeHoraFin.Size = new System.Drawing.Size(60, 22);
             this.datetimeHoraFin.TabIndex = 15;
+            this.datetimeHoraFin.Value = new System.DateTime(2017, 6, 9, 0, 0, 0, 0);
             // 
             // lblKm
             // 
@@ -447,6 +449,7 @@
             // 
             // datetimeFecha
             // 
+            this.datetimeFecha.Checked = false;
             this.datetimeFecha.CustomFormat = "dd/MM/yyyy";
             this.datetimeFecha.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.datetimeFecha.Location = new System.Drawing.Point(40, 295);
