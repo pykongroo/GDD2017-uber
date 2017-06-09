@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using UberFrba.Modelo;
 
 namespace UberFrba.Facturacion
 {
@@ -14,8 +15,8 @@ namespace UberFrba.Facturacion
     {
 
         int idCliente;
-        double montoTotal;
-
+        decimal montoTotal;
+        
         public Facturacion()
         {
             InitializeComponent();
@@ -49,7 +50,7 @@ namespace UberFrba.Facturacion
             dgViajes.DataSource = new BDHandler().execSelectSP("LJDG.viajes_cliente", listParametros);
             montoTotal = 0;
             foreach (DataGridViewRow r in dgViajes.Rows)
-                montoTotal += Convert.ToDouble(r.Cells[6].Value);            
+                montoTotal += Convert.ToDecimal(r.Cells[6].Value);            
             lblMontoTotalValor.Text = "$ " + montoTotal.ToString();
         }
 
@@ -74,17 +75,27 @@ namespace UberFrba.Facturacion
 
         private void btnRegistrar_Click(object sender, EventArgs e)
         {
+            DateTime hoy = DateTime.Today;
             validar();
+            Factura.insertarFactura(idCliente, montoTotal, hoy, datetimeFechaInicio.Value, datetimeFechaFin.Value);
+            MessageBox.Show("¡Se ha registrado la factura exitosamente!");
+            this.Hide();
         }
 
         private void datetimeFechaInicio_ValueChanged(object sender, EventArgs e)
         {
+            datetimeFechaFin.MinDate = datetimeFechaInicio.Value.AddDays(1);
             buscar();
         }
 
         private void datetimeFechaFin_ValueChanged(object sender, EventArgs e)
         {
             buscar();
+        }
+
+        private void Facturacion_Load(object sender, EventArgs e)
+        {
+            datetimeFechaFin.MinDate = datetimeFechaInicio.Value.AddDays(1);
         }
 
     }

@@ -122,6 +122,7 @@
     <Compile Include="Logueo\SeleccionRol.Designer.cs">
       <DependentUpon>SeleccionRol.cs</DependentUpon>
     </Compile>
+    <Compile Include="Modelo\Factura.cs" />
     <Compile Include="Modelo\Funcionalidad.cs" />
     <Compile Include="Modelo\Rol.cs" />
     <Compile Include="Modelo\Turno.cs" />

@@ -278,6 +278,7 @@
             this.Name = "Facturacion";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Facturación";
+            this.Load += new System.EventHandler(this.Facturacion_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgViajes)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
