@@ -307,7 +307,8 @@ GO
 
 CREATE VIEW LJDG.Viaje_Factura
 AS
-SELECT	LJDG.Factura.fact_nro, LJDG.Factura.fact_fecha_inicio, LJDG.Factura.fact_fecha_fin, LJDG.Factura.fact_cliente, LJDG.Viaje.viaj_id, LJDG.Viaje.viaj_precio
+SELECT	LJDG.Factura.fact_nro, LJDG.Factura.fact_fecha_inicio, LJDG.Factura.fact_fecha_fin, LJDG.Factura.fact_cliente,
+		 LJDG.Viaje.viaj_id, LJDG.Viaje.viaj_fecha_inicio, LJDG.Viaje.viaj_precio
 FROM	LJDG.Factura INNER JOIN
 		LJDG.Viaje ON LJDG.Factura.fact_cliente = LJDG.Viaje.viaj_cliente
 WHERE	(LJDG.viaje_entra_en_factura(LJDG.Viaje.viaj_fecha_inicio, LJDG.Factura.fact_fecha_inicio, LJDG.Factura.fact_fecha_fin) = 1)

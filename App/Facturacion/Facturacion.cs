@@ -78,9 +78,11 @@ namespace UberFrba.Facturacion
             DateTime hoy = DateTime.Today;
             if (validar())
             {
+                string mensaje =
                 Factura.insertarFactura(idCliente, montoTotal, hoy, datetimeFechaInicio.Value, datetimeFechaFin.Value);
-                MessageBox.Show("¡Se ha registrado la factura exitosamente!");
-                this.Hide();
+                MessageBox.Show(mensaje);
+                if(mensaje.Contains("Exitosamente"))
+                    this.Hide();
             }
         }
 
