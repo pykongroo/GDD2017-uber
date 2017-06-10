@@ -40,7 +40,7 @@ namespace UberFrba.Abm_Automovil
 
         private void lnkChofer_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            new BuscarIndividuo(this, "Chofer", 'S').Show();
+            new BuscarIndividuo(this, "Chofer", 'A').Show();
         }
 
         public void setChofer(int id, string nombre, string apellido)

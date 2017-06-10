@@ -65,11 +65,11 @@
     <Compile Include="Abm Chofer\AltaModiChofer.Designer.cs">
       <DependentUpon>AltaModiChofer.cs</DependentUpon>
     </Compile>
-    <Compile Include="Abm Cliente\AltaModificarCliente.cs">
+    <Compile Include="Abm Cliente\AltaModiCliente.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Abm Cliente\AltaModificarCliente.Designer.cs">
-      <DependentUpon>AltaModificarCliente.cs</DependentUpon>
+    <Compile Include="Abm Cliente\AltaModiCliente.Designer.cs">
+      <DependentUpon>AltaModiCliente.cs</DependentUpon>
     </Compile>
     <Compile Include="Buscador\BuscarIndividuo.cs">
       <SubType>Form</SubType>
@@ -212,8 +212,8 @@
     <EmbeddedResource Include="Abm Chofer\AltaModiChofer.resx">
       <DependentUpon>AltaModiChofer.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Abm Cliente\AltaModificarCliente.resx">
-      <DependentUpon>AltaModificarCliente.cs</DependentUpon>
+    <EmbeddedResource Include="Abm Cliente\AltaModiCliente.resx">
+      <DependentUpon>AltaModiCliente.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Buscador\BuscarIndividuo.resx">
       <DependentUpon>BuscarIndividuo.cs</DependentUpon>

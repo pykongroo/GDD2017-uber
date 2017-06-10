@@ -38,7 +38,7 @@ namespace UberFrba.Viaje
 
         private void lnkChofer_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            new BuscarIndividuo(this, "Chofer", 'R').Show();
+            new BuscarIndividuo(this, "Chofer", 'V').Show();
         }
 
         public void setChofer(int id, string nombre, string apellido)
@@ -85,7 +85,7 @@ namespace UberFrba.Viaje
 
         private void lnkCliente_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            new BuscarIndividuo(this, "Cliente", 'R').Show();
+            new BuscarIndividuo(this, "Cliente", 'V').Show();
         }
 
         public void setCliente(int id, string nombre, string apellido)

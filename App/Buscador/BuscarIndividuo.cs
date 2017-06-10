@@ -20,7 +20,7 @@ namespace UberFrba.Buscador
 
         /* Recibe el Formulario anterior
          * Tipo de Individuo = "Chofer" / "Cliente"
-         * Modo de uso = 'B' Baja / 'M' Modificación / 'S' Busqueda de Chofer */
+         * Modo de uso = 'B' Baja / 'M' Modificación / 'A'-'S'-'V'-'R'-'F' Busqueda desde otros formularios */
         public BuscarIndividuo(Form _formPadre, String _tipoIndividuo, char _modo)
         {
             InitializeComponent();
@@ -31,7 +31,8 @@ namespace UberFrba.Buscador
             buscar();
         }
 
-        private void buscar() {
+        private void buscar()
+        {
             List<BDParametro> listParametros = new List<BDParametro>();
             try
             {
@@ -41,13 +42,18 @@ namespace UberFrba.Buscador
                 listParametros.Add(new BDParametro("@nombre", txtNombre.Text.Trim()));
                 listParametros.Add(new BDParametro("@apellido", txtApellido.Text.Trim()));
                 listParametros.Add(new BDParametro("@dni", dni));
+                //el chofer o cliente puede estar deshabilitado y se debe poder modificarle los datos
+                //puede estar deshabilitado el chofer y modificarle/darle de baja un auto que tiene asignado,
+                                                //pero debe estar habilitado para asignarle un nuevo auto
+                //tambien puede estar deshabilitado el cliente y facturarle, pero debe estar habilitado el chofer para rendirle
+                //en el resto de los casos debe estar habilitado el chofer/cliente (para darle de baja, registrarle un viaje)
                 if (tipoIndividuo == "Chofer")
-                    if (modo == 'M')
+                    if (modo == 'M' || modo == 'S')
                         dgIndividuo.DataSource = handler.execSelectSP("LJDG.buscar_chofer", listParametros);
                     else
                         dgIndividuo.DataSource = handler.execSelectSP("LJDG.buscar_chofer_habilitado", listParametros);
                 else if (tipoIndividuo == "Cliente")
-                    if (modo == 'M')
+                    if (modo == 'M' || modo == 'F')
                         dgIndividuo.DataSource = handler.execSelectSP("LJDG.buscar_cliente", listParametros);
                     else
                         dgIndividuo.DataSource = handler.execSelectSP("LJDG.buscar_cliente_habilitado", listParametros);
@@ -95,26 +101,30 @@ namespace UberFrba.Buscador
             int id = int.Parse(dgIndividuo.Rows[dgIndividuo.CurrentCell.RowIndex].Cells["ID"].Value.ToString());
             string nombre = dgIndividuo.Rows[dgIndividuo.CurrentCell.RowIndex].Cells["Nombre"].Value.ToString();
             string apellido = dgIndividuo.Rows[dgIndividuo.CurrentCell.RowIndex].Cells["Apellido"].Value.ToString();
-            
+
             if (tipoIndividuo == "Chofer")
             {
                 switch (modo)
                 {
                     /* Buscar Chofer desde AltaModiAuto*/
-                    case 'S':
+                    case 'A':
                         ((Abm_Automovil.AltaModiAuto)formPadre).setChofer(id, nombre, apellido);
                         break;
-                    /* Buscar Chofer desde RegistroViaje*/
-                    case 'R':
-                        ((Viaje.RegistroViaje)formPadre).setChofer(id, nombre, apellido);
-                        break;
                     /* Buscar Chofer desde BuscarAuto */
-                    case 'V':
+                    case 'S':
                         ((Abm_Automovil.BuscarAuto)formPadre).setChofer(id, nombre, apellido);
+                        break;
+                    /* Buscar Chofer desde Registro Rendicion*/
+                    case 'R':
+                        //           ((Viaje.RegistroViaje)formPadre).setChofer(id, nombre, apellido);
+                        break;
+                    /* Buscar Chofer desde RegistroViaje*/
+                    case 'V':
+                        ((Viaje.RegistroViaje)formPadre).setChofer(id, nombre, apellido);
                         break;
                     /* Buscar Chofer desde Menu Principal ABM Chofer Modificacion */
                     case 'M':
-                        new Abm_Chofer.AltaModiChofer('M',id).Show();
+                        new Abm_Chofer.AltaModiChofer('M', id).Show();
                         break;
                     /* Buscar Chofer desde Menú Principal ABM Chofer Baja */
                     case 'B':
@@ -122,7 +132,6 @@ namespace UberFrba.Buscador
                         listParametros.Add(new BDParametro("@id", id));
                         new BDHandler().execSP("LJDG.baja_chofer", ref listParametros);
                         MessageBox.Show("Se ha inhabilitado el Chofer");
-                        this.Hide();
                         break;
                 }
             }
@@ -130,16 +139,22 @@ namespace UberFrba.Buscador
             {
                 switch (modo)
                 {
-                    /* Buscar Cliente desde Baja Cliente */
+                    /* Buscar Cliente desde Menu Principal ABM Cliente Modificacion */
+                    case 'M':
+                        new Abm_Cliente.AltaModiCliente('M', id).Show();
+                        break;
+                    /* Buscar Cliente desde Menú Principal ABM Cliente Baja */
                     case 'B':
                         List<BDParametro> listParametros = new List<BDParametro>();
                         listParametros.Add(new BDParametro("@id", id));
                         new BDHandler().execSP("LJDG.baja_cliente", ref listParametros);
+                        MessageBox.Show("Se ha inhabilitado el Cliente");
                         break;
                     /* Buscar Cliente desde RegistroViaje*/
-                    case 'R':
+                    case 'V':
                         ((Viaje.RegistroViaje)formPadre).setCliente(id, nombre, apellido);
                         break;
+                    /* Buscar Cliente desde Facturacion*/
                     case 'F':
                         ((Facturacion.Facturacion)formPadre).setCliente(id, nombre, apellido);
                         break;

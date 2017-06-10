@@ -40,18 +40,23 @@ sqlcmd -S localhost\SQLSERVER2012 -U gd -P gd2017 -i "data/scripts stored proced
 sqlcmd -S localhost\SQLSERVER2012 -U gd -P gd2017 -i "data/scripts stored procedures/busqueda/buscar_chofer.sql"
 
 sqlcmd -S localhost\SQLSERVER2012 -U gd -P gd2017 -i "data/scripts stored procedures/usuario/ABM_Usuario.sql"
+
 sqlcmd -S localhost\SQLSERVER2012 -U gd -P gd2017 -i "data/scripts stored procedures/chofer/alta_chofer_usuario_existente.sql"
 sqlcmd -S localhost\SQLSERVER2012 -U gd -P gd2017 -i "data/scripts stored procedures/chofer/alta_chofer_usuario_nuevo.sql"
 sqlcmd -S localhost\SQLSERVER2012 -U gd -P gd2017 -i "data/scripts stored procedures/chofer/modi_chofer.sql"
 sqlcmd -S localhost\SQLSERVER2012 -U gd -P gd2017 -i "data/scripts stored procedures/chofer/baja_chofer.sql"
 sqlcmd -S localhost\SQLSERVER2012 -U gd -P gd2017 -i "data/scripts stored procedures/chofer/obtener_chofer.sql"
+
+sqlcmd -S localhost\SQLSERVER2012 -U gd -P gd2017 -i "data/scripts stored procedures/cliente/alta_cliente_usuario_existente.sql"
+sqlcmd -S localhost\SQLSERVER2012 -U gd -P gd2017 -i "data/scripts stored procedures/cliente/alta_cliente_usuario_nuevo.sql"
+sqlcmd -S localhost\SQLSERVER2012 -U gd -P gd2017 -i "data/scripts stored procedures/cliente/modi_cliente.sql"
+sqlcmd -S localhost\SQLSERVER2012 -U gd -P gd2017 -i "data/scripts stored procedures/cliente/obtener_cliente.sql"
 sqlcmd -S localhost\SQLSERVER2012 -U gd -P gd2017 -i "data/scripts stored procedures/cliente/baja_cliente.sql"
 
-
 sqlcmd -S localhost\SQLSERVER2012 -U gd -P gd2017 -i "data/scripts stored procedures/rendicion/SP_justificacion_rendiciones.sql"
+
 sqlcmd -S localhost\SQLSERVER2012 -U gd -P gd2017 -i "data/scripts stored procedures/facturacion/viajes_cliente.sql"
 sqlcmd -S localhost\SQLSERVER2012 -U gd -P gd2017 -i "data/scripts stored procedures/facturacion/crear_factura.sql"
-
 
 sqlcmd -S localhost\SQLSERVER2012 -U gd -P gd2017 -i "data/scripts stored procedures/estadisticas/choferes_mayor_recaudacion.sql"
 sqlcmd -S localhost\SQLSERVER2012 -U gd -P gd2017 -i "data/scripts stored procedures/estadisticas/choferes_viaje_mas_largo.sql"

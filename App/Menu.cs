@@ -7,8 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using UberFrba.Abm_Cliente;
 using System.Data.SqlClient;
+using UberFrba.Abm_Cliente;
 using UberFrba.Abm_Rol;
 using UberFrba.Viaje;
 using UberFrba.Abm_Automovil;
@@ -38,7 +38,7 @@ namespace UberFrba
             funcionalidades_menu.Add("ABM de Automóvil", menuABMAuto);
             funcionalidades_menu.Add("ABM de Chofer", menuABMChofer);
             funcionalidades_menu.Add("ABM de Turno", menuABMTurno);
-            funcionalidades_menu.Add("Registro de Viajes", menuRegistrarViaje);
+            funcionalidades_menu.Add("Registro de Viajes", menuViajes);
             funcionalidades_menu.Add("Rendición de cuenta de Chofer", menuRendicion);
             funcionalidades_menu.Add("Facturación a Cliente", menuFacturacion);
             funcionalidades_menu.Add("Listado Estadístico", menuEstadisticas);
@@ -60,9 +60,12 @@ namespace UberFrba
             bdh.Desconectar();
             foreach (var nombre_func in funcionalidades_menu.Keys)
             {
-                if (!funcionalidades_user.Contains(nombre_func.ToLower()))
+                if (funcionalidades_user.Contains(nombre_func.ToLower()))
                 {
-                    funcionalidades_menu[nombre_func].Visible = false;
+                    funcionalidades_menu[nombre_func].Visible = true;
+                    if (nombre_func.Equals("ABM de Rol") || nombre_func.Equals("ABM de Cliente") || nombre_func.Equals("ABM de Turno")
+                        || nombre_func.Equals("ABM de Chofer") || nombre_func.Equals("ABM de Automóvil"))
+                        menuABM.Visible = true;
                 }
             }
         }
@@ -99,6 +102,11 @@ namespace UberFrba
             new EditarRol().Show();
         }
 
+        private void menuABMAltaCliente_Click(object sender, EventArgs e)
+        {
+            new AltaModiCliente('A').Show();
+        }
+
         private void menuABMBajaCliente_Click(object sender, EventArgs e)
         {
             new BuscarIndividuo(this, "Cliente", 'B').Show();
@@ -109,19 +117,9 @@ namespace UberFrba
             new BuscarIndividuo(this, "Cliente", 'M').Show();
         }
 
-        private void menuABMAltaCliente_Click(object sender, EventArgs e)
-        {
-            new AltaModificarCliente(this).Show();
-        }
-
         private void altaUsuarioToolStripMenuItem_Click(object sender, EventArgs e)
         {
             new AltaUsuario(this).Show();
-        }
-
-        private void menuRegistrarViaje_Click(object sender, EventArgs e)
-        {
-            new RegistroViaje().Show();
         }
 
         private void menuABMAltaAuto_Click(object sender, EventArgs e)
@@ -183,6 +181,11 @@ namespace UberFrba
         private void menuFacturacion_Click(object sender, EventArgs e)
         {
             new Facturacion.Facturacion().Show();
+        }
+
+        private void menuViaje_Click(object sender, EventArgs e)
+        {
+            new RegistroViaje().Show();
         }
     }
 }
