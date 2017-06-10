@@ -10,7 +10,7 @@ CREATE PROCEDURE LJDG.obtener_precio_viaje
 	@precio NUMERIC(18,2) OUT
 AS
 BEGIN
-	SELECT @precio = @cantKMs*turn_valor_km + turn_precio_base
+	SELECT @precio = @cantKMs * turn_valor_km + turn_precio_base
 	FROM LJDG.Turno
 	WHERE turn_id = @turno
 END

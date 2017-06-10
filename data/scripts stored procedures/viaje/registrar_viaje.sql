@@ -22,10 +22,18 @@ BEGIN
 						FROM LJDG.Viaje
 						WHERE viaj_cliente = @idCliente
 							AND 
-								(( @fechaHoraInicio >= viaj_fecha_inicio AND @fechaHoraInicio <= viaj_fecha_fin )	
+								(( @fechaHoraInicio >= viaj_fecha_inicio AND @fechaHoraInicio < viaj_fecha_fin )	
 								OR
-								( @fechaHoraFin >= viaj_fecha_inicio AND @fechaHoraFin <= viaj_fecha_fin )))
+								( @fechaHoraFin > viaj_fecha_inicio AND @fechaHoraFin <= viaj_fecha_fin )))
 		SET @mensaje = 'El cliente ya tiene viajes en esa fecha y horarios.'
+	ELSE IF @idChofer IN ( SELECT viaj_chofer
+						FROM LJDG.Viaje
+						WHERE viaj_chofer = @idChofer
+							AND 
+								(( @fechaHoraInicio >= viaj_fecha_inicio AND @fechaHoraInicio < viaj_fecha_fin )	
+								OR
+								( @fechaHoraFin > viaj_fecha_inicio AND @fechaHoraFin <= viaj_fecha_fin )))
+	SET @mensaje = 'El chofer ya tiene viajes en esa fecha y horarios.'
 	ELSE
 	BEGIN
 		INSERT INTO LJDG.Viaje

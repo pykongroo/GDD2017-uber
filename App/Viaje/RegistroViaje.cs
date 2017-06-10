@@ -19,12 +19,12 @@ namespace UberFrba.Viaje
         int idCliente;
         int cantKMs;
         int turno;
-        double precio;
-        String fechaHoraInicio;
-        String fechaHoraFin;
+        decimal precio;
+        DateTime fechaHoraInicio;
+        DateTime fechaHoraFin;
 
         BDHandler bdHandler = new BDHandler();
-        
+
         public RegistroViaje()
         {
             InitializeComponent();
@@ -34,6 +34,7 @@ namespace UberFrba.Viaje
             datetimeHoraFin.Format = DateTimePickerFormat.Custom;
             datetimeHoraFin.CustomFormat = "HH:mm";
             datetimeHoraFin.ShowUpDown = true;
+            datetimeFecha.Value = DateTime.Today;
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
@@ -74,7 +75,7 @@ namespace UberFrba.Viaje
                 lblIDAutoValor.Text = "";
                 lblMarcaAutoValor.Text = "";
                 lblModeloAutoValor.Text = "";
-                lblIDTurnoAutoValor.Text = "";                
+                lblIDTurnoAutoValor.Text = "";
                 this.Focus();
             }
             else
@@ -113,20 +114,22 @@ namespace UberFrba.Viaje
                 MessageBox.Show("Debe ingresar un Chofer con automóvil habilitado.");
                 return false;
             }
-            
+
             if (idCliente == 0)
             {
                 MessageBox.Show("Debe ingresar un cliente.");
                 return false;
             }
 
-            if (datetimeHoraInicio.Value.Hour > datetimeHoraFin.Value.Hour)
+            if (datetimeHoraInicio.Value.Hour > datetimeHoraFin.Value.Hour ||
+                datetimeHoraInicio.Value.Hour == datetimeHoraFin.Value.Hour 
+                 && datetimeHoraInicio.Value.Minute > datetimeHoraFin.Value.Minute)
             {
                 MessageBox.Show("La hora de inicio debe ser menor a la hora de fin.");
                 return false;
             }
 
-            if ( !int.TryParse(txtBoxKm.Text.ToString(), out cantKMs) || cantKMs < 1 )
+            if (!int.TryParse(txtBoxKm.Text.ToString(), out cantKMs) || cantKMs < 1)
             {
                 MessageBox.Show("Ingrese una cantidad valida de Kilometros.");
                 return false;
@@ -148,9 +151,12 @@ namespace UberFrba.Viaje
             }
             turno = int.Parse(lstParamHorarios[2].valor.ToString());
 
-            /* Transformo la Fecha y Horas a SQL DateTime */
-            fechaHoraInicio = datetimeFecha.Value.ToString("yyyy-MM-dd ") + datetimeHoraInicio.Value.ToString("HH:mm:ss");
-            fechaHoraFin = datetimeFecha.Value.ToString("yyyy-MM-dd ") + datetimeHoraFin.Value.ToString("HH:mm:ss");
+            /* Armo los DateTime completos con fecha y hora*/
+            fechaHoraInicio = new DateTime(datetimeFecha.Value.Year,datetimeFecha.Value.Month,datetimeFecha.Value.Day,
+                                            datetimeHoraInicio.Value.Hour,datetimeHoraInicio.Value.Minute,0);
+
+            fechaHoraFin = new DateTime(datetimeFecha.Value.Year, datetimeFecha.Value.Month, datetimeFecha.Value.Day,
+                                             datetimeHoraFin.Value.Hour, datetimeHoraFin.Value.Minute, 0);
 
             obtenerPrecio();
 
@@ -163,9 +169,9 @@ namespace UberFrba.Viaje
             List<BDParametro> lstParam = new List<BDParametro>();
             lstParam.Add(new BDParametro("@turno", turno));
             lstParam.Add(new BDParametro("@cantKMs", cantKMs));
-            lstParam.Add(new BDParametro("@precio", 0, SqlDbType.Decimal, 0, ParameterDirection.Output));
+            lstParam.Add(new BDParametro("@precio", 0, SqlDbType.Float, 0, ParameterDirection.Output));
             bdHandler.execSP("LJDG.obtener_precio_viaje", ref lstParam);
-            precio = double.Parse(lstParam[2].valor.ToString());
+            precio = Convert.ToDecimal(lstParam[2].valor);
             lblPrecioValor.Text = "$ " + precio.ToString();
         }
 
@@ -177,7 +183,7 @@ namespace UberFrba.Viaje
             lstParam.Add(new BDParametro("@fechaHoraFin", fechaHoraFin));
             lstParam.Add(new BDParametro("@turno", turno));
             lstParam.Add(new BDParametro("@idAuto", idAuto));
-            lstParam.Add(new BDParametro("@idChofer", idChofer));            
+            lstParam.Add(new BDParametro("@idChofer", idChofer));
             lstParam.Add(new BDParametro("@idCliente", idCliente));
             lstParam.Add(new BDParametro("@precio", precio));
             lstParam.Add(new BDParametro("@importeRendicion", precio * Program.pcjRend));
@@ -188,7 +194,7 @@ namespace UberFrba.Viaje
 
         private void btnRegistrar_Click(object sender, EventArgs e)
         {
-            if(validar())
+            if (validar())
                 registrar();
         }
     }
