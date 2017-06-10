@@ -13,7 +13,6 @@ CREATE PROCEDURE LJDG.registrar_viaje
 	@idChofer INT,
 	@idCliente INT,
 	@precio NUMERIC(18,2),
-	@importeRendicion NUMERIC(18,2),
 	@mensaje VARCHAR(200) OUT
 AS
 BEGIN
@@ -37,9 +36,9 @@ BEGIN
 	ELSE
 	BEGIN
 		INSERT INTO LJDG.Viaje
-		( viaj_cant_km, viaj_fecha_inicio, viaj_fecha_fin, viaj_turno, viaj_auto, viaj_chofer, viaj_cliente, viaj_precio, viaj_importe_rend )
+		( viaj_cant_km, viaj_fecha_inicio, viaj_fecha_fin, viaj_turno, viaj_auto, viaj_chofer, viaj_cliente, viaj_precio )
 		VALUES
-		( @cantKMs, @fechaHoraInicio, @fechaHoraFin, @turno, @idAuto, @idChofer, @idCliente, @precio, @importeRendicion )
+		( @cantKMs, @fechaHoraInicio, @fechaHoraFin, @turno, @idAuto, @idChofer, @idCliente, @precio )
 		SET @mensaje = 'Viaje Registrado Exitosamente.'
 	END
 END

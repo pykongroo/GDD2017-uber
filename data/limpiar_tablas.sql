@@ -13,6 +13,12 @@ GO
 DELETE FROM LJDG.Rol
 GO
 
+DELETE FROM LJDG.Viaje_Factura
+GO
+
+DELETE FROM LJDG.Viaje_Rendicion
+GO
+
 DELETE FROM LJDG.Factura
 GO
 

@@ -99,6 +99,8 @@ namespace UberFrba.Facturacion
 
         private void Facturacion_Load(object sender, EventArgs e)
         {
+            datetimeFechaInicio.Value = DateTime.Today;
+            datetimeFechaFin.Value = DateTime.Today.AddDays(1);
             datetimeFechaFin.MinDate = datetimeFechaInicio.Value.AddDays(1);
         }
 
