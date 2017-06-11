@@ -28,11 +28,7 @@ namespace UberFrba.Viaje
         public RegistroViaje()
         {
             InitializeComponent();
-            datetimeHoraInicio.Format=DateTimePickerFormat.Custom;
-            datetimeHoraInicio.CustomFormat = "HH:mm";
             datetimeHoraInicio.ShowUpDown= true;
-            datetimeHoraFin.Format = DateTimePickerFormat.Custom;
-            datetimeHoraFin.CustomFormat = "HH:mm";
             datetimeHoraFin.ShowUpDown = true;
             datetimeFecha.Value = DateTime.Today;
         }
@@ -123,7 +119,7 @@ namespace UberFrba.Viaje
 
             if (datetimeHoraInicio.Value.Hour > datetimeHoraFin.Value.Hour ||
                 datetimeHoraInicio.Value.Hour == datetimeHoraFin.Value.Hour 
-                 && datetimeHoraInicio.Value.Minute > datetimeHoraFin.Value.Minute)
+                 && datetimeHoraInicio.Value.Minute >= datetimeHoraFin.Value.Minute)
             {
                 MessageBox.Show("La hora de inicio debe ser menor a la hora de fin.");
                 return false;
