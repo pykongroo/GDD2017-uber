@@ -683,7 +683,7 @@ CREATE PROCEDURE LJDG.registrar_viaje
 	@mensaje VARCHAR(200) OUT
 AS
 BEGIN
-	--Validaci�n Cliente sin viajes en esa fecha y horario
+	--Validacion Cliente sin viajes en esa fecha y horario
 	IF @idCliente IN ( SELECT viaj_cliente
 						FROM LJDG.Viaje
 						WHERE viaj_cliente = @idCliente
@@ -1090,7 +1090,7 @@ BEGIN
 	IF NOT EXISTS (SELECT * FROM LJDG.Viaje WHERE viaj_chofer = @rend_chofer AND viaj_turno = @rend_turno
 												AND LJDG.viaje_entra_en_rendicion(viaj_fecha_inicio,@rend_fecha) = 1)
 	SET @mensaje = 'La Rendicion no incluye Viajes que Rendir'
-	--Validaci�n Rendicion existente en la fecha dada (sea en el turno especificado o en otro)
+	--Validacion Rendicion existente en la fecha dada (sea en el turno especificado o en otro)
 	ELSE IF EXISTS (SELECT * FROM LJDG.Rendicion WHERE rend_chofer = @rend_chofer AND rend_fecha = @rend_fecha)
 		SET @mensaje = 'Ya existe una Rendicion en esta Fecha para este Chofer'
 	ELSE
@@ -1144,7 +1144,7 @@ BEGIN
 	IF NOT EXISTS (SELECT * FROM LJDG.Viaje WHERE viaj_cliente = @fact_cliente
 												AND LJDG.viaje_entra_en_factura(viaj_fecha_inicio,@fact_fecha_inicio,@fact_fecha_fin) = 1)
 	SET @mensaje = 'La Factura no incluye Viajes que Facturar'
-	--Validaci�n Factura existente
+	--Validacion Factura existente
 	ELSE IF EXISTS (SELECT * FROM LJDG.Factura WHERE fact_cliente = @fact_cliente
 											AND ((@fact_fecha_inicio >= fact_fecha_inicio AND @fact_fecha_inicio <= fact_fecha_fin)
 																		OR
@@ -1255,10 +1255,10 @@ BEGIN
 												and DATEPART(QUARTER, viaj_fecha_inicio) = @trimestre
 									group by viaj_auto,auto_patente order by count(*) desc
 				) 'Patente',
-				(select top 1 count(*) from LJDG.Viaje
+				ISNULL((select top 1 count(*) from LJDG.Viaje 
 					where viaj_cliente = clie_id and YEAR(viaj_fecha_inicio) = @anio
 												and DATEPART(QUARTER, viaj_fecha_inicio) = @trimestre
-						group by viaj_auto order by count(*) desc)  'Veces'
+						group by viaj_auto order by count(*) desc),0)  'Veces'
 	FROM LJDG.Cliente
 	ORDER BY 9 DESC, 1 ASC
 END
@@ -1293,7 +1293,6 @@ GO
 INSERT INTO LJDG.Funcionalidad_Rol
 	SELECT func_id, 1
 	FROM LJDG.Funcionalidad
-GO
 --Funcionalidades del chofer (ABM Chofer, ABM Auto, Rendición, Estadísticas)
 INSERT INTO LJDG.Funcionalidad_Rol VALUES (4,2)
 INSERT INTO LJDG.Funcionalidad_Rol VALUES (5,2)
@@ -1303,6 +1302,7 @@ INSERT INTO LJDG.Funcionalidad_Rol VALUES (10,2)
 INSERT INTO LJDG.Funcionalidad_Rol VALUES (3,3)
 INSERT INTO LJDG.Funcionalidad_Rol VALUES (9,3)
 INSERT INTO LJDG.Funcionalidad_Rol VALUES (10,3)
+GO
 
 --CREACION ADMIN--
 
@@ -1507,7 +1507,7 @@ WHERE viaj_chofer = rend_chofer AND viaj_turno = rend_turno AND LJDG.viaje_entra
 ORDER BY rend_nro
 GO*/
 
-INSERT INTO LJDG.Viaje_Rendicion --Se registran los viajes de cada rendicion y se migra el importe de rendici�n correspondiente a cada uno
+INSERT INTO LJDG.Viaje_Rendicion --Se registran los viajes de cada rendicion y se migra el importe de rendicion correspondiente a cada uno
 			(vxr_viaje
 			,vxr_rendicion
 			,vxr_importe)

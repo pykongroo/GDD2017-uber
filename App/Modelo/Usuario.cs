@@ -48,15 +48,6 @@ namespace UberFrba.Modelo
 
         }
 
-        public static void darDeBaja(String userId)
-        {
-            List<BDParametro> listParametros = new List<BDParametro>();
-
-            BDHandler handler = new BDHandler();
-            listParametros.Add(new BDParametro("@userId", userId));
-            handler.execSP("LJDG.baja_usuario", ref listParametros);
-        }
-
         public static void darDeAlta(String userId, String pass, int rol)
         {
             List<BDParametro> listParametros = new List<BDParametro>();
