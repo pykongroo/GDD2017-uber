@@ -35,13 +35,13 @@ namespace UberFrba
             funcionalidades_menu.Add("ABM de Rol", menuABMRol);
             funcionalidades_menu.Add("Registro de Usuario", menuAltaUsuario);
             funcionalidades_menu.Add("ABM de Cliente", menuABMCliente);
-            funcionalidades_menu.Add("ABM de Automóvil", menuABMAuto);
+            funcionalidades_menu.Add("ABM de Automovil", menuABMAuto);
             funcionalidades_menu.Add("ABM de Chofer", menuABMChofer);
             funcionalidades_menu.Add("ABM de Turno", menuABMTurno);
             funcionalidades_menu.Add("Registro de Viajes", menuViajes);
-            funcionalidades_menu.Add("Rendición de cuenta de Chofer", menuRendicion);
-            funcionalidades_menu.Add("Facturación a Cliente", menuFacturacion);
-            funcionalidades_menu.Add("Listado Estadístico", menuEstadisticas);
+            funcionalidades_menu.Add("Rendicion de cuenta de Chofer", menuRendicion);
+            funcionalidades_menu.Add("Facturacion a Cliente", menuFacturacion);
+            funcionalidades_menu.Add("Listado Estadistico", menuEstadisticas);
         }
 
         private void mostrar_funcionalidades_rol(String rol_nombre)
@@ -64,7 +64,7 @@ namespace UberFrba
                 {
                     funcionalidades_menu[nombre_func].Visible = true;
                     if (nombre_func.Equals("ABM de Rol") || nombre_func.Equals("ABM de Cliente") || nombre_func.Equals("ABM de Turno")
-                        || nombre_func.Equals("ABM de Chofer") || nombre_func.Equals("ABM de Automóvil"))
+                        || nombre_func.Equals("ABM de Chofer") || nombre_func.Equals("ABM de Automovil"))
                         menuABM.Visible = true;
                 }
             }

@@ -281,7 +281,7 @@ BEGIN
 END
 GO
 
-CREATE FUNCTION LJDG.viaje_entra_en_factura 
+CREATE FUNCTION LJDG.viaje_entra_en_factura
 (
 	@viaje_fecha_inicio datetime , @factura_inicio datetime, @factura_fin datetime
 )
@@ -304,16 +304,16 @@ BEGIN
 	IF (NOT EXISTS (SELECT user_id FROM LJDG.Usuario WHERE user_id = @usuario))
 		SET @mensaje = 'El usuario no existe en el Sistema.'
 	ELSE
-	BEGIN	
+	BEGIN
 		IF ((SELECT user_habilitado FROM LJDG.Usuario WHERE user_id = @usuario) = 0)
-				SET @mensaje = 'El usuario no está habilitado en el Sistema. Contacte al Administrador.'
+				SET @mensaje = 'El usuario no esta habilitado en el Sistema. Contacte al Administrador.'
 		ELSE
 		BEGIN
 			IF ((SELECT user_password FROM LJDG.Usuario WHERE user_id = @usuario) <> @pass)
 			BEGIN
 				UPDATE LJDG.Usuario SET user_intentos = user_intentos - 1 WHERE user_id = @usuario
 				DECLARE @intentos int = (SELECT user_intentos FROM LJDG.Usuario WHERE user_id = @usuario)
-				SET @mensaje = IIF(@intentos > 0, 'La contraseña es incorrecta. Quedan ' + str(@intentos,1,1) + ' intento(s).','Contraseña incorrecta. Usuario deshabilitado.')
+				SET @mensaje = IIF(@intentos > 0, 'La contraseÃ±a es incorrecta. Quedan ' + str(@intentos,1,1) + ' intento(s).','ContraseÃ±a incorrecta. Usuario deshabilitado.')
 				IF ( @intentos = 0)
 					UPDATE LJDG.Usuario SET user_habilitado = 0 WHERE user_id = @usuario
 			END
@@ -376,7 +376,7 @@ BEGIN
 	SET rol_habilitado = 0
 	WHERE rol_id = @rol_id;
 
-	DELETE FROM LJDG.Rol_Usuario 
+	DELETE FROM LJDG.Rol_Usuario
 	WHERE rxu_rol = @rol_id;
 END
 GO
@@ -387,7 +387,7 @@ CREATE PROCEDURE LJDG.editar_rol
 	,@rol_habilitado BIT
 AS
 BEGIN
-	UPDATE LJDG.Rol 
+	UPDATE LJDG.Rol
 	SET rol_nombre = @rol_nombre, rol_habilitado = @rol_habilitado
 	WHERE rol_id = @rol_id;
 
@@ -449,7 +449,7 @@ CREATE PROCEDURE LJDG.editar_turno
   , @turno_id     INT
 AS
 BEGIN
-	UPDATE LJDG.Turno 
+	UPDATE LJDG.Turno
 	SET turn_descripcion = @descripcion, turn_hora_inicio = @horaInicio, turn_hora_fin = @horaFin, turn_valor_km = @valorKm, turn_precio_base = @precioBase, turn_habilitado = @habilitado
 	WHERE turn_id = @turno_id;
 END
@@ -464,7 +464,7 @@ CREATE PROCEDURE LJDG.crear_turno
   , @ID     INT OUTPUT
 AS
 BEGIN
-	INSERT INTO LJDG.Turno (turn_descripcion, turn_hora_inicio, turn_hora_fin,turn_valor_km, turn_precio_base, turn_habilitado) 
+	INSERT INTO LJDG.Turno (turn_descripcion, turn_hora_inicio, turn_hora_fin,turn_valor_km, turn_precio_base, turn_habilitado)
 	VALUES (@descripcion, @horaInicio, @horaFin, @valorKm, @precioBase, 1)
 END
 GO
@@ -502,7 +502,7 @@ BEGIN
 			@turno      = auto_turno,
 			@habilitado = auto_habilitado
 	FROM LJDG.Automovil
-	WHERE auto_id = @id	
+	WHERE auto_id = @id
 END
 GO
 
@@ -533,7 +533,7 @@ BEGIN
 			auto_turno = @turno,
 			auto_habilitado = @habilitado
 		WHERE auto_id = @id
-		SET @mensaje = 'Automóvil Modificado Exitosamente'
+		SET @mensaje = 'Automovil Modificado Exitosamente'
 	END
 END
 GO
@@ -620,7 +620,7 @@ BEGIN
 		( auto_marca, auto_patente, auto_modelo, auto_chofer, auto_turno, auto_habilitado )
 		VALUES
 		( @marca, @patente, @modelo, @chofer, @turno, @habilitado )
-		SET @mensaje = 'Automóvil Guardado Exitosamente'
+		SET @mensaje = 'Automovil Guardado Exitosamente'
 	END
 END
 GO
@@ -634,7 +634,7 @@ CREATE PROCEDURE LJDG.validar_horarios_turno
 AS
 BEGIN
 	SET @turnoID = 0
-	SET @turnoDescripcion = 'Inválido'
+	SET @turnoDescripcion = 'Invalido'
 	SELECT @turnoID = turn_id, @turnoDescripcion = turn_descripcion
 	FROM LJDG.Turno, LJDG.Automovil
 	WHERE @horaInicio >= turn_hora_inicio AND @horaFin < turn_hora_fin
@@ -683,25 +683,25 @@ CREATE PROCEDURE LJDG.registrar_viaje
 	@mensaje VARCHAR(200) OUT
 AS
 BEGIN
-	--Validación Cliente sin viajes en esa fecha y horario
+	--Validaciï¿½n Cliente sin viajes en esa fecha y horario
 	IF @idCliente IN ( SELECT viaj_cliente
 						FROM LJDG.Viaje
 						WHERE viaj_cliente = @idCliente
-							AND 
-								(( @fechaHoraInicio >= viaj_fecha_inicio AND @fechaHoraInicio < viaj_fecha_fin )	
+							AND
+								(( @fechaHoraInicio >= viaj_fecha_inicio AND @fechaHoraInicio < viaj_fecha_fin )
 								OR
 								( @fechaHoraFin > viaj_fecha_inicio AND @fechaHoraFin <= viaj_fecha_fin )))
 		SET @mensaje = 'El cliente ya tiene viajes en esa fecha y horarios.'
 	ELSE IF @idChofer IN ( SELECT viaj_chofer
 						FROM LJDG.Viaje
 						WHERE viaj_chofer = @idChofer
-							AND 
-								(( @fechaHoraInicio >= viaj_fecha_inicio AND @fechaHoraInicio < viaj_fecha_fin )	
+							AND
+								(( @fechaHoraInicio >= viaj_fecha_inicio AND @fechaHoraInicio < viaj_fecha_fin )
 								OR
 								( @fechaHoraFin > viaj_fecha_inicio AND @fechaHoraFin <= viaj_fecha_fin )))
 	SET @mensaje = 'El chofer ya tiene viajes en esa fecha y horarios.'
 	ELSE IF (select turn_habilitado from LJDG.Turno where turn_id = @turno) = 0
-		SET @mensaje = 'El turno está deshabilitado, no pueden registrarse viajes.'
+		SET @mensaje = 'El turno esta deshabilitado, no pueden registrarse viajes.'
 	ELSE
 	BEGIN
 		INSERT INTO LJDG.Viaje
@@ -794,7 +794,7 @@ BEGIN
 			@fecha_nac = clie_fecha_nac,
 			@habilitado = clie_habilitado
 	FROM LJDG.Cliente
-	WHERE clie_id = @id	
+	WHERE clie_id = @id
 END
 GO
 
@@ -860,7 +860,7 @@ BEGIN
 		SET @mensaje = 'El Usuario ya existe, ingrese un Username distinto'
 	 ELSE IF @telefono IN (SELECT clie_telefono FROM LJDG.Cliente)
 		SET @mensaje = 'El Telefono ingresado ya se encuentra registrado'
-	 ELSE	
+	 ELSE
 	 BEGIN
 		INSERT INTO LJDG.Usuario
 		(user_id,user_password)
@@ -938,7 +938,7 @@ BEGIN
 			@fecha_nac = chof_fecha_nac,
 			@habilitado = chof_habilitado
 	FROM LJDG.Chofer
-	WHERE chof_id = @id	
+	WHERE chof_id = @id
 END
 GO
 
@@ -994,7 +994,7 @@ AS
 BEGIN
 	 IF @username IN ( SELECT user_id FROM LJDG.Usuario )
 		SET @mensaje = 'El Usuario ya existe, ingrese un Username distinto'
-	 ELSE	
+	 ELSE
 	 BEGIN
 		INSERT INTO LJDG.Usuario
 		(user_id,user_password)
@@ -1029,7 +1029,7 @@ BEGIN
 		SET @mensaje = 'El Usuario no existe, ingrese un nuevo Usuario'
 	 ELSE IF @username IN (SELECT chof_user FROM LJDG.Chofer)
 		SET @mensaje = 'El Usuario ya tiene un Chofer asociado'
-	 ELSE	
+	 ELSE
 	 BEGIN
 		INSERT INTO LJDG.Chofer
 		( chof_nombre, chof_apellido, chof_dni, chof_direccion, chof_telefono, chof_fecha_nac , chof_mail, chof_user )
@@ -1089,10 +1089,10 @@ BEGIN
 	--Rendicion sin viajes
 	IF NOT EXISTS (SELECT * FROM LJDG.Viaje WHERE viaj_chofer = @rend_chofer AND viaj_turno = @rend_turno
 												AND LJDG.viaje_entra_en_rendicion(viaj_fecha_inicio,@rend_fecha) = 1)
-	SET @mensaje = 'La Rendición no incluye Viajes que Rendir'
-	--Validación Rendicion existente en la fecha dada (sea en el turno especificado o en otro)
+	SET @mensaje = 'La Rendicion no incluye Viajes que Rendir'
+	--Validaciï¿½n Rendicion existente en la fecha dada (sea en el turno especificado o en otro)
 	ELSE IF EXISTS (SELECT * FROM LJDG.Rendicion WHERE rend_chofer = @rend_chofer AND rend_fecha = @rend_fecha)
-		SET @mensaje = 'Ya existe una Rendición en esta Fecha para este Chofer'
+		SET @mensaje = 'Ya existe una Rendicion en esta Fecha para este Chofer'
 	ELSE
 	BEGIN
 
@@ -1107,7 +1107,7 @@ BEGIN
 		FROM LJDG.Viaje, LJDG.Rendicion
 		WHERE viaj_chofer = rend_chofer AND LJDG.viaje_entra_en_rendicion(viaj_fecha_inicio, rend_fecha) = 1 AND viaj_turno = rend_turno
 				AND rend_chofer = @rend_chofer AND rend_turno = @rend_turno AND rend_fecha = @rend_fecha
-		SET @mensaje = 'Rendición Registrada Exitosamente'
+		SET @mensaje = 'Rendicion Registrada Exitosamente'
 	END
 END
 GO
@@ -1141,12 +1141,12 @@ CREATE PROCEDURE LJDG.crear_factura
 AS
 BEGIN
 	--Factura sin viajes
-	IF NOT EXISTS (SELECT * FROM LJDG.Viaje WHERE viaj_cliente = @fact_cliente 
+	IF NOT EXISTS (SELECT * FROM LJDG.Viaje WHERE viaj_cliente = @fact_cliente
 												AND LJDG.viaje_entra_en_factura(viaj_fecha_inicio,@fact_fecha_inicio,@fact_fecha_fin) = 1)
 	SET @mensaje = 'La Factura no incluye Viajes que Facturar'
-	--Validación Factura existente
-	ELSE IF EXISTS (SELECT * FROM LJDG.Factura WHERE fact_cliente = @fact_cliente 
-											AND ((@fact_fecha_inicio >= fact_fecha_inicio AND @fact_fecha_inicio <= fact_fecha_fin) 
+	--Validaciï¿½n Factura existente
+	ELSE IF EXISTS (SELECT * FROM LJDG.Factura WHERE fact_cliente = @fact_cliente
+											AND ((@fact_fecha_inicio >= fact_fecha_inicio AND @fact_fecha_inicio <= fact_fecha_fin)
 																		OR
 												  (@fact_fecha_fin >= fact_fecha_inicio AND @fact_fecha_fin <= fact_fecha_fin))
 				 )
@@ -1179,7 +1179,7 @@ BEGIN
 				clie_dni 'DNI',
 				clie_nombre 'Nombre',
 				clie_apellido 'Apellido',
-				clie_direccion 'Dirección',
+				clie_direccion 'Direccion',
 				SUM(viaj_precio) 'Total $'
 	FROM LJDG.Viaje	JOIN LJDG.Cliente ON viaj_cliente = clie_id
 	WHERE YEAR(viaj_fecha_inicio) = @anio
@@ -1198,7 +1198,7 @@ BEGIN
 				chof_dni 'DNI',
 				chof_nombre 'Nombre',
 				chof_apellido 'Apellido',
-				chof_direccion 'Dirección',	
+				chof_direccion 'Direccion',
 				MAX(viaj_cant_km) 'KMs'
 	FROM LJDG.Viaje	JOIN LJDG.Chofer ON viaj_chofer = chof_id
 	WHERE YEAR(viaj_fecha_inicio) = @anio
@@ -1217,7 +1217,7 @@ BEGIN
 				chof_dni 'DNI',
 				chof_nombre 'Nombre',
 				chof_apellido 'Apellido',
-				chof_direccion 'Dirección',				
+				chof_direccion 'Direccion',
 				SUM(rend_importe_total) 'Total $'
 	FROM LJDG.Rendicion	JOIN LJDG.Chofer ON rend_chofer = chof_id
 	WHERE YEAR(rend_fecha) = @anio
@@ -1254,8 +1254,8 @@ BEGIN
 					where viaj_cliente = clie_id and YEAR(viaj_fecha_inicio) = @anio
 												and DATEPART(QUARTER, viaj_fecha_inicio) = @trimestre
 									group by viaj_auto,auto_patente order by count(*) desc
-				) 'Patente', 
-				(select top 1 count(*) from LJDG.Viaje 
+				) 'Patente',
+				(select top 1 count(*) from LJDG.Viaje
 					where viaj_cliente = clie_id and YEAR(viaj_fecha_inicio) = @anio
 												and DATEPART(QUARTER, viaj_fecha_inicio) = @trimestre
 						group by viaj_auto order by count(*) desc)  'Veces'
@@ -1280,13 +1280,13 @@ INSERT INTO LJDG.Funcionalidad
 	VALUES	('ABM de Rol'),
 			 ('Registro de Usuario'),
 			 ('ABM de Cliente'),
-			 ('ABM de Automóvil'),
+			 ('ABM de Automovil'),
 			 ('ABM de Chofer'),
 			 ('ABM de Turno'),
 			 ('Registro de Viajes'),
-			 ('Rendición de cuenta de Chofer'),
-			 ('Facturación a Cliente'),
-			 ('Listado Estadístico')
+			 ('Rendicion de cuenta de Chofer'),
+			 ('Facturacion a Cliente'),
+			 ('Listado Estadistico')
 GO
 
 --Todas las funcionalidades al Administrador, nada al resto
@@ -1371,7 +1371,7 @@ GO
 INSERT INTO LJDG.Marca
            (marc_nombre)
      SELECT distinct Auto_Marca
-	 FROM gd_esquema.Maestra       
+	 FROM gd_esquema.Maestra
 GO
 
 --TURNOS--
@@ -1403,7 +1403,7 @@ SELECT distinct (select marc_id from LJDG.Marca where auto_marca = marc_nombre),
 		Auto_Patente,
 	 Auto_Modelo,Auto_Licencia,Auto_Rodado,
 	 (select chof_id from LJDG.Chofer where chof_dni = chofer_dni),
-	 (select turn_id from LJDG.Turno where turn_descripcion = 
+	 (select turn_id from LJDG.Turno where turn_descripcion =
 		(select top 1 turno_descripcion from gd_esquema.Maestra aux where main.Auto_patente = aux.Auto_patente order by Viaje_Fecha DESC)
 	 ), --turno actual: ultimo turno que trabajo el chofer asignado a este auto en los viajes registrados en la tabla maestra
 	 1 --todos los autos habilitados
@@ -1464,7 +1464,7 @@ ORDER BY fact_nro
 GO
 
 UPDATE LJDG.Factura --Se calcula el importe total
-SET fact_importe_total = (select sum(viaj_precio) from LJDG.Viaje join LJDG.Viaje_Factura on viaj_id = vxf_viaje 
+SET fact_importe_total = (select sum(viaj_precio) from LJDG.Viaje join LJDG.Viaje_Factura on viaj_id = vxf_viaje
 						  where fact_nro = vxf_factura)
 GO
 
@@ -1500,17 +1500,17 @@ WHERE viaj_chofer = rend_chofer AND viaj_turno = rend_turno AND LJDG.viaje_entra
 ORDER BY rend_nro
 GO*/
 
-INSERT INTO LJDG.Viaje_Rendicion --Se registran los viajes de cada rendicion y se migra el importe de rendición correspondiente a cada uno
+INSERT INTO LJDG.Viaje_Rendicion --Se registran los viajes de cada rendicion y se migra el importe de rendiciï¿½n correspondiente a cada uno
 			(vxr_viaje
 			,vxr_rendicion
 			,vxr_importe)
-SELECT viaj_id , rend_nro, (select Rendicion_Importe from gd_esquema.Maestra 
-							where rend_nro = Rendicion_Nro 
+SELECT viaj_id , rend_nro, (select Rendicion_Importe from gd_esquema.Maestra
+							where rend_nro = Rendicion_Nro
 							AND Chofer_Dni = (select chof_dni from LJDG.Chofer where viaj_chofer = chof_id)
 							AND Cliente_Dni = (select clie_dni from LJDG.Cliente where viaj_cliente = clie_id)
 							AND Viaje_Fecha = viaj_fecha_inicio
 							AND Viaje_Cant_Kilometros = viaj_cant_km
-							group by Rendicion_Importe) 
+							group by Rendicion_Importe)
 
 FROM LJDG.Viaje, LJDG.Rendicion
 WHERE viaj_chofer = rend_chofer AND viaj_turno = rend_turno AND LJDG.viaje_entra_en_rendicion(viaj_fecha_inicio,rend_fecha) = 1
@@ -1528,7 +1528,7 @@ GO
 CREATE TRIGGER LJDG.trigger_abm_automovil
    ON  LJDG.Automovil
    AFTER INSERT,UPDATE
-AS 
+AS
 BEGIN
 	DECLARE @id INT
 	DECLARE @hab BIT
@@ -1548,10 +1548,10 @@ BEGIN
 		UPDATE LJDG.Automovil
 		SET auto_habilitado = 0  --deshabilito todos los otros automoviles del mismo chofer que no sean este
 		WHERE auto_chofer = @chof and auto_id <> @id
-		
+
 		UPDATE LJDG.Automovil
 		SET auto_habilitado = 1 --habilito este automovil (ya deberia estar habilitado, pero puede ser deshabilitado en una iteracion anterior,
-		WHERE auto_id = @id		-- si varios autos activos del mismo chofer son insertados o actualizados a la vez. 
+		WHERE auto_id = @id		-- si varios autos activos del mismo chofer son insertados o actualizados a la vez.
 								--Con esto se deja el ultimo activo)
 		END
 		FETCH NEXT FROM c1 INTO @id, @hab, @chof
