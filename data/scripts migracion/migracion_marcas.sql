@@ -9,8 +9,7 @@ GO*/
 INSERT INTO [LJDG].[Marca]
            ([marc_nombre])
      SELECT distinct Auto_Marca
-	 FROM gd_esquema.Maestra
-          
+	 FROM gd_esquema.Maestra       
 GO
 
 
