@@ -59,6 +59,7 @@
             this.menuFacturacion = new System.Windows.Forms.ToolStripMenuItem();
             this.menuEstadisticas = new System.Windows.Forms.ToolStripMenuItem();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.salirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -82,9 +83,10 @@
             // 
             this.menuPrincipal.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.menuAltaUsuario,
-            this.menuCerrarSesion});
+            this.menuCerrarSesion,
+            this.salirToolStripMenuItem});
             this.menuPrincipal.Name = "menuPrincipal";
-            this.menuPrincipal.Size = new System.Drawing.Size(50, 20);
+            this.menuPrincipal.Size = new System.Drawing.Size(49, 20);
             this.menuPrincipal.Text = "Menu";
             // 
             // menuAltaUsuario
@@ -111,7 +113,7 @@
             this.menuABMRol,
             this.menuABMTurno});
             this.menuABM.Name = "menuABM";
-            this.menuABM.Size = new System.Drawing.Size(45, 20);
+            this.menuABM.Size = new System.Drawing.Size(43, 20);
             this.menuABM.Text = "ABM";
             this.menuABM.Visible = false;
             // 
@@ -122,28 +124,28 @@
             this.menuABMBajaAuto,
             this.menuABMModiAuto});
             this.menuABMAuto.Name = "menuABMAuto";
-            this.menuABMAuto.Size = new System.Drawing.Size(152, 22);
+            this.menuABMAuto.Size = new System.Drawing.Size(128, 22);
             this.menuABMAuto.Text = "Automóvil";
             this.menuABMAuto.Visible = false;
             // 
             // menuABMAltaAuto
             // 
             this.menuABMAltaAuto.Name = "menuABMAltaAuto";
-            this.menuABMAltaAuto.Size = new System.Drawing.Size(152, 22);
+            this.menuABMAltaAuto.Size = new System.Drawing.Size(139, 22);
             this.menuABMAltaAuto.Text = "Alta";
             this.menuABMAltaAuto.Click += new System.EventHandler(this.menuABMAltaAuto_Click);
             // 
             // menuABMBajaAuto
             // 
             this.menuABMBajaAuto.Name = "menuABMBajaAuto";
-            this.menuABMBajaAuto.Size = new System.Drawing.Size(152, 22);
+            this.menuABMBajaAuto.Size = new System.Drawing.Size(139, 22);
             this.menuABMBajaAuto.Text = "Baja";
             this.menuABMBajaAuto.Click += new System.EventHandler(this.menuABMBajaAuto_Click);
             // 
             // menuABMModiAuto
             // 
             this.menuABMModiAuto.Name = "menuABMModiAuto";
-            this.menuABMModiAuto.Size = new System.Drawing.Size(152, 22);
+            this.menuABMModiAuto.Size = new System.Drawing.Size(139, 22);
             this.menuABMModiAuto.Text = "Modificación";
             this.menuABMModiAuto.Click += new System.EventHandler(this.menuABMModiAuto_Click);
             // 
@@ -154,28 +156,28 @@
             this.menuABMBajaChofer,
             this.menuABMModiChofer});
             this.menuABMChofer.Name = "menuABMChofer";
-            this.menuABMChofer.Size = new System.Drawing.Size(152, 22);
+            this.menuABMChofer.Size = new System.Drawing.Size(128, 22);
             this.menuABMChofer.Text = "Chofer";
             this.menuABMChofer.Visible = false;
             // 
             // menuABMAltaChofer
             // 
             this.menuABMAltaChofer.Name = "menuABMAltaChofer";
-            this.menuABMAltaChofer.Size = new System.Drawing.Size(152, 22);
+            this.menuABMAltaChofer.Size = new System.Drawing.Size(139, 22);
             this.menuABMAltaChofer.Text = "Alta";
             this.menuABMAltaChofer.Click += new System.EventHandler(this.menuABMAltaChofer_Click);
             // 
             // menuABMBajaChofer
             // 
             this.menuABMBajaChofer.Name = "menuABMBajaChofer";
-            this.menuABMBajaChofer.Size = new System.Drawing.Size(152, 22);
+            this.menuABMBajaChofer.Size = new System.Drawing.Size(139, 22);
             this.menuABMBajaChofer.Text = "Baja";
             this.menuABMBajaChofer.Click += new System.EventHandler(this.menuABMBajaChofer_Click);
             // 
             // menuABMModiChofer
             // 
             this.menuABMModiChofer.Name = "menuABMModiChofer";
-            this.menuABMModiChofer.Size = new System.Drawing.Size(152, 22);
+            this.menuABMModiChofer.Size = new System.Drawing.Size(139, 22);
             this.menuABMModiChofer.Text = "Modificación";
             this.menuABMModiChofer.Click += new System.EventHandler(this.menuABMModiChofer_Click);
             // 
@@ -186,28 +188,28 @@
             this.menuABMBajaCliente,
             this.menuABMModiCliente});
             this.menuABMCliente.Name = "menuABMCliente";
-            this.menuABMCliente.Size = new System.Drawing.Size(152, 22);
+            this.menuABMCliente.Size = new System.Drawing.Size(128, 22);
             this.menuABMCliente.Text = "Cliente";
             this.menuABMCliente.Visible = false;
             // 
             // menuABMAltaCliente
             // 
             this.menuABMAltaCliente.Name = "menuABMAltaCliente";
-            this.menuABMAltaCliente.Size = new System.Drawing.Size(152, 22);
+            this.menuABMAltaCliente.Size = new System.Drawing.Size(139, 22);
             this.menuABMAltaCliente.Text = "Alta";
             this.menuABMAltaCliente.Click += new System.EventHandler(this.menuABMAltaCliente_Click);
             // 
             // menuABMBajaCliente
             // 
             this.menuABMBajaCliente.Name = "menuABMBajaCliente";
-            this.menuABMBajaCliente.Size = new System.Drawing.Size(152, 22);
+            this.menuABMBajaCliente.Size = new System.Drawing.Size(139, 22);
             this.menuABMBajaCliente.Text = "Baja";
             this.menuABMBajaCliente.Click += new System.EventHandler(this.menuABMBajaCliente_Click);
             // 
             // menuABMModiCliente
             // 
             this.menuABMModiCliente.Name = "menuABMModiCliente";
-            this.menuABMModiCliente.Size = new System.Drawing.Size(152, 22);
+            this.menuABMModiCliente.Size = new System.Drawing.Size(139, 22);
             this.menuABMModiCliente.Text = "Modificación";
             this.menuABMModiCliente.Click += new System.EventHandler(this.menuABMModiCliente_Click);
             // 
@@ -218,28 +220,28 @@
             this.menuABMBajaRol,
             this.menuABMModiRol});
             this.menuABMRol.Name = "menuABMRol";
-            this.menuABMRol.Size = new System.Drawing.Size(152, 22);
+            this.menuABMRol.Size = new System.Drawing.Size(128, 22);
             this.menuABMRol.Text = "Rol";
             this.menuABMRol.Visible = false;
             // 
             // menuABMAltaRol
             // 
             this.menuABMAltaRol.Name = "menuABMAltaRol";
-            this.menuABMAltaRol.Size = new System.Drawing.Size(152, 22);
+            this.menuABMAltaRol.Size = new System.Drawing.Size(139, 22);
             this.menuABMAltaRol.Text = "Alta";
             this.menuABMAltaRol.Click += new System.EventHandler(this.menuABMAltaRol_Click);
             // 
             // menuABMBajaRol
             // 
             this.menuABMBajaRol.Name = "menuABMBajaRol";
-            this.menuABMBajaRol.Size = new System.Drawing.Size(152, 22);
+            this.menuABMBajaRol.Size = new System.Drawing.Size(139, 22);
             this.menuABMBajaRol.Text = "Baja";
             this.menuABMBajaRol.Click += new System.EventHandler(this.menuABMBajaRol_Click);
             // 
             // menuABMModiRol
             // 
             this.menuABMModiRol.Name = "menuABMModiRol";
-            this.menuABMModiRol.Size = new System.Drawing.Size(152, 22);
+            this.menuABMModiRol.Size = new System.Drawing.Size(139, 22);
             this.menuABMModiRol.Text = "Modificación";
             this.menuABMModiRol.Click += new System.EventHandler(this.menuABMModiRol_Click);
             // 
@@ -250,35 +252,35 @@
             this.menuABMBajaTurno,
             this.menuABMModiTurno});
             this.menuABMTurno.Name = "menuABMTurno";
-            this.menuABMTurno.Size = new System.Drawing.Size(152, 22);
+            this.menuABMTurno.Size = new System.Drawing.Size(128, 22);
             this.menuABMTurno.Text = "Turno";
             this.menuABMTurno.Visible = false;
             // 
             // menuABMAltaTurno
             // 
             this.menuABMAltaTurno.Name = "menuABMAltaTurno";
-            this.menuABMAltaTurno.Size = new System.Drawing.Size(152, 22);
+            this.menuABMAltaTurno.Size = new System.Drawing.Size(139, 22);
             this.menuABMAltaTurno.Text = "Alta";
             this.menuABMAltaTurno.Click += new System.EventHandler(this.menuABMTAltaTurno_Click);
             // 
             // menuABMBajaTurno
             // 
             this.menuABMBajaTurno.Name = "menuABMBajaTurno";
-            this.menuABMBajaTurno.Size = new System.Drawing.Size(152, 22);
+            this.menuABMBajaTurno.Size = new System.Drawing.Size(139, 22);
             this.menuABMBajaTurno.Text = "Baja";
             this.menuABMBajaTurno.Click += new System.EventHandler(this.menuABMBajaTurno_Click);
             // 
             // menuABMModiTurno
             // 
             this.menuABMModiTurno.Name = "menuABMModiTurno";
-            this.menuABMModiTurno.Size = new System.Drawing.Size(152, 22);
+            this.menuABMModiTurno.Size = new System.Drawing.Size(139, 22);
             this.menuABMModiTurno.Text = "Modificación";
             this.menuABMModiTurno.Click += new System.EventHandler(this.menuABMModiTurno_Click);
             // 
             // menuViajes
             // 
             this.menuViajes.Name = "menuViajes";
-            this.menuViajes.Size = new System.Drawing.Size(93, 20);
+            this.menuViajes.Size = new System.Drawing.Size(96, 20);
             this.menuViajes.Text = "Registrar Viaje";
             this.menuViajes.Visible = false;
             this.menuViajes.Click += new System.EventHandler(this.menuViaje_Click);
@@ -286,7 +288,7 @@
             // menuRendicion
             // 
             this.menuRendicion.Name = "menuRendicion";
-            this.menuRendicion.Size = new System.Drawing.Size(72, 20);
+            this.menuRendicion.Size = new System.Drawing.Size(71, 20);
             this.menuRendicion.Text = "Rendición";
             this.menuRendicion.Visible = false;
             this.menuRendicion.Click += new System.EventHandler(this.rendicionChoferToolStripMenuItem_Click);
@@ -302,7 +304,7 @@
             // menuEstadisticas
             // 
             this.menuEstadisticas.Name = "menuEstadisticas";
-            this.menuEstadisticas.Size = new System.Drawing.Size(79, 20);
+            this.menuEstadisticas.Size = new System.Drawing.Size(80, 20);
             this.menuEstadisticas.Text = "Estadísticas";
             this.menuEstadisticas.Visible = false;
             this.menuEstadisticas.Click += new System.EventHandler(this.menuEstadisticas_Click);
@@ -319,6 +321,13 @@
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 1;
             this.pictureBox1.TabStop = false;
+            // 
+            // salirToolStripMenuItem
+            // 
+            this.salirToolStripMenuItem.Name = "salirToolStripMenuItem";
+            this.salirToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.salirToolStripMenuItem.Text = "Salir";
+            this.salirToolStripMenuItem.Click += new System.EventHandler(this.salirToolStripMenuItem_Click);
             // 
             // Menu
             // 
@@ -375,6 +384,7 @@
         private System.Windows.Forms.ToolStripMenuItem menuRendicion;
         private System.Windows.Forms.ToolStripMenuItem menuFacturacion;
         private System.Windows.Forms.ToolStripMenuItem menuEstadisticas;
+        private System.Windows.Forms.ToolStripMenuItem salirToolStripMenuItem;
 
     }
 }

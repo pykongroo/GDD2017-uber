@@ -1289,13 +1289,20 @@ INSERT INTO LJDG.Funcionalidad
 			 ('Listado Estadistico')
 GO
 
---Todas las funcionalidades al Administrador, nada al resto
+--Todas las funcionalidades al Administrador
 INSERT INTO LJDG.Funcionalidad_Rol
-			(fxr_funcionalidad,
-			 fxr_rol)
 	SELECT func_id, 1
 	FROM LJDG.Funcionalidad
 GO
+--Funcionalidades del chofer (ABM Chofer, ABM Auto, Rendición, Estadísticas)
+INSERT INTO LJDG.Funcionalidad_Rol VALUES (4,2)
+INSERT INTO LJDG.Funcionalidad_Rol VALUES (5,2)
+INSERT INTO LJDG.Funcionalidad_Rol VALUES (8,2)
+INSERT INTO LJDG.Funcionalidad_Rol VALUES (10,2)
+--Funcionalidades del cliente (ABM Cliente, Facturación, Estadísticas)
+INSERT INTO LJDG.Funcionalidad_Rol VALUES (3,3)
+INSERT INTO LJDG.Funcionalidad_Rol VALUES (9,3)
+INSERT INTO LJDG.Funcionalidad_Rol VALUES (10,3)
 
 --CREACION ADMIN--
 
