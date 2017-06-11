@@ -483,7 +483,6 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(484, 461);
-            this.ControlBox = false;
             this.Controls.Add(this.lblIDTurnoAutoValor);
             this.Controls.Add(this.lblIDTurnoAuto);
             this.Controls.Add(this.lblFecha);

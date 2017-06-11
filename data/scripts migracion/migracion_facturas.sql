@@ -24,8 +24,16 @@ GO
 SET IDENTITY_INSERT LJDG.Factura OFF
 GO
 
+INSERT INTO LJDG.Viaje_Factura
+			(vxf_viaje
+			,vxf_factura)
+SELECT viaj_id , fact_nro
+FROM LJDG.Viaje, LJDG.Factura
+WHERE viaj_cliente = fact_cliente AND LJDG.viaje_entra_en_factura(viaj_fecha_inicio, fact_fecha_inicio, fact_fecha_fin) = 1
+ORDER BY fact_nro
+GO
+
 UPDATE LJDG.Factura
-SET fact_importe_total = (select sum(viaj_precio) from LJDG.Viaje
-						where LJDG.viaje_entra_en_factura(viaj_fecha_inicio,fact_fecha_inicio,fact_fecha_fin) = 1 AND
-								viaj_cliente = fact_cliente)
+SET fact_importe_total = (select sum(viaj_precio) from LJDG.Viaje join LJDG.Viaje_Factura on viaj_id = vxf_viaje 
+						  where fact_nro = vxf_factura)
 GO

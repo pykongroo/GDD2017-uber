@@ -10,16 +10,16 @@ GO
 
 /*---BORRO LAS TABLAS SI EXISTEN---*/
 
---Vistas
+--Tablas
+
 IF OBJECT_ID('LJDG.Viaje_Rendicion') IS NOT NULL
-	DROP VIEW [LJDG].[Viaje_Rendicion]
+	DROP TABLE [LJDG].[Viaje_Rendicion]
 GO
 
 IF OBJECT_ID('LJDG.Viaje_Factura') IS NOT NULL
-	DROP VIEW [LJDG].[Viaje_Factura]
+	DROP TABLE [LJDG].[Viaje_Factura]
 GO
 
---Tablas
 IF OBJECT_ID('LJDG.Factura') IS NOT NULL
     DROP TABLE LJDG.Factura;
 GO
@@ -204,8 +204,7 @@ CREATE TABLE LJDG.Viaje
 	viaj_auto            int  NOT NULL ,
 	viaj_chofer          int  NOT NULL ,
 	viaj_cliente         int  NOT NULL ,
-	viaj_precio          numeric(18,2) NULL ,
-	viaj_importe_rend	 numeric(18,2) NULL ,
+	viaj_precio          numeric(18,2) NULL
 	PRIMARY KEY  NONCLUSTERED (viaj_id ASC),
 	FOREIGN KEY (viaj_auto) REFERENCES LJDG.Automovil(auto_id)
 		ON DELETE NO ACTION
@@ -305,9 +304,40 @@ CREATE TABLE LJDG.Rendicion
 )
 GO
 
+CREATE TABLE LJDG.Viaje_Factura
+(
+	vxf_viaje    numeric(18,0)  NOT NULL ,
+	vxf_factura  numeric(18,0) NOT NULL ,
+	PRIMARY KEY  CLUSTERED (vxf_viaje ASC, vxf_factura ASC),
+	 FOREIGN KEY (vxf_viaje) REFERENCES LJDG.Viaje(viaj_id)
+		ON DELETE NO ACTION
+		ON UPDATE NO ACTION,
+	 FOREIGN KEY (vxf_factura) REFERENCES LJDG.Factura(fact_nro)
+		ON DELETE NO ACTION
+		ON UPDATE NO ACTION
+)
+GO
+
+CREATE TABLE LJDG.Viaje_Rendicion
+(
+	vxr_viaje    numeric(18,0)  NOT NULL ,
+	vxr_rendicion numeric(18,0) NOT NULL ,
+	vxr_importe	 numeric(18,2)  NOT NULL ,
+	PRIMARY KEY  CLUSTERED (vxr_viaje ASC, vxr_rendicion ASC),
+	 FOREIGN KEY (vxr_viaje) REFERENCES LJDG.Viaje(viaj_id)
+		ON DELETE NO ACTION
+		ON UPDATE NO ACTION,
+	 FOREIGN KEY (vxr_rendicion) REFERENCES LJDG.Rendicion(rend_nro)
+		ON DELETE NO ACTION
+		ON UPDATE NO ACTION
+)
+GO
+
+/*
 CREATE VIEW LJDG.Viaje_Factura
 AS
-SELECT	LJDG.Factura.fact_nro, LJDG.Factura.fact_fecha_inicio, LJDG.Factura.fact_fecha_fin, LJDG.Factura.fact_cliente, LJDG.Viaje.viaj_id, LJDG.Viaje.viaj_precio
+SELECT	LJDG.Factura.fact_nro, LJDG.Factura.fact_fecha_inicio, LJDG.Factura.fact_fecha_fin, LJDG.Factura.fact_cliente,
+		 LJDG.Viaje.viaj_id, LJDG.Viaje.viaj_fecha_inicio, LJDG.Viaje.viaj_precio
 FROM	LJDG.Factura INNER JOIN
 		LJDG.Viaje ON LJDG.Factura.fact_cliente = LJDG.Viaje.viaj_cliente
 WHERE	(LJDG.viaje_entra_en_factura(LJDG.Viaje.viaj_fecha_inicio, LJDG.Factura.fact_fecha_inicio, LJDG.Factura.fact_fecha_fin) = 1)
@@ -322,3 +352,4 @@ FROM	LJDG.Rendicion INNER JOIN
 WHERE	(LJDG.viaje_entra_en_rendicion(LJDG.Viaje.viaj_fecha_inicio,LJDG.Rendicion.rend_fecha) = 1)
 
 GO
+*/

@@ -44,7 +44,7 @@ namespace UberFrba.Viaje
 
         private void lnkChofer_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            new BuscarIndividuo(this, "Chofer", 'R').Show();
+            new BuscarIndividuo(this, "Chofer", 'V').Show();
         }
 
         public void setChofer(int id, string nombre, string apellido)
@@ -91,7 +91,7 @@ namespace UberFrba.Viaje
 
         private void lnkCliente_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            new BuscarIndividuo(this, "Cliente", 'R').Show();
+            new BuscarIndividuo(this, "Cliente", 'V').Show();
         }
 
         public void setCliente(int id, string nombre, string apellido)
@@ -186,10 +186,9 @@ namespace UberFrba.Viaje
             lstParam.Add(new BDParametro("@idChofer", idChofer));
             lstParam.Add(new BDParametro("@idCliente", idCliente));
             lstParam.Add(new BDParametro("@precio", precio));
-            lstParam.Add(new BDParametro("@importeRendicion", precio * Program.pcjRend));
             lstParam.Add(new BDParametro("@mensaje", "", SqlDbType.VarChar, 50, ParameterDirection.Output));
             bdHandler.execSP("LJDG.registrar_viaje", ref lstParam);
-            MessageBox.Show(lstParam[9].valor.ToString());
+            MessageBox.Show(lstParam[8].valor.ToString());
         }
 
         private void btnRegistrar_Click(object sender, EventArgs e)
