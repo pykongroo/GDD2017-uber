@@ -13,7 +13,6 @@ namespace UberFrba.Abm_Rol
 {
     public partial class AltaRol : Form
     {
-        // List<Funcionalidad> funcSeleccionadas;
         DataTable dtFuncSeleccionadas;
         List<Funcionalidad> misFuncionalidades;
         List<Rol> misRoles;
@@ -21,7 +20,6 @@ namespace UberFrba.Abm_Rol
         public AltaRol()
         {
             InitializeComponent();
-            //funcSeleccionadas = new List<Funcionalidad>();
             dtFuncSeleccionadas = new DataTable();
 
         }
@@ -51,7 +49,6 @@ namespace UberFrba.Abm_Rol
 
             gridLista.AutoGenerateColumns = true;
 
-
             dtFuncSeleccionadas.Clear();
             dtFuncSeleccionadas.Columns.Add("ID_Funcionalidad", typeof(int));
             dtFuncSeleccionadas.Columns.Add("Descripcion", typeof(string));
@@ -63,20 +60,11 @@ namespace UberFrba.Abm_Rol
             btn.Text = "Eliminar";
             btn.Name = "btnEliminarFunc";
             btn.UseColumnTextForButtonValue = true;
-
         }
 
         private void btnFuncionalidad_Click(object sender, EventArgs e)
         {
-            // funcSeleccionadas.Add(cmbFuncionalidades.SelectedItem);
             Funcionalidad selectedItem = (Funcionalidad)cmbFuncionalidades.SelectedItem;
-            //funcSeleccionadas.Add(selectedItem);
-            /* Console.WriteLine();
-             foreach (Funcionalidad afunc in funcSeleccionadas)
-             {
-                 Console.WriteLine(afunc.Descripcion);
-             }
-             */
 
             bool exists = dtFuncSeleccionadas.AsEnumerable().Any(c => c.Field<int>("ID_Funcionalidad") == selectedItem.ID_Funcionalidad);
             if (!exists)
@@ -116,7 +104,7 @@ namespace UberFrba.Abm_Rol
                     }
 
                     var miNuevoID = Rol.insertarRol(txtNombre.Text);
-                    //MessageBox.Show("Rol insertado");
+
                     if (dtFuncSeleccionadas.Rows.Count > 0)
                     {
                         foreach (DataRow row in dtFuncSeleccionadas.Rows)
@@ -124,12 +112,10 @@ namespace UberFrba.Abm_Rol
                             Funcionalidad.insertarFuncxRol(miNuevoID, row.Field<int>("ID_Funcionalidad"));
                         }
                     }
-                    txtNombre.Text = "";
-                    dtFuncSeleccionadas.Clear();
+                    /*txtNombre.Text = "";
+                    dtFuncSeleccionadas.Clear();*/
+                    MessageBox.Show("Rol Creado Exitosamente");
                     this.Hide();
-                    //Menu menuPrincipal = new Menu();
-                    //menuPrincipal.Show();
-
                 }
                 else
                 {
@@ -146,7 +132,6 @@ namespace UberFrba.Abm_Rol
         private void AltaRol_FormClosing(object sender, FormClosingEventArgs e)
         {
             this.Hide();
-            //new Menu().Show();
         }
 
     }

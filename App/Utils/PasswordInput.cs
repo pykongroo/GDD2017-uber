@@ -79,12 +79,7 @@ namespace UberFrba.Utils
             return (textBox1.Text!="")&&(textBox1.Text == textBox2.Text);
         }
 
-        public String getPassSHA256()
-        {
-            return textBox1.Text.Sha256();
-        }
-
-        public String Text()
+        public new String Text()
         {
             return textBox1.Text;
         }

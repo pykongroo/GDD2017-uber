@@ -33,7 +33,7 @@ namespace UberFrba.Utils
             return !(this.comboBox.Text == "");
         }
 
-        public String Text()
+        public new String Text()
         {
             return comboBox.Text;
         }

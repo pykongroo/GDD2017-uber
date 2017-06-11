@@ -245,4 +245,4 @@ paket-files/
 *.sln.iml
 
 # Config app (temporal)
-App/App.config
+# App/App.config

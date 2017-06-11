@@ -114,9 +114,9 @@
             this.lblViajes.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblViajes.Location = new System.Drawing.Point(25, 100);
             this.lblViajes.Name = "lblViajes";
-            this.lblViajes.Size = new System.Drawing.Size(153, 19);
+            this.lblViajes.Size = new System.Drawing.Size(149, 19);
             this.lblViajes.TabIndex = 45;
-            this.lblViajes.Text = "Viajes Facturados";
+            this.lblViajes.Text = "Viajes A Facturar";
             // 
             // lblApellidoClienteValor
             // 
@@ -240,13 +240,13 @@
             this.lblMontoTotalValor.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblMontoTotalValor.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblMontoTotalValor.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.lblMontoTotalValor.Location = new System.Drawing.Point(80, 454);
+            this.lblMontoTotalValor.Location = new System.Drawing.Point(139, 454);
             this.lblMontoTotalValor.Name = "lblMontoTotalValor";
             this.lblMontoTotalValor.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.lblMontoTotalValor.Size = new System.Drawing.Size(150, 30);
             this.lblMontoTotalValor.TabIndex = 57;
             this.lblMontoTotalValor.Text = "$";
-            this.lblMontoTotalValor.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.lblMontoTotalValor.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // Facturacion
             // 

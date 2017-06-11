@@ -186,7 +186,7 @@ namespace UberFrba.Viaje
             lstParam.Add(new BDParametro("@idChofer", idChofer));
             lstParam.Add(new BDParametro("@idCliente", idCliente));
             lstParam.Add(new BDParametro("@precio", precio));
-            lstParam.Add(new BDParametro("@mensaje", "", SqlDbType.VarChar, 50, ParameterDirection.Output));
+            lstParam.Add(new BDParametro("@mensaje", "", SqlDbType.VarChar, 200, ParameterDirection.Output));
             bdHandler.execSP("LJDG.registrar_viaje", ref lstParam);
             MessageBox.Show(lstParam[8].valor.ToString());
         }

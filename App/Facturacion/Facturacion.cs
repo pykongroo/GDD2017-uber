@@ -14,8 +14,8 @@ namespace UberFrba.Facturacion
     public partial class Facturacion : Form
     {
 
-        int idCliente;
-        decimal montoTotal;
+        private int idCliente;
+        private decimal montoTotal;
 
         public Facturacion()
         {
@@ -102,6 +102,8 @@ namespace UberFrba.Facturacion
             datetimeFechaInicio.Value = DateTime.Today;
             datetimeFechaFin.Value = DateTime.Today.AddDays(1);
             datetimeFechaFin.MinDate = datetimeFechaInicio.Value.AddDays(1);
+            dgViajes.Columns[0].DefaultCellStyle.Format = "dd/MM/yyyy HH:mm";
+            dgViajes.Columns[1].DefaultCellStyle.Format = "dd/MM/yyyy HH:mm";
         }
 
     }

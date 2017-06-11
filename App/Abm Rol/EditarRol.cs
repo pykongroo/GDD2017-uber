@@ -32,9 +32,6 @@ namespace UberFrba.Abm_Rol
             misRoles = Rol.obtenerRoles();
             cmbRoles.DataSource = misRoles;
             cmbRoles.DisplayMember = "Nombre";
-
-
-
         }
 
         private void cmbRoles_SelectionChangeCommitted(object sender, EventArgs e)
@@ -75,9 +72,6 @@ namespace UberFrba.Abm_Rol
             btn.UseColumnTextForButtonValue = true;
             gridLista.Update();
             gridLista.Refresh();
-
-
-
         }
 
         private void gridLista_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -112,9 +106,6 @@ namespace UberFrba.Abm_Rol
             }
             gridLista.Update();
             gridLista.Refresh();
-
-
-
         }
 
         private void btnModificar_Click(object sender, EventArgs e)
@@ -128,12 +119,12 @@ namespace UberFrba.Abm_Rol
                     if (!misFuncionalidades.Any(f => f.ID_Funcionalidad == row.Field<int>("ID_Funcionalidad")))
                     {
                         valido = false;
-                        row.SetColumnError(0,"Funcionalidad inexistente");
+                        row.SetColumnError(0, "Funcionalidad inexistente");
                     }
                 }
                 if (!valido)
                 {
-                    MessageBox.Show("La lista de funcionalidades seleccionadas contiene una o más funcionalidades inexistentes"); 
+                    MessageBox.Show("La lista de funcionalidades seleccionadas contiene una o más funcionalidades inexistentes");
                     return;
                 }
                 if (radioHabilitar.Checked)
@@ -141,7 +132,6 @@ namespace UberFrba.Abm_Rol
                     habilitar = 1;
                 }
                 Rol.editarRol(selectedItemRol.ID_Rol, txtNombreRol.Text, habilitar);
-                //MessageBox.Show("Rol insertado");
                 if (funcDelRol.Rows.Count > 0)
                 {
                     foreach (DataRow row in funcDelRol.Rows)
@@ -149,16 +139,14 @@ namespace UberFrba.Abm_Rol
                         Funcionalidad.insertarFuncxRol(selectedItemRol.ID_Rol, Convert.ToInt32(row["ID_Funcionalidad"]));
                     }
                 }
+                MessageBox.Show("Rol Modificado Exitosamente");
+                /*
                 txtNombreRol.Text = "";
                 funcDelRol.Clear();
                 radioHabilitar.Visible = false;
                 lblDeshabilitado.Visible = false;
+                 */
                 this.Hide();
-                //Menu menuPrincipal = new Menu();
-                //menuPrincipal.Show();
-
-
-
             }
             else
             {
@@ -169,7 +157,6 @@ namespace UberFrba.Abm_Rol
         private void EditarRol_FormClosing(object sender, FormClosingEventArgs e)
         {
             this.Hide();
-            //new Menu().Show();
         }
 
 

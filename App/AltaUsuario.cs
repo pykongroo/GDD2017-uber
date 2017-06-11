@@ -12,10 +12,11 @@ using UberFrba.Modelo;
 
 namespace UberFrba
 {
-    public partial class AltaUsuario : CustomForm
+    public partial class AltaUsuario : Form
     {
         private Dictionary<String, int> roles;
-        public AltaUsuario(Form prev):base(prev)
+
+        public AltaUsuario()
         {
             InitializeComponent();
             username.setDescription("Usuario:");
@@ -28,13 +29,13 @@ namespace UberFrba
             BDHandler bdh = new BDHandler();
             bdh.Conectar();
             SqlConnection conn = bdh.conexionBD;
-            String query = "select * from LJDG.Rol";
+            String query = "select * from LJDG.Rol where rol_habilitado = 1";
             SqlCommand command = new SqlCommand(query, conn);
             var reader = command.ExecuteReader();
             roles = new Dictionary<string, int>();
             while (reader.Read())
             {
-                roles.Add(reader.GetString(1), (int) reader.GetValue(0));
+                roles.Add(reader.GetString(1), (int)reader.GetValue(0));
                 cmb_roles.Add(reader.GetString(1));
             }
             bdh.Desconectar();
@@ -58,13 +59,13 @@ namespace UberFrba
             {
                 if (yaExiste(username.Text()))
                 {
-                    MessageBox.Show("el nombre de usuario ya existe");
-                } else
+                    MessageBox.Show("El nombre de usuario ya existe");
+                }
+                else
                 {
                     Usuario.darDeAlta(username.Text(), passwordInput.Text(), roles[cmb_roles.Text()]);
                     MessageBox.Show("Usuario agregado correctamente");
                     this.Hide();
-                    previo.Show();
                 }
             }
             else
@@ -76,8 +77,7 @@ namespace UberFrba
         private void buttonCancelar_Click(object sender, EventArgs e)
         {
             this.Hide();
-            this.previo.Show();
         }
-        
+
     }
 }

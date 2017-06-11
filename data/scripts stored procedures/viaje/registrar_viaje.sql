@@ -33,6 +33,8 @@ BEGIN
 								OR
 								( @fechaHoraFin > viaj_fecha_inicio AND @fechaHoraFin <= viaj_fecha_fin )))
 	SET @mensaje = 'El chofer ya tiene viajes en esa fecha y horarios.'
+	ELSE IF (select turn_habilitado from LJDG.Turno where turn_id = @turno) = 0
+		SET @mensaje = 'El turno está deshabilitado, no pueden registrarse viajes.'
 	ELSE
 	BEGIN
 		INSERT INTO LJDG.Viaje

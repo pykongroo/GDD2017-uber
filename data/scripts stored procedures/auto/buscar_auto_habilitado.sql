@@ -21,8 +21,8 @@ BEGIN
 	FROM LJDG.Automovil
 		JOIN LJDG.Marca ON auto_marca = marc_id
 		JOIN LJDG.Chofer ON auto_chofer = chof_id
-	WHERE auto_modelo LIKE @modelo + '%'
-		AND auto_patente LIKE @patente + '%'
+	WHERE auto_modelo LIKE '%' + @modelo + '%'
+		AND auto_patente LIKE '%' + @patente + '%'
 		AND ( @marca = 0 OR auto_marca = @marca)
 		AND ( @chofer = 0 OR auto_chofer = @chofer)
 		AND auto_habilitado = 1

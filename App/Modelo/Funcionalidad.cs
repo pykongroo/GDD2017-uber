@@ -28,71 +28,48 @@ namespace UberFrba.Modelo
         {
             var miLista = new List<Funcionalidad>();
             List<BDParametro> listParametros = new List<BDParametro>();
-            try
-            {
-                BDHandler handler = new BDHandler();
+            BDHandler handler = new BDHandler();
 
-                miLista = handler.execSelectSP("LJDG.obtener_funcionalidades")
-                    .AsEnumerable()
-                    .Select(m => new Funcionalidad()
-                    {
-                        ID_Funcionalidad = m.Field<int>("ID_Funcionalidad"),
-                        Descripcion = m.Field<string>("Descripcion"),
-                    }).ToList();
-                        //.AsEnumerable()
-                        //.Select(r => r[0].ToString()).ToList();
-                return miLista;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.ToString());
-                throw ex;
-            }
+            miLista = handler.execSelectSP("LJDG.obtener_funcionalidades")
+                .AsEnumerable()
+                .Select(m => new Funcionalidad()
+                {
+                    ID_Funcionalidad = m.Field<int>("ID_Funcionalidad"),
+                    Descripcion = m.Field<string>("Descripcion"),
+                }).ToList();
+            //.AsEnumerable()
+            //.Select(r => r[0].ToString()).ToList();
+            return miLista;
         }
-
 
         public static List<Funcionalidad> obtenerFuncxRol(int idRol)
         {
             var miLista = new List<Funcionalidad>();
             List<BDParametro> listParametros = new List<BDParametro>();
-            try
-            {
-                BDHandler handler = new BDHandler();
-                listParametros.Add(new BDParametro("@rol_id", idRol));
-                miLista = handler.execSelectSP("LJDG.obtener_funcionalidadesxrol",listParametros)
-                   .AsEnumerable()
-                   .Select(m => new Funcionalidad()
-                   {
-                       ID_Funcionalidad = m.Field<int>("ID_Funcionalidad"),
-                       Descripcion = m.Field<string>("Descripcion")
-                   }).ToList();
-                //.AsEnumerable()
-                //.Select(r => r[0].ToString()).ToList();
-                return miLista;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.ToString());
-                throw ex;
-            }
-        }    
-       
-        public static void insertarFuncxRol(int idRol,int idFuncionalidad)
+
+            BDHandler handler = new BDHandler();
+            listParametros.Add(new BDParametro("@rol_id", idRol));
+            miLista = handler.execSelectSP("LJDG.obtener_funcionalidadesxrol", listParametros)
+               .AsEnumerable()
+               .Select(m => new Funcionalidad()
+               {
+                   ID_Funcionalidad = m.Field<int>("ID_Funcionalidad"),
+                   Descripcion = m.Field<string>("Descripcion")
+               }).ToList();
+            //.AsEnumerable()
+            //.Select(r => r[0].ToString()).ToList();
+            return miLista;
+        }
+
+        public static void insertarFuncxRol(int idRol, int idFuncionalidad)
         {
             List<BDParametro> listParametros = new List<BDParametro>();
-            try
-            {
-                BDHandler handler = new BDHandler();
-                listParametros.Add(new BDParametro("@rol_id", idRol));
-                listParametros.Add(new BDParametro("@func_id", idFuncionalidad));
-                handler.execSP("LJDG.crear_funcxrol", ref listParametros);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.ToString());
-                throw ex;
-            }
-        }    
+
+            BDHandler handler = new BDHandler();
+            listParametros.Add(new BDParametro("@rol_id", idRol));
+            listParametros.Add(new BDParametro("@func_id", idFuncionalidad));
+            handler.execSP("LJDG.crear_funcxrol", ref listParametros);
+        }
     }
 
 }

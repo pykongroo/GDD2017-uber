@@ -119,7 +119,7 @@ namespace UberFrba
 
         private void altaUsuarioToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            new AltaUsuario(this).Show();
+            new AltaUsuario().Show();
         }
 
         private void menuABMAltaAuto_Click(object sender, EventArgs e)
@@ -139,8 +139,7 @@ namespace UberFrba
 
         private void rendicionChoferToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            RendicionChofer rend_chofer = new RendicionChofer();
-            rend_chofer.Show();
+            new Rendicion_Viajes.Rendicion().Show();
         }
 
         private void menuABMTAltaTurno_Click(object sender, EventArgs e)

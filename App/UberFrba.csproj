@@ -115,7 +115,6 @@
     </Compile>
     <Compile Include="ConexionBD\BDHandler.cs" />
     <Compile Include="ConexionBD\BDParametro.cs" />
-    <Compile Include="HashSet.cs" />
     <Compile Include="Logueo\SeleccionRol.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -127,19 +126,13 @@
     <Compile Include="Modelo\Rol.cs" />
     <Compile Include="Modelo\Turno.cs" />
     <Compile Include="Modelo\Usuario.cs" />
-    <Compile Include="Utils\DataTableHandler.cs" />
-    <Compile Include="Utils\CustomDatePick.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Utils\CustomDatePick.Designer.cs">
-      <DependentUpon>CustomDatePick.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Utils\CustomForm.cs">
+    <Compile Include="Rendicion Viajes\Rendicion.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Utils\CustomForm.Designer.cs">
-      <DependentUpon>CustomForm.cs</DependentUpon>
+    <Compile Include="Rendicion Viajes\Rendicion.Designer.cs">
+      <DependentUpon>Rendicion.cs</DependentUpon>
     </Compile>
+    <Compile Include="Utils\DataTableHandler.cs" />
     <Compile Include="AltaUsuario.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -190,12 +183,6 @@
     </Compile>
     <Compile Include="Viaje\RegistroViaje.Designer.cs">
       <DependentUpon>RegistroViaje.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Rendicion Viajes\RendicionChofer.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Rendicion Viajes\RendicionChofer.Designer.cs">
-      <DependentUpon>RendicionChofer.cs</DependentUpon>
     </Compile>
     <Compile Include="Utils\PasswordInput.cs">
       <SubType>UserControl</SubType>
@@ -248,17 +235,11 @@
     <EmbeddedResource Include="Logueo\SeleccionRol.resx">
       <DependentUpon>SeleccionRol.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Rendicion Viajes\RendicionChofer.resx">
-      <DependentUpon>RendicionChofer.cs</DependentUpon>
+    <EmbeddedResource Include="Rendicion Viajes\Rendicion.resx">
+      <DependentUpon>Rendicion.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Viaje\RegistroViaje.resx">
       <DependentUpon>RegistroViaje.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Utils\CustomDatePick.resx">
-      <DependentUpon>CustomDatePick.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Utils\CustomForm.resx">
-      <DependentUpon>CustomForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Logueo\Login.resx">
       <DependentUpon>Login.cs</DependentUpon>

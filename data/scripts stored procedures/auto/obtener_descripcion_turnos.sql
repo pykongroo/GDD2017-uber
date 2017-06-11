@@ -10,5 +10,4 @@ AS
 BEGIN
 	SELECT turn_descripcion
 	FROM LJDG.Turno
-	WHERE turn_habilitado = 1
 END

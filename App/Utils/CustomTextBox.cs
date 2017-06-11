@@ -35,7 +35,7 @@ namespace UberFrba.Utils
             return textBox.Text != "";
         }
 
-        public String Text()
+        public new String Text()
         {
             return textBox.Text;
         }

@@ -37,7 +37,7 @@
             // 
             // buttonAceptar
             // 
-            this.buttonAceptar.Location = new System.Drawing.Point(46, 184);
+            this.buttonAceptar.Location = new System.Drawing.Point(51, 225);
             this.buttonAceptar.Name = "buttonAceptar";
             this.buttonAceptar.Size = new System.Drawing.Size(75, 23);
             this.buttonAceptar.TabIndex = 8;
@@ -47,7 +47,7 @@
             // 
             // buttonCancelar
             // 
-            this.buttonCancelar.Location = new System.Drawing.Point(151, 184);
+            this.buttonCancelar.Location = new System.Drawing.Point(164, 225);
             this.buttonCancelar.Name = "buttonCancelar";
             this.buttonCancelar.Size = new System.Drawing.Size(75, 23);
             this.buttonCancelar.TabIndex = 9;
@@ -71,7 +71,7 @@
             // 
             // cmb_roles
             // 
-            this.cmb_roles.Location = new System.Drawing.Point(29, 128);
+            this.cmb_roles.Location = new System.Drawing.Point(29, 135);
             this.cmb_roles.Name = "cmb_roles";
             this.cmb_roles.Size = new System.Drawing.Size(252, 34);
             this.cmb_roles.TabIndex = 12;
@@ -80,13 +80,15 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(284, 261);
+            this.ClientSize = new System.Drawing.Size(284, 260);
             this.Controls.Add(this.cmb_roles);
             this.Controls.Add(this.passwordInput);
             this.Controls.Add(this.username);
             this.Controls.Add(this.buttonCancelar);
             this.Controls.Add(this.buttonAceptar);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "AltaUsuario";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Nuevo Usuario";
             this.ResumeLayout(false);
 

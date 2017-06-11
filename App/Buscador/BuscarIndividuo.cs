@@ -34,39 +34,33 @@ namespace UberFrba.Buscador
         private void buscar()
         {
             List<BDParametro> listParametros = new List<BDParametro>();
-            try
-            {
-                long dni;
-                long.TryParse(txtDNI.Text, out dni);
-                BDHandler handler = new BDHandler();
-                listParametros.Add(new BDParametro("@nombre", txtNombre.Text.Trim()));
-                listParametros.Add(new BDParametro("@apellido", txtApellido.Text.Trim()));
-                listParametros.Add(new BDParametro("@dni", dni));
-                //el chofer o cliente puede estar deshabilitado y se debe poder modificarle los datos
-                //puede estar deshabilitado el chofer y modificarle/darle de baja un auto que tiene asignado,
-                                                //pero debe estar habilitado para asignarle un nuevo auto
-                //tambien puede estar deshabilitado el cliente y facturarle, pero debe estar habilitado el chofer para rendirle
-                //en el resto de los casos debe estar habilitado el chofer/cliente (para darle de baja, registrarle un viaje)
-                if (tipoIndividuo == "Chofer")
-                    if (modo == 'M' || modo == 'S')
-                        dgIndividuo.DataSource = handler.execSelectSP("LJDG.buscar_chofer", listParametros);
-                    else
-                        dgIndividuo.DataSource = handler.execSelectSP("LJDG.buscar_chofer_habilitado", listParametros);
-                else if (tipoIndividuo == "Cliente")
-                    if (modo == 'M' || modo == 'F')
-                        dgIndividuo.DataSource = handler.execSelectSP("LJDG.buscar_cliente", listParametros);
-                    else
-                        dgIndividuo.DataSource = handler.execSelectSP("LJDG.buscar_cliente_habilitado", listParametros);
-                if (dgIndividuo.RowCount == 0)
-                    btnSeleccionar.Enabled = false;
+
+            long dni;
+            long.TryParse(txtDNI.Text, out dni);
+            BDHandler handler = new BDHandler();
+            listParametros.Add(new BDParametro("@nombre", txtNombre.Text.Trim()));
+            listParametros.Add(new BDParametro("@apellido", txtApellido.Text.Trim()));
+            listParametros.Add(new BDParametro("@dni", dni));
+            //el chofer o cliente puede estar deshabilitado y se debe poder modificarle los datos
+            //puede estar deshabilitado el chofer y modificarle/darle de baja un auto que tiene asignado,
+            //pero debe estar habilitado para asignarle un nuevo auto
+            //tambien puede estar deshabilitado el cliente y facturarle, pero debe estar habilitado el chofer para rendirle
+            //en el resto de los casos debe estar habilitado el chofer/cliente (para darle de baja, registrarle un viaje)
+            if (tipoIndividuo == "Chofer")
+                if (modo == 'M' || modo == 'S')
+                    dgIndividuo.DataSource = handler.execSelectSP("LJDG.buscar_chofer", listParametros);
                 else
-                    btnSeleccionar.Enabled = true;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error en la base de datos.");
-                throw ex;
-            }
+                    dgIndividuo.DataSource = handler.execSelectSP("LJDG.buscar_chofer_habilitado", listParametros);
+            else if (tipoIndividuo == "Cliente")
+                if (modo == 'M' || modo == 'F')
+                    dgIndividuo.DataSource = handler.execSelectSP("LJDG.buscar_cliente", listParametros);
+                else
+                    dgIndividuo.DataSource = handler.execSelectSP("LJDG.buscar_cliente_habilitado", listParametros);
+            if (dgIndividuo.RowCount == 0)
+                btnSeleccionar.Enabled = false;
+            else
+                btnSeleccionar.Enabled = true;
+
         }
 
         private void txtNombre_TextChanged(object sender, EventArgs e)
@@ -116,7 +110,7 @@ namespace UberFrba.Buscador
                         break;
                     /* Buscar Chofer desde Registro Rendicion*/
                     case 'R':
-                        //           ((Viaje.RegistroViaje)formPadre).setChofer(id, nombre, apellido);
+                        ((Rendicion_Viajes.Rendicion)formPadre).setChofer(id, nombre, apellido);
                         break;
                     /* Buscar Chofer desde RegistroViaje*/
                     case 'V':
