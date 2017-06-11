@@ -14,6 +14,6 @@ CREATE PROCEDURE [LJDG].[crear_turno]
   , @ID     INT OUTPUT
 AS
 BEGIN
-	INSERT INTO LJDG.Turno (turn_descripcion, turn_hora_inicio, turn_hora_fin,turn_valor_km, turn_precio_base, turn_habilitado) VALUES (@descripcion, @horaInicio, @horaFin, @valorKm, @precioBase, 1)
-
+	INSERT INTO LJDG.Turno (turn_descripcion, turn_hora_inicio, turn_hora_fin,turn_valor_km, turn_precio_base, turn_habilitado) 
+	VALUES (@descripcion, @horaInicio, @horaFin, @valorKm, @precioBase, 1)
 END

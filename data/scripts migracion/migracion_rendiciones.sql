@@ -1,7 +1,10 @@
 USE [GD1C2017]
 GO
 
-/*DELETE FROM LJDG.Rendicion
+/*
+DELETE FROM LJDG.Viaje_Rendicion
+GO
+DELETE FROM LJDG.Rendicion
 GO*/
 
 SET IDENTITY_INSERT LJDG.Rendicion ON
@@ -28,17 +31,18 @@ INSERT INTO LJDG.Viaje_Rendicion
 			(vxr_viaje
 			,vxr_rendicion
 			,vxr_importe)
-SELECT viaj_id , rend_nro, viaj_precio * 0.3
+SELECT viaj_id , rend_nro, (select Rendicion_Importe from gd_esquema.Maestra 
+							where rend_nro = Rendicion_Nro 
+							AND Chofer_Dni = (select chof_dni from LJDG.Chofer where viaj_chofer = chof_id)
+							AND Cliente_Dni = (select clie_dni from LJDG.Cliente where viaj_cliente = clie_id)
+							AND Viaje_Fecha = viaj_fecha_inicio
+							AND Viaje_Cant_Kilometros = viaj_cant_km
+							group by Rendicion_Importe) --tarda unos 30 segundos
+
 FROM LJDG.Viaje, LJDG.Rendicion
 WHERE viaj_chofer = rend_chofer AND viaj_turno = rend_turno AND LJDG.viaje_entra_en_rendicion(viaj_fecha_inicio,rend_fecha) = 1
 ORDER BY rend_nro
 GO
-
-/*UPDATE LJDG.Viaje_Rendicion
-SET vxr_importe = (select Viaje_Fecha,Rendicion_Importe from gd_esquema.Maestra where Rendicion_Importe is not null 
-					group by Chofer_DNI, Cliente_DNI, Viaje_Fecha, Viaje_Cant_Kilometros, Rendicion_Importe
-					 order by Viaje_Fecha)
-GO*/ --IMPOSIBLE MIGRAR RENDICION_IMPORTE, USO VIAJ_PRECIO * 0.3
 
 UPDATE LJDG.Rendicion
 SET rend_importe_total = (select sum(vxr_importe) from LJDG.Viaje_Rendicion
