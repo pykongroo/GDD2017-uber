@@ -32,10 +32,10 @@ BEGIN
 												and DATEPART(QUARTER, viaj_fecha_inicio) = @trimestre
 									group by viaj_auto,auto_patente order by count(*) desc
 				) 'Patente', 
-				(select top 1 count(*) from LJDG.Viaje 
+				ISNULL((select top 1 count(*) from LJDG.Viaje 
 					where viaj_cliente = clie_id and YEAR(viaj_fecha_inicio) = @anio
 												and DATEPART(QUARTER, viaj_fecha_inicio) = @trimestre
-						group by viaj_auto order by count(*) desc)  'Veces'
+						group by viaj_auto order by count(*) desc),0)  'Veces'
 	FROM LJDG.Cliente
 	ORDER BY 9 DESC, 1 ASC
 END
